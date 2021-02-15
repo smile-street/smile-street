@@ -11,29 +11,35 @@
 </head>
 
 <body>
-    <!-- example content -->
     <div class="mui-container">
         <div class="mui-panel">
             <img src='../images/SmileStreetLogo.png' alt="logo image" width="100%">
             <form class="mui-form">
-                <legend>Enter Details</legend>
+                <legend>Enter Availability</legend>
                 <div class="mui-textfield">
-                    <input type="text" placeholder="First Name">
+                    <input type="text" placeholder="Employer Name">
                 </div>
                 <div class="mui-textfield">
-                    <input type="text" placeholder="Last Name">
+                    <input type="text" placeholder="Home Location">
                 </div>
                 <div class="mui-textfield">
-                    <input type="text" placeholder="Email">
+                    <input type="text" placeholder="Work Location">
                 </div>
-                <div class="mui-textfield">
-                    <input type="text" placeholder="Contact Number">
+                <div class="mui-dropdown">
+
+                    <button class="mui-btn mui-btn" data-mui-toggle="dropdown">
+                        No. of Days available
+                        <span class="mui-caret"></span>
+                    </button>
+                    <ul class="mui-dropdown__menu">
+                        <li><a href="#">1 day</a></li>
+                        <li><a href="#">2 days</a></li>
+                        <li><a href="#">3 days</a></li>
+                        <li><a href="#">4 days</a></li>
+                    </ul>
                 </div>
-                <div class="mui-textfield">
-                    <input type="password" placeholder="Enter Password">
-                </div>
-                <div class="mui-textfield">
-                    <input type="password" placeholder="Confirm Password">
+                <div class="mui-panel">
+                    I am a calendar
                 </div>
                 <button type="submit" class="mui-btn mui-btn--raised">Add Availability</button>
             </form>
