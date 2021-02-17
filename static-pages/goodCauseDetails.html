@@ -1,71 +1,65 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Good Cause Details</title>
     <!-- load MUI -->
-    <link
-      href="//cdn.muicss.com/mui-0.10.3/css/mui.min.css"
-      rel="stylesheet"
-      type="text/css"
-    />
+    <link href="//cdn.muicss.com/mui-0.10.3/css/mui.min.css" rel="stylesheet" type="text/css" />
     <script src="//cdn.muicss.com/mui-0.10.3/js/mui.min.js"></script>
     <link href="./styles.css" rel="stylesheet" />
-  </head>
+</head>
 
-  <body>
+<body>
     <div class="mui-container mui--text-center">
-      <div class="mui-panel">
-        <img
-          src="../images/SmileStreetLogo.png"
-          alt="logo image"
-          width="100%"
-        />
-        <form class="mui-form">
-          <legend>Good Cause Details</legend>
-          <div class="mui-textfield mui-col-md-6 mui-col-xs-12">
-            <input type="text" placeholder="charity registration number" />
-          </div>
+        <div class="mui-panel">
+            <img src="../images/SmileStreetLogo.png" alt="logo image" width="100%" />
+            <form class="mui-form">
+                <legend>Good Cause Details</legend>
+                <div class="mui-textfield mui-col-md-6 mui-col-xs-12">
+                    <input type="text" placeholder="charity registration number" />
+                </div>
 
-          <div class="mui-row">
-            <div class="mui-col-md-6 mui-col-xs-12">
-              <label>Name of good cause</label>
-            </div>
+                <div class="mui-row">
+                    <div class="mui-col-md-6 mui-col-xs-12">
+                        <label>Name of good cause</label>
+                    </div>
 
-            <div class="mui-col-md-6 mui-col-xs-12">
-              <div class="mui-dropdown">
-                <button class="mui-btn" data-mui-toggle="dropdown">
-                  Select the good cause
-                  <span class="mui-caret"></span>
+                    <div class="mui-col-md-6 mui-col-xs-12">
+                        <div class="mui-dropdown">
+                            <button class="mui-btn" data-mui-toggle="dropdown">
+                                Select the good cause
+                                <span class="mui-caret"></span>
+                            </button>
+                            <ul class="mui-dropdown__menu">
+                                <li><a href="#">Option 1</a></li>
+                                <li><a href="#">Option 2</a></li>
+                                <li><a href="#">Option 3</a></li>
+                                <li><a href="#">Option 4</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="mui-row">
+                    <div class="mui-col-md-12 mui-xs-md-12">
+                        <label>Description of good casue</label>
+                    </div>
+                    <div class="mui-col-md-12 mui-col-xs-12">
+                        <div class="mui-textfield">
+                            <textarea></textarea>
+
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="mui-btn mui-btn--raised">
+                    Add Opportunities
                 </button>
-                <ul class="mui-dropdown__menu">
-                  <li><a href="#">Option 1</a></li>
-                  <li><a href="#">Option 2</a></li>
-                  <li><a href="#">Option 3</a></li>
-                  <li><a href="#">Option 4</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="mui-row">
-            <div class="mui-col-md-12 mui-xs-md-12">
-              <label>Description of good casue</label>
-            </div>
-            <div class="mui-col-md-12 mui-col-xs-12">
-              <div class="mui-textfield">
-                <textarea></textarea>
-                
-              </div>
-            </div>
-          </div>
-
-          <button type="submit" class="mui-btn mui-btn--raised">
-            Add Opportunities
-          </button>
-        </form>
-      </div>
+            </form>
+        </div>
     </div>
-  </body>
+</body>
+
 </html>
