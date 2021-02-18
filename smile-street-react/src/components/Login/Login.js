@@ -1,21 +1,26 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
+import TextField from '@material-ui/core/TextField';
 import "./Login.css";
 
 const Login = () => {
     return ( 
-        <div className="mui-container mui--text-center">
+        <Paper>
 		<div className="mui-panel">
 			<img src="../images/SmileStreetLogo.png" alt="logo" width="100%" />
 			
 			<form className="mui-form">
 				<legend>Login</legend>
-				<div className="mui-textfield mui-col-md-6 mui-col-xs-12">
-					<input type="email" placeholder="e-mail"></input>
-				</div>
-				<div className="mui-textfield mui-col-md-6 mui-col-xs-12">
-					<input type="password" placeholder="password"></input>
-				</div>
+				<TextField required id="filled-basic" variant="filled" label="Email"/>
+
+				<TextField
+					required
+					id="filled-password-input"
+					label="Password"
+					type="password"
+					variant="filled"
+				/>
 
 				<div className="mui-row">
                     <Button className="button-colour" variant="contained">
@@ -34,35 +39,35 @@ const Login = () => {
 					</div>
 				</div>
 				<div className="mui-row">
-					<div className="mui-col-md-6 mui-col-xs-12">
-						<button className="mui-btn mui-btn--raised mui-btn">
-							Login with Facebook
-						</button>
-					</div>
-					<div className="mui-col-md-6 mui-col-xs-12">
-						<button className="mui-btn mui-btn--raised mui-btn">
-							Login with Github
-						</button>
-					</div>
+				<div className="mui-row">
+                    <Button className="button-colour" variant="contained">
+                        Login with Google
+                    </Button>
+				</div>
+				<div className="mui-row">
+                    <Button className="button-colour" variant="contained">
+                        Login with Facebook
+                    </Button>
+				</div>
 				</div>
 				<div className="mui-divider"></div>
 				<div className="mui-row">
-					<div className="mui-col-md-6 mui-col-xs-12">
-						<button className="mui-btn mui-btn--raised mui-btn">
-							Signup as a volunteer
-						</button>
-					</div>
-					<div className="mui-col-md-6 mui-col-xs-12">
-						<button className="mui-btn mui-btn--raised mui-btn">
-							Sign up as a Good Cause
-						</button>
-					</div>
+				<div className="mui-row">
+                    <Button className="button-colour" variant="contained">
+                        Signup as a Volunteer
+                    </Button>
+				</div>
+				<div className="mui-row">
+                    <Button className="button-colour" variant="contained">
+                        signup as a Good Cause
+                    </Button>
+				</div>
 				</div>
 			</form>
 
 		</div>
-	</div>
-     );
+	</Paper>
+	);
 }
- 
+
 export default Login;
