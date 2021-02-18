@@ -1,146 +1,124 @@
-import React from "react";
-import Button from "@material-ui/core/Button";
-import Paper from "@material-ui/core/Paper";
-import Container from "@material-ui/core/Container";
-import Link from "@material-ui/core/Link";
-import TextField from "@material-ui/core/TextField";
-import Box from "@material-ui/core/Box";
-import { makeStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
-import "./Login.css";
+import React from 'react';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import Link from '@material-ui/core/Link';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper'
+import Typography from '@material-ui/core/Typography';
+import Divider from '@material-ui/core/Divider';
+import { makeStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
 
 const useStyles = makeStyles((theme) => ({
-	root: {
-		flexGrow: 1,
-		justify: "center",
-		alignItems: "center",
-		direction: "row",
-	},
 	paper: {
-		padding: theme.spacing(2),
-		textAlign: "center",
-		color: theme.palette.text.secondary,
+		marginTop: theme.spacing(8),
+		display: 'flex',
+		flexDirection: 'column',
+		alignItems: 'center',
+		height: "100%",
 	},
-	button: {
-		backgroundColor: "#53bd98",
-	}
+	form: {
+		width: '95%', // Fix IE 11 issue.
+		marginTop: theme.spacing(1),
+	},
+	submit: {
+		margin: theme.spacing(3, 0, 2),
+	},
+	externalLogin: {
+		margin: theme.spacing(1, 0, 0.5),	
+	},
+	signup: {
+		margin: theme.spacing(1, 0, 0.5),	
+	},
 }));
 
-const Login = () => {
+export default function Login() {
 	const classes = useStyles();
 
 	return (
-		<div className={classes.root}>
-			<Grid container spacing={3}>
-				<Grid item xs={12}>
-					<Paper className={classes.paper}>
-						<img src="../images/SmileStreetLogo.png" alt="logo" width="100%" />	
-					</Paper>
-				</Grid>
-				<Grid item xs={12} sm={6}>
-					<Paper className={classes.paper}>
+		<Container component="main" maxWidth="xs">
+			<Paper className={classes.paper}>
+				<Typography component="h1" variant="h5">
+					Log in
+       			</Typography>
+				<form className={classes.form} noValidate>
 					<TextField
-							required
-							id="outlined-basic"
-							variant="outlined"
-							label="Email" />
-					</Paper>
-				</Grid>
-				<Grid item xs={12} sm={6}>
-					<Paper className={classes.paper}>
+						variant="outlined"
+						margin="normal"
+						required
+						fullWidth
+						id="email"
+						label="Email Address"
+						name="email"
+						autoComplete="email"
+						autoFocus
+					/>
 					<TextField
-							required
-							id="outlined-password-input"
-							label="Password"
-							type="password"
-							variant="outlined"/>
-					</Paper>
-				</Grid>
-				<Grid item xs={6}>
-					<Paper className={classes.paper}>
-					<Button className={classes.button} variant="contained">
-							Login with Google
-		    			</Button>
-						
-					</Paper>
-				</Grid>
-				<Grid item xs={6}>
-					<Paper className={classes.paper}>
-					<Button className={classes.button} variant="contained">
-							Login with Facebook
-		    			</Button>
-					</Paper>
-				</Grid>
-				<Grid item xs={12}>
-					<Paper className={classes.paper}>
-						<Button className={classes.button} variant="contained">
-							Register as a Volunteer
-		    			</Button>
-						<Button className={classes.button} variant="contained">
-							Register as a Good Cause 
-		    			</Button>
-					</Paper>
-				</Grid>
-			</Grid>
-		</div>
-
-		// 	<Container maxWidth="sm">
-		// 		<img src="../images/SmileStreetLogo.png" alt="logo" width="100%" />
-		// 		<Paper height={100}>
-		// 			<div>
-		// 				<legend>Login</legend>
-
-		// 				<Box component="span" m={1}>
-
-		// 				<TextField
-		// 					required
-		// 					id="outlined-basic"
-		// 					variant="outlined"
-		// 					label="Email" />
-		// 				</Box>
-		// 				<Box component="span" m={1}>
-
-						// <TextField
-						// 	required
-						// 	id="outlined-password-input"
-						// 	label="Password"
-						// 	type="password"
-						// 	variant="outlined"/>
-
-		// 				</Box>
-
-		// 			</div>
-		// 				<Button className={classes.button} variant="contained">
-		// 					Login
-		// 				</Button>
-		// 			<div>
-		// 				<label>Or</label>
-		// 			</div>
-		// 			<div>
-		// 				<Link  href="#">Forgot your password click here!</Link>
-		// 			</div>
-		// 			<div>
-						// <Button className={classes.button} variant="contained">
-						// 	Login with Google
-		    			// </Button>
-						// <Button className={classes.button} variant="contained">
-						// 	Login with Facebook
-		    			// </Button>
-		// 			</div>
-		// 		</Paper>
-
-		// 		<div>
-		// 			<Paper>
-		// 				<Button className={classes.button} variant="contained">
-		// 					Sign up as a Volunteer
-		//     			</Button>
-		// 				<Button className={classes.button} variant="contained">
-		// 					Sign up as a Good Cause
-		// 				</Button>
-		// 			</Paper>
-		// 		</div>
-		// 	</Container>
+						variant="outlined"
+						margin="normal"
+						required
+						fullWidth
+						name="password"
+						label="Password"
+						type="password"
+						id="password"
+						autoComplete="current-password"
+					/>
+					<Button
+						type="submit"
+						fullWidth
+						variant="contained"
+						color="primary"
+						className={classes.submit}
+					>
+						Log in
+          			</Button>
+					<Grid container>
+						<Grid item xs>
+							<Link href="#" variant="body2">
+								Forgot password? Click here!
+              				</Link>
+						</Grid>
+					</Grid>
+					<Button
+						type="submit"
+						fullWidth
+						variant="contained"
+						color="primary"
+						className={classes.externalLogin}
+					>
+						Log in with Facebook
+          			</Button>
+					<Button
+						type="submit"
+						fullWidth
+						variant="contained"
+						color="primary"
+						className={classes.externalLogin}
+					>
+						Log in with Google
+          			</Button>
+					<Divider />
+					<Button
+						type="submit"
+						fullWidth
+						variant="contained"
+						color="primary"
+						className={classes.signup}
+					>
+						Register as a Volunteer
+          			</Button>
+					<Button
+						type="submit"
+						fullWidth
+						variant="contained"
+						color="primary"
+						className={classes.signup}
+					>
+						Register as a Good Cause
+          			</Button>
+				</form>
+			</Paper>
+		</Container>
 	);
-};
-
-export default Login;
+}
