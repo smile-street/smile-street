@@ -1,4 +1,6 @@
 import React from 'react';
+import Button from '@material-ui/core/Button';
+import "./Login.css";
 
 const Login = () => {
     return ( 
@@ -14,11 +16,13 @@ const Login = () => {
 				<div className="mui-textfield mui-col-md-6 mui-col-xs-12">
 					<input type="password" placeholder="password"></input>
 				</div>
+
 				<div className="mui-row">
-					<div className="mui-col-md-12 mui-col-xs-12">
-						<button type="submit" className="mui-btn mui-btn--raised">Login</button>
-					</div>
+                    <Button className="button-colour" variant="contained">
+                        Login
+                    </Button>
 				</div>
+
 				<div className="mui-row">
 					<div className="mui-col-md-12 mui-col-xs-12">
 						<label>Or</label>
