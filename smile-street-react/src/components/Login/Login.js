@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
 		margin: theme.spacing(1, 0, 0.5),	
 	},
 	signup: {
-		margin: theme.spacing(1, 0, 0.5),	
+		margin: theme.spacing(1, 0, 0.5),
 	},
 }));
 
@@ -36,8 +36,9 @@ export default function Login() {
 	const classes = useStyles();
 
 	return (
-		<Container component="main" maxWidth="xs">
+		<Container component="main" maxWidth="sm">
 			<Paper className={classes.paper}>
+			<img src="../images/SmileStreetLogo.png" alt="logo" width="100%" />				
 				<Typography component="h1" variant="h5">
 					Log in
        			</Typography>
