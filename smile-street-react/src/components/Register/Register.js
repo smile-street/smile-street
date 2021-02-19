@@ -11,6 +11,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 	signup: {
 		margin: theme.spacing(1, 0, 0.5),
+        backgroundColor: "#53bd98",
 	},
 }));
 

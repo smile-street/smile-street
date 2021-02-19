@@ -17,19 +17,20 @@ const useStyles = makeStyles((theme) => ({
 		alignItems: 'center',
 		height: "100%",
 	},
+
 	form: {
 		width: '95%', // Fix IE 11 issue.
 		marginTop: theme.spacing(1),
 	},
 	submit: {
 		margin: theme.spacing(3, 0, 2),
+		backgroundColor: "#53bd98",
 	},
 	externalLogin: {
-		margin: theme.spacing(1, 0, 0.5),	
+		margin: theme.spacing(1, 0, 0.5),
+		backgroundColor: "#53bd98",	
 	},
-	signup: {
-		margin: theme.spacing(2, 5, 2),
-	},
+
 }));
 
 export default function Login() {
