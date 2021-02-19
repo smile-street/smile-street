@@ -8,6 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import Register from '../Register/Register'
 
 const useStyles = makeStyles((theme) => ({
 	paper: {
@@ -28,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
 		margin: theme.spacing(1, 0, 0.5),	
 	},
 	signup: {
-		margin: theme.spacing(1, 0, 0.5),
+		margin: theme.spacing(2, 5, 2),
 	},
 }));
 
@@ -38,6 +39,8 @@ export default function Login() {
 	return (
 		<Container component="main" maxWidth="sm">
 			<Paper className={classes.paper}>
+
+				{/* use <Header/> component here  */}
 			<img src="../images/SmileStreetLogo.png" alt="logo" width="100%" />				
 				<Typography component="h1" variant="h5">
 					Log in
@@ -100,24 +103,7 @@ export default function Login() {
 						Log in with Google
           			</Button>
 					<Divider />
-					<Button
-						type="submit"
-						fullWidth
-						variant="contained"
-						color="primary"
-						className={classes.signup}
-					>
-						Register as a Volunteer
-          			</Button>
-					<Button
-						type="submit"
-						fullWidth
-						variant="contained"
-						color="primary"
-						className={classes.signup}
-					>
-						Register as a Good Cause
-          			</Button>
+					<Register className={classes.signup}/>
 				</form>
 			</Paper>
 		</Container>
