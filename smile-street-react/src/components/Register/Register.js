@@ -3,7 +3,7 @@ import { Button, Paper, makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
 	paper: {
-		marginTop: theme.spacing(8),
+		paddingTop: theme.spacing(4),
 		display: 'flex',
 		flexDirection: 'column',
 		alignItems: 'center',
@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
 const Register = () => {
     const classes = useStyles();
     return ( 
-        <Paper>
+        <Paper className={classes.paper}>
             <Button
                 type="submit"
                 fullWidth

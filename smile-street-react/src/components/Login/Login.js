@@ -2,12 +2,11 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Link from '@material-ui/core/Link';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper'
+import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import Divider from '@material-ui/core/Divider';
 import Register from '../Register/Register'
 
 const useStyles = makeStyles((theme) => ({
@@ -41,7 +40,8 @@ export default function Login() {
 			<Paper className={classes.paper}>
 
 				{/* use <Header/> component here  */}
-			<img src="../images/SmileStreetLogo.png" alt="logo" width="100%" />				
+			<img src="../images/SmileStreetLogo.png" alt="logo" width="100%" />		
+
 				<Typography component="h1" variant="h5">
 					Log in
        			</Typography>
@@ -77,13 +77,10 @@ export default function Login() {
 					>
 						Log in
           			</Button>
-					<Grid container>
-						<Grid item xs>
-							<Link href="#" variant="body2">
-								Forgot password? Click here!
-              				</Link>
-						</Grid>
-					</Grid>
+
+					<Link href="#" variant="body2">
+						Forgot password? Click here!
+					</Link>
 					<Button
 						type="submit"
 						fullWidth
