@@ -1,16 +1,19 @@
-import "./App.css";
-// import Login from "./components/Login/Login";
-import Header from "./components/Header/Header.js";
-import GoodCauseVolunteerRegistration from "./components/GoodCause-Voluenteer-Registration/GoodCauseVolunteerRegistration.js";
+
+import './App.css';
+import Login from './components/Login/Login'
+//import VolunteermatchesYesNoButton from './components/Volunteermatches/VolunteermatchesYes-No-Button'
 
 function App() {
-  return (
-    <div className="App">
-      <Header />
-      {/* <Login /> */}
-      <GoodCauseVolunteerRegistration />
-    </div>
-  );
+	return (
+
+		<div className="App">
+
+			<VolunteermatchesYesNoButton />
+    
+
+		</div>
+	);
+
 }
 
 export default App;
