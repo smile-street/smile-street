@@ -4,7 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import Link from '@material-ui/core/Link';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core';
 import Container from '@material-ui/core/Container';
 import Divider from '@material-ui/core/Divider';
 import Register from '../Register/Register'
