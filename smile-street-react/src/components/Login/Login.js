@@ -20,6 +20,9 @@ const Login = () => {
     buttonColor: {
       backgroundColor: "#53bd98",
       color: "white",
+      "&:hover": {
+        background: "#449f80",
+      },
     },
     justifyButton: {
       alignContent: "center",
