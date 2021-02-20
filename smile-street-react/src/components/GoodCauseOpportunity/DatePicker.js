@@ -7,7 +7,7 @@ import {
   KeyboardDatePicker,
 } from "@material-ui/pickers";
 
-function MaterialUIPickers() {
+function MaterialUIDatePickers() {
   const [selectedDate, setSelectedDate] = React.useState(
     new Date("2014-08-18T21:11:54")
   );
@@ -33,4 +33,4 @@ function MaterialUIPickers() {
     </MuiPickersUtilsProvider>
   );
 }
-export default MaterialUIPickers;
+export default MaterialUIDatePickers;
