@@ -3,7 +3,6 @@ import { Button, Paper, makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
 	paper: {
-		paddingTop: theme.spacing(4),
 		display: 'flex',
 		flexDirection: 'column',
 		alignItems: 'center',
@@ -18,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
 const Register = () => {
     const classes = useStyles();
     return ( 
-        <Paper className={classes.paper}>
+        <div>
             <Button
                 type="submit"
                 fullWidth
@@ -37,7 +36,7 @@ const Register = () => {
             >
                 Register as a Good Cause
             </Button>
-        </Paper>
+        </div>
     );
 }
 

@@ -7,7 +7,8 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core';
 import Container from '@material-ui/core/Container';
 import Divider from '@material-ui/core/Divider';
-import Register from '../Register/Register'
+import Grid from '@material-ui/core/Grid';
+import Register from '../Register/Register';
 
 const useStyles = makeStyles((theme) => ({
 	paper: {
@@ -24,11 +25,12 @@ const useStyles = makeStyles((theme) => ({
 	},
 	submit: {
 		margin: theme.spacing(3, 0, 2),
+		justify: "center",
 		backgroundColor: "#53bd98",
 	},
 	externalLogin: {
 		margin: theme.spacing(1, 0, 0.5),
-		backgroundColor: "#53bd98",	
+		backgroundColor: "#53bd98",
 	},
 
 }));
@@ -41,7 +43,7 @@ export default function Login() {
 			<Paper className={classes.paper}>
 
 				{/* use <Header/> component here  */}
-			<img src="../images/SmileStreetLogo.png" alt="logo" width="100%" />		
+				<img src="../images/SmileStreetLogo.png" alt="logo" width="100%" />
 
 				<Typography component="h1" variant="h5">
 					Log in
@@ -69,39 +71,52 @@ export default function Login() {
 						id="password"
 						autoComplete="current-password"
 					/>
-					<Button
-						type="submit"
-						fullWidth
-						variant="contained"
-						color="primary"
-						className={classes.submit}
-					>
-						Log in
-          			</Button>
+					<Grid container spacing={1} justify="center">
+						<Grid item>
+							<Button
+								type="submit"
+								fullWidth
+								variant="contained"
+								color="primary"
+								className={classes.submit}
+							>
+								Log in
+							</Button>
+						</Grid>
+					</Grid>
 
 					<Link href="#" variant="body2">
 						Forgot password? Click here!
 					</Link>
-					<Button
-						type="submit"
-						fullWidth
-						variant="contained"
-						color="primary"
-						className={classes.externalLogin}
-					>
-						Log in with Facebook
-          			</Button>
-					<Button
-						type="submit"
-						fullWidth
-						variant="contained"
-						color="primary"
-						className={classes.externalLogin}
-					>
-						Log in with Google
-          			</Button>
+
+					<div>
+						<Grid container spacing={2} justify="center">
+							<Grid item>
+								<Button
+									type="submit"
+									fullWidth
+									variant="contained"
+									color="primary"
+									className={classes.externalLogin}
+								>
+									Log in with Facebook
+								</Button>
+							</Grid>
+							<Grid item>
+								<Button
+									type="submit"
+									fullWidth
+									variant="contained"
+									color="primary"
+									className={classes.externalLogin}
+								>
+									Log in with Google
+								</Button>
+							</Grid>
+						</Grid>
+					</div>
 					<Divider />
-					<Register className={classes.signup}/>
+					<Register className={classes.signup} />
 				</form>
 			</Paper>
 		</Container>
