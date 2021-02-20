@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Paper, makeStyles } from '@material-ui/core';
+import { Button, Grid, makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
 	paper: {
@@ -18,24 +18,31 @@ const Register = () => {
     const classes = useStyles();
     return ( 
         <div>
-            <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                color="primary"
-                className={classes.signup}
-            >
-                Register as a Volunteer
-            </Button>
-            <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                color="primary"
-                className={classes.signup}
-            >
-                Register as a Good Cause
-            </Button>
+
+            <Grid container spacing={2} justify="center">
+                <Grid item>
+                    <Button
+                        type="submit"
+                        fullWidth
+                        variant="contained"
+                        color="primary"
+                        className={classes.signup}
+                    >
+                        Register as a Volunteer
+                    </Button>
+                </Grid>
+                <Grid item>
+                    <Button
+                        type="submit"
+                        fullWidth
+                        variant="contained"
+                        color="primary"
+                        className={classes.signup}
+                    >
+                        Register as a Good Cause
+                    </Button>
+                </Grid>
+            </Grid>
         </div>
     );
 }
