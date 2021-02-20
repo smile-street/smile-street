@@ -5,6 +5,7 @@ import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 import { TextField, Button } from "@material-ui/core";
+import MaterialUIPickers from "./DatePicker";
 
 const GoodCauseOpportunity = () => {
   const useStyles = makeStyles((theme) => ({
@@ -53,17 +54,7 @@ const GoodCauseOpportunity = () => {
             </Grid>
             <Grid item xs={12} sm={6}>
               <Paper className={classes.paper}>
-                <TextField
-                  id="standard-full-width"
-                  style={{ margin: 8 }}
-                  placeholder="E-mail"
-                  fullWidth
-                  margin="normal"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  variant="outlined"
-                />
+                <MaterialUIPickers />
               </Paper>
             </Grid>
             <Grid item xs={12} sm={6}>
