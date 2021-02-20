@@ -4,12 +4,13 @@ import VolunteermatchesYesNoButton from "./components/Volunteermatches/Volunteer
 import PasswordRecovery from "./components/PasswordRecovery/PasswordRecovery";
 import GoodCauseVolunteerRegistration from "./components/GoodCause-Voluenteer-Registration/GoodCauseVolunteerRegistration";
 import Header from "./components/Header/Header";
+import GoodCauseOpportunity from "./components/GoodCauseOpportunity/GoodCauseOpportunity";
 
 function App() {
   return (
     <div className="App">
       <Header />
-
+      <GoodCauseOpportunity />
       <Login />
       <VolunteermatchesYesNoButton />
       <GoodCauseVolunteerRegistration />

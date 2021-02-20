@@ -149,7 +149,9 @@ export default function CustomizedHook() {
     <NoSsr>
       <div>
         <div {...getRootProps()}>
-          <Label {...getInputLabelProps()}>Customized hook</Label>
+          <Label {...getInputLabelProps()}>
+            Please select your desired skills
+          </Label>
           <InputWrapper ref={setAnchorEl} className={focused ? "focused" : ""}>
             {value.map((option, index) => (
               <Tag label={option.title} {...getTagProps({ index })} />
