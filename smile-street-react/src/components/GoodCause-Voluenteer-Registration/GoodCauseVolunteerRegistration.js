@@ -39,6 +39,7 @@ const GoodCauseVolunteerRegistration = () => {
                   InputLabelProps={{
                     shrink: true,
                   }}
+                  variant="outlined"
                 />
               </Paper>
             </Grid>
@@ -53,6 +54,7 @@ const GoodCauseVolunteerRegistration = () => {
                   InputLabelProps={{
                     shrink: true,
                   }}
+                  variant="outlined"
                 />
               </Paper>
             </Grid>
@@ -67,6 +69,7 @@ const GoodCauseVolunteerRegistration = () => {
                   InputLabelProps={{
                     shrink: true,
                   }}
+                  variant="outlined"
                 />
               </Paper>
             </Grid>
@@ -81,6 +84,7 @@ const GoodCauseVolunteerRegistration = () => {
                   InputLabelProps={{
                     shrink: true,
                   }}
+                  variant="outlined"
                 />
               </Paper>
             </Grid>
@@ -95,6 +99,7 @@ const GoodCauseVolunteerRegistration = () => {
                   InputLabelProps={{
                     shrink: true,
                   }}
+                  variant="outlined"
                 />
               </Paper>
             </Grid>
@@ -110,6 +115,7 @@ const GoodCauseVolunteerRegistration = () => {
                   InputLabelProps={{
                     shrink: true,
                   }}
+                  variant="outlined"
                 />
               </Paper>
             </Grid>
@@ -125,6 +131,7 @@ const GoodCauseVolunteerRegistration = () => {
                   InputLabelProps={{
                     shrink: true,
                   }}
+                  variant="outlined"
                 />
               </Paper>
             </Grid>
