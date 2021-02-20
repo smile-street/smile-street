@@ -10,11 +10,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-	  <GoodCauseDetails/>
       <Login />
-      <VolunteermatchesYesNoButton />
-      <GoodCauseVolunteerRegistration />
-      <PasswordRecovery />
     </div>
   );
 }
