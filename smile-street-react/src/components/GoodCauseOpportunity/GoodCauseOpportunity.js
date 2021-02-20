@@ -6,6 +6,7 @@ import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 import { TextField, Button } from "@material-ui/core";
 import MaterialUIPickers from "./DatePicker";
+import MaterialUITimePickers from "./TimePicker";
 
 const GoodCauseOpportunity = () => {
   const useStyles = makeStyles((theme) => ({
@@ -59,49 +60,7 @@ const GoodCauseOpportunity = () => {
             </Grid>
             <Grid item xs={12} sm={6}>
               <Paper className={classes.paper}>
-                <TextField
-                  id="standard-full-width"
-                  style={{ margin: 8 }}
-                  placeholder="Contact Number"
-                  fullWidth
-                  margin="normal"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  variant="outlined"
-                />
-              </Paper>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <Paper className={classes.paper}>
-                <TextField
-                  id="standard-full-width"
-                  style={{ margin: 8 }}
-                  placeholder="Password"
-                  type="password"
-                  fullWidth
-                  margin="normal"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  variant="outlined"
-                />
-              </Paper>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <Paper className={classes.paper}>
-                <TextField
-                  id="standard-full-width"
-                  style={{ margin: 8 }}
-                  type="password"
-                  placeholder="Confirm Password"
-                  fullWidth
-                  margin="normal"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  variant="outlined"
-                />
+                <MaterialUITimePickers />
               </Paper>
             </Grid>
 
