@@ -17,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    maxWidth: "xs",
   },
   form: {
     width: '100%',
@@ -35,8 +36,9 @@ export default function Login() {
   const classes = useStyles();
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main">
       <Paper className={classes.paper}>
+      <Container maxWidth="xs">
         <Typography component="h1" variant="h5">
             Sign in
         </Typography>
@@ -80,7 +82,7 @@ export default function Login() {
         </form>
 
 
-            {/* <Button
+            <Button
               type="submit"
               fullWidth
               variant="contained"
@@ -98,10 +100,10 @@ export default function Login() {
               className={classes.button}
             >
               Log in with Google
-            </Button> */}
-      {/* </Paper>
+            </Button> 
+      </Container>
 
-      <Paper className={classes.paper}>
+      <Container maxWidth="xs" className={classes.paper}>
         <Button
           type="submit"
           fullWidth
@@ -120,9 +122,10 @@ export default function Login() {
           className={classes.button}
         >
           Register as a Volunteer
-        </Button> */}
+        </Button>
       
       
+      </Container>
       </Paper>
     </Container>
   );
