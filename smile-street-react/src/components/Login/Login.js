@@ -13,11 +13,13 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(0.5),
     padding: theme.spacing(3),
-    textAlign: "center",
     color: theme.palette.text.secondary,
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+  },
+  form: {
+    width: '100%',
   },
   button: {
     backgroundColor: "#53bd98",
@@ -27,69 +29,58 @@ const useStyles = makeStyles((theme) => ({
     },
     margin: theme.spacing(1, 0, 0),
   },
-  form: {
-    width: '100%',
-  },
 }));
 
-const Login = () => {
+export default function Login() {
   const classes = useStyles();
+
   return (
-    <Container component="main" maxWidth="md">
+    <Container component="main" maxWidth="xs">
       <Paper className={classes.paper}>
         <Typography component="h1" variant="h5">
             Sign in
         </Typography>
+        <form className={classes.form}>
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            id="email"
+            label="Email Address"
+            name="email"
+            autoComplete="email"
+            autoFocus
+          />
 
-      <form className={classes.form}>
-    <Grid container>
-      <Grid item >
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            name="password"
+            label="Password"
+            type="password"
+            id="password"
+            autoComplete="current-password"
+          />
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.button}
+          >
+            Log in
+          </Button>
 
-        <TextField
-          variant="outlined"
-          margin="normal"
-          required
-          fullWidth
-          id="email"
-          label="Email Address"
-          name="email"
-          autoComplete="email"
-          autoFocus
-        />
-      </Grid>      
-      <Grid item >
-        <TextField
-          variant="outlined"
-          margin="normal"
-          required
-          fullWidth
-          name="password"
-          label="Password"
-          type="password"
-          id="password"
-          autoComplete="current-password"
-        />
-
-      </Grid>
-    </Grid>
+          <Link href="#" variant="body2">
+            Forgot password? Click here!
+          </Link>
+        </form>
 
 
-
-        <Button
-          type="submit"
-          fullWidth
-          variant="contained"
-          color="primary"
-          className={classes.button}
-        >
-          Log in
-        </Button>
-
-        <Link href="#" variant="body2">
-          Forgot password? Click here!
-        </Link>
-      </form>
-            <Button
+            {/* <Button
               type="submit"
               fullWidth
               variant="contained"
@@ -107,8 +98,8 @@ const Login = () => {
               className={classes.button}
             >
               Log in with Google
-            </Button>
-      </Paper>
+            </Button> */}
+      {/* </Paper>
 
       <Paper className={classes.paper}>
         <Button
@@ -129,11 +120,11 @@ const Login = () => {
           className={classes.button}
         >
           Register as a Volunteer
-        </Button>
+        </Button> */}
+      
+      
       </Paper>
-
     </Container>
   );
 };
 
-export default Login;
