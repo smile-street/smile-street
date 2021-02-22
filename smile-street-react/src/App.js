@@ -4,13 +4,29 @@ import VolunteermatchesYesNoButton from "./components/Volunteermatches/Volunteer
 import PasswordRecovery from "./components/PasswordRecovery/PasswordRecovery";
 import GoodCauseVolunteerRegistration from "./components/GoodCause-Voluenteer-Registration/GoodCauseVolunteerRegistration";
 import Header from "./components/Header/Header";
+import GoodCauseVolunteerInterests from "./components/GoodCauseVolunteerInterests/GoodCauseVolunteerInterests";
+import GoodCauseOpportunity from "./components/GoodCauseOpportunity/GoodCauseOpportunity";
 import GoodCauseDetails from "./components/GoodCauseDetails/GoodCauseDetails";
+
 
 function App() {
   return (
     <div className="App">
+
       <Header />
+
       <Login />
+
+      <GoodCauseOpportunity />
+
+	  <GoodCauseDetails/>
+    <GoodCauseVolunteerInterests />
+      <Login />
+      <VolunteermatchesYesNoButton />
+      <GoodCauseVolunteerRegistration />
+      <PasswordRecovery />
+
+
     </div>
   );
 }
