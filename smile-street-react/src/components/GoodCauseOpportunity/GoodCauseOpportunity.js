@@ -33,9 +33,10 @@ const GoodCauseOpportunity = () => {
     <Container>
       <form>
         <div className={classes.root}>
-          <Grid container spacing={3}>
-            <Grid item xs={12} sm={12}>
-              <Paper className={classes.paper}>
+          <Paper className={classes.paper}>
+            <Grid container spacing={3}>
+              <Grid item xs={12} sm={12}>
+                {/* <Paper className={classes.paper}> */}
                 <TextField
                   id="outlined-multiline-static"
                   label="Description of opportunity"
@@ -45,31 +46,32 @@ const GoodCauseOpportunity = () => {
                   variant="outlined"
                   fullWidth
                 />
-              </Paper>
-            </Grid>
+                {/* </Paper> */}
+              </Grid>
 
-            <Grid item xs={12} sm={12}>
-              <Paper className={classes.paper}>
+              <Grid item xs={12} sm={12}>
+                {/* <Paper className={classes.paper}> */}
                 <CustomizedHook />
-              </Paper>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <Paper className={classes.paper}>
+                {/* </Paper> */}
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                {/* <Paper className={classes.paper}> */}
                 <MaterialUIDatePickers />
-              </Paper>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <Paper className={classes.paper}>
+                {/* </Paper> */}
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                {/* <Paper className={classes.paper}> */}
                 <MaterialUITimePickers />
-              </Paper>
-            </Grid>
+                {/* </Paper> */}
+              </Grid>
 
-            <Grid item xs={12} sm={12}>
-              <Button variant="contained" className={classes.buttonColor}>
-                Add availblity
-              </Button>
+              <Grid item xs={12} sm={12}>
+                <Button variant="contained" className={classes.buttonColor}>
+                  Add availblity
+                </Button>
+              </Grid>
             </Grid>
-          </Grid>
+          </Paper>
         </div>
       </form>
     </Container>

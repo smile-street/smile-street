@@ -49,7 +49,7 @@ const VolunteerAvaiblity = () => {
                   className={classes.formElementSize}
                 >
                   <InputLabel id="demo-simple-select-filled-label" sm={6}>
-                    Select your primary match Location
+                    Select your primarygi match Location
                   </InputLabel>
                   <Select
                     labelId="demo-simple-select-filled-label"
