@@ -10,8 +10,9 @@ import FormLabel from "@material-ui/core/FormLabel";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
+import { Checkbox } from '@material-ui/core';
 
-function GoodCauseVolunteerInterests() {
+function VolunteerInterests() {
   const useStyles = makeStyles((theme) => ({
     root: {
       flexGrow: 1,
@@ -86,14 +87,14 @@ function GoodCauseVolunteerInterests() {
             <Grid item xs={12} sm={6}>
               <RadioGroup>
                 <FormControlLabel
-                  value="I want a daily notification about my matchs"
-                  control={<Radio />}
+                  value="i want a daily notification about my matchs"
+                  control={<Checkbox />}
                   label="I want a daily notification about my matches"
                 />
                 <FormControlLabel
-                  value="No match notifcations required"
-                  control={<Radio />}
-                  label="no notification required"
+                  value="i want weekly notifications."
+                  control={<Checkbox />}
+                  label="I want weekly notifications."
                 />
               </RadioGroup>
             </Grid>
@@ -110,4 +111,4 @@ function GoodCauseVolunteerInterests() {
   );
 }
 
-export default GoodCauseVolunteerInterests;
+export default VolunteerInterests;
