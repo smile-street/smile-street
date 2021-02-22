@@ -15,6 +15,8 @@ function App() {
 
       <Header />
 
+      <Login />
+
       <GoodCauseOpportunity />
 
 	  <GoodCauseDetails/>
@@ -23,6 +25,7 @@ function App() {
       <VolunteermatchesYesNoButton />
       <GoodCauseVolunteerRegistration />
       <PasswordRecovery />
+
 
     </div>
   );
