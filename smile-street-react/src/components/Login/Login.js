@@ -1,10 +1,13 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
-import Link from "@material-ui/core/Link";
-import Paper from "@material-ui/core/Paper";
-import { makeStyles, Typography, Grid } from "@material-ui/core";
-import Container from "@material-ui/core/Container";
+import { 
+  makeStyles, 
+  Typography,
+  Button, 
+  TextField,
+  Link, 
+  Paper, 
+  Container,
+} from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -46,7 +49,6 @@ export default function Login() {
           <TextField
             variant="outlined"
             margin="normal"
-            required
             fullWidth
             id="email"
             label="Email Address"
@@ -58,7 +60,6 @@ export default function Login() {
           <TextField
             variant="outlined"
             margin="normal"
-            required
             fullWidth
             name="password"
             label="Password"
@@ -129,5 +130,4 @@ export default function Login() {
       </Paper>
     </Container>
   );
-};
-
+}
