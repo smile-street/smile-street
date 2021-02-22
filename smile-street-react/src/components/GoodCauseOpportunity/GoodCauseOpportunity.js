@@ -54,14 +54,9 @@ const GoodCauseOpportunity = () => {
                 <CustomizedHook />
                 {/* </Paper> */}
               </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12} sm={12}>
                 {/* <Paper className={classes.paper}> */}
                 <MaterialUIDatePickers />
-                {/* </Paper> */}
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                {/* <Paper className={classes.paper}> */}
-                <MaterialUITimePickers />
                 {/* </Paper> */}
               </Grid>
 
