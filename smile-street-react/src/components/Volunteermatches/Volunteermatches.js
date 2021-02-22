@@ -10,12 +10,14 @@ import {
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import CardActionArea from "@material-ui/core/CardActionArea";
+import Popper from "@material-ui/core/Popper";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import "./VolunteermatchesYes-No-Button.css";
 import MenuList from "@material-ui/core/MenuList";
 import MatchCard from "./MatchCard.js";
+import Profilebutton from "./Profilebutton.js";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -36,19 +38,12 @@ const Volunteermatches = () => {
   const classes = useStyles();
   return (
     <Container>
-      <Button aria-controls="simple-menu" aria-haspopup="true">
-        Profile
-      </Button>
-      <Menu id="simple-menu" keepMounted>
-        <MenuItem>Edit Profile</MenuItem>
-        <MenuItem>Edit Dates</MenuItem>
-        <MenuItem>Location</MenuItem>
-        <MenuItem>Skills</MenuItem>
-        <MenuItem>Interests</MenuItem>
-        <MenuItem>Delete Account</MenuItem>
-        <MenuItem>Logout</MenuItem>
-      </Menu>
-      <Grid container spacing={3}>
+      <Grid container spacing={24}>
+        <Grid item xs={12} sm={6}>
+          <Profilebutton />
+        </Grid>
+      </Grid>
+      <Grid container spacing={24}>
         <Grid item xs={12} sm={6}>
           <MatchCard />
         </Grid>
