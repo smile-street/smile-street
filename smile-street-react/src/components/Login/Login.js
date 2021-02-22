@@ -1,13 +1,13 @@
 import React from "react";
 import { 
   makeStyles, 
-  Typography,
   Button, 
   TextField,
   Link, 
   Paper, 
   Container,
 } from "@material-ui/core";
+import PageHeading from '../PageHeading/PageHeading';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,9 +42,7 @@ export default function Login() {
     <Container component="main">
       <Paper className={classes.paper}>
       <Container maxWidth="xs">
-        <Typography component="h1" variant="h5">
-            Sign in
-        </Typography>
+        <PageHeading heading="Log In" />
         <form className={classes.form}>
           <TextField
             variant="outlined"

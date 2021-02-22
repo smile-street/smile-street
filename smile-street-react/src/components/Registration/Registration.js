@@ -7,6 +7,7 @@ import {
   TextField, 
   Button, 
 } from "@material-ui/core";
+import PageHeading from '../PageHeading/PageHeading';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,7 +18,10 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     color: theme.palette.text.secondary,
   },
-  buttonColor: {
+  form: {
+    width: '100%',
+  },
+  button: {
     backgroundColor: "#53bd98",
     color: "white",
     "&:hover": {
@@ -32,6 +36,7 @@ export default function Registration() {
     <Container component="main">
       <Paper className={classes.paper}>
         <Container maxWidth="xs">
+          <PageHeading heading="Registration" />
           <Grid container spacing={3}>
             <TextField
               variant="outlined"
@@ -92,7 +97,7 @@ export default function Registration() {
             />
               
             <Grid item xs={12} sm={12}>
-              <Button variant="contained" className={classes.buttonColor}>
+              <Button variant="contained" className={classes.button}>
                 Add availblity
               </Button>
             </Grid>
