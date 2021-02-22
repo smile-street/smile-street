@@ -9,10 +9,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Login />
       <Volunteermatches />
-      <GoodCauseVolunteerRegistration />
-      <PasswordRecovery />
     </div>
   );
 }

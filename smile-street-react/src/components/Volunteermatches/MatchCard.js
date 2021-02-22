@@ -1,3 +1,4 @@
+
 import react from "react";
 import {
   Paper,
@@ -15,7 +16,24 @@ import Typography from "@material-ui/core/Typography";
 import "./VolunteermatchesYes-No-Button.css";
 import MenuList from "@material-ui/core/MenuList";
 
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+      flexGrow: 1,
+    },
+    paper: {
+      padding: theme.spacing(2),
+      textAlign: "center",
+      color: theme.palette.text.secondary,
+    },
+    buttonColor: {
+      backgroundColor: "#53bd98",
+      color: "white",
+    },
+  }));
+
 function MatchCard() {
+const classes = useStyles();    
   return (
     <Card className={classes.root}>
       <CardActionArea>
