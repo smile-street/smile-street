@@ -1,11 +1,10 @@
-import * as React from 'react';
+import React from 'react';
 import { Paper, Button, Grid, Container, Card } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import "./VolunteermatchesYes-No-Button.css";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -20,6 +19,9 @@ const useStyles = makeStyles((theme) => ({
   buttonColor: {
     backgroundColor: "#53bd98",
     color: "white",
+    "&:hover": {
+      background: "#449f80",
+    },
   },
 }));
 

@@ -3,17 +3,30 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Link from "@material-ui/core/Link";
 import Paper from "@material-ui/core/Paper";
-import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core";
+import { makeStyles, Typography, Grid } from "@material-ui/core";
 import Container from "@material-ui/core/Container";
-import Divider from "@material-ui/core/Divider";
-import Grid from "@material-ui/core/Grid";
-import Register from "../Register/Register";
 
-const Login = () => {
-  const useStyles = makeStyles((theme) => ({
-    root: {
-      flexGrow: 1,
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    marginTop: theme.spacing(0.5),
+    padding: theme.spacing(3),
+    color: theme.palette.text.secondary,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    maxWidth: "xs",
+  },
+  form: {
+    width: '100%',
+  },
+  button: {
+    backgroundColor: "#53bd98",
+    color: "white",
+    "&:hover": {
+      background: "#449f80",
     },
     paper: {
       padding: theme.spacing(2),
@@ -29,6 +42,7 @@ const Login = () => {
     },
   }));
 
+export default function Login() {
   const classes = useStyles();
 
   return (

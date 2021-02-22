@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 import { TextField, Button } from "@material-ui/core";
 
-const GoodCauseVolunteerRegistration = () => {
+const Registration = () => {
   const useStyles = makeStyles((theme) => ({
     root: {
       flexGrow: 1,
@@ -18,6 +18,9 @@ const GoodCauseVolunteerRegistration = () => {
     buttonColor: {
       backgroundColor: "#53bd98",
       color: "white",
+      "&:hover": {
+        background: "#449f80",
+      },
     },
   }));
 
@@ -148,4 +151,4 @@ const GoodCauseVolunteerRegistration = () => {
   );
 };
 
-export default GoodCauseVolunteerRegistration;
+export default Registration;
