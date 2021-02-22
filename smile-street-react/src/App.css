@@ -1,16 +1,10 @@
 .App {
   text-align: center;
 }
-<<<<<<< HEAD
-/* 
-body {
- background-color: #ebeeed;
-=======
 
-/* body {
+body {
   background-color: #ebeeed;
->>>>>>> 9f5877f63493579fcc02951ec160a8b2558aee1a
-} */
+}
 
 .mui-btn {
   color: white;
