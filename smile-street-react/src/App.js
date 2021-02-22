@@ -1,9 +1,9 @@
 import "./App.css";
+import Header from "./components/Header/Header";
 import Login from "./components/Login/Login";
 import VolunteermatchesYesNoButton from "./components/VolunteerMatches/VolunteerMatches";
 import PasswordRecovery from "./components/PasswordRecovery/PasswordRecovery";
 import Registration from "./components/Registration/Registration";
-import Header from "./components/Header/Header";
 import VolunteerInterests from "./components/VolunteerInterests/VolunteerInterests";
 import GoodCauseOpportunity from "./components/GoodCauseOpportunity/GoodCauseOpportunity";
 import GoodCauseDetails from "./components/GoodCauseDetails/GoodCauseDetails";
@@ -15,12 +15,12 @@ function App() {
 
       <Header />
       <Login />
-      <GoodCauseOpportunity />
+      {/* <GoodCauseOpportunity />
       <GoodCauseDetails />
       <VolunteerInterests />
       <VolunteermatchesYesNoButton />
+      <PasswordRecovery /> */}
       <Registration />
-      <PasswordRecovery />
 
     </div>
   );
