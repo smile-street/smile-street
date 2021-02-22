@@ -14,13 +14,13 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(0.5),
     padding: theme.spacing(3),
     color: theme.palette.text.secondary,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
     maxWidth: "xs",
   },
   form: {
-    width: '100%',
+    width: "100%",
   },
   button: {
     backgroundColor: "#53bd98",
@@ -40,9 +40,9 @@ const useStyles = makeStyles((theme) => ({
     justifyButton: {
       justifySelf: "center",
     },
-  }));
-
-export default function Login() {
+  },
+}));
+function Login() {
   const classes = useStyles();
 
   return (
@@ -158,6 +158,6 @@ export default function Login() {
       </form>
     </Container>
   );
-};
+}
 
 export default Login;
