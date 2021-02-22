@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { Paper, Button, Grid, Container, Card } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -20,6 +20,9 @@ const useStyles = makeStyles((theme) => ({
   buttonColor: {
     backgroundColor: "#53bd98",
     color: "white",
+    "&:hover": {
+      background: "#449f80",
+    },
   },
 }));
 
