@@ -36,26 +36,6 @@ const Volunteermatches = () => {
   const classes = useStyles();
   return (
     <Container>
-      <Grid container spacing={3}>
-        <Grid item xs={12} sm={6}>
-          <MatchCard />
-        </Grid>
-      </Grid>
-      <Grid container spacing={3}>
-        <Grid item xs={12} sm={6}>
-          {/* <MatchCard /> */}
-        </Grid>
-      </Grid>
-      <Grid container spacing={3}>
-        <Grid item xs={12} sm={6}>
-          {/* <MatchCard /> */}
-        </Grid>
-      </Grid>
-      <Grid container spacing={3}>
-        <Grid item xs={12} sm={6}>
-          {/* <MatchCard /> */}
-        </Grid>
-      </Grid>
       <Button aria-controls="simple-menu" aria-haspopup="true">
         Profile
       </Button>
@@ -68,6 +48,26 @@ const Volunteermatches = () => {
         <MenuItem>Delete Account</MenuItem>
         <MenuItem>Logout</MenuItem>
       </Menu>
+      <Grid container spacing={3}>
+        <Grid item xs={12} sm={6}>
+          <MatchCard />
+        </Grid>
+      </Grid>
+      <Grid container spacing={3}>
+        <Grid item xs={12} sm={6}>
+          <MatchCard />
+        </Grid>
+      </Grid>
+      <Grid container spacing={3}>
+        <Grid item xs={12} sm={6}>
+          <MatchCard />
+        </Grid>
+      </Grid>
+      <Grid container spacing={3}>
+        <Grid item xs={12} sm={6}>
+          <MatchCard />
+        </Grid>
+      </Grid>
     </Container>
   );
 };
