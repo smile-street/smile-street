@@ -1,8 +1,15 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Grid";
-import Container from "@material-ui/core/Container";
+import {
+  Select,
+  TextField,
+  FormControl,
+  MenuItem,
+  Container,
+  Grid,
+  Paper,
+  InputLabel,
+} from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -12,6 +19,9 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     textAlign: "center",
     color: theme.palette.text.secondary,
+  },
+  formElementSize: {
+    minWidth: 300,
   },
 }));
 
@@ -24,25 +34,101 @@ const VolunteerAvaiblity = () => {
         <div className={classes.root}>
           <Grid container spacing={3}>
             <Grid item xs={12} sm={6}>
-              <Paper className={classes.paper}>xs</Paper>
+              <Paper className={classes.paper}>
+                <TextField
+                  id="outlined-basic"
+                  label="Employer Name"
+                  variant="outlined"
+                />
+              </Paper>
             </Grid>
             <Grid item xs={12} sm={6}>
-              <Paper className={classes.paper}>xs</Paper>
+              <Paper className={classes.paper}>
+                <FormControl
+                  className={classes.formElementSize}
+                  variant="filled"
+                >
+                  <InputLabel id="demo-simple-select-filled-label" sm={6}>
+                    Select your primary match Location
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-filled-label"
+                    id="demo-simple-select-filled"
+                  >
+                    <MenuItem value="">
+                      <em>None</em>
+                    </MenuItem>
+                    <MenuItem value={10}>Ten</MenuItem>
+                    <MenuItem value={20}>Twenty</MenuItem>
+                    <MenuItem value={30}>Thirty</MenuItem>
+                  </Select>
+                </FormControl>
+              </Paper>
             </Grid>
             <Grid item xs={12} sm={6}>
-              <Paper className={classes.paper}>xs</Paper>
+              <Paper className={classes.paper}>
+                <FormControl
+                  style={{ minWidth: 300 }}
+                  variant="filled"
+                  className={classes.formControl}
+                >
+                  <InputLabel id="demo-simple-select-filled-label" sm={6}>
+                    Select your secondary match Location
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-filled-label"
+                    id="demo-simple-select-filled"
+                  >
+                    <MenuItem value="">
+                      <em>None</em>
+                    </MenuItem>
+                    <MenuItem value={10}>Ten</MenuItem>
+                    <MenuItem value={20}>Twenty</MenuItem>
+                    <MenuItem value={30}>Thirty</MenuItem>
+                  </Select>
+                </FormControl>
+              </Paper>
+            </Grid>
+
+            <Grid item xs={12} sm={6}>
+              <Paper className={classes.paper}>
+                <FormControl
+                  variant="filled"
+                  className={classes.formElementSize}
+                >
+                  <InputLabel id="demo-simple-select-filled-label" sm={6}>
+                    No of days available
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-filled-label"
+                    id="demo-simple-select-filled"
+                  >
+                    <MenuItem value="">
+                      <em>None</em>
+                    </MenuItem>
+                    <MenuItem value={10}>Ten</MenuItem>
+                    <MenuItem value={20}>Twenty</MenuItem>
+                    <MenuItem value={30}>Thirty</MenuItem>
+                  </Select>
+                </FormControl>
+              </Paper>
             </Grid>
           </Grid>
-          <Grid container spacing={3}>
-            <Grid item xs>
-              <Paper className={classes.paper}>xs</Paper>
-            </Grid>
-            <Grid item xs={6}>
-              <Paper className={classes.paper}>xs=6</Paper>
-            </Grid>
-            <Grid item xs>
-              <Paper className={classes.paper}>xs</Paper>
-            </Grid>
+          <Grid item xs={12} sm={12}>
+            <Paper className={classes.paper}>
+              <formControl className={classes.formElementSize} noValidate>
+                <TextField
+                  id="date"
+                  label="Which date could you be available"
+                  type="date"
+                  defaultValue="2017-05-24"
+                  className={classes.formElementSize}
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                />
+              </formControl>
+            </Paper>
           </Grid>
         </div>
       </form>
