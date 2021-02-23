@@ -1,154 +1,109 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Grid";
-import Container from "@material-ui/core/Container";
-import { TextField, Button } from "@material-ui/core";
+import { 
+  makeStyles,
+  Paper,
+  Grid,
+  Container,
+  TextField, 
+  Button, 
+} from "@material-ui/core";
+import PageHeading from '../PageHeading/PageHeading';
 
-const Registration = () => {
-  const useStyles = makeStyles((theme) => ({
-    root: {
-      flexGrow: 1,
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: "center",
+    color: theme.palette.text.secondary,
+  },
+  form: {
+    width: '100%',
+  },
+  button: {
+    backgroundColor: "#53bd98",
+    color: "white",
+    "&:hover": {
+      background: "#449f80",
     },
-    paper: {
-      padding: theme.spacing(2),
-      textAlign: "center",
-      color: theme.palette.text.secondary,
-    },
-    buttonColor: {
-      backgroundColor: "#53bd98",
-      color: "white",
-      "&:hover": {
-        background: "#449f80",
-      },
-    },
-  }));
+  },
+}));
 
+export default function Registration() {
   const classes = useStyles();
-
   return (
-    <Container>
-      <form>
-        <div className={classes.root}>
+    <Container component="main">
+      <Paper className={classes.paper}>
+        <Container maxWidth="xs">
+          <PageHeading heading="Registration" />
           <Grid container spacing={3}>
-            <Grid item xs={12} sm={6}>
-              <Paper className={classes.paper}>
-                <TextField
-                  id="standard-full-width"
-                  style={{ margin: 8 }}
-                  placeholder="Title"
-                  fullWidth
-                  margin="normal"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  variant="outlined"
-                />
-              </Paper>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <Paper className={classes.paper}>
-                <TextField
-                  id="standard-full-width"
-                  style={{ margin: 8 }}
-                  placeholder="First Name"
-                  fullWidth
-                  margin="normal"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  variant="outlined"
-                />
-              </Paper>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <Paper className={classes.paper}>
-                <TextField
-                  id="standard-full-width"
-                  style={{ margin: 8 }}
-                  placeholder="Last Name"
-                  fullWidth
-                  margin="normal"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  variant="outlined"
-                />
-              </Paper>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <Paper className={classes.paper}>
-                <TextField
-                  id="standard-full-width"
-                  style={{ margin: 8 }}
-                  placeholder="E-mail"
-                  fullWidth
-                  margin="normal"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  variant="outlined"
-                />
-              </Paper>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <Paper className={classes.paper}>
-                <TextField
-                  id="standard-full-width"
-                  style={{ margin: 8 }}
-                  placeholder="Contact Number"
-                  fullWidth
-                  margin="normal"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  variant="outlined"
-                />
-              </Paper>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <Paper className={classes.paper}>
-                <TextField
-                  id="standard-full-width"
-                  style={{ margin: 8 }}
-                  placeholder="Password"
-                  type="password"
-                  fullWidth
-                  margin="normal"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  variant="outlined"
-                />
-              </Paper>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <Paper className={classes.paper}>
-                <TextField
-                  id="standard-full-width"
-                  style={{ margin: 8 }}
-                  type="password"
-                  placeholder="Confirm Password"
-                  fullWidth
-                  margin="normal"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  variant="outlined"
-                />
-              </Paper>
-            </Grid>
-
+            <TextField
+              variant="outlined"
+              margin="normal"
+              id="title"
+              label="Title"
+              style={{ margin: 8 }}
+              fullWidth
+              autoFocus
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              id="first name"
+              label="First Name"
+              style={{ margin: 8 }}
+              fullWidth
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              id="last name"
+              label="Last Name"
+              style={{ margin: 8 }}
+              fullWidth
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              id="email"
+              label="Email Address"
+              style={{ margin: 8 }}
+              fullWidth
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              id="contact number"
+              label="Contact Number"
+              style={{ margin: 8 }}
+              fullWidth
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              id="password"
+              label="Password"
+              style={{ margin: 8 }}
+              fullWidth
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              id="confirm password"
+              label="Confrim Password"
+              style={{ margin: 8 }}
+              fullWidth
+            />
+              
             <Grid item xs={12} sm={12}>
-              <Button variant="contained" className={classes.buttonColor}>
+              <Button variant="contained" className={classes.button}>
                 Add availblity
               </Button>
             </Grid>
           </Grid>
-        </div>
-      </form>
+        </Container>
+      </Paper>
     </Container>
   );
-};
-
-export default Registration;
+}

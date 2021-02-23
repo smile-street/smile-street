@@ -1,11 +1,15 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
-import Link from "@material-ui/core/Link";
-import Paper from "@material-ui/core/Paper";
 
-import { makeStyles, Typography, Grid } from "@material-ui/core";
-import Container from "@material-ui/core/Container";
+import { 
+  makeStyles, 
+  Button, 
+  TextField,
+  Link, 
+  Paper, 
+  Container,
+} from "@material-ui/core";
+import PageHeading from '../PageHeading/PageHeading';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -47,62 +51,48 @@ function Login() {
   const classes = useStyles();
 
   return (
-    <Container>
-      <form>
-        <div className={classes.root}>
-          <Grid container spacing={3}>
-            <Grid item xs={12} sm={6}>
-              <Paper className={classes.paper}>
-                <TextField
-                  id="standard-full-width"
-                  style={{ margin: 8 }}
-                  placeholder="E-mail"
-                  fullWidth
-                  margin="normal"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  variant="outlined"
-                />
-              </Paper>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <Paper className={classes.paper}>
-                <TextField
-                  id="standard-full-width"
-                  style={{ margin: 8 }}
-                  placeholder="Password"
-                  fullWidth
-                  password
-                  margin="normal"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  variant="outlined"
-                />
-              </Paper>
-            </Grid>
-            <Grid item xs={12} sm={3} className={classes.justifyButton}>
-              <Paper className={classes.paper} justifyContent="center">
-                <Button
-                  type="submit"
-                  fullWidth
-                  variant="contained"
-                  color="primary"
-                  className={classes.buttonColor}
-                  justifySelf="center"
-                >
-                  Log in
-                </Button>
-              </Paper>
-            </Grid>
-            <Grid item xs={12} sm={12}>
-              <Paper className={classes.paper}>
-                <Link href="#" variant="body2">
-                  Forgot password? Click here!
-                </Link>
-              </Paper>
-            </Grid>
+
+    <Container component="main">
+      <Paper className={classes.paper}>
+      <Container maxWidth="xs">
+        <PageHeading heading="Log In" />
+        <form className={classes.form}>
+          <TextField
+            variant="outlined"
+            margin="normal"
+            fullWidth
+            id="email"
+            label="Email Address"
+            name="email"
+            autoComplete="email"
+            autoFocus
+          />
+
+          <TextField
+            variant="outlined"
+            margin="normal"
+            fullWidth
+            name="password"
+            label="Password"
+            type="password"
+            id="password"
+            autoComplete="current-password"
+          />
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.button}
+          >
+            Log in
+          </Button>
+
+          <Link href="#" variant="body2">
+            Forgot password? Click here!
+          </Link>
+        </form>
+
 
             <Button
               type="submit"
@@ -156,8 +146,3 @@ function Login() {
     </Container>
   );
 }
-
-
-
-
-
