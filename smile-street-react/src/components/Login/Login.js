@@ -15,13 +15,13 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(0.5),
     padding: theme.spacing(3),
     color: theme.palette.text.secondary,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
     maxWidth: "xs",
   },
   form: {
-    width: '100%',
+    width: "100%",
   },
   button: {
     backgroundColor: "#53bd98",
@@ -29,69 +29,92 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       background: "#449f80",
     },
-    margin: theme.spacing(1, 0, 0),
+    paper: {
+      padding: theme.spacing(2),
+      textAlign: "center",
+      color: theme.palette.text.secondary,
+    },
+    buttonColor: {
+      backgroundColor: "#53bd98",
+      color: "white",
+    },
+    justifyButton: {
+      justifySelf: "center",
+    },
   },
 }));
-
-export default function Login() {
+function Login() {
   const classes = useStyles();
 
   return (
-    <Container component="main">
-      <Paper className={classes.paper}>
-      <Container maxWidth="xs">
-        <Typography component="h1" variant="h5">
-            Sign in
-        </Typography>
-        <form className={classes.form}>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="email"
-            label="Email Address"
-            name="email"
-            autoComplete="email"
-            autoFocus
-          />
-
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-          />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.button}
-          >
-            Log in
-          </Button>
-
-          <Link href="#" variant="body2">
-            Forgot password? Click here!
-          </Link>
-        </form>
-
+    <Container>
+      <form>
+        <div className={classes.root}>
+          <Grid container spacing={3}>
+            <Grid item xs={12} sm={6}>
+              <Paper className={classes.paper}>
+                <TextField
+                  id="standard-full-width"
+                  style={{ margin: 8 }}
+                  placeholder="E-mail"
+                  fullWidth
+                  margin="normal"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  variant="outlined"
+                />
+              </Paper>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <Paper className={classes.paper}>
+                <TextField
+                  id="standard-full-width"
+                  style={{ margin: 8 }}
+                  placeholder="Password"
+                  fullWidth
+                  password
+                  margin="normal"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  variant="outlined"
+                />
+              </Paper>
+            </Grid>
+            <Grid item xs={12} sm={3} className={classes.justifyButton}>
+              <Paper className={classes.paper} justifyContent="center">
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  color="primary"
+                  className={classes.buttonColor}
+                  justifySelf="center"
+                >
+                  Log in
+                </Button>
+              </Paper>
+            </Grid>
+            <Grid item xs={12} sm={12}>
+              <Paper className={classes.paper}>
+                <Link href="#" variant="body2">
+                  Forgot password? Click here!
+                </Link>
+              </Paper>
+            </Grid>
 
             <Button
               type="submit"
               fullWidth
               variant="contained"
               color="primary"
-              className={classes.button}
+              className={classes.buttonColor}
+              justify="center"
             >
               Log in with Facebook
             </Button>
+
 
             <Button
               type="submit"
@@ -129,9 +152,12 @@ export default function Login() {
       </Container>
       </Paper>
 
+
     </Container>
   );
-};
+}
+
+
 
 
 
