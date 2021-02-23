@@ -5,7 +5,7 @@ import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 import { TextField, Button } from "@material-ui/core";
 
-function PasswordRecovery() {
+function GoodCauseDetails() {
   const useStyles = makeStyles((theme) => ({
     root: {
       flexGrow: 1,
@@ -20,11 +20,9 @@ function PasswordRecovery() {
     buttonColor: {
       backgroundColor: "#53bd98",
       color: "white",
-
       "&:hover": {
         background: "#449f80",
       },
-
     },
   }));
 
@@ -32,7 +30,6 @@ function PasswordRecovery() {
 
   return (
     <div className={classes.root}>
-
       <Container className={classes.root}>
         <Paper className={classes.paper}>
           <Grid container spacing={3}>
@@ -40,7 +37,7 @@ function PasswordRecovery() {
               <TextField
                 id="standard-full-width"
                 style={{ margin: 8 }}
-                placeholder="Enter e-mail to verify your password"
+                placeholder="charity registration number"
                 fullWidth
                 margin="normal"
                 InputLabelProps={{
@@ -49,46 +46,60 @@ function PasswordRecovery() {
                 variant="outlined"
               />
             </Grid>
+          </Grid>
+        </Paper>
+
+        <Paper className={classes.paper}>
+          <Grid container spacing={3}>
             <Grid item xs={12} sm={6}>
               <TextField
                 id="standard-full-width"
                 style={{ margin: 8 }}
-                placeholder="Enter new password"
+                label="charity registered name"
                 fullWidth
                 margin="normal"
                 InputLabelProps={{
                   shrink: true,
+                  readOnly: true,
                 }}
                 variant="outlined"
               />
             </Grid>
+          </Grid>
+        </Paper>
+
+        <Paper className={classes.paper}>
+          <Grid container spacing={3}>
             <Grid item xs={12} sm={6}>
               <TextField
                 id="standard-full-width"
                 style={{ margin: 8 }}
-                placeholder="Confirm new password"
+                placeholder="Please describe your organisation & charitable aims"
                 fullWidth
                 margin="normal"
                 InputLabelProps={{
                   shrink: true,
                 }}
                 variant="outlined"
+                multiline
+                rowsMax={25}
               />
-
             </Grid>
+          </Grid>
+        </Paper>
 
+        <Paper className={classes.paper}>
+          <Grid container spacing={3}>
             <Grid item xs={12} sm={12}>
               <Button variant="contained" className={classes.buttonColor}>
-                Reset Password
+                Add Volunteering Oportunities
               </Button>
             </Grid>
           </Grid>
-
         </Paper>
       </Container>
     </div>
-
   );
 }
 
-export default PasswordRecovery;
+export default GoodCauseDetails;
