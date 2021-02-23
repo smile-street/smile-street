@@ -130,11 +130,11 @@ const VolunteerAvaiblity = () => {
                 </formControl>
                 {/* </Paper> */}
               </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12} sm={12}>
                 {/* <Paper className={classes.paper}> */}
                 <formControl className={classes.formElementSize} noValidate>
                   <Button variant="contained" className={classes.buttonColor}>
-                    Secondary
+                    Add Intrests
                   </Button>
                 </formControl>
                 {/* </Paper> */}

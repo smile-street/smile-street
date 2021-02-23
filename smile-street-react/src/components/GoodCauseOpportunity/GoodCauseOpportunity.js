@@ -33,7 +33,7 @@ const GoodCauseOpportunity = () => {
       <form>
         <div className={classes.root}>
           <Paper className={classes.paper}>
-            <Grid container>
+            <Grid container spacing={1}>
               <Grid item xs={12} sm={12}>
                 <TextField
                   id="outlined-multiline-static"
@@ -49,10 +49,10 @@ const GoodCauseOpportunity = () => {
               <Grid item xs={12} sm={12}>
                 <CustomizedHook />
               </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12} sm={12}>
                 <MaterialUIDatePickers />
               </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12} sm={12}>
                 <MaterialUIDatePickersEnding />
               </Grid>
 
