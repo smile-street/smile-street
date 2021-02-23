@@ -27,6 +27,10 @@ const GoodCauseOpportunity = () => {
         background: "#449f80",
       },
     },
+    textField: {
+      borderWidth: "1px",
+      borderColor: " #449f80 !important",
+    },
   }));
 
   const classes = useStyles();
@@ -46,6 +50,7 @@ const GoodCauseOpportunity = () => {
                   defaultValue="Few words describing an opportunity"
                   variant="outlined"
                   style={{ width: "60%" }}
+                  className={classes.textField}
                 />
               </Grid>
 
