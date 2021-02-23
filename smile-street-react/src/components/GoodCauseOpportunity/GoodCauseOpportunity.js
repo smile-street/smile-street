@@ -33,7 +33,7 @@ const GoodCauseOpportunity = () => {
       <form>
         <div className={classes.root}>
           <Paper className={classes.paper}>
-            <Grid container spacing={3}>
+            <Grid container>
               <Grid item xs={12} sm={12}>
                 <TextField
                   id="outlined-multiline-static"
