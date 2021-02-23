@@ -38,8 +38,8 @@ const InterestSquares = () => {
   const classes = useStyles();
   return (
     <Container>
-      <Grid container spacing={3}>
-        <Grid item xs={12} sm={6}>
+      
+       
           <Card className={classes.root}>
             <CardActionArea className={classes.root}>
               <CardContent >
@@ -60,9 +60,9 @@ const InterestSquares = () => {
               </RadioGroup>
             </CardActions>
           </Card>
-        </Grid>
+      
         
-      </Grid>
+  
     </Container>
   );
 };

@@ -44,28 +44,38 @@ function VolunteerInterests() {
   return (
     <div className={classes.root}>
       <Container className={classes.root}>
-        <Paper>
-          <Grid container spacing={3}>
-            <Grid item xs={4} className={classes.paper}>
+        
+
+          <Grid container spacing={1}>
+            <Grid item xs={4}>
               <InterestSquares />
             </Grid>
-            <Grid item xs={4} className={classes.paper}>
+            <Grid item xs={4}>
               <InterestSquares />
             </Grid>
-            <Grid item xs={4} className={classes.paper}>
+            <Grid item xs={4}>
               <InterestSquares />
             </Grid>
-            <Grid item xs={4} className={classes.paper}>
+            <Grid item xs={4}>
               <InterestSquares />
             </Grid>
-            <Grid item xs={4} className={classes.paper}>
+            <Grid item xs={4} >
               <InterestSquares />
             </Grid>
-            <Grid item xs={4} className={classes.paper}>
+            <Grid item xs={4} >
+              <InterestSquares />
+            </Grid>
+            <Grid item xs={4} >
+              <InterestSquares />
+            </Grid>
+            <Grid item xs={4} >
+              <InterestSquares />
+            </Grid>
+            <Grid item xs={4} >
               <InterestSquares />
             </Grid>
           </Grid>
-        </Paper>
+        
 
         <Paper className={classes.paper}>
           <Grid container spacing={3}>

@@ -8,21 +8,15 @@ import Registration from './components/Registration/Registration';
 import VolunteerAvaiblity from './components/VolunteerAvaiblity/VolunteerAvaiblity';
 import VolunteerInterests from './components/VolunteerInterests/VolunteerInterests';
 import VolunteerMatches from './components/VolunteerMatches/VolunteerMatches';
-
+import GoodCauseMatches from './components/GoodCauseMatches/GoodCauseMatches';
 
 
 function App() {
   return (
     <div className="App">
-      <Header />
-      <GoodCauseDetails />
-      <GoodCauseOpportunity />
-      <Login />
-      <PasswordRecovery />
-      <Registration />
-      <VolunteerAvaiblity />
-      <VolunteerInterests />
-      <VolunteerMatches />
+    
+      
+      <GoodCauseMatches />
     </div>
   );
 }
