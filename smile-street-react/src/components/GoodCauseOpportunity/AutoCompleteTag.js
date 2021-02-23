@@ -20,6 +20,11 @@ const InputWrapper = styled("div")`
   display: flex;
   flex-wrap: wrap;
 
+  align-self: center;
+  align-content: center;
+  display: inline-flex;
+  justify-content: space-between;
+
   &:hover {
     border-color: #40a9ff;
   }
@@ -40,6 +45,7 @@ const InputWrapper = styled("div")`
     border: 0;
     margin: 0;
     outline: 0;
+    align-self: center;
   }
 `;
 
@@ -61,6 +67,8 @@ const Tag = styled(({ label, onDelete, ...props }) => (
   padding: 0 4px 0 10px;
   outline: 0;
   overflow: hidden;
+  align-self: center;
+  align-content: center;
 
   &:focus {
     border-color: #40a9ff;
