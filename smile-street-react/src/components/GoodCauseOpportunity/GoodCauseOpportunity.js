@@ -22,7 +22,10 @@ const GoodCauseOpportunity = () => {
       backgroundColor: "#53bd98",
       color: "white",
       background: "#449f80",
-      "&:hover": {},
+
+      "&:hover": {
+        background: "#449f80",
+      },
     },
   }));
 
@@ -39,15 +42,15 @@ const GoodCauseOpportunity = () => {
                   id="outlined-multiline-static"
                   label="Description of opportunity"
                   multiline
-                  rows={4}
+                  rows={6}
                   defaultValue="Few words describing an opportunity"
                   variant="outlined"
-                  fullWidth
+                  style={{ width: "60%" }}
                 />
               </Grid>
 
               <Grid item xs={12} sm={12}>
-                <CustomizedHook />
+                <CustomizedHook fullWidth />
               </Grid>
               <Grid item xs={12} sm={12}>
                 <MaterialUIDatePickers />
