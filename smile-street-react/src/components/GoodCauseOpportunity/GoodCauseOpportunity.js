@@ -21,9 +21,8 @@ const GoodCauseOpportunity = () => {
     buttonColor: {
       backgroundColor: "#53bd98",
       color: "white",
-      "&:hover": {
-        background: "#449f80",
-      },
+      background: "#449f80",
+      "&:hover": {},
     },
   }));
 
@@ -36,7 +35,6 @@ const GoodCauseOpportunity = () => {
           <Paper className={classes.paper}>
             <Grid container spacing={3}>
               <Grid item xs={12} sm={12}>
-                {/* <Paper className={classes.paper}> */}
                 <TextField
                   id="outlined-multiline-static"
                   label="Description of opportunity"
@@ -46,18 +44,13 @@ const GoodCauseOpportunity = () => {
                   variant="outlined"
                   fullWidth
                 />
-                {/* </Paper> */}
               </Grid>
 
               <Grid item xs={12} sm={12}>
-                {/* <Paper className={classes.paper}> */}
                 <CustomizedHook />
-                {/* </Paper> */}
               </Grid>
-              <Grid item xs={12} sm={12}>
-                {/* <Paper className={classes.paper}> */}
+              <Grid item xs={12} sm={6}>
                 <MaterialUIDatePickers />
-                {/* </Paper> */}
               </Grid>
 
               <Grid item xs={12} sm={12}>
