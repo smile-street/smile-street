@@ -7,7 +7,7 @@ import Header from "./components/Header/Header";
 import VolunteerInterests from "./components/VolunteerInterests/VolunteerInterests";
 import GoodCauseOpportunity from "./components/GoodCauseOpportunity/GoodCauseOpportunity";
 import GoodCauseDetails from "./components/GoodCauseDetails/GoodCauseDetails";
-
+import InterestSquares from "./components/VolunteerInterests/InterestSquares";
 
 function App() {
   return (
