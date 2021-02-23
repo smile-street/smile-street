@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     padding: theme.spacing(2),
-    textAlign: "left",
+    textAlign: "center",
     color: theme.palette.text.secondary,
   },
   buttonColor: {
