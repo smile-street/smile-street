@@ -3,6 +3,7 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Link from "@material-ui/core/Link";
 import Paper from "@material-ui/core/Paper";
+
 import { makeStyles, Typography, Grid } from "@material-ui/core";
 import Container from "@material-ui/core/Container";
 
@@ -114,50 +115,49 @@ function Login() {
               Log in with Facebook
             </Button>
 
-            <Grid item xs={12} sm={6}>
-              <Paper className={classes.paper}>
-                <Button
-                  type="submit"
-                  fullWidth
-                  variant="contained"
-                  color="primary"
-                  className={classes.buttonColor}
-                >
-                  Log in with Google
-                </Button>
-              </Paper>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <Paper className={classes.paper}>
-                <Button
-                  type="submit"
-                  fullWidth
-                  variant="contained"
-                  color="primary"
-                  className={classes.buttonColor}
-                >
-                  Register as a Good Cause
-                </Button>
-              </Paper>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <Paper className={classes.paper}>
-                <Button
-                  type="submit"
-                  fullWidth
-                  variant="contained"
-                  color="primary"
-                  className={classes.buttonColor}
-                >
-                  Register as a Volunteer
-                </Button>
-              </Paper>
-            </Grid>
-          </Grid>
-        </div>
-      </form>
+
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.button}
+            >
+              Log in with Google
+            </Button> 
+      </Container>
+
+      <Container maxWidth="xs" className={classes.paper}>
+        <Button
+          type="submit"
+          fullWidth
+          variant="contained"
+          color="primary"
+          className={classes.button}
+        >
+          Register as a Good Cause
+        </Button>
+
+        <Button
+          type="submit"
+          fullWidth
+          variant="contained"
+          color="primary"
+          className={classes.button}
+        >
+          Register as a Volunteer
+        </Button>
+      
+      
+      </Container>
+      </Paper>
+
+
     </Container>
   );
 }
 
-export default Login;
+
+
+
+

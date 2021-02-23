@@ -5,11 +5,21 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import FormLabel from "@material-ui/core/FormLabel";
+import Radio from "@material-ui/core/Radio";
+import RadioGroup from "@material-ui/core/RadioGroup";
+import ButtonGroup from "@material-ui/core/ButtonGroup";
+import { Checkbox } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
+
+box:{
+  flexGrow: 1,
+},
   paper: {
     padding: theme.spacing(2),
     textAlign: "center",
@@ -24,59 +34,36 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const VolunteermatchesYesNoButton = () => {
+const InterestSquares = () => {
   const classes = useStyles();
   return (
     <Container>
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
-
           <Card className={classes.root}>
-            <CardActionArea>
-              <CardContent>
+            <CardActionArea className={classes.root}>
+              <CardContent >
                 <Typography gutterBottom variant="h5" component="h2">
-                  Match name
+                  Gardening
                 </Typography>
-                <ul>
-                  <li>Name</li>
-                  <li>Location</li>
-                  <li>Date</li>
-                  <li>Description</li>
-                </ul>
               </CardContent>
+            
             </CardActionArea>
             <CardActions>
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                color="primary"
-                className={classes.buttonColor}
-              >
-                Yes, Please
-              </Button>
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                color="primary"
-                className={classes.buttonColor}
-              >
-                No, Thanks
-              </Button>
+             
+              <RadioGroup>
+                <FormControlLabel
+                  value="cBOX"
+                  control={<Checkbox />}
+                  //label=""
+                />
+              </RadioGroup>
             </CardActions>
           </Card>
-
         </Grid>
-
         
-        <Grid item xs={12} sm={6}>
-          <Paper className={classes.paper}>Match 2</Paper>
-        </Grid>
       </Grid>
     </Container>
-
-   
   );
 };
-export default VolunteermatchesYesNoButton;
+export default InterestSquares;
