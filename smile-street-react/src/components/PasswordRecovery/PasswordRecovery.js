@@ -20,9 +20,11 @@ function PasswordRecovery() {
     buttonColor: {
       backgroundColor: "#53bd98",
       color: "white",
+
       "&:hover": {
         background: "#449f80",
       },
+
     },
   }));
 
@@ -30,6 +32,7 @@ function PasswordRecovery() {
 
   return (
     <div className={classes.root}>
+
       <Container className={classes.root}>
         <Paper className={classes.paper}>
           <Grid container spacing={3}>
@@ -71,6 +74,7 @@ function PasswordRecovery() {
                 }}
                 variant="outlined"
               />
+
             </Grid>
 
             <Grid item xs={12} sm={12}>
@@ -79,9 +83,11 @@ function PasswordRecovery() {
               </Button>
             </Grid>
           </Grid>
+
         </Paper>
       </Container>
     </div>
+
   );
 }
 
