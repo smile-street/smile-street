@@ -5,8 +5,8 @@ import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 import { TextField, Button } from "@material-ui/core";
-import MaterialUIDatePickers from "./DatePicker";
-import MaterialUITimePickers from "./TimePicker";
+import MaterialUIDatePickers from "./DatePickerStarting";
+import MaterialUIDatePickersEnding from "./DatePickerEnding";
 
 const GoodCauseOpportunity = () => {
   const useStyles = makeStyles((theme) => ({
@@ -21,9 +21,8 @@ const GoodCauseOpportunity = () => {
     buttonColor: {
       backgroundColor: "#53bd98",
       color: "white",
-      "&:hover": {
-        background: "#449f80",
-      },
+      background: "#449f80",
+      "&:hover": {},
     },
   }));
 
@@ -33,9 +32,9 @@ const GoodCauseOpportunity = () => {
     <Container>
       <form>
         <div className={classes.root}>
-          <Grid container spacing={3}>
-            <Grid item xs={12} sm={12}>
-              <Paper className={classes.paper}>
+          <Paper className={classes.paper}>
+            <Grid container spacing={3}>
+              <Grid item xs={12} sm={12}>
                 <TextField
                   id="outlined-multiline-static"
                   label="Description of opportunity"
@@ -45,31 +44,25 @@ const GoodCauseOpportunity = () => {
                   variant="outlined"
                   fullWidth
                 />
-              </Paper>
-            </Grid>
+              </Grid>
 
-            <Grid item xs={12} sm={12}>
-              <Paper className={classes.paper}>
+              <Grid item xs={12} sm={12}>
                 <CustomizedHook />
-              </Paper>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <Paper className={classes.paper}>
+              </Grid>
+              <Grid item xs={12} sm={6}>
                 <MaterialUIDatePickers />
-              </Paper>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <Paper className={classes.paper}>
-                <MaterialUITimePickers />
-              </Paper>
-            </Grid>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <MaterialUIDatePickersEnding />
+              </Grid>
 
-            <Grid item xs={12} sm={12}>
-              <Button variant="contained" className={classes.buttonColor}>
-                Add availblity
-              </Button>
+              <Grid item xs={12} sm={12}>
+                <Button variant="contained" className={classes.buttonColor}>
+                  Add availblity
+                </Button>
+              </Grid>
             </Grid>
-          </Grid>
+          </Paper>
         </div>
       </form>
     </Container>

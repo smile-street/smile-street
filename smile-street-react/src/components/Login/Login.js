@@ -1,4 +1,5 @@
 import React from "react";
+
 import { 
   makeStyles, 
   Button, 
@@ -9,6 +10,7 @@ import {
 } from "@material-ui/core";
 import PageHeading from '../PageHeading/PageHeading';
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -17,13 +19,13 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(0.5),
     padding: theme.spacing(3),
     color: theme.palette.text.secondary,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
     maxWidth: "xs",
   },
   form: {
-    width: '100%',
+    width: "100%",
   },
   button: {
     backgroundColor: "#53bd98",
@@ -31,14 +33,25 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       background: "#449f80",
     },
-    margin: theme.spacing(1, 0, 0),
+    paper: {
+      padding: theme.spacing(2),
+      textAlign: "center",
+      color: theme.palette.text.secondary,
+    },
+    buttonColor: {
+      backgroundColor: "#53bd98",
+      color: "white",
+    },
+    justifyButton: {
+      justifySelf: "center",
+    },
   },
 }));
-
-export default function Login() {
+function Login() {
   const classes = useStyles();
 
   return (
+
     <Container component="main">
       <Paper className={classes.paper}>
       <Container maxWidth="xs">
@@ -86,10 +99,12 @@ export default function Login() {
               fullWidth
               variant="contained"
               color="primary"
-              className={classes.button}
+              className={classes.buttonColor}
+              justify="center"
             >
               Log in with Facebook
             </Button>
+
 
             <Button
               type="submit"
@@ -126,6 +141,8 @@ export default function Login() {
       
       </Container>
       </Paper>
+
+
     </Container>
   );
 }
