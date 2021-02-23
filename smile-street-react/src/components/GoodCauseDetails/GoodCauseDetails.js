@@ -30,72 +30,75 @@ function GoodCauseDetails() {
 
   return (
     <div className={classes.root}>
-          <Container className={classes.root}>
-
-          <Paper className={classes.paper}>
+      <Container className={classes.root}>
+        <Paper className={classes.paper}>
           <Grid container spacing={3}>
-
             <Grid item xs={12} sm={6}>
-                <TextField
-                  id="standard-full-width"
-                  style={{ margin: 8 }}
-                  placeholder="charity registration number"
-                  fullWidth
-                  margin="normal"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  variant="outlined"
-                  />
+              <TextField
+                id="standard-full-width"
+                style={{ margin: 8 }}
+                placeholder="charity registration number"
+                fullWidth
+                margin="normal"
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                variant="outlined"
+              />
             </Grid>
+          </Grid>
+        </Paper>
 
-
-
-
+        <Paper className={classes.paper}>
+          <Grid container spacing={3}>
             <Grid item xs={12} sm={6}>
-                <TextField
-                  id="standard-full-width"
-                  style={{ margin: 8 }}
-                  label = "charity registered name"
-                  fullWidth
-                  margin="normal"
-                  InputLabelProps={{
-                    shrink: true,
-                    readOnly: true
-                  }}
-                  variant="outlined"
-                  />
+              <TextField
+                id="standard-full-width"
+                style={{ margin: 8 }}
+                label="charity registered name"
+                fullWidth
+                margin="normal"
+                InputLabelProps={{
+                  shrink: true,
+                  readOnly: true,
+                }}
+                variant="outlined"
+              />
             </Grid>
+          </Grid>
+        </Paper>
+
+        <Paper className={classes.paper}>
+          <Grid container spacing={3}>
             <Grid item xs={12} sm={6}>
-                <TextField
-                  id="standard-full-width"
-                  style={{ margin: 8 }}
-                  placeholder="Please describe your organisation & charitable aims"
-                  fullWidth
-                  margin="normal"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  variant="outlined"
-                  multiline
-                  rowsMax={25}
-                  />
+              <TextField
+                id="standard-full-width"
+                style={{ margin: 8 }}
+                placeholder="Please describe your organisation & charitable aims"
+                fullWidth
+                margin="normal"
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                variant="outlined"
+                multiline
+                rowsMax={25}
+              />
             </Grid>
+          </Grid>
+        </Paper>
 
-
-
-
+        <Paper className={classes.paper}>
+          <Grid container spacing={3}>
             <Grid item xs={12} sm={12}>
               <Button variant="contained" className={classes.buttonColor}>
                 Add Volunteering Oportunities
               </Button>
             </Grid>
           </Grid>
-            </Paper>
-
-    </Container>
+        </Paper>
+      </Container>
     </div>
-
   );
 }
 
