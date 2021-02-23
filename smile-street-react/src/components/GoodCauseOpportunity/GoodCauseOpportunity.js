@@ -5,8 +5,8 @@ import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 import { TextField, Button } from "@material-ui/core";
-import MaterialUIDatePickers from "./DatePicker";
-import MaterialUITimePickers from "./TimePicker";
+import MaterialUIDatePickers from "./DatePickerStarting";
+import MaterialUIDatePickersEnding from "./DatePickerEnding";
 
 const GoodCauseOpportunity = () => {
   const useStyles = makeStyles((theme) => ({
@@ -51,6 +51,9 @@ const GoodCauseOpportunity = () => {
               </Grid>
               <Grid item xs={12} sm={6}>
                 <MaterialUIDatePickers />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <MaterialUIDatePickersEnding />
               </Grid>
 
               <Grid item xs={12} sm={12}>
