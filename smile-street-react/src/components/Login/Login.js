@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-function Login() {
+export default function Login() {
   const classes = useStyles();
 
   return (
@@ -99,7 +99,7 @@ function Login() {
               fullWidth
               variant="contained"
               color="primary"
-              className={classes.buttonColor}
+              className={classes.button}
               justify="center"
             >
               Log in with Facebook
