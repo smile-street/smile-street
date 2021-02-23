@@ -13,12 +13,13 @@ function App() {
   return (
     <div className="App">
       <Header />
+      <VolunteerAvaiblity />
       {/* <GoodCauseDetails /> */}
-      <GoodCauseOpportunity />
+      {/* <GoodCauseOpportunity /> */}
       {/* <Login />
       <PasswordRecovery />
       <Registration />
-      <VolunteerAvaiblity />
+     
       <VolunteerInterests />
       <VolunteerMatches /> */}
     </div>

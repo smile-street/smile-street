@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
   },
   formElementSize: {
-    minWidth: 300,
+    minWidth: "90%",
   },
   buttonColor: {
     backgroundColor: "#53bd98",
@@ -43,13 +43,12 @@ const VolunteerAvaiblity = () => {
           <Paper className={classes.paper}>
             <Grid container spacing={3}>
               <Grid item xs={12} sm={6}>
-                {/* <Paper className={classes.paper}> */}
                 <FormControl
                   variant="filled"
                   className={classes.formElementSize}
                 >
                   <InputLabel id="demo-simple-select-filled-label" sm={6}>
-                    Select your primarygi match Location
+                    Select your primary match Location
                   </InputLabel>
                   <Select
                     labelId="demo-simple-select-filled-label"
@@ -63,11 +62,9 @@ const VolunteerAvaiblity = () => {
                     <MenuItem value={30}>Thirty</MenuItem>
                   </Select>
                 </FormControl>
-                {/* </Paper> */}
               </Grid>
 
               <Grid item xs={12} sm={6}>
-                {/* <Paper className={classes.paper}> */}
                 <FormControl
                   variant="filled"
                   className={classes.formElementSize}
@@ -87,11 +84,9 @@ const VolunteerAvaiblity = () => {
                     <MenuItem value={30}>Thirty</MenuItem>
                   </Select>
                 </FormControl>
-                {/* </Paper> */}
               </Grid>
 
               <Grid item xs={12} sm={6}>
-                {/* <Paper className={classes.paper}> */}
                 <FormControl
                   variant="filled"
                   className={classes.formElementSize}
@@ -111,11 +106,9 @@ const VolunteerAvaiblity = () => {
                     <MenuItem value={30}>Thirty</MenuItem>
                   </Select>
                 </FormControl>
-                {/* </Paper> */}
               </Grid>
 
               <Grid item xs={12} sm={6}>
-                {/* <Paper className={classes.paper}> */}
                 <formControl className={classes.formElementSize} noValidate>
                   <TextField
                     id="date"
@@ -128,16 +121,13 @@ const VolunteerAvaiblity = () => {
                     }}
                   />
                 </formControl>
-                {/* </Paper> */}
               </Grid>
               <Grid item xs={12} sm={12}>
-                {/* <Paper className={classes.paper}> */}
                 <formControl className={classes.formElementSize} noValidate>
                   <Button variant="contained" className={classes.buttonColor}>
                     Add Intrests
                   </Button>
                 </formControl>
-                {/* </Paper> */}
               </Grid>
             </Grid>
           </Paper>
