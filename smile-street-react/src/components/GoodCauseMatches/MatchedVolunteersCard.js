@@ -7,6 +7,10 @@ import {
   CardActions,
   CardContent,
   Typography,
+  Divider,
+  List,
+  ListItem,
+  ListItemText,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -29,6 +33,9 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
+function ListItemLink(props) {
+  return <ListItem button component="a" {...props} />;
+}
 
 export default function MatchVolunteersCard() {
   const classes = useStyles();
@@ -38,11 +45,20 @@ export default function MatchVolunteersCard() {
         <CardActionArea>
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2"></Typography>
-            <ul>
-              <li>Volunteer Name</li>
-              <li>Skills</li>
-              <li>Availability</li>
-            </ul>
+
+            <List component="nav" aria-label="secondary mailbox folders">
+              <ListItemLink href="#simple-list">
+                <ListItemText primary="Name" />
+              </ListItemLink>
+              <Divider />
+              <ListItemLink href="#simple-list">
+                <ListItemText primary="Skills" />
+              </ListItemLink>
+              <Divider />
+              <ListItemLink href="#simple-list">
+                <ListItemText primary="Availability" />
+              </ListItemLink>
+            </List>
           </CardContent>
         </CardActionArea>
 
