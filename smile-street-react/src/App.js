@@ -1,6 +1,7 @@
 import "./App.css";
 import Header from "./components/Header/Header";
 import GoodCauseDetails from "./components/GoodCauseDetails/GoodCauseDetails";
+import GoodCauseMatches from './components/GoodCauseMatches/GoodCauseMatches';
 import GoodCauseOpportunity from "./components/GoodCauseOpportunity/GoodCauseOpportunity";
 import Login from "./components/Login/Login";
 import PasswordRecovery from "./components/PasswordRecovery/PasswordRecovery";
@@ -10,24 +11,21 @@ import VolunteerInterests from "./components/VolunteerInterests/VolunteerInteres
 import VolunteerMatches from "./components/VolunteerMatches/VolunteerMatches";
 
 
-function App() {
+export default function App() {
   return (
     <div className="App">
 
       <Header />
       <VolunteerAvaiblity />
-      {/* <GoodCauseDetails /> */}
-      {/* <GoodCauseOpportunity /> */}
-      {/* <Login />
+      <GoodCauseDetails />
+      <GoodCauseOpportunity />
+      <Login />
       <PasswordRecovery />
       <Registration />
-     
       <VolunteerInterests />
-      <VolunteerMatches /> */}
+      <VolunteerMatches />
       <GoodCauseMatches />
 
     </div>
   );
 }
-
-export default App;

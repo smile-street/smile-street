@@ -2,14 +2,11 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   Select,
-  TextField,
   FormControl,
   MenuItem,
-  Container,
   Grid,
-  Paper,
   InputLabel,
-  Button,
+  Paper,
 } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
@@ -30,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Profilebutton() {
+export default function Profilebutton() {
   const classes = useStyles();
   return (
     <Grid item xs={12} sm={6}>
@@ -59,4 +56,3 @@ function Profilebutton() {
     </Grid>
   );
 }
-export default Profilebutton;

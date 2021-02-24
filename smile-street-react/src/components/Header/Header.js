@@ -1,7 +1,5 @@
 import React from "react";
-import Container from "@material-ui/core/Container";
-import Paper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Grid";
+import { Container, Paper, Grid } from "@material-ui/core";
 
 const Header = () => {
   return (

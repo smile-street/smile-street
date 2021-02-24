@@ -2,14 +2,10 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   Select,
-  TextField,
   FormControl,
   MenuItem,
-  Container,
   Grid,
-  Paper,
   InputLabel,
-  Button,
 } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
@@ -30,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function GoodCauseProfileButton() {
+export default function GoodCauseProfileButton() {
   const classes = useStyles();
   return (
     <Grid container spacing={1}>
@@ -57,4 +53,3 @@ function GoodCauseProfileButton() {
     </Grid>
   );
 }
-export default GoodCauseProfileButton;

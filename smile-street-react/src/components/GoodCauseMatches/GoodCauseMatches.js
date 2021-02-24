@@ -1,21 +1,6 @@
 import React from "react";
-import {
-  Paper,
-  Button,
-  Grid,
-  Container,
-  Card,
-  MenuItem,
-  Menu,
-} from "@material-ui/core";
+import { Grid, Container } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import CardActionArea from "@material-ui/core/CardActionArea";
-import Popper from "@material-ui/core/Popper";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import Typography from "@material-ui/core/Typography";
-import MenuList from "@material-ui/core/MenuList";
-
 import GoodCauseProfileButton from "./GoodCauseProfileButton";
 import MatchedVolunteersCard from "./MatchedVolunteersCard";
 
@@ -42,7 +27,7 @@ const GoodCauseMatches = () => {
       <Container className={classes.root}>
       <Grid container spacing={1}>
 
-<GoodCauseProfileButton/>
+      <GoodCauseProfileButton/>
 
       </Grid>
         <Grid container spacing={1}>

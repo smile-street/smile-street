@@ -1,21 +1,10 @@
 import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
 import {
-  Paper,
-  Button,
+  MatchCard,
   Grid,
   Container,
-  Card,
-  MenuItem,
-  Menu,
 } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-import CardActionArea from "@material-ui/core/CardActionArea";
-import Popper from "@material-ui/core/Popper";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import Typography from "@material-ui/core/Typography";
-import MenuList from "@material-ui/core/MenuList";
-import MatchCard from "./MatchCard.js";
 import Profilebutton from "./Profilebutton.js";
 
 const useStyles = makeStyles((theme) => ({

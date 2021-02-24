@@ -1,35 +1,31 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Grid";
-import Container from "@material-ui/core/Container";
-import { TextField, Button } from "@material-ui/core";
+import { TextField, Button, Container, Grid, Paper } from "@material-ui/core";
 
-function PasswordRecovery() {
-  const useStyles = makeStyles((theme) => ({
-    root: {
-      flexGrow: 1,
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: "center",
+    color: theme.palette.text.secondary,
+    width: "100%",
+    alignContent: "center",
+  },
+  buttonColor: {
+    backgroundColor: "#53bd98",
+    color: "white",
+
+    "&:hover": {
+      background: "#449f80",
     },
-    paper: {
-      padding: theme.spacing(2),
-      textAlign: "center",
-      color: theme.palette.text.secondary,
-      width: "100%",
-      alignContent: "center",
-    },
-    buttonColor: {
-      backgroundColor: "#53bd98",
-      color: "white",
 
-      "&:hover": {
-        background: "#449f80",
-      },
+  },
+}));
 
-    },
-  }));
-
+export default function PasswordRecovery() {
   const classes = useStyles();
-
   return (
     <div className={classes.root}>
 
@@ -90,5 +86,3 @@ function PasswordRecovery() {
 
   );
 }
-
-export default PasswordRecovery;

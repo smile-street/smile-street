@@ -1,18 +1,14 @@
-import react from "react";
+import React from "react";
 import {
-  Paper,
   Button,
-  Grid,
   Container,
   Card,
-  MenuItem,
+  CardActionArea, 
+  CardActions, 
+  CardContent, 
+  Typography,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import CardActionArea from "@material-ui/core/CardActionArea";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import Typography from "@material-ui/core/Typography";
-import MenuList from "@material-ui/core/MenuList";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function MatchVolunteersCard() {
+export default function MatchVolunteersCard() {
   const classes = useStyles();
   return (
     <Container>
@@ -64,4 +60,3 @@ function MatchVolunteersCard() {
     </Container>
   );
 }
-export default MatchVolunteersCard;
