@@ -12,7 +12,7 @@ const Label = styled("label")`
 `;
 
 const InputWrapper = styled("div")`
-  width: 300px;
+  width: 60%;
   border: 1px solid #d9d9d9;
   background-color: #fff;
   border-radius: 4px;
