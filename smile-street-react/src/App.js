@@ -13,7 +13,7 @@ import VolunteerMatches from "./components/VolunteerMatches/VolunteerMatches";
 export default function App() {
   return (
     <div className="App">
-      <Header />
+      {/* <Header />
       <PasswordRecovery />
       <GoodCauseDetails />
       <Registration />
@@ -22,7 +22,8 @@ export default function App() {
       <Login />
 
       <VolunteerInterests />
-      <VolunteerMatches />
+      <VolunteerMatches /> */}
+      <Header />
       <GoodCauseMatches />
     </div>
   );
