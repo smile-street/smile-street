@@ -15,17 +15,15 @@ export default function App() {
     <div className="App">
       <Header />
       <PasswordRecovery />
-      {/* <GoodCauseDetails /> */}
-      {/* <Registration /> */}
-      {/* <VolunteerAvaiblity /> */}
-      {/* <GoodCauseDetails /> */}
-      {/* <GoodCauseOpportunity />
+      <GoodCauseDetails />
+      <Registration />
+      <VolunteerAvaiblity />
+
       <Login />
-     
-    
+
       <VolunteerInterests />
       <VolunteerMatches />
-      <GoodCauseMatches /> */}
+      <GoodCauseMatches />
     </div>
   );
 }
