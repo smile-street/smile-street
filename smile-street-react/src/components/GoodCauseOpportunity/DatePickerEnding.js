@@ -33,6 +33,7 @@ export default function MaterialUIPickersEnding() {
           KeyboardButtonProps={{
             "aria-label": "change date",
           }}
+          style={{ width: "60%" }}
         />
       </Grid>
     </MuiPickersUtilsProvider>
