@@ -14,13 +14,14 @@ export default function App() {
   return (
     <div className="App">
       <Header />
-      <GoodCauseDetails />
+      <PasswordRecovery />
+      {/* <GoodCauseDetails /> */}
       {/* <Registration /> */}
       {/* <VolunteerAvaiblity /> */}
       {/* <GoodCauseDetails /> */}
       {/* <GoodCauseOpportunity />
       <Login />
-      <PasswordRecovery />
+     
     
       <VolunteerInterests />
       <VolunteerMatches />
