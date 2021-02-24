@@ -9,9 +9,11 @@ import VolunteerAvaiblity from "./components/VolunteerAvaiblity/VolunteerAvaibli
 import VolunteerInterests from "./components/VolunteerInterests/VolunteerInterests";
 import VolunteerMatches from "./components/VolunteerMatches/VolunteerMatches";
 
+
 function App() {
   return (
     <div className="App">
+
       <Header />
       <VolunteerAvaiblity />
       {/* <GoodCauseDetails /> */}
@@ -22,6 +24,8 @@ function App() {
      
       <VolunteerInterests />
       <VolunteerMatches /> */}
+      <GoodCauseMatches />
+
     </div>
   );
 }
