@@ -27,7 +27,7 @@ export default function FullWidthGrid() {
           <PageHeading heading="Here is the list of available volunteer  matches" />
           <GoodCauseProfileButton />
           <Grid container spacing={3}>
-            <Grid item xs={6} sm={4}>
+            <Grid item xs={12} sm={4}>
               <MatchVolunteersCard />
             </Grid>
             <Grid item xs={6} sm={4}>
