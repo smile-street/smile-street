@@ -38,8 +38,8 @@ const InterestSquares = () => {
   const classes = useStyles();
   return (
     <Container>
-      
-       
+      <Grid container spacing={3}>
+        <Grid item>
           <Card className={classes.root}>
             <CardActionArea className={classes.root}>
               <CardContent >

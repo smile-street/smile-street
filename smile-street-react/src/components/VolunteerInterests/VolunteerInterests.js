@@ -44,10 +44,9 @@ function VolunteerInterests() {
   return (
     <div className={classes.root}>
       <Container className={classes.root}>
-        
-
-          <Grid container spacing={1}>
-            <Grid item xs={4}>
+        <Paper>
+          <Grid container >
+            <Grid item xs={4} className={classes.paper}>
               <InterestSquares />
             </Grid>
             <Grid item xs={4}>
