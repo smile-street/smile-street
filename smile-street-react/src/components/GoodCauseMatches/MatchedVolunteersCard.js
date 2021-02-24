@@ -33,9 +33,6 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-function ListItemLink(props) {
-  return <ListItem button component="a" {...props} />;
-}
 
 export default function MatchVolunteersCard() {
   const classes = useStyles();
@@ -47,17 +44,17 @@ export default function MatchVolunteersCard() {
             <Typography gutterBottom variant="h5" component="h2"></Typography>
 
             <List component="nav" aria-label="secondary mailbox folders">
-              <ListItemLink href="#simple-list">
+              <ListItem>
                 <ListItemText primary="Name" />
-              </ListItemLink>
+              </ListItem>
               <Divider />
-              <ListItemLink href="#simple-list">
+              <ListItem>
                 <ListItemText primary="Skills" />
-              </ListItemLink>
+              </ListItem>
               <Divider />
-              <ListItemLink href="#simple-list">
+              <ListItem href="#simple-list">
                 <ListItemText primary="Availability" />
-              </ListItemLink>
+              </ListItem>
             </List>
           </CardContent>
         </CardActionArea>
