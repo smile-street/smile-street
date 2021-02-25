@@ -1,8 +1,10 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Grid, Container } from "@material-ui/core";
-import Profilebutton from "./Profilebutton.js";
+import { Paper, Container } from "@material-ui/core";
+import Grid from "@material-ui/core/Grid";
 import MatchCard from "./MatchCard";
+import PageHeading from "../PageHeading/PageHeading";
+import Profilebutton from "./Profilebutton";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -13,43 +15,45 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     color: theme.palette.text.secondary,
   },
-  buttonColor: {
-    backgroundColor: "#53bd98",
-    color: "white",
-  },
 }));
 
-const VolunteerMatches = () => {
+export default function VolunteerMatches() {
   const classes = useStyles();
-  return (
-    <Container>
-      <Grid container spacing={24}>
-        <Grid item xs={12} sm={6}>
-          <Profilebutton />
-        </Grid>
-      </Grid>
-      <Grid container spacing={24}>
-        <Grid item xs={12} sm={6}>
-          <MatchCard />
-        </Grid>
-      </Grid>
-      <Grid container spacing={3}>
-        <Grid item xs={12} sm={6}>
-          <MatchCard />
-        </Grid>
-      </Grid>
-      <Grid container spacing={3}>
-        <Grid item xs={12} sm={6}>
-          <MatchCard />
-        </Grid>
-      </Grid>
-      <Grid container spacing={3}>
-        <Grid item xs={12} sm={6}>
-          <MatchCard />
-        </Grid>
-      </Grid>
-    </Container>
-  );
-};
 
-export default VolunteerMatches;
+  return (
+    <div className={classes.root}>
+      <Container component="main">
+        <Paper className={classes.paper}>
+          <PageHeading heading="Here is the list of available volunteer  matches" />
+          <Profilebutton />
+          <Grid container spacing={3}>
+            <Grid item xs={12} sm={4}>
+              <MatchCard />
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <MatchCard />
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <MatchCard />
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <MatchCard />
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <MatchCard />
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <MatchCard />
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <MatchCard />
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <MatchCard />
+            </Grid>
+          </Grid>
+        </Paper>
+      </Container>
+    </div>
+  );
+}
