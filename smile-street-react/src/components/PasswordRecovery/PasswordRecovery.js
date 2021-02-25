@@ -38,7 +38,7 @@ export default function PasswordRecovery() {
     <Container component="main">
       <Paper className={classes.paper}>
         <Container maxWidth="xs">
-          <PageHeading heading="Password rec" />
+          <PageHeading heading="Password Recovery Page" />
           <Grid container spacing={3}>
             <TextField
               variant="outlined"

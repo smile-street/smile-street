@@ -24,7 +24,7 @@ export default function FullWidthGrid() {
     <div className={classes.root}>
       <Container component="main">
         <Paper className={classes.paper}>
-          <PageHeading heading="Here is the list of available volunteer  matches" />
+          <PageHeading heading="Select your intrests" />
           <SkillsAutoComplete />
           <Grid container spacing={3}>
             <Grid item xs={6} sm={3}>
