@@ -12,6 +12,21 @@ import PageHeading from "../PageHeading/PageHeading";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    "&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+      borderColor: "#53bd98",
+    },
+    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+      borderColor: "#449f80",
+    },
+
+    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-input": {
+      color: "#449f80",
+    },
+
+    "& .MuiInputLabel-outlined.Mui-focused": {
+      color: "#449f80",
+    },
+    margin: 8,
   },
   paper: {
     padding: theme.spacing(2),
@@ -45,7 +60,7 @@ export default function Registration() {
               margin="normal"
               id="title"
               label="Title"
-              style={{ margin: 8 }}
+              className={classes.root}
               fullWidth
               autoFocus
             />
@@ -54,7 +69,7 @@ export default function Registration() {
               margin="normal"
               id="first name"
               label="First Name"
-              style={{ margin: 8 }}
+              className={classes.root}
               fullWidth
             />
             <TextField
@@ -62,7 +77,7 @@ export default function Registration() {
               margin="normal"
               id="last name"
               label="Last Name"
-              style={{ margin: 8 }}
+              className={classes.root}
               fullWidth
             />
             <TextField
@@ -70,7 +85,7 @@ export default function Registration() {
               margin="normal"
               id="email"
               label="Email Address"
-              style={{ margin: 8 }}
+              className={classes.root}
               fullWidth
             />
             <TextField
@@ -78,7 +93,7 @@ export default function Registration() {
               margin="normal"
               id="contact number"
               label="Contact Number"
-              style={{ margin: 8 }}
+              className={classes.root}
               fullWidth
             />
             <TextField
@@ -86,7 +101,7 @@ export default function Registration() {
               margin="normal"
               id="password"
               label="Password"
-              style={{ margin: 8 }}
+              className={classes.root}
               fullWidth
             />
             <TextField
@@ -94,7 +109,7 @@ export default function Registration() {
               margin="normal"
               id="confirm password"
               label="Confrim Password"
-              style={{ margin: 8 }}
+              className={classes.root}
               fullWidth
             />
 

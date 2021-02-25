@@ -22,6 +22,21 @@ import {
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    "&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+      borderColor: "#53bd98",
+    },
+    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+      borderColor: "#449f80",
+    },
+
+    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-input": {
+      color: "#449f80",
+    },
+
+    "& .MuiInputLabel-outlined.Mui-focused": {
+      color: "#449f80",
+    },
+    margin: 8,
   },
   paper: {
     padding: theme.spacing(2),
@@ -55,7 +70,7 @@ export default function VolunteerAvaiblity() {
               margin="normal"
               id="last name"
               label="Employers Name"
-              style={{ margin: 8 }}
+              className={classes.root}
               fullWidth
             />
             <FormControl variant="outlined" fullWidth style={{ margin: 8 }}>
@@ -110,6 +125,7 @@ export default function VolunteerAvaiblity() {
                 id="demo-simple-select-outlined"
                 label="Age"
                 fullWidth
+                className={classes.root}
               >
                 <MenuItem value="">
                   <em>None</em>
@@ -139,6 +155,7 @@ export default function VolunteerAvaiblity() {
                   KeyboardButtonProps={{
                     "aria-label": "change date",
                   }}
+                  className={classes.root}
                   fullWidth
                 />
               </Grid>
