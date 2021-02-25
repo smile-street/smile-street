@@ -61,7 +61,7 @@ export default function PasswordRecovery() {
               variant="outlined"
               margin="normal"
               id="last name"
-              label="Verify yoyr new password"
+              label="Verify yoyr new passworddd"
               style={{ margin: 8 }}
               fullWidth
             />
