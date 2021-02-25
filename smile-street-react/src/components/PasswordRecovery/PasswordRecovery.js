@@ -38,7 +38,7 @@ export default function PasswordRecovery() {
     <Container component="main">
       <Paper className={classes.paper}>
         <Container maxWidth="xs">
-          <PageHeading heading="Password Recovery" />
+          <PageHeading heading="Password rec" />
           <Grid container spacing={3}>
             <TextField
               variant="outlined"
@@ -61,7 +61,7 @@ export default function PasswordRecovery() {
               variant="outlined"
               margin="normal"
               id="last name"
-              label="Verify your new password"
+              label="Verify yoyr new passworddd"
               style={{ margin: 8 }}
               fullWidth
             />
