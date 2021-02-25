@@ -30,25 +30,25 @@ export default function FullWidthGrid() {
             <Grid item xs={12} sm={4}>
               <MatchVolunteersCard />
             </Grid>
-            <Grid item xs={6} sm={4}>
+            <Grid item xs={12} sm={4}>
               <MatchVolunteersCard />
             </Grid>
-            <Grid item xs={6} sm={4}>
+            <Grid item xs={12} sm={4}>
               <MatchVolunteersCard />
             </Grid>
-            <Grid item xs={6} sm={4}>
+            <Grid item xs={12} sm={4}>
               <MatchVolunteersCard />
             </Grid>
-            <Grid item xs={6} sm={4}>
+            <Grid item xs={12} sm={4}>
               <MatchVolunteersCard />
             </Grid>
-            <Grid item xs={6} sm={4}>
+            <Grid item xs={12} sm={4}>
               <MatchVolunteersCard />
             </Grid>
-            <Grid item xs={6} sm={4}>
+            <Grid item xs={12} sm={4}>
               <MatchVolunteersCard />
             </Grid>
-            <Grid item xs={6} sm={4}>
+            <Grid item xs={12} sm={4}>
               <MatchVolunteersCard />
             </Grid>
           </Grid>

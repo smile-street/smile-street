@@ -48,7 +48,7 @@ export default function VolunteerAvaiblity() {
     <Container component="main">
       <Paper className={classes.paper}>
         <Container maxWidth="xs">
-          <PageHeading heading="Please select your availibity" />
+          <PageHeading heading="Please select your availability" />
           <Grid container spacing={3}>
             <TextField
               variant="outlined"
@@ -103,7 +103,7 @@ export default function VolunteerAvaiblity() {
             </InputLabel>
             <FormControl variant="outlined" fullWidth style={{ margin: 8 }}>
               <InputLabel id="demo-simple-select-outlined-label">
-                Please select no of days available
+                Please select no. of days available
               </InputLabel>
               <Select
                 labelId="demo-simple-select-outlined-label"
@@ -146,7 +146,7 @@ export default function VolunteerAvaiblity() {
 
             <Grid item xs={12} sm={12}>
               <Button variant="contained" className={classes.buttonColor}>
-                Add Intrests
+                Add Interests
               </Button>
             </Grid>
           </Grid>
