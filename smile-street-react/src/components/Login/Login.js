@@ -1,15 +1,16 @@
 import React from "react";
 
-import { 
-  makeStyles, 
-  Button, 
+import {
+  makeStyles,
+  Button,
   TextField,
-  Link, 
-  Paper, 
+  Link,
+  Paper,
   Container,
+  Grid,
+  Divider,
 } from "@material-ui/core";
-import PageHeading from '../PageHeading/PageHeading';
-
+import PageHeading from "../PageHeading/PageHeading";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,13 +39,6 @@ const useStyles = makeStyles((theme) => ({
       textAlign: "center",
       color: theme.palette.text.secondary,
     },
-    buttonColor: {
-      backgroundColor: "#53bd98",
-      color: "white",
-    },
-    justifyButton: {
-      justifySelf: "center",
-    },
   },
 }));
 
@@ -52,98 +46,102 @@ export default function Login() {
   const classes = useStyles();
 
   return (
-
-    <Container component="main">
+    <Container>
       <Paper className={classes.paper}>
-      <Container maxWidth="xs">
-        <PageHeading heading="Log In" />
-        <form className={classes.form}>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            fullWidth
-            id="email"
-            label="Email Address"
-            name="email"
-            autoComplete="email"
-            autoFocus
-          />
+        <Container maxWidth="xs">
+          <PageHeading heading="Log In" />
+          <form className={classes.form}>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              fullWidth
+              id="email"
+              label="Email Address"
+              name="email"
+              autoComplete="email"
+              autoFocus
+              style={{ margin: 8 }}
+            />
 
-          <TextField
-            variant="outlined"
-            margin="normal"
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-          />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.button}
-          >
-            Log in
-          </Button>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+              style={{ margin: 8 }}
+            />
+            <Grid item xs={12} sm={12}>
+              <Button
+                type="submit"
+                variant="contained"
+                className={classes.button}
+                style={{ margin: 8 }}
+              >
+                Log in
+              </Button>
+            </Grid>
+            <Grid item xs={12} sm={12} style={{ margin: 8 }}>
+              <Divider />
+            </Grid>
+            <Grid item xs={12} sm={12} style={{ margin: 8 }}>
+              <Link href="#" variant="body2" style={{ margin: 8 }}>
+                Forgot password? Click here!
+              </Link>
+            </Grid>
+          </form>
+          <Grid item xs={12} sm={12} style={{ margin: 8 }}>
+            <Divider />
+          </Grid>
 
-          <Link href="#" variant="body2">
-            Forgot password? Click here!
-          </Link>
-        </form>
-
-
+          <Grid item xs={12} sm={12}>
             <Button
               type="submit"
-              fullWidth
               variant="contained"
-              color="primary"
               className={classes.button}
-              justify="center"
+              style={{ margin: 8 }}
             >
               Log in with Facebook
             </Button>
-
-
+          </Grid>
+          <Grid item xs={12} sm={12}>
             <Button
               type="submit"
-              fullWidth
               variant="contained"
-              color="primary"
               className={classes.button}
+              style={{ margin: 8 }}
             >
               Log in with Google
-            </Button> 
-      </Container>
+            </Button>
+          </Grid>
 
-      <Container maxWidth="xs" className={classes.paper}>
-        <Button
-          type="submit"
-          fullWidth
-          variant="contained"
-          color="primary"
-          className={classes.button}
-        >
-          Register as a Good Cause
-        </Button>
-
-        <Button
-          type="submit"
-          fullWidth
-          variant="contained"
-          color="primary"
-          className={classes.button}
-        >
-          Register as a Volunteer
-        </Button>
-      
-      
-      </Container>
+          <Grid item xs={12} sm={12} style={{ margin: 8 }}>
+            <Divider />
+          </Grid>
+          <Grid item xs={12} sm={12}>
+            <Button
+              type="submit"
+              variant="contained"
+              className={classes.button}
+            >
+              Register as a Good Cause
+            </Button>
+          </Grid>
+          <Grid item xs={12} sm={12}>
+            <Button
+              type="submit"
+              variant="contained"
+              className={classes.button}
+              style={{ margin: 8 }}
+            >
+              Register as a Volunteer
+            </Button>
+          </Grid>
+        </Container>
       </Paper>
-
-
     </Container>
   );
 }
