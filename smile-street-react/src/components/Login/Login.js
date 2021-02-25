@@ -15,6 +15,22 @@ import PageHeading from "../PageHeading/PageHeading";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+
+    "&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+      borderColor: "#53bd98",
+    },
+    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+      borderColor: "#449f80",
+    },
+
+    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-input": {
+      color: "#449f80",
+    },
+
+    "& .MuiInputLabel-outlined.Mui-focused": {
+      color: "#449f80",
+    },
+    margin: 8,
   },
   paper: {
     marginTop: theme.spacing(0.5),
@@ -40,6 +56,10 @@ const useStyles = makeStyles((theme) => ({
       color: theme.palette.text.secondary,
     },
   },
+  TextField: {
+    borderColor: "red",
+    borderWidth: 4,
+  },
 }));
 
 export default function Login() {
@@ -60,7 +80,7 @@ export default function Login() {
               name="email"
               autoComplete="email"
               autoFocus
-              style={{ margin: 8 }}
+              className={classes.root}
             />
 
             <TextField
@@ -72,7 +92,8 @@ export default function Login() {
               type="password"
               id="password"
               autoComplete="current-password"
-              style={{ margin: 8 }}
+              style={{}}
+              className={classes.root}
             />
             <Grid item xs={12} sm={12}>
               <Button
