@@ -1,13 +1,13 @@
 import React from "react";
-import { 
+import {
   makeStyles,
   Paper,
   Grid,
   Container,
-  TextField, 
-  Button, 
+  TextField,
+  Button,
 } from "@material-ui/core";
-import PageHeading from '../PageHeading/PageHeading';
+import PageHeading from "../PageHeading/PageHeading";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,11 +19,13 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
   },
   form: {
-    width: '100%',
+    width: "100%",
   },
-  button: {
+  buttonColor: {
     backgroundColor: "#53bd98",
     color: "white",
+    background: "#449f80",
+
     "&:hover": {
       background: "#449f80",
     },
@@ -95,9 +97,9 @@ export default function Registration() {
               style={{ margin: 8 }}
               fullWidth
             />
-              
+
             <Grid item xs={12} sm={12}>
-              <Button variant="contained" className={classes.button}>
+              <Button variant="contained" className={classes.buttonColor}>
                 Add availblity
               </Button>
             </Grid>
