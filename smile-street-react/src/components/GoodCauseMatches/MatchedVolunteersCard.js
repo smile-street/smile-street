@@ -46,17 +46,23 @@ export default function MatchVolunteersCard() {
             <Typography gutterBottom variant="h5" component="h2"></Typography>
 
             <List component="nav" aria-label="secondary mailbox folders">
-              <ListItem>
-                <ListItemText primary="Name" />
-              </ListItem>
-              <Divider />
-              <ListItem>
-                <ListItemText primary="Skills" />
-              </ListItem>
-              <Divider />
-              <ListItem href="#simple-list">
-                <ListItemText primary="Availability" />
-              </ListItem>
+              {testData.map((item) => {
+                return (
+                  <div>
+                    <ListItem>
+                      <ListItemText primary={item.name} />
+                    </ListItem>
+                    <Divider />
+                    <ListItem>
+                      <ListItemText primary="Skills" />
+                    </ListItem>
+                    <Divider />
+                    <ListItem href="#simple-list">
+                      <ListItemText primary="Availability" />
+                    </ListItem>
+                  </div>
+                );
+              })}
             </List>
           </CardContent>
         </CardActionArea>
