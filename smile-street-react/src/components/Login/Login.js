@@ -67,7 +67,7 @@ export default function Login() {
   const [password, setPassword ] = useState("");
 
   function checkCredentials(event) {
-    console.log(email, password)
+    console.log(`This is your email: ${email}\nThis is your password: ${password}`)
   }
 
   return (
