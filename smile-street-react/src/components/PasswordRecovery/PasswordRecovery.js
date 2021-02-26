@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+
 import {
   makeStyles,
   Paper,
@@ -6,6 +7,11 @@ import {
   Container,
   TextField,
   Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  DialogContentText,
 } from "@material-ui/core";
 import PageHeading from "../PageHeading/PageHeading";
 import { useHistory } from "react-router-dom";
@@ -49,7 +55,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function PasswordRecovery() {
+  const [open, setOpen] = React.useState(false);
   const classes = useStyles();
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
   let history = useHistory();
   const handleBackToLogin = () => {
     history.push("/");
@@ -90,10 +104,26 @@ export default function PasswordRecovery() {
               <Button
                 variant="contained"
                 className={classes.buttonColor}
-                onClick={handleBackToLogin}
+                onClick={handleClickOpen}
               >
-                Back to login
+                submit
               </Button>
+              <Dialog
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+              >
+                <DialogTitle id="alert-dialog-title">
+                  {"Varify your e-mail to continue login"}
+                </DialogTitle>
+
+                <DialogActions>
+                  <Button onClick={handleBackToLogin} color="primary">
+                    OK
+                  </Button>
+                </DialogActions>
+              </Dialog>
             </Grid>
           </Grid>
         </Container>
