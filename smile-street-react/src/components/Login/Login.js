@@ -92,7 +92,6 @@ export default function Login() {
               type="password"
               id="password"
               autoComplete="current-password"
-              style={{}}
               className={classes.root}
             />
             <Grid item xs={12} sm={12}>
