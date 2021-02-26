@@ -35,9 +35,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MatchVolunteersCard() {
+export default function MatchVolunteersCard({ name, interest, availability }) {
   const classes = useStyles();
-  console.log(testData.map((name) => name.name));
+
   return (
     <Container>
       <Card className={classes.root}>
@@ -46,23 +46,19 @@ export default function MatchVolunteersCard() {
             <Typography gutterBottom variant="h5" component="h2"></Typography>
 
             <List component="nav" aria-label="secondary mailbox folders">
-              {testData.map((item) => {
-                return (
-                  <div>
-                    <ListItem>
-                      <ListItemText primary={item.name} />
-                    </ListItem>
-                    <Divider />
-                    <ListItem>
-                      <ListItemText primary="Skills" />
-                    </ListItem>
-                    <Divider />
-                    <ListItem href="#simple-list">
-                      <ListItemText primary="Availability" />
-                    </ListItem>
-                  </div>
-                );
-              })}
+              <div>
+                <ListItem>
+                  <ListItemText primary={name} />
+                </ListItem>
+                <Divider />
+                <ListItem>
+                  <ListItemText primary={interest} />
+                </ListItem>
+                <Divider />
+                <ListItem>
+                  <ListItemText primary={availability} />
+                </ListItem>
+              </div>
             </List>
           </CardContent>
         </CardActionArea>
