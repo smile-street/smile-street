@@ -230,9 +230,9 @@ export default function Login() {
           </Button>
         </DialogActions>
       </Dialog>
-      <Snackbar open={openToast} autoHideDuration={6000} onClose={handleToastClose}>
-        <Alert onClose={handleToastClose} severity="success">
-          This is a success message!
+      <Snackbar open={openToast} autoHideDuration={6000} onClose={handleToastClose} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
+        <Alert onClose={handleToastClose} severity="warning">
+          Check your email to confirm password reset!
         </Alert>
       </Snackbar>
     </Container>
