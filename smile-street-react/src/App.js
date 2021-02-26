@@ -21,7 +21,7 @@ export default function App() {
     <div className="App">
       <Router>
         <Header />
-        <Route path="/Login" component={Login} />
+        <Route path="/" exact component={Login} />
         <Route path="/Registration" exact component={Registration} />
       </Router>
     </div>

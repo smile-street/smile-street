@@ -67,7 +67,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Login() {
   const classes = useStyles();
   let history = useHistory();
-  function handleClick() {
+  function handleClickRegistration() {
     history.push("/Registration");
   }
   return (
@@ -151,7 +151,7 @@ export default function Login() {
               type="submit"
               variant="contained"
               className={classes.button}
-              onClick={handleClick}
+              onClick={handleClickRegistration}
             >
               Register as a Good Cause
             </Button>
@@ -162,7 +162,7 @@ export default function Login() {
               variant="contained"
               className={classes.button}
               style={{ margin: 8 }}
-              onClick={handleClick}
+              onClick={handleClickRegistration}
             >
               Register as a Volunteer
             </Button>
