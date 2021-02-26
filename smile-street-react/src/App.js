@@ -15,6 +15,15 @@ export default function App() {
     <div className="App">
       <Header />
       <Login />
+
+      <PasswordRecovery />
+      <Registration />
+      <VolunteerAvaiblity />
+      <VolunteerInterests />
+      <GoodCauseDetails />
+      <GoodCauseOpporunity />
+      <VolunteerMatches />
+      <GoodCauseMatches />
     </div>
   );
 }
