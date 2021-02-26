@@ -16,14 +16,14 @@ export default function App() {
       <Header />
       <Login />
 
-      <PasswordRecovery />
+      {/* <PasswordRecovery />
       <Registration />
       <VolunteerAvaiblity />
       <VolunteerInterests />
       <GoodCauseDetails />
       <GoodCauseOpporunity />
       <VolunteerMatches />
-      <GoodCauseMatches />
+      <GoodCauseMatches /> */}
     </div>
   );
 }
