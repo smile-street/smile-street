@@ -14,7 +14,9 @@ import {
   DialogTitle,
   DialogContent,
   DialogContentText,
+  Snackbar,
 } from "@material-ui/core";
+import MuiAlert from '@material-ui/lab/Alert';
 import PageHeading from "../PageHeading/PageHeading";
 
 const useStyles = makeStyles((theme) => ({
@@ -67,11 +69,30 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
+
 export default function Login() {
   const classes = useStyles();
-  const [open, setOpen] = useState(false);
-  const handleClickOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const [openDialog, setOpenDialog] = useState(false);
+  const [openToast, setOpenToast] = useState(false);
+  //dialog
+  const handleClickOpen = () => setOpenDialog(true);
+  const handleDialogClose = () => setOpenDialog(false);
+  //toast
+  const handleDialogClick = () => {
+    handleDialogClose();
+    setOpenToast(true);
+  };
+  const handleToastClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpenToast(false);
+  };
+
+
 
   return (
     <Container>
@@ -171,7 +192,7 @@ export default function Login() {
           </Grid>
         </Container>
       </Paper>
-      <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+      <Dialog open={openDialog} onClose={handleDialogClose} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Forgot your Password?</DialogTitle>
         <DialogContent>
           <DialogContentText>
@@ -201,14 +222,19 @@ export default function Login() {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={handleDialogClose} color="primary">
             Cancel
           </Button>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={handleDialogClick} color="primary">
             Reset Password
           </Button>
         </DialogActions>
       </Dialog>
+      <Snackbar open={openToast} autoHideDuration={6000} onClose={handleToastClose}>
+        <Alert onClose={handleToastClose} severity="success">
+          This is a success message!
+        </Alert>
+      </Snackbar>
     </Container>
   );
 }
