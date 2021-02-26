@@ -14,16 +14,16 @@ export default function App() {
   return (
     <div className="App">
       <Header />
-      <Login />
-
       <PasswordRecovery />
+      <Login />
+      {/* 
       <Registration />
       <VolunteerAvaiblity />
       <VolunteerInterests />
       <GoodCauseDetails />
       <GoodCauseOpporunity />
       <VolunteerMatches />
-      <GoodCauseMatches />
+      <GoodCauseMatches /> */}
     </div>
   );
 }

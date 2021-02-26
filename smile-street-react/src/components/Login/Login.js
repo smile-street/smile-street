@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import {
   makeStyles,
@@ -9,6 +9,11 @@ import {
   Container,
   Grid,
   Divider,
+  Dialog,
+  DialogActions,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
 } from "@material-ui/core";
 import PageHeading from "../PageHeading/PageHeading";
 
@@ -64,6 +69,9 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Login() {
   const classes = useStyles();
+  const [open, setOpen] = useState(false);
+  const handleClickOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   return (
     <Container>
@@ -109,7 +117,7 @@ export default function Login() {
               <Divider />
             </Grid>
             <Grid item xs={12} sm={12} style={{ margin: 8 }}>
-              <Link href="#" variant="body2" style={{ margin: 8 }}>
+              <Link cursor={"pointer"} onClick={ handleClickOpen } variant="body2" style={{ margin: 8 }}>
                 Forgot password? Click here!
               </Link>
             </Grid>
@@ -163,6 +171,44 @@ export default function Login() {
           </Grid>
         </Container>
       </Paper>
+      <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+        <DialogTitle id="form-dialog-title">Forgot your Password?</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            To reset your password enter your email and a new password.
+          </DialogContentText>
+          <TextField
+            autoFocus
+            margin="dense"
+            id="email"
+            label="Email Address"
+            type="email"
+            fullWidth
+          />          
+          <TextField
+            margin="dense"
+            id="newPassword"
+            label="Enter new Password"
+            type="password"
+            fullWidth
+          />          
+          <TextField
+            margin="dense"
+            id="confirmPassword"
+            label="Confirm New Password"
+            type="password"
+            fullWidth
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={handleClose} color="primary">
+            Reset Password
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Container>
   );
 }
