@@ -13,6 +13,7 @@ import {
   ListItemText,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import testData from "../../../src/testData.json";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -36,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MatchVolunteersCard() {
   const classes = useStyles();
+  console.log(testData.map((name) => name.name));
   return (
     <Container>
       <Card className={classes.root}>

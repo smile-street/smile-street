@@ -19,6 +19,7 @@ import {
 export default function App() {
   return (
     <div className="App">
+      <GoodCauseMatches />
       <Router>
         <Header />
         <Route path="/" exact component={Login} />
