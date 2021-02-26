@@ -11,7 +11,6 @@ import {
 } from "@material-ui/core";
 import PageHeading from "../PageHeading/PageHeading";
 import { useHistory } from "react-router-dom";
-import Registration from "../Registration/Registration";
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
