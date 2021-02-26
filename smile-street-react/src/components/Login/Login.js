@@ -4,7 +4,6 @@ import {
   makeStyles,
   Button,
   TextField,
-  Link,
   Paper,
   Container,
   Grid,
@@ -13,6 +12,7 @@ import {
 import PageHeading from "../PageHeading/PageHeading";
 import { useHistory } from "react-router-dom";
 import Registration from "../Registration/Registration";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -67,9 +67,10 @@ const useStyles = makeStyles((theme) => ({
 export default function Login() {
   const classes = useStyles();
   let history = useHistory();
-  function handleClickRegistration() {
+  const handleClickRegistration = () => {
     history.push("/Registration");
-  }
+  };
+
   return (
     <Container>
       <Paper className={classes.paper}>
@@ -113,7 +114,11 @@ export default function Login() {
               <Divider />
             </Grid>
             <Grid item xs={12} sm={12} style={{ margin: 8 }}>
-              <Link href="#" variant="body2" style={{ margin: 8 }}>
+              <Link
+                to="/PasswordRecovery"
+                variant="body2"
+                style={{ margin: 8 }}
+              >
                 Forgot password? Click here!
               </Link>
             </Grid>

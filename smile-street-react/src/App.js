@@ -23,6 +23,7 @@ export default function App() {
         <Header />
         <Route path="/" exact component={Login} />
         <Route path="/Registration" exact component={Registration} />
+        <Route path="/PasswordRecovery" exact component={PasswordRecovery} />
       </Router>
     </div>
   );
