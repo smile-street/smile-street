@@ -13,6 +13,11 @@ import {
   ListItemText,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -36,6 +41,26 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MatchCard() {
   const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const [opento, setOpento] = React.useState(false);
+
+  const handleClickone = () => {
+    setOpento(true);
+  };
+
+  const handleCloseone = () => {
+    setOpento(false);
+  };
+
   return (
     <Container>
       <Card className={classes.root}>
@@ -58,7 +83,6 @@ export default function MatchCard() {
             </List>
           </CardContent>
         </CardActionArea>
-
         <CardActions>
           <Button
             type="submit"
@@ -66,6 +90,7 @@ export default function MatchCard() {
             variant="contained"
             color="primary"
             className={classes.buttonColor}
+            onClick={handleClick}
           >
             Yes Please
           </Button>
@@ -75,11 +100,44 @@ export default function MatchCard() {
             variant="contained"
             color="primary"
             className={classes.buttonColor}
+            onClick={handleClickone}
           >
             No Thankyou
           </Button>
         </CardActions>
       </Card>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          {"Thank you for accepting. Good Cause will reach out soon."}
+        </DialogTitle>
+
+        <DialogActions>
+          <Button onClick={handleClose} color="primary" autoFocus>
+            OK
+          </Button>
+        </DialogActions>
+      </Dialog>
+      <Dialog
+        open={opento}
+        onClose={handleCloseone}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          {"No worries.We will try for another match"}
+        </DialogTitle>
+
+        <DialogActions>
+          <Button onClick={handleCloseone} color="primary" autoFocus>
+            OK
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Container>
   );
 }
