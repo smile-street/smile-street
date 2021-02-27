@@ -15,7 +15,6 @@ import {
 } from "@material-ui/core";
 import MuiAlert from '@material-ui/lab/Alert';
 import PageHeading from "../PageHeading/PageHeading";
-import PasswordRecovery from "../PasswordRecovery/PasswordRecovery";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -82,6 +81,7 @@ export default function Registration() {
     }
     setOpenToast(false);
   };
+  //submit button
   function handleClick() {
     setOpenDialog(true);
     console.log([{
@@ -98,6 +98,7 @@ export default function Registration() {
         <Container maxWidth="xs">
           <PageHeading heading="Registration" />
           <Grid container spacing={3}>
+            <form>
             <TextField
               autoFocus
               variant="outlined"
@@ -145,6 +146,7 @@ export default function Registration() {
               id="password"
               label="Password"
               type="password"
+              autoComplete="new-password"
               className={classes.root}
               fullWidth
               value = { password }
@@ -154,6 +156,7 @@ export default function Registration() {
               variant="outlined"
               margin="normal"
               type="password"
+              autoComplete="new-password"
               id="confirm password"
               label="Confrim Password"
               className={classes.root}
@@ -164,9 +167,10 @@ export default function Registration() {
 
             <Grid item xs={12} sm={12}>
               <Button variant="contained" className={classes.buttonColor} onClick={handleClick}>
-                Add availblity
+                Confirm your email
               </Button>
             </Grid>
+            </form>
           </Grid>
         </Container>
       </Paper>
