@@ -6,7 +6,14 @@ import {
   Container,
   TextField,
   Button,
+  Dialog,
+  DialogActions,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  Snackbar,
 } from "@material-ui/core";
+import MuiAlert from '@material-ui/lab/Alert';
 import PageHeading from "../PageHeading/PageHeading";
 import PasswordRecovery from "../PasswordRecovery/PasswordRecovery";
 
@@ -48,6 +55,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
+
 export default function Registration() {
   const classes = useStyles();
   const [firstName, setFirstName ] = useState("");
@@ -56,8 +67,23 @@ export default function Registration() {
   const [contactNumber, setContactNumber ] = useState("");
   const [password, setPassword ] = useState("");
   const [confirmPassword, setConfirmPassword ] = useState("");
-
+  const [openDialog, setOpenDialog] = useState(false);
+  const [openToast, setOpenToast] = useState(false);
+  //dialog
+  const handleDialogClose = () => setOpenDialog(false);
+  //toast
+  const handleDialogClick = () => {
+    handleDialogClose();
+    setOpenToast(true);
+  };
+  const handleToastClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpenToast(false);
+  };
   function handleClick() {
+    setOpenDialog(true);
     console.log([{
       "firstName": firstName,
       "lastName": lastName,
@@ -144,6 +170,32 @@ export default function Registration() {
           </Grid>
         </Container>
       </Paper>
+      {/* dialog overlay */}
+      <Dialog open={openDialog} onClose={handleDialogClose} aria-labelledby="form-dialog-title">
+        <DialogTitle id="form-dialog-title">Check your email!</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            We've sent you a confirmation email with a 6 digit code. Enter the code to confirm your email and continue.
+          </DialogContentText>
+          <TextField
+            autoFocus
+            margin="dense"
+            id="verificationCode"
+            label="Verification Code"
+            fullWidth
+          />          
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleDialogClick} color="primary">
+            Verify
+          </Button>
+        </DialogActions>
+      </Dialog>
+      <Snackbar open={openToast} autoHideDuration={6000} onClose={handleToastClose} anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}>
+        <Alert onClose={handleToastClose} severity="success">
+          Email confirmed!
+        </Alert>
+      </Snackbar>
     </Container>
   );
 }
