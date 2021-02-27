@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+
 import {
   makeStyles,
   Paper,
@@ -8,6 +9,7 @@ import {
   Button,
 } from "@material-ui/core";
 import PageHeading from "../PageHeading/PageHeading";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -49,6 +51,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function PasswordRecovery() {
   const classes = useStyles();
+
   return (
     <Container component="main">
       <Paper className={classes.paper}>
@@ -83,7 +86,7 @@ export default function PasswordRecovery() {
 
             <Grid item xs={12} sm={12}>
               <Button variant="contained" className={classes.buttonColor}>
-                Back to login
+                submit
               </Button>
             </Grid>
           </Grid>

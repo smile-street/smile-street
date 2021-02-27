@@ -70,7 +70,6 @@ export default function VolunteerAvaiblity() {
               margin="normal"
               id="last name"
               label="Employers Name"
-              className={classes.root}
               fullWidth
             />
             <FormControl variant="outlined" fullWidth style={{ margin: 8 }}>

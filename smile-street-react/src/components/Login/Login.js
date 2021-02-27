@@ -4,7 +4,6 @@ import {
   makeStyles,
   Button,
   TextField,
-  Link,
   Paper,
   Container,
   Grid,
@@ -18,6 +17,8 @@ import {
 } from "@material-ui/core";
 import MuiAlert from '@material-ui/lab/Alert';
 import PageHeading from "../PageHeading/PageHeading";
+import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -94,6 +95,19 @@ export default function Login() {
 
 
 
+  const [email, setEmail ] = useState("");
+  const [password, setPassword ] = useState("");
+
+  function checkCredentials(event) {
+    console.log(`This is your email: ${email}\nThis is your password: ${password}`)
+  }
+
+  let history = useHistory();
+  const handleClickRegistration = () => {
+    history.push("/Registration");
+  };
+
+
   return (
     <Container>
       <Paper className={classes.paper}>
@@ -109,6 +123,8 @@ export default function Login() {
               name="email"
               autoComplete="email"
               autoFocus
+              value = { email }
+              onChange={(event) => setEmail(event.target.value)}
               className={classes.root}
             />
 
@@ -121,15 +137,18 @@ export default function Login() {
               type="password"
               id="password"
               autoComplete="current-password"
-              style={{}}
+
+              value = { password }
+              onChange={(event) => setPassword(event.target.value)}
+
               className={classes.root}
             />
             <Grid item xs={12} sm={12}>
               <Button
-                type="submit"
                 variant="contained"
                 className={classes.button}
                 style={{ margin: 8 }}
+                onClick={ checkCredentials }
               >
                 Log in
               </Button>
@@ -138,7 +157,14 @@ export default function Login() {
               <Divider />
             </Grid>
             <Grid item xs={12} sm={12} style={{ margin: 8 }}>
+
               <Link cursor={"pointer"} onClick={ handleClickOpen } variant="body2" style={{ margin: 8 }}>
+
+              <Link
+                to="/PasswordRecovery"
+                variant="body2"
+                style={{ margin: 8 }}
+              
                 Forgot password? Click here!
               </Link>
             </Grid>
@@ -176,6 +202,7 @@ export default function Login() {
               type="submit"
               variant="contained"
               className={classes.button}
+              onClick={handleClickRegistration}
             >
               Register as a Good Cause
             </Button>
@@ -186,6 +213,7 @@ export default function Login() {
               variant="contained"
               className={classes.button}
               style={{ margin: 8 }}
+              onClick={handleClickRegistration}
             >
               Register as a Volunteer
             </Button>
