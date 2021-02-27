@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import {
   makeStyles,
   Button,
@@ -7,7 +8,14 @@ import {
   Container,
   Grid,
   Divider,
+  Dialog,
+  DialogActions,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  Snackbar,
 } from "@material-ui/core";
+import MuiAlert from '@material-ui/lab/Alert';
 import PageHeading from "../PageHeading/PageHeading";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -62,8 +70,30 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
+
 export default function Login() {
   const classes = useStyles();
+  const [openDialog, setOpenDialog] = useState(false);
+  const [openToast, setOpenToast] = useState(false);
+  //dialog
+  const handleClickOpen = () => setOpenDialog(true);
+  const handleDialogClose = () => setOpenDialog(false);
+  //toast
+  const handleDialogClick = () => {
+    handleDialogClose();
+    setOpenToast(true);
+  };
+  const handleToastClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpenToast(false);
+  };
+
+
 
   const [email, setEmail ] = useState("");
   const [password, setPassword ] = useState("");
@@ -127,11 +157,14 @@ export default function Login() {
               <Divider />
             </Grid>
             <Grid item xs={12} sm={12} style={{ margin: 8 }}>
+
+              <Link cursor={"pointer"} onClick={ handleClickOpen } variant="body2" style={{ margin: 8 }}>
+
               <Link
                 to="/PasswordRecovery"
                 variant="body2"
                 style={{ margin: 8 }}
-              >
+              
                 Forgot password? Click here!
               </Link>
             </Grid>
@@ -187,6 +220,49 @@ export default function Login() {
           </Grid>
         </Container>
       </Paper>
+      <Dialog open={openDialog} onClose={handleDialogClose} aria-labelledby="form-dialog-title">
+        <DialogTitle id="form-dialog-title">Forgot your Password?</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            To reset your password enter your email and a new password.
+          </DialogContentText>
+          <TextField
+            autoFocus
+            margin="dense"
+            id="email"
+            label="Email Address"
+            type="email"
+            fullWidth
+          />          
+          <TextField
+            margin="dense"
+            id="newPassword"
+            label="Enter new Password"
+            type="password"
+            fullWidth
+          />          
+          <TextField
+            margin="dense"
+            id="confirmPassword"
+            label="Confirm New Password"
+            type="password"
+            fullWidth
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleDialogClose} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={handleDialogClick} color="primary">
+            Reset Password
+          </Button>
+        </DialogActions>
+      </Dialog>
+      <Snackbar open={openToast} autoHideDuration={6000} onClose={handleToastClose} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
+        <Alert onClose={handleToastClose} severity="warning">
+          Check your email to confirm password reset!
+        </Alert>
+      </Snackbar>
     </Container>
   );
 }
