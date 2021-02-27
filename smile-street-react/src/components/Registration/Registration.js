@@ -57,14 +57,14 @@ export default function Registration() {
   const [password, setPassword ] = useState("");
   const [confirmPassword, setConfirmPassword ] = useState("");
 
-  function handleClick(event) {
-    console.log(`This is your first name: ${firstName}\n
-    This is your last name: ${lastName}\n
-    This is your email: ${email}\n
-    This is your contact number: ${contactNumber}\n
-    This is your password: ${password}\n
-    it should be equal to: ${confirmPassword}\n
-    `)
+  function handleClick() {
+    console.log([{
+      "firstName": firstName,
+      "lastName": lastName,
+      "email": email,
+      "contactNumber": contactNumber,
+      "password": password
+    }])
   }
   return (
     <Container component="main">
