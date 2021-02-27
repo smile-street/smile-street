@@ -1,5 +1,4 @@
-import React from "react";
-
+import React, { useState } from "react";
 import {
   makeStyles,
   Button,
@@ -65,10 +64,19 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Login() {
   const classes = useStyles();
+
+  const [email, setEmail ] = useState("");
+  const [password, setPassword ] = useState("");
+
+  function checkCredentials(event) {
+    console.log(`This is your email: ${email}\nThis is your password: ${password}`)
+  }
+
   let history = useHistory();
   const handleClickRegistration = () => {
     history.push("/Registration");
   };
+
 
   return (
     <Container>
@@ -85,6 +93,8 @@ export default function Login() {
               name="email"
               autoComplete="email"
               autoFocus
+              value = { email }
+              onChange={(event) => setEmail(event.target.value)}
               className={classes.root}
             />
 
@@ -97,14 +107,18 @@ export default function Login() {
               type="password"
               id="password"
               autoComplete="current-password"
+
+              value = { password }
+              onChange={(event) => setPassword(event.target.value)}
+
               className={classes.root}
             />
             <Grid item xs={12} sm={12}>
               <Button
-                type="submit"
                 variant="contained"
                 className={classes.button}
                 style={{ margin: 8 }}
+                onClick={ checkCredentials }
               >
                 Log in
               </Button>
