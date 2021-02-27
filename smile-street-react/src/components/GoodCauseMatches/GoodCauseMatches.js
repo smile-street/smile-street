@@ -27,9 +27,15 @@ export default function FullWidthGrid() {
         <Paper className={classes.paper}>
           <PageHeading heading="Here is the list of available volunteer  matches" />
           <GoodCauseProfileButton />
-          {testData.map((item) => {
-            return (
-              <Grid container spacing={3}>
+          <Grid
+            container
+            spacing={2}
+            direction="row"
+            justify="flex-start"
+            alignItems="flex-start"
+          >
+            {testData.map((item) => {
+              return (
                 <Grid item xs={12} sm={4}>
                   <MatchVolunteersCard
                     name={item.name}
@@ -37,9 +43,9 @@ export default function FullWidthGrid() {
                     availability={item.availability}
                   />
                 </Grid>
-              </Grid>
-            );
-          })}
+              );
+            })}
+          </Grid>
         </Paper>
       </Container>
     </div>
