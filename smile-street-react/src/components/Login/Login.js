@@ -15,7 +15,7 @@ import {
   DialogContentText,
   Snackbar,
 } from "@material-ui/core";
-import MuiAlert from '@material-ui/lab/Alert';
+import MuiAlert from "@material-ui/lab/Alert";
 import PageHeading from "../PageHeading/PageHeading";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -87,26 +87,25 @@ export default function Login() {
     setOpenToast(true);
   };
   const handleToastClose = (event, reason) => {
-    if (reason === 'clickaway') {
+    if (reason === "clickaway") {
       return;
     }
     setOpenToast(false);
   };
 
-
-
-  const [email, setEmail ] = useState("");
-  const [password, setPassword ] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   function checkCredentials(event) {
-    console.log(`This is your email: ${email}\nThis is your password: ${password}`)
+    console.log(
+      `This is your email: ${email}\nThis is your password: ${password}`
+    );
   }
 
   let history = useHistory();
   const handleClickRegistration = () => {
     history.push("/Registration");
   };
-
 
   return (
     <Container>
@@ -123,7 +122,7 @@ export default function Login() {
               name="email"
               autoComplete="email"
               autoFocus
-              value = { email }
+              value={email}
               onChange={(event) => setEmail(event.target.value)}
               className={classes.root}
             />
@@ -137,10 +136,8 @@ export default function Login() {
               type="password"
               id="password"
               autoComplete="current-password"
-
-              value = { password }
+              value={password}
               onChange={(event) => setPassword(event.target.value)}
-
               className={classes.root}
             />
             <Grid item xs={12} sm={12}>
@@ -148,7 +145,7 @@ export default function Login() {
                 variant="contained"
                 className={classes.button}
                 style={{ margin: 8 }}
-                onClick={ checkCredentials }
+                onClick={checkCredentials}
               >
                 Log in
               </Button>
@@ -157,15 +154,14 @@ export default function Login() {
               <Divider />
             </Grid>
             <Grid item xs={12} sm={12} style={{ margin: 8 }}>
-
-              <Link cursor={"pointer"} onClick={ handleClickOpen } variant="body2" style={{ margin: 8 }}>
-
               <Link
-                to="/PasswordRecovery"
+                cursor={"pointer"}
+                onClick={handleClickOpen}
                 variant="body2"
                 style={{ margin: 8 }}
-              
-                Forgot password? Click here!
+              >
+                {" "}
+                Forget your password click here
               </Link>
             </Grid>
           </form>
@@ -220,7 +216,11 @@ export default function Login() {
           </Grid>
         </Container>
       </Paper>
-      <Dialog open={openDialog} onClose={handleDialogClose} aria-labelledby="form-dialog-title">
+      <Dialog
+        open={openDialog}
+        onClose={handleDialogClose}
+        aria-labelledby="form-dialog-title"
+      >
         <DialogTitle id="form-dialog-title">Forgot your Password?</DialogTitle>
         <DialogContent>
           <DialogContentText>
@@ -233,14 +233,14 @@ export default function Login() {
             label="Email Address"
             type="email"
             fullWidth
-          />          
+          />
           <TextField
             margin="dense"
             id="newPassword"
             label="Enter new Password"
             type="password"
             fullWidth
-          />          
+          />
           <TextField
             margin="dense"
             id="confirmPassword"
@@ -258,7 +258,12 @@ export default function Login() {
           </Button>
         </DialogActions>
       </Dialog>
-      <Snackbar open={openToast} autoHideDuration={6000} onClose={handleToastClose} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
+      <Snackbar
+        open={openToast}
+        autoHideDuration={6000}
+        onClose={handleToastClose}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+      >
         <Alert onClose={handleToastClose} severity="warning">
           Check your email to confirm password reset!
         </Alert>
