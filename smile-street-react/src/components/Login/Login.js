@@ -11,6 +11,8 @@ import {
   Divider,
 } from "@material-ui/core";
 import PageHeading from "../PageHeading/PageHeading";
+import { useHistory } from "react-router-dom";
+import Registration from "../Registration/Registration";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -64,7 +66,10 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Login() {
   const classes = useStyles();
-
+  let history = useHistory();
+  function handleClickRegistration() {
+    history.push("/Registration");
+  }
   return (
     <Container>
       <Paper className={classes.paper}>
@@ -92,7 +97,6 @@ export default function Login() {
               type="password"
               id="password"
               autoComplete="current-password"
-              style={{}}
               className={classes.root}
             />
             <Grid item xs={12} sm={12}>
@@ -147,6 +151,7 @@ export default function Login() {
               type="submit"
               variant="contained"
               className={classes.button}
+              onClick={handleClickRegistration}
             >
               Register as a Good Cause
             </Button>
@@ -157,6 +162,7 @@ export default function Login() {
               variant="contained"
               className={classes.button}
               style={{ margin: 8 }}
+              onClick={handleClickRegistration}
             >
               Register as a Volunteer
             </Button>

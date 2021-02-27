@@ -4,26 +4,26 @@ import GoodCauseDetails from "./components/GoodCauseDetails/GoodCauseDetails";
 import GoodCauseMatches from "./components/GoodCauseMatches/GoodCauseMatches";
 import Login from "./components/Login/Login";
 import PasswordRecovery from "./components/PasswordRecovery/PasswordRecovery";
-import Registration from "./components/Registration/Registration";
 import VolunteerAvaiblity from "./components/VolunteerAvaiblity/VolunteerAvaiblity";
 import VolunteerInterests from "./components/VolunteerInterests/VolunteerInterests";
 import VolunteerMatches from "./components/VolunteerMatches/VolunteerMatches";
 import GoodCauseOpporunity from "./components/GoodCauseOpportunity/GoodCauseOpportunity";
+import Registration from "./components/Registration/Registration";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  useHistory,
+} from "react-router-dom";
 
 export default function App() {
   return (
     <div className="App">
-      <Header />
-      <Login />
-
-      <PasswordRecovery />
-      <Registration />
-      <VolunteerAvaiblity />
-      <VolunteerInterests />
-      <GoodCauseDetails />
-      <GoodCauseOpporunity />
-      <VolunteerMatches />
-      <GoodCauseMatches />
+      <Router>
+        <Header />
+        <Route path="/" exact component={Login} />
+        <Route path="/Registration" exact component={Registration} />
+      </Router>
     </div>
   );
 }
