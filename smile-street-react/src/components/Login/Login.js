@@ -3,13 +3,14 @@ import {
   makeStyles,
   Button,
   TextField,
-  Link,
   Paper,
   Container,
   Grid,
   Divider,
 } from "@material-ui/core";
 import PageHeading from "../PageHeading/PageHeading";
+import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -63,12 +64,19 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Login() {
   const classes = useStyles();
+
   const [email, setEmail ] = useState("");
   const [password, setPassword ] = useState("");
 
   function checkCredentials(event) {
     console.log(`This is your email: ${email}\nThis is your password: ${password}`)
   }
+
+  let history = useHistory();
+  const handleClickRegistration = () => {
+    history.push("/Registration");
+  };
+
 
   return (
     <Container>
@@ -99,8 +107,10 @@ export default function Login() {
               type="password"
               id="password"
               autoComplete="current-password"
+
               value = { password }
               onChange={(event) => setPassword(event.target.value)}
+
               className={classes.root}
             />
             <Grid item xs={12} sm={12}>
@@ -117,7 +127,11 @@ export default function Login() {
               <Divider />
             </Grid>
             <Grid item xs={12} sm={12} style={{ margin: 8 }}>
-              <Link href="#" variant="body2" style={{ margin: 8 }}>
+              <Link
+                to="/PasswordRecovery"
+                variant="body2"
+                style={{ margin: 8 }}
+              >
                 Forgot password? Click here!
               </Link>
             </Grid>
@@ -155,6 +169,7 @@ export default function Login() {
               type="submit"
               variant="contained"
               className={classes.button}
+              onClick={handleClickRegistration}
             >
               Register as a Good Cause
             </Button>
@@ -165,6 +180,7 @@ export default function Login() {
               variant="contained"
               className={classes.button}
               style={{ margin: 8 }}
+              onClick={handleClickRegistration}
             >
               Register as a Volunteer
             </Button>
