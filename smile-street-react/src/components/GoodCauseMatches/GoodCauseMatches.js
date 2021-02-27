@@ -5,6 +5,7 @@ import Grid from "@material-ui/core/Grid";
 import MatchVolunteersCard from "./MatchedVolunteersCard";
 import PageHeading from "../PageHeading/PageHeading";
 import GoodCauseProfileButton from "./GoodCauseProfileButton";
+import testData from "../../../src/testData.json";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,31 +27,24 @@ export default function FullWidthGrid() {
         <Paper className={classes.paper}>
           <PageHeading heading="Here is the list of available volunteer  matches" />
           <GoodCauseProfileButton />
-          <Grid container spacing={3}>
-            <Grid item xs={12} sm={4}>
-              <MatchVolunteersCard />
-            </Grid>
-            <Grid item xs={12} sm={4}>
-              <MatchVolunteersCard />
-            </Grid>
-            <Grid item xs={12} sm={4}>
-              <MatchVolunteersCard />
-            </Grid>
-            <Grid item xs={12} sm={4}>
-              <MatchVolunteersCard />
-            </Grid>
-            <Grid item xs={12} sm={4}>
-              <MatchVolunteersCard />
-            </Grid>
-            <Grid item xs={12} sm={4}>
-              <MatchVolunteersCard />
-            </Grid>
-            <Grid item xs={12} sm={4}>
-              <MatchVolunteersCard />
-            </Grid>
-            <Grid item xs={12} sm={4}>
-              <MatchVolunteersCard />
-            </Grid>
+          <Grid
+            container
+            spacing={2}
+            direction="row"
+            justify="flex-start"
+            alignItems="flex-start"
+          >
+            {testData.map((item) => {
+              return (
+                <Grid item xs={12} sm={4}>
+                  <MatchVolunteersCard
+                    name={item.name}
+                    interest={item.interest}
+                    availability={item.availability}
+                  />
+                </Grid>
+              );
+            })}
           </Grid>
         </Paper>
       </Container>

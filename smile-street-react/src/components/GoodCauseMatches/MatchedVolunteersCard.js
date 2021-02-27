@@ -13,6 +13,7 @@ import {
   ListItemText,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import testData from "../../../src/testData.json";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,8 +35,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MatchVolunteersCard() {
+export default function MatchVolunteersCard({ name, interest, availability }) {
   const classes = useStyles();
+
   return (
     <Container>
       <Card className={classes.root}>
@@ -44,17 +46,19 @@ export default function MatchVolunteersCard() {
             <Typography gutterBottom variant="h5" component="h2"></Typography>
 
             <List component="nav" aria-label="secondary mailbox folders">
-              <ListItem>
-                <ListItemText primary="Name" />
-              </ListItem>
-              <Divider />
-              <ListItem>
-                <ListItemText primary="Skills" />
-              </ListItem>
-              <Divider />
-              <ListItem href="#simple-list">
-                <ListItemText primary="Availability" />
-              </ListItem>
+              <div>
+                <ListItem>
+                  <ListItemText primary={name} />
+                </ListItem>
+                <Divider />
+                <ListItem>
+                  <ListItemText primary={interest} />
+                </ListItem>
+                <Divider />
+                <ListItem>
+                  <ListItemText primary={availability} />
+                </ListItem>
+              </div>
             </List>
           </CardContent>
         </CardActionArea>
