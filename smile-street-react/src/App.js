@@ -19,13 +19,14 @@ import {
 export default function App() {
   return (
     <div className="App">
-
-       <Router>
+      <Header />
+      <VolunteerInterests />
+       {/* <Router>
         <Header />
         <Route path="/" exact component={Login} />
         <Route path="/Registration" exact component={Registration} />
         <Route path="/PasswordRecovery" exact component={PasswordRecovery} />
-      </Router>
+      </Router> */}
   </div>
   );
 }

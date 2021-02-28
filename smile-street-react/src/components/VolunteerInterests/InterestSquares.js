@@ -1,12 +1,11 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Grid, 
-        Container, 
         Card, 
         CardActionArea, 
         CardActions, 
         CardContent, 
-        Typography, 
+        CardMedia, 
         FormControlLabel, 
         RadioGroup, 
         Checkbox 
@@ -14,9 +13,6 @@ import { Grid,
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
-  },
-  box: {
     flexGrow: 1,
   },
   paper: {
@@ -33,23 +29,26 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const InterestSquares = () => {
+const InterestSquares = (props) => {
   const classes = useStyles();
   return (
-    <Container>
       <Grid container spacing={3}>
         <Grid item>
           <Card className={classes.root}>
             <CardActionArea className={classes.root}>
-              <CardContent >
-                <Typography gutterBottom variant="h5" component="h2">
-                  Gardening
-                </Typography>
+            <CardMedia
+              className={classes.media}
+              component="img"
+              height="100%"
+              image={props.image}
+              title={props.skill}
+            />
+              <CardContent>
+                  {props.title}
               </CardContent>
 
             </CardActionArea>
             <CardActions>
-
               <RadioGroup>
                 <FormControlLabel
                   value="cBOX"
@@ -62,7 +61,6 @@ const InterestSquares = () => {
 
         </Grid>
       </Grid>
-    </Container>
   );
 };
 
