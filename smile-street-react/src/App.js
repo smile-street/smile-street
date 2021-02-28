@@ -21,7 +21,6 @@ export default function App() {
     <div className="App">
       <Header />
       <VolunteerInterests />
-      <GoodCauseOpporunity />
        {/* <Router>
         <Header />
         <Route path="/" exact component={Login} />

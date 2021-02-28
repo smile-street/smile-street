@@ -41,7 +41,6 @@ const InterestSquares = (props) => {
               className={classes.media}
               component="img"
               height="100%"
-              maxHeight="160"
               image={props.image}
               title={props.skill}
             />
@@ -50,7 +49,6 @@ const InterestSquares = (props) => {
                   {props.title}
                 </Typography>
               </CardContent>
-
             </CardActionArea>
             <CardActions>
               <RadioGroup>
@@ -62,7 +60,6 @@ const InterestSquares = (props) => {
               </RadioGroup>
             </CardActions>
           </Card>
-
         </Grid>
       </Grid>
   );
