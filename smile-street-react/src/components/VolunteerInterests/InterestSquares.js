@@ -8,7 +8,8 @@ import { Grid,
         CardMedia, 
         FormControlLabel, 
         RadioGroup, 
-        Checkbox 
+        Checkbox, 
+        Typography
       } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
@@ -40,11 +41,14 @@ const InterestSquares = (props) => {
               className={classes.media}
               component="img"
               height="100%"
+              maxHeight="160"
               image={props.image}
               title={props.skill}
             />
               <CardContent>
+                <Typography variant="h6">
                   {props.title}
+                </Typography>
               </CardContent>
 
             </CardActionArea>
