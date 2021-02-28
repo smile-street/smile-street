@@ -1,13 +1,18 @@
+import ValidateInfo from "./ValidateInfo.js";
+
+import { useState } from "react";
 import React from "react";
-import { 
+import {
   makeStyles,
   Paper,
   Grid,
   Container,
-  TextField, 
-  Button, 
+  TextField,
+  Button,
+  DialogTitle,
 } from "@material-ui/core";
-import PageHeading from '../PageHeading/PageHeading';
+import FormControl from "@material-ui/core/FormControl";
+import PageHeading from "../PageHeading/PageHeading";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
   },
   form: {
-    width: '100%',
+    width: "100%",
   },
   button: {
     backgroundColor: "#53bd98",
@@ -31,22 +36,69 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Registration() {
+  //const{errors} = ValidateInfo(validate);
+
+  const [registration, newRegistration] = useState({
+    title: "",
+    firstName: "",
+    lastName: "",
+    email: "",
+    contactNumber: "",
+    password: "",
+    confirmPass: "",
+  });
+
+  const handleChange = (e) => {
+    newRegistration({
+      ...registration,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const [errors, setErrors] = useState({ ValidateInfo });
+
+  //////////////////////////////////////////////////
+
+  const addRegistration = (text) => {
+    const newReg = {
+      text: text,
+    };
+
+    //takes the current array and reuilds and updates.
+    const updatedReg = [...registration, newReg];
+    newRegistration(updatedReg);
+  };
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    setErrors(ValidateInfo(registration));
+  };
+
+  //////////////////////////////////////////////////////////
+
   const classes = useStyles();
   return (
     <Container component="main">
       <Paper className={classes.paper}>
         <Container maxWidth="xs">
           <PageHeading heading="Registration" />
+
           <Grid container spacing={3}>
             <TextField
-              variant="outlined"
               margin="normal"
               id="title"
-              label="Title"
               style={{ margin: 8 }}
               fullWidth
               autoFocus
+              name="title"
+              label="Title"
+              variant="outlined"
+              //  input onChange={handleChange}
+              value={registration.title}
+              onChange={handleChange}
             />
+            {errors.title && <p>{errors.title}</p>}
+
             <TextField
               variant="outlined"
               margin="normal"
@@ -54,7 +106,11 @@ export default function Registration() {
               label="First Name"
               style={{ margin: 8 }}
               fullWidth
+              name="firstName"
+              value={registration.firstName}
+              onChange={handleChange}
             />
+            {errors.firstName && <p>{errors.firstName}</p>}
             <TextField
               variant="outlined"
               margin="normal"
@@ -62,7 +118,14 @@ export default function Registration() {
               label="Last Name"
               style={{ margin: 8 }}
               fullWidth
+              name="lastName"
+              //type="text"
+              value={registration.lastName}
+              onChange={handleChange}
             />
+
+            {errors.lastName && <p>{errors.lastName}</p>}
+
             <TextField
               variant="outlined"
               margin="normal"
@@ -70,7 +133,13 @@ export default function Registration() {
               label="Email Address"
               style={{ margin: 8 }}
               fullWidth
+              name="email"
+              value={registration.email}
+              onChange={handleChange}
             />
+
+            {errors.email && <p>{errors.email}</p>}
+
             <TextField
               variant="outlined"
               margin="normal"
@@ -78,7 +147,12 @@ export default function Registration() {
               label="Contact Number"
               style={{ margin: 8 }}
               fullWidth
+              name="contactNumber"
+              value={registration.contactNumber}
+              onChange={handleChange}
             />
+
+            {errors.contactNumber && <p>{errors.contactNumber}</p>}
             <TextField
               variant="outlined"
               margin="normal"
@@ -86,7 +160,12 @@ export default function Registration() {
               label="Password"
               style={{ margin: 8 }}
               fullWidth
+              name="password"
+              value={registration.password}
+              onChange={handleChange}
             />
+
+            {errors.password && <p>{errors.password}</p>}
             <TextField
               variant="outlined"
               margin="normal"
@@ -94,11 +173,20 @@ export default function Registration() {
               label="Confrim Password"
               style={{ margin: 8 }}
               fullWidth
+              name="confirmPass"
+              value={registration.confirmPass}
+              onChange={handleChange}
             />
-              
+
+            {errors.confirmPass && <p>{errors.confirmPass}</p>}
+
             <Grid item xs={12} sm={12}>
-              <Button variant="contained" className={classes.button}>
-                Add availblity
+              <Button
+                onClick={handleClick}
+                variant="contained"
+                className={classes.button}
+              >
+                Submit
               </Button>
             </Grid>
           </Grid>
