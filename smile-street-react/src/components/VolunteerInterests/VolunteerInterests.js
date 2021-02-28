@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Paper, Container, Grid } from "@material-ui/core";
+import { Paper, Container, Grid, Button } from "@material-ui/core";
 import InterestSquares from "./InterestSquares";
 import SkillsAutoComplete from "./SkillsAutoComplete";
 import PageHeading from "../PageHeading/PageHeading";
@@ -14,17 +14,25 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     color: theme.palette.text.secondary,
   },
+  buttonColor: {
+    backgroundColor: "#53bd98",
+    color: "white",
+    background: "#449f80",
+
+    "&:hover": {
+      background: "#449f80",
+    },
+  },
 }));
 
 export default function FullWidthGrid() {
   const classes = useStyles();
+  const [selectedInterests, setSelectedInterest] = useState(""); 
 
   return (
-    <div className={classes.root}>
       <Container component="main">
         <Paper className={classes.paper}>
           <PageHeading heading="Select your interests" />
-          <SkillsAutoComplete />
           <Grid container spacing={3}>
               {interestList.map((interest) => {
                 return (
@@ -33,9 +41,16 @@ export default function FullWidthGrid() {
                 </Grid> )
               })}
           </Grid>
+          <Grid item xs={12} sm={12}>
+            <SkillsAutoComplete fullWidth />
+          </Grid>
+          <Grid item xs={12} sm={12}>
+                <Button variant="contained" className={classes.buttonColor}>
+                  Done
+                </Button>
+              </Grid>
         </Paper>
       </Container>
-    </div>
   );
 }
 
