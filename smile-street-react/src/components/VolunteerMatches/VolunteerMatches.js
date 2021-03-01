@@ -5,6 +5,7 @@ import Grid from "@material-ui/core/Grid";
 import MatchCard from "./MatchCard";
 import PageHeading from "../PageHeading/PageHeading";
 import Profilebutton from "./Profilebutton";
+import goodCauseDisplayDetailsMock from "../../../src/goodCauseDisplayDetailsMock.json";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,31 +27,24 @@ export default function VolunteerMatches() {
         <Paper className={classes.paper}>
           <PageHeading heading="Here is the list of available volunteer  matches" />
           <Profilebutton />
-          <Grid container spacing={3}>
-            <Grid item xs={12} sm={4}>
-              <MatchCard />
-            </Grid>
-            <Grid item xs={12} sm={4}>
-              <MatchCard />
-            </Grid>
-            <Grid item xs={12} sm={4}>
-              <MatchCard />
-            </Grid>
-            <Grid item xs={12} sm={4}>
-              <MatchCard />
-            </Grid>
-            <Grid item xs={12} sm={4}>
-              <MatchCard />
-            </Grid>
-            <Grid item xs={12} sm={4}>
-              <MatchCard />
-            </Grid>
-            <Grid item xs={12} sm={4}>
-              <MatchCard />
-            </Grid>
-            <Grid item xs={12} sm={4}>
-              <MatchCard />
-            </Grid>
+          <Grid
+            container
+            spacing={2}
+            direction="row"
+            justify="flex-start"
+            alignItems="flex-start"
+          >
+            {goodCauseDisplayDetailsMock.map((item) => {
+              return (
+                <Grid item xs={12} sm={4}>
+                  <MatchCard
+                    GoodCause={item.GoodCause}
+                    Description={item.Description}
+                    Dates={item.Dates}
+                  />
+                </Grid>
+              );
+            })}
           </Grid>
         </Paper>
       </Container>

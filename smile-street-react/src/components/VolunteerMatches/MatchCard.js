@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MatchCard() {
+export default function MatchCard({ GoodCause, Description, Dates }) {
   const classes = useStyles();
   const [openYesCard, setOpenYesCard] = React.useState(false);
   const [openNoCard, setOpenNoCard] = React.useState(false);
@@ -68,17 +68,19 @@ export default function MatchCard() {
             <Typography gutterBottom variant="h5" component="h2"></Typography>
 
             <List component="nav" aria-label="secondary mailbox folders">
-              <ListItem>
-                <ListItemText primary="Good Cause" />
-              </ListItem>
-              <Divider />
-              <ListItem>
-                <ListItemText primary="Description of opportunity" />
-              </ListItem>
-              <Divider />
-              <ListItem href="#simple-list">
-                <ListItemText primary="Dates" />
-              </ListItem>
+              <div>
+                <ListItem>
+                  <ListItemText primary={GoodCause} />
+                </ListItem>
+                <Divider />
+                <ListItem>
+                  <ListItemText primary={Description} />
+                </ListItem>
+                <Divider />
+                <ListItem>
+                  <ListItemText primary={Dates} />
+                </ListItem>
+              </div>
             </List>
           </CardContent>
         </CardActionArea>
