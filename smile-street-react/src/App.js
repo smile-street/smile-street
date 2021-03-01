@@ -28,5 +28,6 @@ export default function App() {
         <Route path="/PasswordRecovery" exact component={PasswordRecovery} />
       </Router> */}
   </div>
+
   );
 }
