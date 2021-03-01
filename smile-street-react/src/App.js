@@ -19,12 +19,15 @@ import {
 export default function App() {
   return (
     <div className="App">
+
       <VolunteerMatches />
       <Router>
-        <Header />
-        <Route path="/" exact component={Login} />
-        <Route path="VolunteerMatches" exact component={VolunteerMatches} />
-      </Router>
-    </div>
+
+
+
+  <Header />
+       
+  </div>
+
   );
 }
