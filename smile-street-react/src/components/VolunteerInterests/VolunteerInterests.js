@@ -1,10 +1,10 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import { Paper, Container } from "@material-ui/core";
-import Grid from "@material-ui/core/Grid";
-import InterestSquares from "./InterestSquares";
-import SkillsAutoComplete from "./SkillsAutoComplete";
-import PageHeading from "../PageHeading/PageHeading";
+import React from 'react';
+import {makeStyles} from '@material-ui/core/styles';
+import {Paper, Container} from '@material-ui/core';
+import Grid from '@material-ui/core/Grid';
+import InterestSquares from './InterestSquares';
+import SkillsAutoComplete from './SkillsAutoComplete';
+import PageHeading from '../PageHeading/PageHeading';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     padding: theme.spacing(2),
-    textAlign: "center",
+    textAlign: 'center',
     color: theme.palette.text.secondary,
   },
 }));

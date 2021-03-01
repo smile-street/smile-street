@@ -1,4 +1,4 @@
-import "./App.css";
+import './App.css';
 // import Header from "./components/Header/Header";
 // import GoodCauseDetails from "./components/GoodCauseDetails/GoodCauseDetails";
 // import GoodCauseMatches from "./components/GoodCauseMatches/GoodCauseMatches";
@@ -6,20 +6,21 @@ import "./App.css";
 // import PasswordRecovery from "./components/PasswordRecovery/PasswordRecovery";
 // import VolunteerAvaiblity from "./components/VolunteerAvaiblity/VolunteerAvaiblity";
 // import VolunteerInterests from "./components/VolunteerInterests/VolunteerInterests";
-import VolunteerMatches from "./components/VolunteerMatches/VolunteerMatches";
+
 // import GoodCauseOpporunity from "./components/GoodCauseOpportunity/GoodCauseOpportunity";
 // import Registration from "./components/Registration/Registration";
+import VoluenteerMatches from './components/VolunteerMatches/VoluenteerMatches';
 import {
   BrowserRouter as Router,
   Route,
   Switch,
   useHistory,
-} from "react-router-dom";
+} from 'react-router-dom';
 
 export default function App() {
   return (
     <div className="App">
-      <VolunteerMatches />
+      <VoluenteerMatches />
     </div>
   );
 }
