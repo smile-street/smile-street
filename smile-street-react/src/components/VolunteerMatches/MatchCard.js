@@ -41,24 +41,23 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MatchCard() {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
+  const [openYesCard, setOpenYesCard] = React.useState(false);
+  const [openNoCard, setOpenNoCard] = React.useState(false);
 
-  const handleClick = () => {
-    setOpen(true);
+  const handleClickYes = () => {
+    setOpenYesCard(true);
   };
 
-  const handleClose = () => {
-    setOpen(false);
+  const handleCloseYes = () => {
+    setOpenYesCard(false);
   };
 
-  const [opento, setOpento] = React.useState(false);
-
-  const handleClickone = () => {
-    setOpento(true);
+  const handleClickNo = () => {
+    setOpenNoCard(true);
   };
 
-  const handleCloseone = () => {
-    setOpento(false);
+  const handleCloseNo = () => {
+    setOpenNoCard(false);
   };
 
   return (
@@ -90,7 +89,7 @@ export default function MatchCard() {
             variant="contained"
             color="primary"
             className={classes.buttonColor}
-            onClick={handleClick}
+            onClick={handleClickYes}
           >
             Yes Please
           </Button>
@@ -100,15 +99,15 @@ export default function MatchCard() {
             variant="contained"
             color="primary"
             className={classes.buttonColor}
-            onClick={handleClickone}
+            onClick={handleClickNo}
           >
             No Thankyou
           </Button>
         </CardActions>
       </Card>
       <Dialog
-        open={open}
-        onClose={handleClose}
+        open={openYesCard}
+        onClose={handleClickYes}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
@@ -117,14 +116,14 @@ export default function MatchCard() {
         </DialogTitle>
 
         <DialogActions>
-          <Button onClick={handleClose} color="primary" autoFocus>
+          <Button onClick={handleCloseYes} color="primary" autoFocus>
             OK
           </Button>
         </DialogActions>
       </Dialog>
       <Dialog
-        open={opento}
-        onClose={handleCloseone}
+        open={openNoCard}
+        onClose={handleCloseNo}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
@@ -133,7 +132,7 @@ export default function MatchCard() {
         </DialogTitle>
 
         <DialogActions>
-          <Button onClick={handleCloseone} color="primary" autoFocus>
+          <Button onClick={handleCloseNo} color="primary" autoFocus>
             OK
           </Button>
         </DialogActions>
