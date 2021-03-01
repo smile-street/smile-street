@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Paper, Container, Grid, Button, GridList, GridListTile, GridListTileBar } from "@material-ui/core";
+import { Paper, Container, Grid, Button } from "@material-ui/core";
 import InterestSquares from "./InterestSquares";
 import SkillsAutoComplete from "./SkillsAutoComplete";
 import PageHeading from "../PageHeading/PageHeading";
@@ -53,7 +53,11 @@ export default function VolunteerInterests() {
               {interests.map((interest) => {
                 return (
                 <Grid item xs={6} sm={3}>
-                  <InterestSquares key={interest.key} title={interest.skill} image={interest.image} />
+                  <InterestSquares key={interest.key} 
+                                  title={interest.skill} 
+                                  image={interest.image} 
+                                  selected={interest.selected} 
+                  />
                 </Grid> )
               })}
           </Grid>
