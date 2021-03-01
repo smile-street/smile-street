@@ -1,100 +1,96 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import { TextField, Button, Paper, Grid, Container } from "@material-ui/core";
+import {
+  makeStyles,
+  Paper,
+  Grid,
+  Container,
+  TextField,
+  Button,
+} from "@material-ui/core";
+import PageHeading from "../PageHeading/PageHeading";
 
-export default function GoodCauseDetails() {
-  const useStyles = makeStyles((theme) => ({
-    root: {
-      flexGrow: 1,
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+    "&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+      borderColor: "#53bd98",
     },
-    paper: {
-      padding: theme.spacing(2),
-      textAlign: "center",
-      color: theme.palette.text.secondary,
-      width: "100%",
-      alignContent: "center",
+    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+      borderColor: "#449f80",
     },
-    buttonColor: {
-      backgroundColor: "#53bd98",
-      color: "white",
-      "&:hover": {
-        background: "#449f80",
-      },
-    },
-  }));
 
+    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-input": {
+      color: "#449f80",
+    },
+
+    "& .MuiInputLabel-outlined.Mui-focused": {
+      color: "#449f80",
+    },
+    margin: 8,
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: "center",
+    color: theme.palette.text.secondary,
+  },
+  form: {
+    width: "100%",
+  },
+  buttonColor: {
+    backgroundColor: "#53bd98",
+    color: "white",
+    background: "#449f80",
+
+    "&:hover": {
+      background: "#449f80",
+    },
+  },
+}));
+
+export default function Registration() {
   const classes = useStyles();
-
   return (
-    <div className={classes.root}>
-      <Container className={classes.root}>
-        <Paper className={classes.paper}>
+    <Container component="main">
+      <Paper className={classes.paper}>
+        <Container maxWidth="xs">
+          <PageHeading heading="Good Cause Detaiils" />
           <Grid container spacing={3}>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                id="standard-full-width"
-                style={{ margin: 8 }}
-                placeholder="charity registration number"
-                fullWidth
-                margin="normal"
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                variant="outlined"
-              />
-            </Grid>
-          </Grid>
-        </Paper>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              id="title"
+              label="Charity Registration Number"
+              className={classes.root}
+              fullWidth
+              autoFocus
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              id="first name"
+              label="Name of good cause"
+              className={classes.root}
+              fullWidth
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              id="last name"
+              label="Few word describing good cause"
+              className={classes.root}
+              fullWidth
+              multiline
+              rows="6"
+            />
 
-        <Paper className={classes.paper}>
-          <Grid container spacing={3}>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                id="standard-full-width"
-                style={{ margin: 8 }}
-                label="charity registered name"
-                fullWidth
-                margin="normal"
-                InputLabelProps={{
-                  shrink: true,
-                  readOnly: true,
-                }}
-                variant="outlined"
-              />
-            </Grid>
-          </Grid>
-        </Paper>
-
-        <Paper className={classes.paper}>
-          <Grid container spacing={3}>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                id="standard-full-width"
-                style={{ margin: 8 }}
-                placeholder="Please describe your organisation & charitable aims"
-                fullWidth
-                margin="normal"
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                variant="outlined"
-                multiline
-                rowsMax={25}
-              />
-            </Grid>
-          </Grid>
-        </Paper>
-
-        <Paper className={classes.paper}>
-          <Grid container spacing={3}>
             <Grid item xs={12} sm={12}>
               <Button variant="contained" className={classes.buttonColor}>
-                Add Volunteering Oportunities
+                Add availblity
               </Button>
             </Grid>
           </Grid>
-        </Paper>
-      </Container>
-    </div>
+        </Container>
+      </Paper>
+    </Container>
   );
 }

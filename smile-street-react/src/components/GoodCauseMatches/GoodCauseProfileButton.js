@@ -23,6 +23,11 @@ const useStyles = makeStyles((theme) => ({
   buttonColor: {
     backgroundColor: "#53bd98",
     color: "white",
+    background: "#449f80",
+
+    "&:hover": {
+      background: "#449f80",
+    },
   },
 }));
 
@@ -32,7 +37,7 @@ export default function GoodCauseProfileButton() {
     <Grid container spacing={1}>
       <Grid item xs={4}>
         {/* <Paper className={classes.paper}> */}
-        <FormControl variant="filled" className={classes.formElementSize}>
+        <FormControl className={classes.formElementSize}>
           <InputLabel id="demo-simple-select-filled-label" sm={6}>
             Account
           </InputLabel>

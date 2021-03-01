@@ -12,6 +12,21 @@ const GoodCauseOpportunity = () => {
   const useStyles = makeStyles((theme) => ({
     root: {
       flexGrow: 1,
+      "&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+        borderColor: "#53bd98",
+      },
+      "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+        borderColor: "#449f80",
+      },
+
+      "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-input": {
+        color: "#449f80",
+      },
+
+      "& .MuiInputLabel-outlined.Mui-focused": {
+        color: "#449f80",
+      },
+      margin: 8,
     },
     paper: {
       padding: theme.spacing(2),
@@ -50,7 +65,7 @@ const GoodCauseOpportunity = () => {
                   defaultValue="Few words describing an opportunity"
                   variant="outlined"
                   style={{ width: "60%" }}
-                  className={classes.textField}
+                  className={classes.root}
                 />
               </Grid>
 

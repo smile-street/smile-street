@@ -1,8 +1,11 @@
 import React from "react";
-import { Grid, Container } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import { Paper, Container } from "@material-ui/core";
+import Grid from "@material-ui/core/Grid";
+import MatchVolunteersCard from "./MatchedVolunteersCard";
+import PageHeading from "../PageHeading/PageHeading";
 import GoodCauseProfileButton from "./GoodCauseProfileButton";
-import MatchedVolunteersCard from "./MatchedVolunteersCard";
+import testData from "../../../src/testData.json";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -13,49 +16,38 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     color: theme.palette.text.secondary,
   },
-  buttonColor: {
-    backgroundColor: "#53bd98",
-    color: "white",
-  },
 }));
 
-const GoodCauseMatches = () => {
+export default function FullWidthGrid() {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      <Container className={classes.root}>
-      <Grid container spacing={1}>
-
-      <GoodCauseProfileButton/>
-
-      </Grid>
-        <Grid container spacing={1}>
-          <Grid item xs={4}>
-            <MatchedVolunteersCard />
+      <Container component="main">
+        <Paper className={classes.paper}>
+          <PageHeading heading="Here is the list of available volunteer  matches" />
+          <GoodCauseProfileButton />
+          <Grid
+            container
+            spacing={2}
+            direction="row"
+            justify="flex-start"
+            alignItems="flex-start"
+          >
+            {testData.map((item) => {
+              return (
+                <Grid item xs={12} sm={4}>
+                  <MatchVolunteersCard
+                    name={item.name}
+                    interest={item.interest}
+                    availability={item.availability}
+                  />
+                </Grid>
+              );
+            })}
           </Grid>
-
-          <Grid item xs={4}>
-            <MatchedVolunteersCard />
-          </Grid>
-
-          <Grid item xs={4}>
-            <MatchedVolunteersCard />
-          </Grid>
-
-          <Grid item xs={4}>
-            <MatchedVolunteersCard />
-          </Grid>
-          <Grid item xs={4}>
-            <MatchedVolunteersCard />
-          </Grid>
-          <Grid item xs={4}>
-            <MatchedVolunteersCard />
-          </Grid>
-        </Grid>
+        </Paper>
       </Container>
     </div>
   );
-};
-
-export default GoodCauseMatches;
+}
