@@ -1,4 +1,7 @@
+
+import ValidateInfo from "./ValidateInfo.js";
 import React, { useState } from "react";
+
 import {
   makeStyles,
   Paper,
@@ -6,6 +9,13 @@ import {
   Container,
   TextField,
   Button,
+
+ 
+  
+  DialogTitle,
+} from "@material-ui/core";
+import FormControl from "@material-ui/core/FormControl";
+
   Dialog,
   DialogActions,
   DialogTitle,
@@ -14,6 +24,7 @@ import {
   Snackbar,
 } from "@material-ui/core";
 import MuiAlert from '@material-ui/lab/Alert';
+
 import PageHeading from "../PageHeading/PageHeading";
 
 const useStyles = makeStyles((theme) => ({
@@ -59,6 +70,46 @@ function Alert(props) {
 }
 
 export default function Registration() {
+  //const{errors} = ValidateInfo(validate);
+
+  const [registration, newRegistration] = useState({
+    title: "",
+    firstName: "",
+    lastName: "",
+    email: "",
+    contactNumber: "",
+    password: "",
+    confirmPass: "",
+  });
+
+  const handleChange = (e) => {
+    newRegistration({
+      ...registration,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const [errors, setErrors] = useState({ ValidateInfo });
+
+  //////////////////////////////////////////////////
+
+  const addRegistration = (text) => {
+    const newReg = {
+      text: text,
+    };
+
+    //takes the current array and reuilds and updates.
+    const updatedReg = [...registration, newReg];
+    newRegistration(updatedReg);
+  };
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    setErrors(ValidateInfo(registration));
+  };
+
+  //////////////////////////////////////////////////////////
+
   const classes = useStyles();
   const [firstName, setFirstName ] = useState("");
   const [lastName, setLastName ] = useState("");
@@ -97,19 +148,40 @@ export default function Registration() {
       <Paper className={classes.paper}>
         <Container maxWidth="xs">
           <PageHeading heading="Registration" />
+
           <Grid container spacing={3}>
             <form>
             <TextField
+
+              margin="normal"
+              id="title"
+              style={{ margin: 8 }}
+              fullWidth
               autoFocus
+              name="title"
+              label="Title"
+              variant="outlined"
+              //  input onChange={handleChange}
+              value={registration.title}
+              onChange={handleChange}
+            />
+            {errors.title && <p>{errors.title}</p>}
+
+            <TextField
+
               variant="outlined"
               margin="normal"
               id="first name"
               label="First Name"
               className={classes.root}
               fullWidth
-              value = { firstName }
-              onChange={(event) => setFirstName(event.target.value)}
+
+              name="firstName"
+              value={registration.firstName}
+              onChange={handleChange}
+
             />
+            {errors.firstName && <p>{errors.firstName}</p>}
             <TextField
               variant="outlined"
               margin="normal"
@@ -117,9 +189,16 @@ export default function Registration() {
               label="Last Name"
               className={classes.root}
               fullWidth
-              value = { lastName }
-              onChange={(event) => setLastName(event.target.value)}
+
+              name="lastName"
+              //type="text"
+              value={registration.lastName}
+              onChange={handleChange}
+
             />
+
+            {errors.lastName && <p>{errors.lastName}</p>}
+
             <TextField
               variant="outlined"
               margin="normal"
@@ -127,9 +206,15 @@ export default function Registration() {
               label="Email Address"
               className={classes.root}
               fullWidth
-              value = { email }
-              onChange={(event) => setEmail(event.target.value)}
+
+              name="email"
+              value={registration.email}
+              onChange={handleChange}
+
             />
+
+            {errors.email && <p>{errors.email}</p>}
+
             <TextField
               variant="outlined"
               margin="normal"
@@ -137,9 +222,14 @@ export default function Registration() {
               label="Contact Number"
               className={classes.root}
               fullWidth
-              value = { contactNumber }
-              onChange={(event) => setContactNumber(event.target.value)}
+
+              name="contactNumber"
+              value={registration.contactNumber}
+              onChange={handleChange}
+
             />
+
+            {errors.contactNumber && <p>{errors.contactNumber}</p>}
             <TextField
               variant="outlined"
               margin="normal"
@@ -149,9 +239,14 @@ export default function Registration() {
               autoComplete="new-password"
               className={classes.root}
               fullWidth
-              value = { password }
-              onChange={(event) => setPassword(event.target.value)}
+
+              name="password"
+              value={registration.password}
+              onChange={handleChange}
+
             />
+
+            {errors.password && <p>{errors.password}</p>}
             <TextField
               variant="outlined"
               margin="normal"
@@ -161,13 +256,22 @@ export default function Registration() {
               label="Confrim Password"
               className={classes.root}
               fullWidth
-              value = { confirmPassword }
-              onChange={(event) => setConfirmPassword(event.target.value)}
+
+              name="confirmPass"
+              value={registration.confirmPass}
+              onChange={handleChange}
             />
 
+            {errors.confirmPass && <p>{errors.confirmPass}</p>}
+
             <Grid item xs={12} sm={12}>
-              <Button variant="contained" className={classes.buttonColor} onClick={handleClick}>
-                Confirm your email
+              <Button
+                onClick={handleClick}
+                variant="contained"
+                className={classes.button}
+              >
+                Submit
+
               </Button>
             </Grid>
             </form>

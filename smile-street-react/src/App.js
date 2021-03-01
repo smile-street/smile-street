@@ -20,6 +20,7 @@ export default function App() {
   return (
     <div className="App">
 
+
        <Router>
         <Header />
         <Route path="/" exact component={Login} />
@@ -27,5 +28,6 @@ export default function App() {
         <Route path="/PasswordRecovery" exact component={PasswordRecovery} />
       </Router>
   </div>
+
   );
 }

@@ -1,10 +1,14 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
+
+import MatchCard from "./VolunteerMatches.js";
+
 import { Paper, Container } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import MatchCard from "./MatchCard";
 import PageHeading from "../PageHeading/PageHeading";
 import Profilebutton from "./Profilebutton";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
