@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Grid, 
         Card, 
@@ -24,9 +24,10 @@ const useStyles = makeStyles((theme) => ({
       background: "#449f80",
     },
   },
-  selected: {
-    backgroundColor: "#449f80",
-  },
+  // media: {
+  //   // backgroundColor: "#449f80",
+  //   backgroundColor: props => props.selected ? "#449f80" : null,
+  // },
 }));
 
 const InterestSquares = (props) => {
@@ -38,12 +39,11 @@ const InterestSquares = (props) => {
             <CardActionArea className={classes.root} 
                             onClick={() => props.selectInterest(props.id)}>
             <CardMedia
-              // className={classes.media}
               component="img"
               height="100%"
               image={props.image}
               title={props.skill}
-              className={props.selected ? "selected" : "unselected"}
+              style={{ backgroundColor: (props.selected ? "#449f80" : null)}}
             />
               <CardContent>
                 <Typography variant="h6">

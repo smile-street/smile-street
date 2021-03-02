@@ -15,7 +15,7 @@
         "key": 3, 
         "skill": "Public Health", 
         "image": "./images/interestImages/public_health.svg", 
-        "selected": false 
+        "selected": true 
     },
     { 
         "key": 4, 
@@ -51,7 +51,7 @@
         "key": 9, 
         "skill": "Mental Health", 
         "image": "./images/interestImages/mental_health.svg", 
-        "selected": false 
+        "selected": true 
     },
     { 
         "key": 10, 
