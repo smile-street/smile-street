@@ -22,7 +22,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import goodCauseDisplayDetailsMock from '../../../src/goodCauseDisplayDetailsMock.json';
+import goodCauseDisplayDetailsMock from '../../goodCauseDisplayDetailsMock.json';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -52,10 +52,10 @@ export default function MatchCard({GoodCause, Description, Dates}) {
   const [openYesCard, setOpenYesCard] = React.useState(false);
   const [openNoCard, setOpenNoCard] = React.useState(false);
   const [accepted, setAccepted] = React.useState(false);
+  const [data, setData] = React.useState(goodCauseDisplayDetailsMock);
 
   const handleClickYes = () => {
     setOpenYesCard(true);
-    setAccepted(true);
   };
   const handleClickNo = () => {
     setOpenNoCard(true);
@@ -81,47 +81,49 @@ export default function MatchCard({GoodCause, Description, Dates}) {
           justify="flex-start"
           alignItems="flex-start"
         >
-          {goodCauseDisplayDetailsMock.map((item) => {
+          {data.map((item) => {
             return (
               <Grid item xs={12} sm={4}>
-                <Card className={classes.root}>
-                  <CardActionArea>
-                    <CardContent>
-                      <Typography gutterBottom variant="h5" component="h2">
-                        {item.GoodCause}
-                      </Typography>
-                      <Typography
-                        variant="body2"
-                        color="textSecondary"
-                        component="p"
+                {
+                  <Card className={classes.root}>
+                    <CardActionArea>
+                      <CardContent>
+                        <Typography gutterBottom variant="h5" component="h2">
+                          {item.GoodCause}
+                        </Typography>
+                        <Typography
+                          variant="body2"
+                          color="textSecondary"
+                          component="p"
+                        >
+                          {item.Description}
+                        </Typography>
+                      </CardContent>
+                    </CardActionArea>
+                    <CardActions>
+                      <Button
+                        type="submit"
+                        fullWidth
+                        variant="contained"
+                        color="primary"
+                        className={classes.buttonColor}
+                        onClick={handleClickYes}
                       >
-                        {item.Description}
-                      </Typography>
-                    </CardContent>
-                  </CardActionArea>
-                  <CardActions>
-                    <Button
-                      type="submit"
-                      fullWidth
-                      variant="contained"
-                      color="primary"
-                      className={classes.buttonColor}
-                      onClick={handleClickYes}
-                    >
-                      Yes Please
-                    </Button>
-                    <Button
-                      type="submit"
-                      fullWidth
-                      variant="contained"
-                      color="primary"
-                      className={classes.buttonColor}
-                      onClick={handleClickNo}
-                    >
-                      No Thankyou
-                    </Button>
-                  </CardActions>
-                </Card>
+                        Yes Please
+                      </Button>
+                      <Button
+                        type="submit"
+                        fullWidth
+                        variant="contained"
+                        color="primary"
+                        className={classes.buttonColor}
+                        onClick={handleClickNo}
+                      >
+                        No Thankyou
+                      </Button>
+                    </CardActions>
+                  </Card>
+                }
               </Grid>
             );
           })}
