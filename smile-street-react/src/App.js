@@ -4,10 +4,10 @@ import './App.css';
 // import GoodCauseMatches from "./components/GoodCauseMatches/GoodCauseMatches";
 // import Login from "./components/Login/Login";
 // import PasswordRecovery from "./components/PasswordRecovery/PasswordRecovery";
-// import VolunteerAvaiblity from "./components/VolunteerAvaiblity/VolunteerAvaiblity";
+import VolunteerAvaiblity from './components/VolunteerAvaiblity/VolunteerAvaiblity';
 // import VolunteerInterests from "./components/VolunteerInterests/VolunteerInterests";
 
-// import GoodCauseOpporunity from "./components/GoodCauseOpportunity/GoodCauseOpportunity";
+import GoodCauseOpporunity from './components/GoodCauseOpportunity/GoodCauseOpportunity';
 // import Registration from "./components/Registration/Registration";
 import VoluenteerMatches from './components/VolunteerMatches/VoluenteerMatches';
 import {
@@ -16,6 +16,7 @@ import {
   Switch,
   useHistory,
 } from 'react-router-dom';
+import GoodCauseOpportunity from './components/GoodCauseOpportunity/GoodCauseOpportunity';
 
 export default function App() {
   return (

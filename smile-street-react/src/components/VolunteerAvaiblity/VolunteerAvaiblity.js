@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   makeStyles,
   Paper,
@@ -10,49 +10,49 @@ import {
   InputLabel,
   MenuItem,
   Select,
-} from "@material-ui/core";
-import PageHeading from "../PageHeading/PageHeading";
-import DateFnsUtils from "@date-io/date-fns";
+} from '@material-ui/core';
+import PageHeading from '../PageHeading/PageHeading';
+import DateFnsUtils from '@date-io/date-fns';
 import {
   MuiPickersUtilsProvider,
   KeyboardTimePicker,
   KeyboardDatePicker,
-} from "@material-ui/pickers";
+} from '@material-ui/pickers';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    "&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-      borderColor: "#53bd98",
+    '&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
+      borderColor: '#53bd98',
     },
-    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-      borderColor: "#449f80",
-    },
-
-    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-input": {
-      color: "#449f80",
+    '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
+      borderColor: '#449f80',
     },
 
-    "& .MuiInputLabel-outlined.Mui-focused": {
-      color: "#449f80",
+    '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-input': {
+      color: '#449f80',
+    },
+
+    '& .MuiInputLabel-outlined.Mui-focused': {
+      color: '#449f80',
     },
     margin: 8,
   },
   paper: {
     padding: theme.spacing(2),
-    textAlign: "center",
+    textAlign: 'center',
     color: theme.palette.text.secondary,
   },
   form: {
-    width: "100%",
+    width: '100%',
   },
   buttonColor: {
-    backgroundColor: "#53bd98",
-    color: "white",
-    background: "#449f80",
+    backgroundColor: '#53bd98',
+    color: 'white',
+    background: '#449f80',
 
-    "&:hover": {
-      background: "#449f80",
+    '&:hover': {
+      background: '#449f80',
     },
   },
 }));
@@ -72,7 +72,7 @@ export default function VolunteerAvaiblity() {
               label="Employers Name"
               fullWidth
             />
-            <FormControl variant="outlined" fullWidth style={{ margin: 8 }}>
+            <FormControl variant="outlined" fullWidth style={{margin: 8}}>
               <InputLabel id="demo-simple-select-outlined-label">
                 Select your primary match location
               </InputLabel>
@@ -90,7 +90,7 @@ export default function VolunteerAvaiblity() {
                 <MenuItem value={30}>Thirty</MenuItem>
               </Select>
             </FormControl>
-            <FormControl variant="outlined" fullWidth style={{ margin: 8 }}>
+            <FormControl variant="outlined" fullWidth style={{margin: 8}}>
               <InputLabel id="demo-simple-select-outlined-label">
                 Select your secondary match location
               </InputLabel>
@@ -111,11 +111,11 @@ export default function VolunteerAvaiblity() {
 
             <InputLabel
               id="demo-simple-select-outlined-label"
-              style={{ margin: 8 }}
+              style={{margin: 8}}
             >
               We will match you based on your locations
             </InputLabel>
-            <FormControl variant="outlined" fullWidth style={{ margin: 8 }}>
+            <FormControl variant="outlined" fullWidth style={{margin: 8}}>
               <InputLabel id="demo-simple-select-outlined-label">
                 Please select no. of days available
               </InputLabel>
@@ -136,7 +136,7 @@ export default function VolunteerAvaiblity() {
             </FormControl>
             <InputLabel
               id="demo-simple-select-outlined-label"
-              style={{ margin: 8 }}
+              style={{margin: 8}}
             >
               Which dates could you be available
             </InputLabel>
@@ -152,7 +152,7 @@ export default function VolunteerAvaiblity() {
                   value=""
                   onChange=""
                   KeyboardButtonProps={{
-                    "aria-label": "change date",
+                    'aria-label': 'change date',
                   }}
                   className={classes.root}
                   fullWidth
