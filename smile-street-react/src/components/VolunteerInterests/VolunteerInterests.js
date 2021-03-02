@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function VolunteerInterests() {
   const classes = useStyles();
-  const [interests, setSelectedInterest] = useState(interestData); 
+  let interests = interestData; 
   const selectInterest = (id) => {
     for (let interest of interests) {
       if (interest.key === id) {
@@ -36,6 +36,7 @@ export default function VolunteerInterests() {
       }
     }
   };
+  const clickedDone = () => console.log(interests.filter(interest => interest.selected))
   return (
       <Container component="main">
         <Paper className={classes.paper}>
@@ -58,7 +59,7 @@ export default function VolunteerInterests() {
             <SkillsAutoComplete fullWidth />
           </Grid>
           <Grid item xs={12} sm={12}>
-                <Button variant="contained" className={classes.buttonColor}>
+                <Button variant="contained" className={classes.buttonColor} onClick={clickedDone}>
                   Done
                 </Button>
               </Grid>
