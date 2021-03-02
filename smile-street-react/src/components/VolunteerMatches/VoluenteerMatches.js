@@ -1,27 +1,10 @@
 import React from 'react';
-import {
-  Button,
-  Container,
-  Card,
-  CardActionArea,
-  CardActions,
-  CardContent,
-  Typography,
-  Divider,
-  List,
-  ListItem,
-  ListItemText,
-  Grid,
-  Paper,
-} from '@material-ui/core';
+import {Container, Grid, Paper} from '@material-ui/core';
 import PageHeading from '../PageHeading/PageHeading';
 import Profilebutton from './Profilebutton';
 import {makeStyles} from '@material-ui/core/styles';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
+import MatchCard from './MatchCard';
+
 import goodCauseDisplayDetailsMock from '../../goodCauseDisplayDetailsMock.json';
 
 const useStyles = makeStyles((theme) => ({
@@ -47,27 +30,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MatchCard({GoodCause, Description, Dates}) {
+export default function VoluenteerMatches() {
   const classes = useStyles();
-  const [openYesCard, setOpenYesCard] = React.useState(false);
-  const [openNoCard, setOpenNoCard] = React.useState(false);
-  const [accepted, setAccepted] = React.useState(false);
+
   const [data, setData] = React.useState(goodCauseDisplayDetailsMock);
-
-  const handleClickYes = () => {
-    setOpenYesCard(true);
-  };
-  const handleClickNo = () => {
-    setOpenNoCard(true);
-    setAccepted(false);
-  };
-  const handleCloseYes = () => {
-    setOpenYesCard(false);
-  };
-
-  const handleCloseNo = () => {
-    setOpenNoCard(false);
-  };
 
   return (
     <Container>
@@ -81,84 +47,15 @@ export default function MatchCard({GoodCause, Description, Dates}) {
           justify="flex-start"
           alignItems="flex-start"
         >
-          {data.map((item) => {
-            return (
-              <Grid item xs={12} sm={4}>
-                {
-                  <Card className={classes.root}>
-                    <CardActionArea>
-                      <CardContent>
-                        <Typography gutterBottom variant="h5" component="h2">
-                          {item.GoodCause}
-                        </Typography>
-                        <Typography
-                          variant="body2"
-                          color="textSecondary"
-                          component="p"
-                        >
-                          {item.Description}
-                        </Typography>
-                      </CardContent>
-                    </CardActionArea>
-                    <CardActions>
-                      <Button
-                        type="submit"
-                        fullWidth
-                        variant="contained"
-                        color="primary"
-                        className={classes.buttonColor}
-                        onClick={handleClickYes}
-                      >
-                        Yes Please
-                      </Button>
-                      <Button
-                        type="submit"
-                        fullWidth
-                        variant="contained"
-                        color="primary"
-                        className={classes.buttonColor}
-                        onClick={handleClickNo}
-                      >
-                        No Thankyou
-                      </Button>
-                    </CardActions>
-                  </Card>
-                }
-              </Grid>
-            );
-          })}
-          <Dialog
-            open={openYesCard}
-            onClose={handleClickYes}
-            aria-labelledby="alert-dialog-title"
-            aria-describedby="alert-dialog-description"
-          >
-            <DialogTitle id="alert-dialog-title">
-              {'Thank you for accepting. Good Cause will reach out soon.'}
-            </DialogTitle>
-
-            <DialogActions>
-              <Button onClick={handleCloseYes} color="primary" autoFocus>
-                OK
-              </Button>
-            </DialogActions>
-          </Dialog>
-          <Dialog
-            open={openNoCard}
-            onClose={handleCloseNo}
-            aria-labelledby="alert-dialog-title"
-            aria-describedby="alert-dialog-description"
-          >
-            <DialogTitle id="alert-dialog-title">
-              {'No worries.We will try for another match'}
-            </DialogTitle>
-
-            <DialogActions>
-              <Button onClick={handleCloseNo} color="primary" autoFocus>
-                OK
-              </Button>
-            </DialogActions>
-          </Dialog>
+          {data.map((item) => (
+            <MatchCard
+              id={item.id}
+              GoodCause={item.GoodCause}
+              Description={item.Description}
+              Dates={item.Dates}
+              accepted={item.accepted}
+            />
+          ))}
         </Grid>
       </Paper>
     </Container>
