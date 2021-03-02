@@ -35,7 +35,8 @@ export default function VoluenteerMatches() {
 
   const [data, setData] = React.useState(goodCauseDisplayDetailsMock);
 
-  const deleteMatchCard = (id) => {
+  const handleAgree = (id) => {
+    console.log('I am invoked ', id);
     const updatedMatchCard = data.filter((card) => card.id !== id);
     setData(updatedMatchCard);
   };
@@ -59,7 +60,7 @@ export default function VoluenteerMatches() {
               Description={item.Description}
               Dates={item.Dates}
               accepted={item.accepted}
-              deleteMatchCard={deleteMatchCard}
+              handleAgree={handleAgree}
             />
           ))}
         </Grid>

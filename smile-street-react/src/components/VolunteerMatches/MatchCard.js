@@ -8,6 +8,11 @@ import {
   CardContent,
   Typography,
   Grid,
+  Dialog,
+  DialogActions,
+  DialogTitle,
+  DialogContentText,
+  DialogContent,
 } from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
 
@@ -41,51 +46,96 @@ const MatchCard = ({
   Dates,
   accepted,
   deleteMatchCard,
+  handleAgree,
 }) => {
   const classes = useStyles();
 
-  const handleRejected = () => {
+  const handleAccepted = () => {
     console.log(id);
   };
+  const [open, setOpen] = React.useState(false);
 
+  const handleClickOpenNo = () => {
+    setOpen(true);
+  };
+  const handleClickOpenYes = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
   return (
     <Grid item xs={12} sm={4}>
-      {
-        <Card className={classes.root}>
-          <CardActionArea>
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="h2">
-                {GoodCause}
-              </Typography>
-              <Typography variant="body2" color="textSecondary" component="p">
-                {Description}
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-          <CardActions>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.buttonColor}
-              onClick={handleRejected}
-            >
-              Yes Please
-            </Button>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.buttonColor}
-              onClick={() => deleteMatchCard(id)}
-            >
-              No Thankyou
-            </Button>
-          </CardActions>
-        </Card>
-      }
+      <Card className={classes.root}>
+        <CardActionArea>
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="h2">
+              {GoodCause}
+            </Typography>
+            <Typography variant="body2" color="textSecondary" component="p">
+              {Description}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+        <CardActions>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.buttonColor}
+            onClick={handleClickOpenYes}
+          >
+            Yes Please
+          </Button>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.buttonColor}
+            onClick={handleClickOpenNo}
+          >
+            No Thankyou
+          </Button>
+        </CardActions>
+      </Card>
+
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          {'Are you sure you want to delete this?'}
+        </DialogTitle>
+
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Ok, I am not sure
+          </Button>
+          <Button onClick={() => handleAgree(id)} color="primary" autoFocus>
+            Yes,Delete it
+          </Button>
+        </DialogActions>
+      </Dialog>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          {'Thank you for yor interest good cause will reach our soon'}
+        </DialogTitle>
+
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            save
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Grid>
   );
 };
