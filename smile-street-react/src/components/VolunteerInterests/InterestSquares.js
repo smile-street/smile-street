@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Grid, 
         Card, 
@@ -24,31 +24,26 @@ const useStyles = makeStyles((theme) => ({
       background: "#449f80",
     },
   },
-  media: {
-    "&:hover": {
-      background: "#449f80",
-    },
+  selected: {
+    backgroundColor: "#449f80",
   },
 }));
 
 const InterestSquares = (props) => {
   const classes = useStyles();
-  const [selected, toggleSelected] = useState(props.selected)
-  function handleClick() {
-    toggleSelected(selected ? false : true);
-  }
   return (
       <Grid container spacing={3}>
         <Grid item>
           <Card className={classes.root}>
-            <CardActionArea className={classes.root} onClick={handleClick}>
+            <CardActionArea className={classes.root} 
+                            onClick={() => props.selectInterest(props.id)}>
             <CardMedia
-              className={classes.media}
+              // className={classes.media}
               component="img"
               height="100%"
               image={props.image}
               title={props.skill}
-              selected={props.selected}
+              className={props.selected ? "selected" : "unselected"}
             />
               <CardContent>
                 <Typography variant="h6">
