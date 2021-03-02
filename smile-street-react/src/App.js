@@ -21,7 +21,14 @@ import GoodCauseOpportunity from './components/GoodCauseOpportunity/GoodCauseOpp
 export default function App() {
   return (
     <div className="App">
-      <VoluenteerMatches />
-    </div>
+      <Header />
+      <VolunteerInterests />
+      {/* <Router>
+        <Header />
+        <Route path="/" exact component={Login} />
+        <Route path="/Registration" exact component={Registration} />
+        <Route path="/PasswordRecovery" exact component={PasswordRecovery} />
+      </Router> */}
+  </div>
   );
 }
