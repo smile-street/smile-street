@@ -1,20 +1,21 @@
-import "./App.css";
-import Header from "./components/Header/Header";
-import GoodCauseDetails from "./components/GoodCauseDetails/GoodCauseDetails";
-import GoodCauseMatches from "./components/GoodCauseMatches/GoodCauseMatches";
-import Login from "./components/Login/Login";
-import PasswordRecovery from "./components/PasswordRecovery/PasswordRecovery";
-import VolunteerAvaiblity from "./components/VolunteerAvaiblity/VolunteerAvaiblity";
-import VolunteerInterests from "./components/VolunteerInterests/VolunteerInterests";
-import VolunteerMatches from "./components/VolunteerMatches/VolunteerMatches";
-import GoodCauseOpporunity from "./components/GoodCauseOpportunity/GoodCauseOpportunity";
-import Registration from "./components/Registration/Registration";
+import './App.css';
+// import Header from "./components/Header/Header";
+// import GoodCauseDetails from "./components/GoodCauseDetails/GoodCauseDetails";
+// import GoodCauseMatches from "./components/GoodCauseMatches/GoodCauseMatches";
+// import Login from "./components/Login/Login";
+// import PasswordRecovery from "./components/PasswordRecovery/PasswordRecovery";
+// import VolunteerAvaiblity from "./components/VolunteerAvaiblity/VolunteerAvaiblity";
+// import VolunteerInterests from "./components/VolunteerInterests/VolunteerInterests";
+
+// import GoodCauseOpporunity from "./components/GoodCauseOpportunity/GoodCauseOpportunity";
+// import Registration from "./components/Registration/Registration";
+import VoluenteerMatches from './components/VolunteerMatches/VoluenteerMatches';
 import {
   BrowserRouter as Router,
   Route,
   Switch,
   useHistory,
-} from "react-router-dom";
+} from 'react-router-dom';
 
 export default function App() {
   return (
@@ -28,6 +29,5 @@ export default function App() {
         <Route path="/PasswordRecovery" exact component={PasswordRecovery} />
       </Router> */}
   </div>
-
   );
 }
