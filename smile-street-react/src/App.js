@@ -5,7 +5,7 @@ import './App.css';
 // import Login from "./components/Login/Login";
 // import PasswordRecovery from "./components/PasswordRecovery/PasswordRecovery";
 import VolunteerAvaiblity from './components/VolunteerAvaiblity/VolunteerAvaiblity';
-// import VolunteerInterests from "./components/VolunteerInterests/VolunteerInterests";
+import VolunteerInterests from './components/VolunteerInterests/VolunteerInterests';
 
 import GoodCauseOpporunity from './components/GoodCauseOpportunity/GoodCauseOpportunity';
 // import Registration from "./components/Registration/Registration";
@@ -21,6 +21,7 @@ import GoodCauseOpportunity from './components/GoodCauseOpportunity/GoodCauseOpp
 export default function App() {
   return (
     <div className="App">
+      <VolunteerInterests />
       <VoluenteerMatches />
     </div>
   );

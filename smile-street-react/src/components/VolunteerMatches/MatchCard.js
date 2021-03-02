@@ -57,9 +57,7 @@ const MatchCard = ({
   const handleClickOpenNo = () => {
     setOpen(true);
   };
-  const handleClickOpenYes = () => {
-    setOpen(true);
-  };
+
   const handleClose = () => {
     setOpen(false);
   };
@@ -111,10 +109,13 @@ const MatchCard = ({
         </DialogTitle>
 
         <DialogActions>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={handleClose} className={classes.buttonColor}>
             Ok, I am not sure
           </Button>
-          <Button onClick={() => handleAgree(id)} color="primary" autoFocus>
+          <Button
+            onClick={() => handleAgree(id)}
+            className={classes.buttonColor}
+          >
             Yes,Delete it
           </Button>
         </DialogActions>
