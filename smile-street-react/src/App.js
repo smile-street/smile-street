@@ -19,7 +19,6 @@ import {
 export default function App() {
   return (
     <div className="App">
-<<<<<<< HEAD
       <Header />
       <VolunteerInterests />
       {/* <Router>
@@ -28,16 +27,6 @@ export default function App() {
         <Route path="/Registration" exact component={Registration} />
         <Route path="/PasswordRecovery" exact component={PasswordRecovery} />
       </Router> */}
-=======
-
-      <VolunteerMatches />
-      <Router>
-
-
-
-  <Header />
-       
->>>>>>> fe658b45fbfd8a30de17fb61f97fab787c0e0a7d
   </div>
 
   );
