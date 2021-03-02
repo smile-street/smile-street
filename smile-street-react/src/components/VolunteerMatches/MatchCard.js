@@ -54,7 +54,10 @@ const MatchCard = ({
   };
   const [open, setOpen] = React.useState(false);
 
-  const handleClickOpen = () => {
+  const handleClickOpenNo = () => {
+    setOpen(true);
+  };
+  const handleClickOpenYes = () => {
     setOpen(true);
   };
   const handleClose = () => {
@@ -80,7 +83,7 @@ const MatchCard = ({
             variant="contained"
             color="primary"
             className={classes.buttonColor}
-            onClick={handleAccepted}
+            onClick={handleClickOpenYes}
           >
             Yes Please
           </Button>
@@ -90,7 +93,7 @@ const MatchCard = ({
             variant="contained"
             color="primary"
             className={classes.buttonColor}
-            onClick={handleClickOpen}
+            onClick={handleClickOpenNo}
           >
             No Thankyou
           </Button>
@@ -113,6 +116,22 @@ const MatchCard = ({
           </Button>
           <Button onClick={() => handleAgree(id)} color="primary" autoFocus>
             Yes,Delete it
+          </Button>
+        </DialogActions>
+      </Dialog>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          {'Thank you for yor interest good cause will reach our soon'}
+        </DialogTitle>
+
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            save
           </Button>
         </DialogActions>
       </Dialog>

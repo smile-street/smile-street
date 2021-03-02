@@ -34,11 +34,6 @@ export default function VoluenteerMatches() {
   const classes = useStyles();
 
   const [data, setData] = React.useState(goodCauseDisplayDetailsMock);
-  const [open, setOpen] = React.useState(false);
-
-  const deleteMatchCard = (id) => {
-    setOpen(true);
-  };
 
   const handleAgree = (id) => {
     console.log('I am invoked ', id);
