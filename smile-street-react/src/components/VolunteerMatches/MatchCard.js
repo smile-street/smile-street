@@ -33,11 +33,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const MatchCard = ({id, GoodCause, Description, Dates, accepted}) => {
+const MatchCard = ({
+  id,
+  GoodCause,
+  Description,
+  Dates,
+  accepted,
+  deleteMatchCard,
+}) => {
   const classes = useStyles();
-  const handleAccepeted = () => {
-    console.log(id);
-  };
+
   const handleRejected = () => {
     console.log(id);
   };
@@ -73,7 +78,7 @@ const MatchCard = ({id, GoodCause, Description, Dates, accepted}) => {
               variant="contained"
               color="primary"
               className={classes.buttonColor}
-              onClick={handleAccepeted}
+              onClick={() => deleteMatchCard(id)}
             >
               No Thankyou
             </Button>
