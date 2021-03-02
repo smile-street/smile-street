@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-
   Button,
   Card,
   CardActionArea,
@@ -84,7 +83,7 @@ const MatchCard = ({
             variant="contained"
             color="primary"
             className={classes.buttonColor}
-            onClick={handleClickOpenYes}
+            onClick={handleAccepted}
           >
             Yes Please
           </Button>
@@ -108,7 +107,7 @@ const MatchCard = ({
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">
-          {'Are you sure you want to delete this?'}
+          {'Are you sure you want to reject this opportunity?'}
         </DialogTitle>
 
         <DialogActions>
@@ -117,22 +116,6 @@ const MatchCard = ({
           </Button>
           <Button onClick={() => handleAgree(id)} color="primary" autoFocus>
             Yes,Delete it
-          </Button>
-        </DialogActions>
-      </Dialog>
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          {'Thank you for yor interest good cause will reach our soon'}
-        </DialogTitle>
-
-        <DialogActions>
-          <Button onClick={handleClose} color="primary">
-            save
           </Button>
         </DialogActions>
       </Dialog>
