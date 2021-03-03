@@ -27,7 +27,7 @@ export default function MaterialUIPickersEnding() {
           format="MM/dd/yyyy"
           margin="normal"
           id="date-picker-inline"
-          label="Please select ending date you available"
+          label="End Date"
           value={selectedDate}
           onChange={handleDateChange}
           KeyboardButtonProps={{

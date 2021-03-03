@@ -77,6 +77,7 @@ export default function Registration() {
               style={{ margin: 8 }}
               fullWidth
               autoFocus
+              
               name="title"
               label="Title"
               variant="outlined"

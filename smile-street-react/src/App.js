@@ -15,18 +15,16 @@ import {
   Switch,
   useHistory,
 } from "react-router-dom";
+import GoodCauseOpportunity from "./components/GoodCauseOpportunity/GoodCauseOpportunity";
+import VolunteerAvailability from "./components/VolunteerAvaiblity/VolunteerAvailability";
+
 
 export default function App() {
   return (
     <div className="App">
 
-
-       <Router>
-        <Header />
-        <Route path="/" exact component={Login} />
-        <Route path="/Registration" exact component={Registration} />
-        <Route path="/PasswordRecovery" exact component={PasswordRecovery} />
-      </Router>
+<VolunteerAvailability/>
+      
   </div>
 
   );
