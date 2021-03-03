@@ -59,6 +59,9 @@ const MatchCard = ({
   const handleClose = () => {
     setOpen(false);
   };
+
+  console.log(accepted);
+
   return (
     <Grid item xs={12} sm={4}>
       <Card className={classes.root}>
@@ -73,16 +76,18 @@ const MatchCard = ({
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.buttonColor}
-            onClick={() => handleAccepted(id)}
-          >
-            Yes Please
-          </Button>
+          {accepted === false && (
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.buttonColor}
+              onClick={() => handleAccepted(id)}
+            >
+              Yes Please
+            </Button>
+          )}
           <Button
             type="submit"
             fullWidth

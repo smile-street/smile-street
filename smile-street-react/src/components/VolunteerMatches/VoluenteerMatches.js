@@ -48,16 +48,24 @@ export default function VoluenteerMatches() {
       }
     }
     console.log(matches);
+
     setData(matches);
-    console.log(matches);
+    console.log(data);
   };
 
   console.log(data);
+
+  const rejectedMatches = data.filter((match) => match.accepted === false);
   return (
     <Container>
       <Paper className={classes.paper}>
+        <Grid item xs={4}>
+          {' '}
+          <Profilebutton />
+        </Grid>
+
         <PageHeading heading="Here is the list of available volunteer  matches" />
-        <Profilebutton />
+
         <Grid
           container
           spacing={2}

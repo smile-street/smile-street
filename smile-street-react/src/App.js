@@ -1,5 +1,5 @@
 import './App.css';
-// import Header from "./components/Header/Header";
+import Header from './components/Header/Header';
 // import GoodCauseDetails from "./components/GoodCauseDetails/GoodCauseDetails";
 // import GoodCauseMatches from "./components/GoodCauseMatches/GoodCauseMatches";
 // import Login from "./components/Login/Login";
@@ -21,7 +21,8 @@ import GoodCauseOpportunity from './components/GoodCauseOpportunity/GoodCauseOpp
 export default function App() {
   return (
     <div className="App">
-      <VolunteerInterests />
+      <Header />
+
       <VoluenteerMatches />
     </div>
   );
