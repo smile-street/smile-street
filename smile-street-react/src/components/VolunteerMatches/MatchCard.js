@@ -46,12 +46,10 @@ const MatchCard = ({
   accepted,
   deleteMatchCard,
   handleAgree,
+  handleAccepted,
 }) => {
   const classes = useStyles();
 
-  const handleAccepted = () => {
-    console.log(id);
-  };
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpenNo = () => {
@@ -81,7 +79,7 @@ const MatchCard = ({
             variant="contained"
             color="primary"
             className={classes.buttonColor}
-            onClick={handleAccepted}
+            onClick={() => handleAccepted(id)}
           >
             Yes Please
           </Button>

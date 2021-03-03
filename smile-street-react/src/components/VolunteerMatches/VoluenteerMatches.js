@@ -34,13 +34,25 @@ export default function VoluenteerMatches() {
   const classes = useStyles();
 
   const [data, setData] = React.useState(goodCauseDisplayDetailsMock);
-
+  console.log(data);
   const handleAgree = (id) => {
     console.log('I am invoked ', id);
     const updatedMatchCard = data.filter((card) => card.id !== id);
     setData(updatedMatchCard);
   };
+  const handleAccepted = (id) => {
+    let matches = data;
+    for (let match of matches) {
+      if (match.id === id) {
+        match.accepted = match.accepted ? false : true;
+      }
+    }
+    console.log(matches);
+    setData(matches);
+    console.log(matches);
+  };
 
+  console.log(data);
   return (
     <Container>
       <Paper className={classes.paper}>
@@ -61,6 +73,7 @@ export default function VoluenteerMatches() {
               Dates={item.Dates}
               accepted={item.accepted}
               handleAgree={handleAgree}
+              handleAccepted={handleAccepted}
             />
           ))}
         </Grid>
