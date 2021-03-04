@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-
   Button,
   Card,
   CardActionArea,
@@ -47,23 +46,22 @@ const MatchCard = ({
   accepted,
   deleteMatchCard,
   handleAgree,
+  handleAccepted,
 }) => {
   const classes = useStyles();
 
-  const handleAccepted = () => {
-    console.log(id);
-  };
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpenNo = () => {
     setOpen(true);
   };
-  const handleClickOpenYes = () => {
-    setOpen(true);
-  };
+
   const handleClose = () => {
     setOpen(false);
   };
+
+  console.log(accepted);
+
   return (
     <Grid item xs={12} sm={4}>
       <Card className={classes.root}>
@@ -78,16 +76,18 @@ const MatchCard = ({
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.buttonColor}
-            onClick={handleClickOpenYes}
-          >
-            Yes Please
-          </Button>
+          {accepted === false && (
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.buttonColor}
+              onClick={() => handleAccepted(id)}
+            >
+              Yes Please
+            </Button>
+          )}
           <Button
             type="submit"
             fullWidth
@@ -108,31 +108,18 @@ const MatchCard = ({
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">
-          {'Are you sure you want to delete this?'}
+          {'Are you sure you want to reject this opportunity?'}
         </DialogTitle>
 
         <DialogActions>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={handleClose} className={classes.buttonColor}>
             Ok, I am not sure
           </Button>
-          <Button onClick={() => handleAgree(id)} color="primary" autoFocus>
+          <Button
+            onClick={() => handleAgree(id)}
+            className={classes.buttonColor}
+          >
             Yes,Delete it
-          </Button>
-        </DialogActions>
-      </Dialog>
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          {'Thank you for yor interest good cause will reach our soon'}
-        </DialogTitle>
-
-        <DialogActions>
-          <Button onClick={handleClose} color="primary">
-            save
           </Button>
         </DialogActions>
       </Dialog>
