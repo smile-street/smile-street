@@ -1,5 +1,5 @@
 import './App.css';
-// import Header from './components/Header/Header';
+import Header from './components/Header/Header';
 // import GoodCauseDetails from "./components/GoodCauseDetails/GoodCauseDetails";
 // import GoodCauseMatches from "./components/GoodCauseMatches/GoodCauseMatches";
 // import Login from "./components/Login/Login";
@@ -21,10 +21,15 @@ import {
 export default function App() {
   return (
     <div className="App">
-
-<VolunteerAvailability/>
-      
-  </div>
+      <Header />
+      <VolunteerAvailability/>
+      {/* <Router>
+        <Header />
+        <Route path="/" exact component={Login} />
+        <Route path="/Registration" exact component={Registration} />
+        <Route path="/PasswordRecovery" exact component={PasswordRecovery} />
+      </Router> */}
+    </div>
 
   );
 }
