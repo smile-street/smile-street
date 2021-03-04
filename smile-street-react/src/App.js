@@ -10,6 +10,8 @@ import Header from './components/Header/Header';
 // import VoluenteerMatches from './components/VolunteerMatches/VoluenteerMatches';
 // import GoodCauseOpportunity from "./components/GoodCauseOpportunity/GoodCauseOpportunity";
 import VolunteerAvailability from "./components/VolunteerAvaiblity/VolunteerAvailability";
+import VolunteerEditProfile from ".components/VolunteerEditProfile/VolunteerEditProfile";
+
 import {
   BrowserRouter as Router,
   Route,
@@ -22,7 +24,7 @@ export default function App() {
   return (
     <div className="App">
       <Header />
-      <VolunteerAvailability/>
+      <VolunteerEditProfile/>
       {/* <Router>
         <Header />
         <Route path="/" exact component={Login} />
