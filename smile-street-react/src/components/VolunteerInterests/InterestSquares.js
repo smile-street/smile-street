@@ -1,22 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Grid, 
-        Container, 
         Card, 
         CardActionArea, 
-        CardActions, 
         CardContent, 
-        Typography, 
-        FormControlLabel, 
-        RadioGroup, 
-        Checkbox 
+        CardMedia, 
+        Typography
       } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
-  },
-  box: {
     flexGrow: 1,
   },
   paper: {
@@ -31,38 +24,36 @@ const useStyles = makeStyles((theme) => ({
       background: "#449f80",
     },
   },
+  // media: {
+  //   // backgroundColor: "#449f80",
+  //   backgroundColor: props => props.selected ? "#449f80" : null,
+  // },
 }));
 
-const InterestSquares = () => {
+const InterestSquares = (props) => {
   const classes = useStyles();
   return (
-    <Container>
       <Grid container spacing={3}>
         <Grid item>
           <Card className={classes.root}>
-            <CardActionArea className={classes.root}>
-              <CardContent >
-                <Typography gutterBottom variant="h5" component="h2">
-                  Gardening
+            <CardActionArea className={classes.root} 
+                            onClick={() => props.selectInterest(props.id)}>
+            <CardMedia
+              component="img"
+              height="100%"
+              image={props.image}
+              title={props.skill}
+              style={{ backgroundColor: (props.selected ? "#449f80" : null)}}
+            />
+              <CardContent>
+                <Typography variant="h6">
+                  {props.title}
                 </Typography>
               </CardContent>
-
             </CardActionArea>
-            <CardActions>
-
-              <RadioGroup>
-                <FormControlLabel
-                  value="cBOX"
-                  control={<Checkbox />}
-                //label=""
-                />
-              </RadioGroup>
-            </CardActions>
           </Card>
-
         </Grid>
       </Grid>
-    </Container>
   );
 };
 
