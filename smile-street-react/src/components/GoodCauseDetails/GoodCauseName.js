@@ -2,7 +2,7 @@
 import ApolloClient, { gql } from "apollo-boost"
 import { ApolloProvider, useQuery } from "@apollo/react-hooks"
 
-const charityNumber = 1017504 // should be changed by new input from user (e.g 1050488, 1114004)
+let charityNumber = 1017504 // should be changed by new input from user (others for testing: 1050488, 1114004)
 
 const client = new ApolloClient({
     uri: "https://charitybase.uk/api/graphql",

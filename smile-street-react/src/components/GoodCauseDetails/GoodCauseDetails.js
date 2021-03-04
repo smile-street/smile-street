@@ -7,6 +7,7 @@ import {
   TextField,
   Button,
 } from "@material-ui/core";
+import GoodCauseName from './GoodCauseName';
 import PageHeading from "../PageHeading/PageHeading";
 
 const useStyles = makeStyles((theme) => ({
@@ -47,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Registration() {
+export default function GoodCauseDetails() {
   const classes = useStyles();
   return (
     <Container component="main">
