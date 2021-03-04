@@ -22,8 +22,14 @@ export default function App() {
   return (
     <div className="App">
       <Header />
-
       <VoluenteerMatches />
-    </div>
+      {/* <Router>
+        <Header />
+        <Route path="/" exact component={Login} />
+        <Route path="/Registration" exact component={Registration} />
+        <Route path="/PasswordRecovery" exact component={PasswordRecovery} />
+      </Router> */}
+  </div>
+
   );
 }
