@@ -52,8 +52,9 @@ export default function GoodCauseDetails() {
   const [goodCauseDescription, setGoodCauseDescription] = useState('')
   const classes = useStyles();
   
-  const handleClick = () => console.log(`
-    Charity number: ${goodCauseNumber}
+  const handleClick = () => console.log(
+    `Charity number: ${goodCauseNumber}
+    Good Cause name: my idea is to move the function from GoodCauseName into here and get rid of the component... -A
     Description: ${goodCauseDescription}
     `)
 
