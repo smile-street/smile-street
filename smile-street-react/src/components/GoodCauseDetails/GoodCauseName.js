@@ -27,7 +27,7 @@ function setClient(number) {
 }
 const GetGoodCauseName = (props) => {
     let charityNumber = props.number // should be changed by new input from user (others for testing: 1050488, 1114004)
-    console.log(props.number)
+    console.log(props)
     const COUNT_QUERY = setClient(charityNumber)
     const { loading, error, data } = useQuery(COUNT_QUERY)
     if (loading) return <p>Loading...</p>
@@ -36,7 +36,7 @@ const GetGoodCauseName = (props) => {
         <TextField
             variant="outlined"
             margin="normal"
-            id="first name"
+            id="Name of good cause"
             label="Name of good cause"
             value = {data.CHC.getCharities.list[0].names[0].value}
             fullWidth
@@ -45,10 +45,10 @@ const GetGoodCauseName = (props) => {
     )
 }
 
-const GoodCauseName = () => {
+const GoodCauseName = (props) => {
     return (
         <ApolloProvider client={client}>
-            <GetGoodCauseName />
+            <GetGoodCauseName number={props.number} />
         </ApolloProvider>
     )
 }

@@ -46,14 +46,22 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
 export default function GoodCauseDetails() {
   const [goodCauseNumber, setGoodCauseNumber] = useState('')
   const classes = useStyles();
+  
+  function updateGoodCauseName(value) {
+    setGoodCauseNumber(value);
+    console.log(value);
+
+  }
+  
   return (
     <Container component="main">
       <Paper className={classes.paper}>
         <Container maxWidth="xs">
-          <PageHeading heading="Good Cause Detaiils" />
+          <PageHeading heading="Good Cause Details" />
           <Grid container spacing={3}>
             <TextField
               variant="outlined"
@@ -64,14 +72,14 @@ export default function GoodCauseDetails() {
               fullWidth
               autoFocus
               value={goodCauseNumber}
-              onChange={(event) => setGoodCauseNumber(event.target.value)}
+              onChange={(event) => updateGoodCauseName(event.target.value)}
             />
             <GoodCauseName className={classes.root} number={goodCauseNumber}/>
             <TextField
               variant="outlined"
               margin="normal"
               id="last name"
-              label="Few word describing good cause"
+              label="Add a few words describing your good cause"
               className={classes.root}
               fullWidth
               multiline
@@ -80,7 +88,7 @@ export default function GoodCauseDetails() {
 
             <Grid item xs={12} sm={12}>
               <Button variant="contained" className={classes.buttonColor}>
-                Add availblity
+                Add Opportunity
               </Button>
             </Grid>
           </Grid>
