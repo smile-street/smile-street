@@ -49,8 +49,14 @@ const useStyles = makeStyles((theme) => ({
 
 export default function GoodCauseDetails() {
   const [goodCauseNumber, setGoodCauseNumber] = useState('')
+  const [goodCauseDescription, setGoodCauseDescription] = useState('')
   const classes = useStyles();
   
+  const handleClick = () => console.log(`
+    Charity number: ${goodCauseNumber}
+    Description: ${goodCauseDescription}
+    `)
+
   return (
     <Container component="main">
       <Paper className={classes.paper}>
@@ -75,13 +81,15 @@ export default function GoodCauseDetails() {
               id="last name"
               label="Add a few words describing your good cause"
               className={classes.root}
+              value={goodCauseDescription}
+              onChange={(event) => setGoodCauseDescription(event.target.value)}
               fullWidth
               multiline
               rows="6"
             />
 
             <Grid item xs={12} sm={12}>
-              <Button variant="contained" className={classes.buttonColor}>
+              <Button variant="contained" className={classes.buttonColor} onClick={handleClick}>
                 Add Opportunity
               </Button>
             </Grid>
