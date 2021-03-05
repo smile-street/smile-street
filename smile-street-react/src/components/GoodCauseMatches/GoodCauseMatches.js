@@ -25,7 +25,7 @@ export default function FullWidthGrid() {
     <div className={classes.root}>
       <Container component="main">
         <Paper className={classes.paper}>
-          <PageHeading heading="Here is the list of available volunteer  matches" />
+          <PageHeading heading="Here is the list of available matches" />
           <GoodCauseProfileButton />
           <Grid
             container

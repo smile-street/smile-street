@@ -64,7 +64,7 @@ export default function VoluenteerMatches() {
           <Profilebutton />
         </Grid>
 
-        <PageHeading heading="Here is the list of available volunteer  matches" />
+        <PageHeading heading="Here is the list of available volunteer matches" />
 
         <Grid
           container
