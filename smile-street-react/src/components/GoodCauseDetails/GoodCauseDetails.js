@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   makeStyles,
   Paper,
@@ -19,11 +19,9 @@ const useStyles = makeStyles((theme) => ({
     "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
       borderColor: "#449f80",
     },
-
     "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-input": {
       color: "#449f80",
     },
-
     "& .MuiInputLabel-outlined.Mui-focused": {
       color: "#449f80",
     },
@@ -49,6 +47,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function GoodCauseDetails() {
+  const [goodCauseNumber, setGoodCauseNumber] = useState('')
   const classes = useStyles();
   return (
     <Container component="main">
@@ -64,15 +63,10 @@ export default function GoodCauseDetails() {
               className={classes.root}
               fullWidth
               autoFocus
+              value={goodCauseNumber}
+              onChange={(event) => setGoodCauseNumber(event.target.value)}
             />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              id="first name"
-              label="Name of good cause"
-              className={classes.root}
-              fullWidth
-            />
+            <GoodCauseName className={classes.root} number={goodCauseNumber}/>
             <TextField
               variant="outlined"
               margin="normal"

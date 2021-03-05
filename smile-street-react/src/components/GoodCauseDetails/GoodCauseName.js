@@ -1,8 +1,8 @@
 //npm install apollo-boost, @apollo/react-hooks, graphql
+import { useState } from "react";
+import { TextField } from "@material-ui/core"
 import ApolloClient, { gql } from "apollo-boost"
 import { ApolloProvider, useQuery } from "@apollo/react-hooks"
-
-let charityNumber = 1017504 // should be changed by new input from user (others for testing: 1050488, 1114004)
 
 const client = new ApolloClient({
     uri: "https://charitybase.uk/api/graphql",
@@ -10,23 +10,39 @@ const client = new ApolloClient({
         Authorization: "Apikey 93ad424e-fcfd-4d5e-8820-32ecf2291c54",
     },
 })
-const COUNT_QUERY = gql`
-  {
-    CHC {
-      getCharities(filters: { id: ${charityNumber} }) {
-        list {
-          names { value } 
-        }  
+function setClient(number) {
+    const COUNT_QUERY = gql`
+      {
+        CHC {
+          getCharities(filters: { id: ${number} }) {
+            list {
+              names { value } 
+            }  
+          }
+        }
       }
-    }
-  }
-  
-`
-const GetGoodCauseName = () => {
+      
+    `
+    return COUNT_QUERY
+}
+const GetGoodCauseName = (props) => {
+    let charityNumber = props.number // should be changed by new input from user (others for testing: 1050488, 1114004)
+    console.log(props.number)
+    const COUNT_QUERY = setClient(charityNumber)
     const { loading, error, data } = useQuery(COUNT_QUERY)
     if (loading) return <p>Loading...</p>
     if (error) return <p>Error :(</p>
-    return <h1>{data.CHC.getCharities.list[0].names[0].value}</h1>
+    return (
+        <TextField
+            variant="outlined"
+            margin="normal"
+            id="first name"
+            label="Name of good cause"
+            value = {data.CHC.getCharities.list[0].names[0].value}
+            fullWidth
+            disabled
+        />
+    )
 }
 
 const GoodCauseName = () => {
