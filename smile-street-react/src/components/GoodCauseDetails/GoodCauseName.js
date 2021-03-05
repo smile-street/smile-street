@@ -31,7 +31,7 @@ const GetGoodCauseName = (props) => {
     if (loading) { result = "Loading..." }
     if (error) { result = "Error :(" }
     if (data) { 
-      if (!data.CHC.getCharities.list.length) {result = "No Match"}
+      if (!data.CHC.getCharities.list.length) {result = "No matches"}
       else {result = data.CHC.getCharities.list[0].names[0].value}
     }
     return (

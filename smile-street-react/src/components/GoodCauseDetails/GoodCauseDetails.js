@@ -51,12 +51,6 @@ export default function GoodCauseDetails() {
   const [goodCauseNumber, setGoodCauseNumber] = useState('')
   const classes = useStyles();
   
-  function updateGoodCauseName(value) {
-    setGoodCauseNumber(value);
-    console.log(value);
-
-  }
-  
   return (
     <Container component="main">
       <Paper className={classes.paper}>
@@ -72,7 +66,7 @@ export default function GoodCauseDetails() {
               fullWidth
               autoFocus
               value={goodCauseNumber}
-              onChange={(event) => updateGoodCauseName(event.target.value)}
+              onChange={(event) => setGoodCauseNumber(event.target.value)}
             />
             <GoodCauseName className={classes.root} number={goodCauseNumber}/>
             <TextField
