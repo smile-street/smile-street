@@ -12,7 +12,7 @@ const client = new ApolloClient({
 })
 
 const GetGoodCauseName = (props) => {
-    let charityNumber = props.number // should be changed by new input from user (others for testing: 1050488, 1114004)
+    let charityNumber = props.number // numbers for testing: 1050488, 1114004
     const COUNT_QUERY = gql`
       query CountCharitiesCHC($id: [ID]) {
         CHC {
@@ -31,8 +31,7 @@ const GetGoodCauseName = (props) => {
     if (loading) { result = "Loading..." }
     if (error) { result = "Error :(" }
     if (data) { 
-      if (!data.CHC.getCharities.list.length) {result = "No matches"}
-      else {result = data.CHC.getCharities.list[0].names[0].value}
+      result = data.CHC.getCharities.list.length ? data.CHC.getCharities.list[0].names[0].value : "No matches"
     }
     return (
         <TextField
