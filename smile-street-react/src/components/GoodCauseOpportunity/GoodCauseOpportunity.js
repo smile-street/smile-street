@@ -1,10 +1,7 @@
-import React from "react";
-import CustomizedHook from "./AutoCompleteTag";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Grid";
-import Container from "@material-ui/core/Container";
-import { TextField, Button } from "@material-ui/core";
+import { TextField, Button, Paper, Grid, Container } from "@material-ui/core";
+import CustomizedHook from "./AutoCompleteTag";
 import MaterialUIDatePickers from "./DatePickerStarting";
 import MaterialUIDatePickersEnding from "./DatePickerEnding";
 
@@ -49,6 +46,7 @@ const GoodCauseOpportunity = () => {
   }));
 
   const classes = useStyles();
+  const [title, setTitle] = useState('')
 
   return (
     <Container>
@@ -58,7 +56,21 @@ const GoodCauseOpportunity = () => {
             <Grid container spacing={1}>
               <Grid item xs={12} sm={12}>
                 <TextField
-                  id="outlined-multiline-static"
+                  variant="outlined"
+                  // margin="normal"
+                  id="title"
+                  label="Opportunity title"
+                  name="title"
+                  autoFocus
+                  value={title}
+                  onChange={(event) => setTitle(event.target.value)}
+                  style={{ width: "60%" }}
+                  className={classes.root}
+                />
+              </Grid>
+              <Grid item xs={12} sm={12}>
+                <TextField
+                  id="description"
                   label="Brief description of the opportunity"
                   multiline
                   rows={6}
