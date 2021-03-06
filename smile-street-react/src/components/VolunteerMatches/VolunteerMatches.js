@@ -4,8 +4,7 @@ import PageHeading from '../PageHeading/PageHeading';
 import Profilebutton from './Profilebutton';
 import {makeStyles} from '@material-ui/core/styles';
 import MatchCard from './MatchCard';
-
-import goodCauseDisplayDetailsMock from '../../goodCauseDisplayDetailsMock.json';
+import VolunteerMatchesData from './VolunteerMatches.json';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,22 +29,42 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function VoluenteerMatches() {
+export default function VolunteerMatches() {
   const classes = useStyles();
 
-  const [data, setData] = React.useState(goodCauseDisplayDetailsMock);
-
+  const [data, setData] = React.useState(VolunteerMatchesData);
+  console.log(data);
   const handleAgree = (id) => {
     console.log('I am invoked ', id);
     const updatedMatchCard = data.filter((card) => card.id !== id);
     setData(updatedMatchCard);
   };
+  const handleAccepted = (id) => {
+    let matches = data;
+    for (let match of matches) {
+      if (match.id === id) {
+        match.accepted = match.accepted ? false : true;
+      }
+    }
+    console.log(matches);
 
+    setData(matches);
+    console.log(data);
+  };
+
+  console.log(data);
+
+  const rejectedMatches = data.filter((match) => match.accepted === false);
   return (
     <Container>
       <Paper className={classes.paper}>
-        <PageHeading heading="Here is the list of available volunteer  matches" />
-        <Profilebutton />
+        <Grid item xs={4}>
+          {' '}
+          <Profilebutton />
+        </Grid>
+
+        <PageHeading heading="Here is the list of available volunteer matches" />
+
         <Grid
           container
           spacing={2}
@@ -61,6 +80,7 @@ export default function VoluenteerMatches() {
               Dates={item.Dates}
               accepted={item.accepted}
               handleAgree={handleAgree}
+              handleAccepted={handleAccepted}
             />
           ))}
         </Grid>
