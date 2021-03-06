@@ -21,11 +21,11 @@ import Login from './components/Login/Login';
 export default function App() {
   return (
     <div className="App">
-      <Header />
+      {/* <Header />
       <Router>
         <Route path="/" exact component={Login} />
         <Route path="/Registration" exact component={Registration} />
-      </Router>
+      </Router> */}
       {/* <GoodCauseOpporunity />
       <VolunteerMatches /> */}
       {/* <GoodCauseMatches /> */}
@@ -36,6 +36,7 @@ export default function App() {
         <Route path="/Registration" exact component={Registration} />
         <Route path="/PasswordRecovery" exact component={PasswordRecovery} />
       </Router> */}
+      <VolunteerAvailability />
     </div>
   );
 }
