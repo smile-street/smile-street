@@ -21,7 +21,7 @@ import {
 export default function App() {
   return (
     <div className="App">
-      {/* <Router>
+      <Router>
         <Header />
         <Route path="/" exact component={Login} />
         <Route path="/Registration" exact component={Registration} />
@@ -30,9 +30,9 @@ export default function App() {
       <VolunteerAvailability />
       <VolunteerInterests />
       <VolunteerMatches />
-      <GoodCauseDetails /> */}
+      <GoodCauseDetails />
       <GoodCauseOpportunity />
-      {/* <GoodCauseMatches /> */}
+      <GoodCauseMatches />
 
     </div>
   );
