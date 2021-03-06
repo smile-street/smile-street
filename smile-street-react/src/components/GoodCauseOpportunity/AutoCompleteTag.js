@@ -134,7 +134,7 @@ const Listbox = styled("ul")`
   }
 `;
 
-export default function AutoCompleteTag() {
+export default function AutoCompleteTag(props) {
   const {
     getRootProps,
     getInputLabelProps,
@@ -152,7 +152,7 @@ export default function AutoCompleteTag() {
     options: top100Films,
     getOptionLabel: (option) => option.title,
   });
-
+  props.setSkills(value)
   return (
     <NoSsr>
       <div>

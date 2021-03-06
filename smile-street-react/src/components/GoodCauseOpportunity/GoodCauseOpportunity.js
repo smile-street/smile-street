@@ -51,7 +51,7 @@ const GoodCauseOpportunity = () => {
   const [opportunities, setOpportunities] = useState([])
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
-  // const [skills, setSkills] = useState('');
+  const [skills, setSkills] = useState('');
   // const [dates, setDates] = useState([]);
 
   function addOpportunity() {
@@ -60,6 +60,7 @@ const GoodCauseOpportunity = () => {
       "description": description,
       "start date": startDate,
       "end date": endDate,
+      "skills": skills
     }
     const newOpportunities =  opportunities.concat(opportunity)
     setOpportunities(newOpportunities)
@@ -109,7 +110,7 @@ const GoodCauseOpportunity = () => {
               </Grid>
 
               <Grid item xs={12} sm={12}>
-                <AutoCompleteTag fullWidth />
+                <AutoCompleteTag fullWidth setSkills={setSkills} />
               </Grid>
               <Grid item xs={12} sm={12}>
                 <DatePicker 

@@ -21,13 +21,13 @@ import {
 export default function App() {
   return (
     <div className="App">
-      <Router>
+      {/* <Router>
         <Header />
         <Route path="/" exact component={Login} />
         <Route path="/Registration" exact component={Registration} />
         <Route path="/PasswordRecovery" exact component={PasswordRecovery} />
       </Router>
-      {/* <VolunteerAvailability />
+      <VolunteerAvailability />
       <VolunteerInterests />
       <VolunteerMatches />
       <GoodCauseDetails /> */}
