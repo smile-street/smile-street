@@ -57,8 +57,9 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-export default function Registration() {
-  //const{errors} = ValidateInfo(validate);
+export default function Registration({setForm, formData, navigation}) {
+  const {firstName, lastName, email, contactNumber, password} = formData;
+  const {next} = navigation;
   const [registration, newRegistration] = useState({
     firstName: '',
     lastName: '',
@@ -105,13 +106,13 @@ export default function Registration() {
             <TextField
               variant="outlined"
               margin="normal"
-              id="first name"
+              id="firstName"
               label="First Name"
               style={{margin: 8}}
               fullWidth
               name="firstName"
-              value={registration.firstName}
-              onChange={handleChange}
+              value={firstName}
+              onChange={setForm}
               className={classes.root}
             />
             {errors.firstName && <p>{errors.firstName}</p>}
@@ -123,9 +124,8 @@ export default function Registration() {
               style={{margin: 8}}
               fullWidth
               name="lastName"
-              //type="text"
-              value={registration.lastName}
-              onChange={handleChange}
+              value={lastName}
+              onChange={setForm}
               className={classes.root}
             />
             {errors.lastName && <p>{errors.lastName}</p>}
@@ -137,8 +137,8 @@ export default function Registration() {
               style={{margin: 8}}
               fullWidth
               name="email"
-              value={registration.email}
-              onChange={handleChange}
+              value={email}
+              onChange={setForm}
               className={classes.root}
             />
             {errors.email && <p>{errors.email}</p>}
@@ -150,8 +150,8 @@ export default function Registration() {
               style={{margin: 8}}
               fullWidth
               name="contactNumber"
-              value={registration.contactNumber}
-              onChange={handleChange}
+              value={contactNumber}
+              onChange={setForm}
               className={classes.root}
             />
             {errors.contactNumber && <p>{errors.contactNumber}</p>}
@@ -163,8 +163,8 @@ export default function Registration() {
               style={{margin: 8}}
               fullWidth
               name="password"
-              value={registration.password}
-              onChange={handleChange}
+              value={password}
+              onChange={setForm}
               className={classes.root}
             />
             {errors.password && <p>{errors.password}</p>}
@@ -176,14 +176,14 @@ export default function Registration() {
               style={{margin: 8}}
               fullWidth
               name="confirmPass"
-              value={registration.confirmPass}
-              onChange={handleChange}
+              value={password}
+              onChange={setForm}
               className={classes.root}
             />
             {errors.confirmPass && <p>{errors.confirmPass}</p>}
             <Grid item xs={12} sm={12}>
               <Button
-                onClick={handleClick}
+                onClick={next}
                 variant="contained"
                 className={classes.button}
               >

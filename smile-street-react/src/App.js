@@ -17,6 +17,7 @@ import {
   useHistory,
 } from 'react-router-dom';
 import Login from './components/Login/Login';
+import MultiStepMain from './components/MultiStepMain';
 
 export default function App() {
   return (
@@ -36,7 +37,8 @@ export default function App() {
         <Route path="/Registration" exact component={Registration} />
         <Route path="/PasswordRecovery" exact component={PasswordRecovery} />
       </Router> */}
-      <VolunteerAvailability />
+      {/* <VolunteerAvailability /> */}
+      <MultiStepMain />
     </div>
   );
 }
