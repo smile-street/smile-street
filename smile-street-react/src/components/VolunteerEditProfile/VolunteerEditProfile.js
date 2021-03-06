@@ -1,5 +1,4 @@
-import ValidateInfo from "./ValidateEditProfile.js";
-import { useState } from "react";
+import { Profiler, useState } from "react";
 import React from "react";
 import {
   makeStyles,
@@ -57,36 +56,50 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-export default function Registration() {
-  //const{errors} = ValidateInfo(validate);
-  const [registration, newRegistration] = useState({
-    title: "",
-    firstName: "",
-    lastName: "",
-    email: "",
-    contactNumber: "",
-    password: "",
-    confirmPass: "",
-  });
+
+//this page needs to siplay what is in the database and 
+//allow volunteer to edit their details.
+
+
+export default function VolunteerEditProfile() {
+ 
+
+  const [currentProfile, setProfile] = useState([{
+  firstName: "viran", lastName: "Gohil", email: "jodrew_7@hotmail.com", contactNumber: "07931484239", password: "yoda"
+}]);
+    //firstName: "",
+    //lastName: "",
+    //email: "",
+    //contactNumber: "",
+    //password: "",
+    //confirmPass: "",
+  
+
+ // 
+
+ 
+
+const emailCurrentProfile = currentProfile.filter(currentProfil => currentProfil.email="jodrew_7@hotmail.com")
+//console.log(emailCurrentProfile)
+
+
   const handleChange = (e) => {
-    newRegistration({
-      ...registration,
+    setProfile({
+      ...currentProfile,
       [e.target.name]: e.target.value,
     });
   };
-  const [errors, setErrors] = useState({ ValidateInfo });
-  //////////////////////////////////////////////////
-  const addRegistration = (text) => {
-    const newReg = {
-      text: text,
-    };
-    //takes the current array and reuilds and updates.
-    const updatedReg = [...registration, newReg];
-    newRegistration(updatedReg);
-  };
+  const [errors, setErrors] = useState({});
+ 
   const handleClick = (e) => {
     e.preventDefault();
-    setErrors(ValidateInfo(registration));
+    console.log(
+      currentProfile.firstName, 
+      currentProfile.lastName,
+      currentProfile.email,
+      currentProfile.password
+      )
+    
   };
   //////////////////////////////////////////////////////////
   const classes = useStyles();
@@ -94,111 +107,113 @@ export default function Registration() {
     <Container component="main">
       <Paper className={classes.paper}>
         <Container maxWidth="xs">
-          <PageHeading heading="Registration" />
+          <PageHeading heading="Volunteer - Edit Profile" />
           <Grid container spacing={3}>
-            <TextField
-              margin="normal"
-              id="title"
-              style={{ margin: 8 }}
-              fullWidth
-              autoFocus
-              
-              name="title"
-              label="Title"
-              variant="outlined"
-              //  input onChange={handleChange}
-              value={registration.title}
-              onChange={handleChange}
-              className={classes.root}
-            />
-            {errors.title && <p>{errors.title}</p>}
+           
+
             <TextField
               variant="outlined"
               margin="normal"
               id="first name"
-              label="First Name"
+              label = {emailCurrentProfile[0].firstName}
               style={{ margin: 8 }}
               fullWidth
               name="firstName"
-              value={registration.firstName}
+              value={currentProfile.firstName}
               onChange={handleChange}
               className={classes.root}
             />
-            {errors.firstName && <p>{errors.firstName}</p>}
+
             <TextField
               variant="outlined"
               margin="normal"
               id="last name"
-              label="Last Name"
+              label= {emailCurrentProfile[0].lastName}
               style={{ margin: 8 }}
               fullWidth
               name="lastName"
               //type="text"
-              value={registration.lastName}
+              value={currentProfile.lastName}
               onChange={handleChange}
               className={classes.root}
             />
-            {errors.lastName && <p>{errors.lastName}</p>}
+
             <TextField
               variant="outlined"
               margin="normal"
               id="email"
-              label="Email Address"
+              label= {emailCurrentProfile[0].email}
               style={{ margin: 8 }}
               fullWidth
               name="email"
-              value={registration.email}
+              value={currentProfile.email}
               onChange={handleChange}
               className={classes.root}
             />
-            {errors.email && <p>{errors.email}</p>}
+
             <TextField
               variant="outlined"
               margin="normal"
               id="contact number"
-              label="Contact Number"
+              label= {emailCurrentProfile[0].contactNumber}
               style={{ margin: 8 }}
               fullWidth
               name="contactNumber"
-              value={registration.contactNumber}
+              value={currentProfile.contactNumber}
               onChange={handleChange}
               className={classes.root}
             />
-            {errors.contactNumber && <p>{errors.contactNumber}</p>}
+
             <TextField
               variant="outlined"
               margin="normal"
               id="password"
-              label="Password"
+              label= {emailCurrentProfile[0].password}
               style={{ margin: 8 }}
               fullWidth
               name="password"
-              value={registration.password}
+              value={currentProfile.password}
               onChange={handleChange}
               className={classes.root}
             />
-            {errors.password && <p>{errors.password}</p>}
+
             <TextField
               variant="outlined"
               margin="normal"
               id="confirm password"
-              label="Confrim Password"
+              label="Confirm Password"
               style={{ margin: 8 }}
               fullWidth
               name="confirmPass"
-              value={registration.confirmPass}
+              value={currentProfile.confirmPass}
               onChange={handleChange}
               className={classes.root}
             />
-            {errors.confirmPass && <p>{errors.confirmPass}</p>}
-            <Grid item xs={12} sm={12}>
+
+            <Grid item xs={6} sm={6}>
               <Button
                 onClick={handleClick}
                 variant="contained"
                 className={classes.button}
+                style={{ margin: 8 }}
               >
                 Submit
               </Button>
+
+
+
+
+              <Button
+              onClick={handleClick}
+              variant="contained"
+              className={classes.button}
+              style={{ margin: 8 }}>
+
+
+                Edit
+              </Button>
+
+
             </Grid>
           </Grid>
         </Container>

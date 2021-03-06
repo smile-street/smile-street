@@ -10,8 +10,7 @@ import Header from './components/Header/Header';
 // import VoluenteerMatches from './components/VolunteerMatches/VoluenteerMatches';
 // import GoodCauseOpportunity from "./components/GoodCauseOpportunity/GoodCauseOpportunity";
 import VolunteerAvailability from "./components/VolunteerAvaiblity/VolunteerAvailability";
-import VolunteerEditProfile from ".components/VolunteerEditProfile/VolunteerEditProfile";
-
+import VolunteerEditProfile from "./components/VolunteerEditProfile/VolunteerEditProfile";
 import {
   BrowserRouter as Router,
   Route,
