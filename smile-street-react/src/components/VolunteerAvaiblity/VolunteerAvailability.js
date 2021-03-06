@@ -32,14 +32,8 @@ import PageHeading from '../PageHeading/PageHeading';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-<<<<<<< HEAD
     '&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
       borderColor: '#53bd98',
-=======
-
-    "&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-      borderColor: "#53bd98",
->>>>>>> main
     },
     '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
       borderColor: '#449f80',

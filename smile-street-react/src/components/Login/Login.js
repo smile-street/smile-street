@@ -168,10 +168,6 @@ export default function Login() {
           <Grid item xs={12} sm={12} style={{margin: 8}}>
             <Divider />
           </Grid>
-
-          <Grid item xs={12} sm={12} style={{margin: 8}}>
-            <Divider />
-          </Grid>
           <Grid item xs={12} sm={12}>
             <Button
               type="submit"
