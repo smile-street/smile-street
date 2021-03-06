@@ -46,7 +46,29 @@ const GoodCauseOpportunity = () => {
   }));
 
   const classes = useStyles();
-  const [title, setTitle] = useState('')
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [opportunities, setOpportunities] = useState([])
+  // const [skills, setSkills] = useState('');
+  // const [date, setDate] = useState('');
+  // const [dates, setDates] = useState([]);
+
+  function addOpportunity() {
+    console.log("in addOppo()")
+    const opportunity = {
+      "title": title,
+      "description": description,
+    }
+    console.log("opportunity object:")
+    console.log(opportunity)
+
+    const newOpportunities =  opportunities.concat(opportunity)
+    setOpportunities(newOpportunities)
+    console.log(opportunities)
+    console.log(newOpportunities)
+    setTitle('')
+    setDescription('')
+  }
 
   return (
     <Container>
@@ -75,6 +97,8 @@ const GoodCauseOpportunity = () => {
                   multiline
                   rows={6}
                   variant="outlined"
+                  value={description}
+                  onChange={(event) => setDescription(event.target.value)}
                   style={{ width: "60%" }}
                   className={classes.root}
                 />
@@ -91,9 +115,19 @@ const GoodCauseOpportunity = () => {
               </Grid>
 
               <Grid item xs={12} sm={12}>
-                <Button variant="contained" className={classes.buttonColor}>
-                  Add availblity
+                <Button 
+                  variant="contained" 
+                  className={classes.buttonColor}
+                  onClick={addOpportunity}
+                >
+                  Add Opportunity
                 </Button>
+              </Grid>
+              <Grid item xs={12} sm={12}>
+                <Button variant="contained" className={classes.buttonColor}>
+                  Done
+                </Button>
+
               </Grid>
             </Grid>
           </Paper>
