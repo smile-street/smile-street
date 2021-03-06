@@ -8,8 +8,7 @@ import PasswordRecovery from "./components/PasswordRecovery/PasswordRecovery";
 import Registration from "./components/Registration/Registration";
 import VolunteerAvailability from "./components/VolunteerAvaiblity/VolunteerAvailability";
 import VolunteerInterests from './components/VolunteerInterests/VolunteerInterests';
-
-import VoluenteerMatches from './components/VolunteerMatches/VoluenteerMatches';
+import VolunteerMatches from './components/VolunteerMatches/VolunteerMatches';
 
 
 import {
@@ -28,12 +27,12 @@ export default function App() {
         <Route path="/Registration" exact component={Registration} />
         <Route path="/PasswordRecovery" exact component={PasswordRecovery} />
       </Router>
-      <VolunteerAvailability />
+      {/* <VolunteerAvailability />
       <VolunteerInterests />
       <VolunteerMatches />
-      <GoodCauseDetails />
+      <GoodCauseDetails /> */}
       <GoodCauseOpportunity />
-      <GoodCauseMatches />
+      {/* <GoodCauseMatches /> */}
 
     </div>
   );

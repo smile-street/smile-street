@@ -59,10 +59,9 @@ const GoodCauseOpportunity = () => {
               <Grid item xs={12} sm={12}>
                 <TextField
                   id="outlined-multiline-static"
-                  label="Description of opportunity"
+                  label="Brief description of the opportunity"
                   multiline
                   rows={6}
-                  defaultValue="Few words describing an opportunity"
                   variant="outlined"
                   style={{ width: "60%" }}
                   className={classes.root}
