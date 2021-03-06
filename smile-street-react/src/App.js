@@ -1,16 +1,14 @@
 import './App.css';
 import Header from './components/Header/Header';
-import GoodCauseDetails from "./components/GoodCauseDetails/GoodCauseDetails";
-import GoodCauseOpportunity from "./components/GoodCauseOpportunity/GoodCauseOpportunity";
-import GoodCauseMatches from "./components/GoodCauseMatches/GoodCauseMatches";
-import Login from "./components/Login/Login";
-import PasswordRecovery from "./components/PasswordRecovery/PasswordRecovery";
-import Registration from "./components/Registration/Registration";
-import VolunteerAvailability from "./components/VolunteerAvaiblity/VolunteerAvailability";
+import GoodCauseDetails from './components/GoodCauseDetails/GoodCauseDetails';
+import GoodCauseOpportunity from './components/GoodCauseOpportunity/GoodCauseOpportunity';
+import GoodCauseMatches from './components/GoodCauseMatches/GoodCauseMatches';
+import Login from './components/Login/Login';
+import PasswordRecovery from './components/PasswordRecovery/PasswordRecovery';
+import Registration from './components/Registration/Registration';
+import VolunteerAvailability from './components/VolunteerAvaiblity/VolunteerAvailability';
 import VolunteerInterests from './components/VolunteerInterests/VolunteerInterests';
-
-import VoluenteerMatches from './components/VolunteerMatches/VoluenteerMatches';
-
+import MultiStepMain from './components/MultiStepMain';
 
 import {
   BrowserRouter as Router,
@@ -22,7 +20,8 @@ import {
 export default function App() {
   return (
     <div className="App">
-      <Router>
+      <MultiStepMain />
+      {/* <Router>
         <Header />
         <Route path="/" exact component={Login} />
         <Route path="/Registration" exact component={Registration} />
@@ -30,11 +29,10 @@ export default function App() {
       </Router>
       <VolunteerAvailability />
       <VolunteerInterests />
-      <VolunteerMatches />
+
       <GoodCauseDetails />
       <GoodCauseOpportunity />
-      <GoodCauseMatches />
-
+      <GoodCauseMatches /> */}
     </div>
   );
 }
