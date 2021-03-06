@@ -54,20 +54,21 @@ const GoodCauseOpportunity = () => {
   // const [dates, setDates] = useState([]);
 
   function addOpportunity() {
-    console.log("in addOppo()")
     const opportunity = {
       "title": title,
       "description": description,
     }
-    console.log("opportunity object:")
-    console.log(opportunity)
-
     const newOpportunities =  opportunities.concat(opportunity)
     setOpportunities(newOpportunities)
-    console.log(opportunities)
-    console.log(newOpportunities)
     setTitle('')
     setDescription('')
+  }
+
+  function handleDone(){
+    if (!opportunities.length) {
+      console.log('you must add at least one opportunity?')
+    }
+    else { console.log(opportunities) }
   }
 
   return (
@@ -124,7 +125,11 @@ const GoodCauseOpportunity = () => {
                 </Button>
               </Grid>
               <Grid item xs={12} sm={12}>
-                <Button variant="contained" className={classes.buttonColor}>
+                <Button 
+                  variant="contained" 
+                  className={classes.buttonColor}
+                  onClick={handleDone}
+                >
                   Done
                 </Button>
 
