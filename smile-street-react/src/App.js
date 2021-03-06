@@ -11,6 +11,8 @@ import Header from './components/Header/Header';
 // import GoodCauseOpportunity from "./components/GoodCauseOpportunity/GoodCauseOpportunity";
 import VolunteerAvailability from "./components/VolunteerAvaiblity/VolunteerAvailability";
 import VolunteerEditProfile from "./components/VolunteerEditProfile/VolunteerEditProfile";
+import VolEditProfile from "./components/VolunteerEditProfile/VolEditProfile";
+
 import {
   BrowserRouter as Router,
   Route,
@@ -24,6 +26,8 @@ export default function App() {
     <div className="App">
       <Header />
       <VolunteerEditProfile/>
+      <VolEditProfile/>
+      
       {/* <Router>
         <Header />
         <Route path="/" exact component={Login} />

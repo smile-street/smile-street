@@ -1,4 +1,5 @@
-import { Profiler, useState } from "react";
+import ValidateInfo from "./ValidateInfo.js";
+import { useState } from "react";
 import React from "react";
 import {
   makeStyles,
@@ -11,6 +12,9 @@ import {
 } from "@material-ui/core";
 import FormControl from "@material-ui/core/FormControl";
 import PageHeading from "../PageHeading/PageHeading";
+
+
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -57,49 +61,43 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-//this page needs to siplay what is in the database and 
-//allow volunteer to edit their details.
 
 
-export default function VolunteerEditProfile() {
- 
-
-  const [currentProfile, setProfile] = useState([{
-  firstName: "viran", lastName: "Gohil", email: "jodrew_7@hotmail.com", contactNumber: "07931484239", password: "yoda"
-}]);
-    //firstName: "",
-    //lastName: "",
-    //email: "",
-    //contactNumber: "",
-    //password: "",
-    //confirmPass: "",
-  
-
- // 
-
- 
-
-const emailCurrentProfile = currentProfile.filter(currentProfil => currentProfil.email="jodrew_7@hotmail.com")
-//console.log(emailCurrentProfile)
 
 
+
+
+
+export default function Registration() {
+  //const{errors} = ValidateInfo(validate);
+  const [registration, newRegistration] = useState({
+    title: "",
+    firstName: "",
+    lastName: "",
+    email: "",
+    contactNumber: "",
+    password: "",
+    confirmPass: "",
+  });
   const handleChange = (e) => {
-    setProfile({
-      ...currentProfile,
+    newRegistration({
+      ...registration,
       [e.target.name]: e.target.value,
     });
   };
-  const [errors, setErrors] = useState({});
- 
+  const [errors, setErrors] = useState({ ValidateInfo });
+  //////////////////////////////////////////////////
+  const addRegistration = (text) => {
+    const newReg = {
+      text: text,
+    };
+    //takes the current array and reuilds and updates.
+    const updatedReg = [...registration, newReg];
+    newRegistration(updatedReg);
+  };
   const handleClick = (e) => {
     e.preventDefault();
-    console.log(
-      currentProfile.firstName, 
-      currentProfile.lastName,
-      currentProfile.email,
-      currentProfile.password
-      )
-    
+    setErrors(ValidateInfo(registration));
   };
   //////////////////////////////////////////////////////////
   const classes = useStyles();
@@ -107,113 +105,120 @@ const emailCurrentProfile = currentProfile.filter(currentProfil => currentProfil
     <Container component="main">
       <Paper className={classes.paper}>
         <Container maxWidth="xs">
-          <PageHeading heading="Volunteer - Edit Profile" />
+          <PageHeading heading="Registration" />
           <Grid container spacing={3}>
-           
 
+            
+            <TextField
+              margin="normal"
+              id="title"
+              style={{ margin: 8 }}
+              fullWidth
+              autoFocus
+              
+              name="title"
+              label="Title"
+              variant="outlined"
+              //  input onChange={handleChange}
+              value={registration.title}
+              onChange={handleChange}
+              className={classes.root}
+            />
+            {errors.title && <p>{errors.title}</p>}
             <TextField
               variant="outlined"
               margin="normal"
               id="first name"
-              label = {emailCurrentProfile[0].firstName}
+              label="First Name"
               style={{ margin: 8 }}
               fullWidth
               name="firstName"
-              value={currentProfile.firstName}
+              value={registration.firstName}
               onChange={handleChange}
               className={classes.root}
             />
 
+            {errors.firstName && <p>{errors.firstName}</p>}
             <TextField
               variant="outlined"
               margin="normal"
               id="last name"
-              label= {emailCurrentProfile[0].lastName}
+              label="Last Name"
               style={{ margin: 8 }}
               fullWidth
               name="lastName"
               //type="text"
-              value={currentProfile.lastName}
+              value={registration.lastName}
               onChange={handleChange}
               className={classes.root}
             />
 
+
+
+
+            
+            {errors.lastName && <p>{errors.lastName}</p>}
             <TextField
               variant="outlined"
               margin="normal"
               id="email"
-              label= {emailCurrentProfile[0].email}
+              label="Email Address"
               style={{ margin: 8 }}
               fullWidth
               name="email"
-              value={currentProfile.email}
+              value={registration.email}
               onChange={handleChange}
               className={classes.root}
             />
-
+            {errors.email && <p>{errors.email}</p>}
             <TextField
               variant="outlined"
               margin="normal"
               id="contact number"
-              label= {emailCurrentProfile[0].contactNumber}
+              label="Contact Number"
               style={{ margin: 8 }}
               fullWidth
               name="contactNumber"
-              value={currentProfile.contactNumber}
+              value={registration.contactNumber}
               onChange={handleChange}
               className={classes.root}
             />
-
+            {errors.contactNumber && <p>{errors.contactNumber}</p>}
             <TextField
               variant="outlined"
               margin="normal"
               id="password"
-              label= {emailCurrentProfile[0].password}
+              label="Password"
               style={{ margin: 8 }}
               fullWidth
               name="password"
-              value={currentProfile.password}
+              value={registration.password}
               onChange={handleChange}
               className={classes.root}
             />
-
+            {errors.password && <p>{errors.password}</p>}
             <TextField
               variant="outlined"
               margin="normal"
               id="confirm password"
-              label="Confirm Password"
+              label="Confrim Password"
               style={{ margin: 8 }}
               fullWidth
               name="confirmPass"
-              value={currentProfile.confirmPass}
+              value={registration.confirmPass}
               onChange={handleChange}
               className={classes.root}
             />
-
-            <Grid item xs={6} sm={6}>
+            {errors.confirmPass && <p>{errors.confirmPass}</p>}
+            <Grid item xs={12} sm={12}>
               <Button
                 onClick={handleClick}
                 variant="contained"
                 className={classes.button}
-                style={{ margin: 8 }}
               >
                 Submit
               </Button>
-
-
-
-
-              <Button
-              onClick={handleClick}
-              variant="contained"
-              className={classes.button}
-              style={{ margin: 8 }}>
-
-
-                Edit
-              </Button>
-
-
+              
             </Grid>
           </Grid>
         </Container>
