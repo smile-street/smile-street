@@ -1,21 +1,21 @@
-import React from "react";
 import "date-fns";
+import React, { useState } from "react";
 import Grid from "@material-ui/core/Grid";
 import DateFnsUtils from "@date-io/date-fns";
 import {
   MuiPickersUtilsProvider,
-  KeyboardTimePicker,
   KeyboardDatePicker,
 } from "@material-ui/pickers";
 
-export default function MaterialUIPickersEnding() {
+export default function DatePicker(props) {
   // The first commit of Material-UI
-  const [selectedDate, setSelectedDate] = React.useState(
+  const [selectedDate, setSelectedDate] = useState(
     new Date(Date.now())
   );
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
+    props.setDate(selectedDate);
   };
 
   return (
@@ -24,10 +24,10 @@ export default function MaterialUIPickersEnding() {
         <KeyboardDatePicker
           disableToolbar
           variant="inline"
-          format="MM/dd/yyyy"
+          format="dd/MM/yyyy"
           margin="normal"
-          id="End Date"
-          label="End Date"
+          id={props.id}
+          label={props.id}
           value={selectedDate}
           onChange={handleDateChange}
           KeyboardButtonProps={{

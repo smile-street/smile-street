@@ -3,8 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { TextField, Button, Paper, Grid, Container } from "@material-ui/core";
 import AutoCompleteTag from "./AutoCompleteTag";
 import PageHeading from '../PageHeading/PageHeading';
-import MaterialUIDatePickers from "./DatePickerStarting";
-import MaterialUIDatePickersEnding from "./DatePickerEnding";
+import DatePicker from "./DatePicker";
 
 const GoodCauseOpportunity = () => {
   const useStyles = makeStyles((theme) => ({
@@ -50,14 +49,17 @@ const GoodCauseOpportunity = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [opportunities, setOpportunities] = useState([])
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
   // const [skills, setSkills] = useState('');
-  // const [date, setDate] = useState('');
   // const [dates, setDates] = useState([]);
 
   function addOpportunity() {
     const opportunity = {
       "title": title,
       "description": description,
+      "start date": startDate,
+      "end date": endDate,
     }
     const newOpportunities =  opportunities.concat(opportunity)
     setOpportunities(newOpportunities)
@@ -82,7 +84,6 @@ const GoodCauseOpportunity = () => {
               <Grid item xs={12} sm={12}>
                 <TextField
                   variant="outlined"
-                  // margin="normal"
                   id="title"
                   label="Opportunity title"
                   name="title"
@@ -111,12 +112,17 @@ const GoodCauseOpportunity = () => {
                 <AutoCompleteTag fullWidth />
               </Grid>
               <Grid item xs={12} sm={12}>
-                <MaterialUIDatePickers />
+                <DatePicker 
+                  id={"Start Date"}
+                  setDate={setStartDate}
+                />
               </Grid>
               <Grid item xs={12} sm={12}>
-                <MaterialUIDatePickersEnding />
+                <DatePicker 
+                  id={"End Date"}
+                  setDate={setEndDate}
+                />
               </Grid>
-
               <Grid item xs={12} sm={12}>
                 <Button 
                   variant="contained" 
