@@ -1,19 +1,5 @@
 import React from 'react';
-
-import DateFnsUtils from '@date-io/date-fns';
-import {
-  MuiPickersUtilsProvider,
-  KeyboardTimePicker,
-  KeyboardDatePicker,
-} from '@material-ui/pickers';
-
-import CustomizedHook from '../GoodCauseOpportunity/AutoCompleteTag';
-
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-
 import {useState} from 'react';
-
 import {
   makeStyles,
   Paper,
@@ -26,7 +12,6 @@ import {
   MenuItem,
   Select,
 } from '@material-ui/core';
-import FormControl from '@material-ui/core/FormControl';
 import PageHeading from '../PageHeading/PageHeading';
 
 const useStyles = makeStyles((theme) => ({
@@ -68,29 +53,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function VolunteerAvailability() {
-  const [matchData, setMatchData] = useState({
-    employers_name: '',
-    location1: '',
-    numberOfDays: '',
-    startDate: '',
-    endDate: '',
-  });
-
-  const handleChange = (e) => {
-    setMatchData({
-      ...matchData,
-      [e.target.name]: e.target.value,
-    });
-    console.log('hellow');
-  };
-
-  const changeCity = (event) => {
-    event.preventDefault();
-    setMatchData.location1(event.target.value);
-  };
-
-  const handleDateChange = (date) => {};
-
   const classes = useStyles();
   return (
     <Container component="main">
@@ -108,16 +70,12 @@ export default function VolunteerAvailability() {
                 name="employers_name"
                 label="Employers Name"
                 variant="outlined"
-                value={matchData.employers_name}
-                onChange={handleChange}
               />
             </Grid>
 
             <InputLabel>We will match you based on your locations</InputLabel>
             <InputLabel>Select your primary match location</InputLabel>
             <Select
-              // value={VolunteerAvaiblity.matchData.location1}
-              // onChange={VolunteerAvaiblity.handleChange}
               label
               fullWidth
               margin="normal"
@@ -128,8 +86,6 @@ export default function VolunteerAvailability() {
               variant="outlined"
               className={classes.root}
               name="location1"
-              value={matchData.location1}
-              onChange={handleChange}
             >
               <MenuItem>
                 <em>primary match location</em>
@@ -201,8 +157,6 @@ export default function VolunteerAvailability() {
               variant="outlined"
               className={classes.root}
               name="numberOfDays"
-              value={matchData.numberOfDays}
-              onChange={handleChange}
             >
               <MenuItem>
                 <em>None</em>
@@ -225,44 +179,9 @@ export default function VolunteerAvailability() {
               volunteering opportunities
             </InputLabel>
 
-            <Grid item xs={8}>
-              <TextField
-                margin="normal"
-                fullWidth
-                autoFocus
-                // variant="outlined"
-                id="date"
-                label="Start Data"
-                type="date"
-                defaultValue="2017-05-24"
-                className={classes.textField}
-                name="startDate"
-                value={matchData.startDate}
-                onChange={handleChange}
-                InputLabelProps={{
-                  shrink: true,
-                }}
-              />
-            </Grid>
+            <Grid item xs={8}></Grid>
 
-            <Grid item xs={8}>
-              <TextField
-                margin="normal"
-                fullWidth
-                autoFocus
-                id="date"
-                label="End Date"
-                type="date"
-                defaultValue="2017-05-24"
-                className={classes.textField}
-                name="endDate"
-                value={matchData.endDate}
-                onChange={handleChange}
-                InputLabelProps={{
-                  shrink: true,
-                }}
-              />
-            </Grid>
+            <Grid item xs={8}></Grid>
 
             <Grid item xs={4}>
               <Button

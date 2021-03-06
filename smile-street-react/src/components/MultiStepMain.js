@@ -1,18 +1,18 @@
 import React, {useState} from 'react';
 import {useForm, useStep} from 'react-hooks-helper';
-import GoodCauseOpportunity from './GoodCauseOpportunity/GoodCauseOpportunity';
 import Registration from './Registration/Registration';
-import GoodCauseReview from './GoodCauseReview';
-import GoodCauseDetails from './GoodCauseDetails/GoodCauseDetails';
-import GoodCauseSubmissioon from './GoodCauseSubmission';
+import VolunteerAvailability from './VolunteerAvaiblity/VolunteerAvailability';
+import VolunteerInterests from './VolunteerInterests/VolunteerInterests';
+import VolunteerReview from './VolunteerReview';
+import VolunteerSubmission from './VolunteerSubmission';
 
 const MultiStepMain = () => {
   const steps = [
     {id: 'Registration'},
-    {id: 'GoodCauseDetails'},
-    {id: 'GoodCauseOpportunity'},
-    {id: 'GoodCauseReview'},
-    {id: 'GoodCauseSubmission'},
+    {id: 'VolunteerAvailability'},
+    {id: 'VolunteerInterests'},
+    {id: 'VolunteerReview'},
+    {id: 'VolunteerSubmission'},
   ];
   const defaultData = {
     firstName: 'Jane',
@@ -31,14 +31,14 @@ const MultiStepMain = () => {
   switch (id) {
     case 'Registration':
       return <Registration {...props} />;
-    case 'GoodCauseDetails':
-      return <GoodCauseDetails {...props} />;
+    case 'VolunteerAvailability':
+      return <VolunteerAvailability {...props} />;
     case 'GoodCauseOpportunity':
-      return <GoodCauseOpportunity {...props} />;
+      return <VolunteerInterests {...props} />;
     case 'GoodCauseReview':
-      return <GoodCauseReview {...props} />;
+      return <VolunteerReview {...props} />;
     case 'GoodCauseSubmission':
-      return <GoodCauseSubmissioon {...props} />;
+      return <VolunteerSubmission {...props} />;
     default:
       return null;
   }

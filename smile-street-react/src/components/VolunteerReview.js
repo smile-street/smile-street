@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
-const GoodCauseReview = () => {
+const VolunteerSubmissioon = () => {
   return <div></div>;
 };
 
-export default GoodCauseReview;
+export default VolunteerSubmissioon;
