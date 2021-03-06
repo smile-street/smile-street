@@ -28,14 +28,18 @@ import {
   Switch,
   useHistory,
 } from 'react-router-dom';
+import Login from './components/Login/Login';
 
 export default function App() {
   return (
     <div className="App">
 <<<<<<< HEAD
       <Header />
-      <GoodCauseOpporunity />
-      <VolunteerMatches />
+      <Router>
+        <Login />
+      </Router>
+      {/* <GoodCauseOpporunity />
+      <VolunteerMatches /> */}
       {/* <GoodCauseMatches /> */}
       {/* <VolunteerAvailability/> */}
       {/* <Router>
