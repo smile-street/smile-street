@@ -60,7 +60,6 @@ const useStyles = makeStyles((theme) => ({
 export default function Registration() {
   //const{errors} = ValidateInfo(validate);
   const [registration, newRegistration] = useState({
-    title: '',
     firstName: '',
     lastName: '',
     email: '',
@@ -82,7 +81,6 @@ export default function Registration() {
     e.preventDefault();
     setErrors(ValidateInfo(registration));
     const newReg = {
-      title: registration.title,
       firstName: registration.firstName,
       lastName: registration.lastName,
       email: registration.email,
@@ -94,7 +92,6 @@ export default function Registration() {
     const updatedReg = [{...registration}, newReg];
     newRegistration(updatedReg);
     console.log(registration);
-    registration = '';
   };
 
   //////////////////////////////////////////////////////////
@@ -105,21 +102,6 @@ export default function Registration() {
         <Container maxWidth="xs">
           <PageHeading heading="Registration" />
           <Grid container spacing={3}>
-            <TextField
-              margin="normal"
-              id="title"
-              style={{margin: 8}}
-              fullWidth
-              autoFocus
-              name="title"
-              label="Title"
-              variant="outlined"
-              //  input onChange={handleChange}
-              value={registration.title}
-              onChange={handleChange}
-              className={classes.root}
-            />
-            {errors.title && <p>{errors.title}</p>}
             <TextField
               variant="outlined"
               margin="normal"
