@@ -4,8 +4,7 @@ import PageHeading from '../PageHeading/PageHeading';
 import Profilebutton from './Profilebutton';
 import {makeStyles} from '@material-ui/core/styles';
 import MatchCard from './MatchCard';
-
-import goodCauseDisplayDetailsMock from '../../goodCauseDisplayDetailsMock.json';
+import VolunteerMatchesData from './VolunteerMatches.json';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,10 +29,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function VoluenteerMatches() {
+export default function VolunteerMatches() {
   const classes = useStyles();
 
-  const [data, setData] = React.useState(goodCauseDisplayDetailsMock);
+  const [data, setData] = React.useState(VolunteerMatchesData);
   console.log(data);
   const handleAgree = (id) => {
     console.log('I am invoked ', id);

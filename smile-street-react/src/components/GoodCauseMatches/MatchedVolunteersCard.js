@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Button,
   Container,
@@ -11,9 +11,8 @@ import {
   List,
   ListItem,
   ListItemText,
-} from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-import testData from "../../../src/testData.json";
+} from '@material-ui/core';
+import {makeStyles} from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,21 +20,21 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     padding: theme.spacing(2),
-    textAlign: "center",
+    textAlign: 'center',
     color: theme.palette.text.secondary,
   },
   buttonColor: {
-    backgroundColor: "#53bd98",
-    color: "white",
-    background: "#449f80",
+    backgroundColor: '#53bd98',
+    color: 'white',
+    background: '#449f80',
 
-    "&:hover": {
-      background: "#449f80",
+    '&:hover': {
+      background: '#449f80',
     },
   },
 }));
 
-export default function MatchVolunteersCard({ name, interest, availability }) {
+export default function MatchVolunteersCard({name, interest, availability}) {
   const classes = useStyles();
 
   return (
