@@ -11,7 +11,7 @@ import {
 export default function MaterialUIPickers() {
   // The first commit of Material-UI
   const [selectedDate, setSelectedDate] = React.useState(
-    new Date("2014-08-18T21:11:54")
+    new Date(Date.now())
   );
 
   const handleDateChange = (date) => {
@@ -26,7 +26,7 @@ export default function MaterialUIPickers() {
           variant="inline"
           format="MM/dd/yyyy"
           margin="normal"
-          id="date-picker-inline"
+          id="Start Date"
           label="Start Date"
           value={selectedDate}
           onChange={handleDateChange}

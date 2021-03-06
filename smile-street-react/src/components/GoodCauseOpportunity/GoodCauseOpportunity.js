@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { TextField, Button, Paper, Grid, Container } from "@material-ui/core";
 import AutoCompleteTag from "./AutoCompleteTag";
+import PageHeading from '../PageHeading/PageHeading';
 import MaterialUIDatePickers from "./DatePickerStarting";
 import MaterialUIDatePickersEnding from "./DatePickerEnding";
 
@@ -76,6 +77,7 @@ const GoodCauseOpportunity = () => {
       <form>
         <div className={classes.root}>
           <Paper className={classes.paper}>
+          <PageHeading heading="Add Opportunity" />
             <Grid container spacing={1}>
               <Grid item xs={12} sm={12}>
                 <TextField
