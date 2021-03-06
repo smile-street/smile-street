@@ -1,5 +1,6 @@
 import React from 'react';
-import {useState} from 'react';
+import 'date-fns';
+import DateFnsUtils from '@date-io/date-fns';
 import {
   makeStyles,
   Paper,
@@ -12,7 +13,14 @@ import {
   MenuItem,
   Select,
 } from '@material-ui/core';
+import 'react-datepicker/dist/react-datepicker.css';
+
+import {
+  KeyboardDatePicker,
+  MuiPickersUtilsProvider,
+} from '@material-ui/pickers';
 import PageHeading from '../PageHeading/PageHeading';
+// import 'react-datepicker/dist/react-datepicker.css';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -52,7 +60,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function VolunteerAvailability() {
+export default function VolunteerAvailability({
+  setForm,
+  formData,
+  navigation,
+  Controller,
+}) {
+  const {employerName, location, numberOfDays, startDate} = formData;
+  const {previous, next} = navigation;
+  const [selectedDate, setSelectedDate] = React.useState(
+    new Date('2014-08-18T21:11:54')
+  );
+
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+  };
   const classes = useStyles();
   return (
     <Container component="main">
@@ -64,12 +86,13 @@ export default function VolunteerAvailability() {
               <TextField
                 margin="normal"
                 id="title"
-                //style={{ margin: 8 }}
+                value={employerName}
                 fullWidth
                 autoFocus
-                name="employers_name"
+                name="employerName"
                 label="Employers Name"
                 variant="outlined"
+                onChange={setForm}
               />
             </Grid>
 
@@ -85,7 +108,9 @@ export default function VolunteerAvailability() {
               autoFocus
               variant="outlined"
               className={classes.root}
-              name="location1"
+              name="location"
+              value={location}
+              onChange={setForm}
             >
               <MenuItem>
                 <em>primary match location</em>
@@ -157,6 +182,8 @@ export default function VolunteerAvailability() {
               variant="outlined"
               className={classes.root}
               name="numberOfDays"
+              value={numberOfDays}
+              onChange={setForm}
             >
               <MenuItem>
                 <em>None</em>
@@ -179,7 +206,23 @@ export default function VolunteerAvailability() {
               volunteering opportunities
             </InputLabel>
 
-            <Grid item xs={8}></Grid>
+            <Grid item xs={8}>
+              <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                <KeyboardDatePicker
+                  disableToolbar
+                  variant="inline"
+                  format="MM/dd/yyyy"
+                  margin="normal"
+                  id="date-picker-inline"
+                  label="Date picker inline"
+                  value={selectedDate}
+                  onChange={handleDateChange}
+                  KeyboardButtonProps={{
+                    'aria-label': 'change date',
+                  }}
+                />
+              </MuiPickersUtilsProvider>
+            </Grid>
 
             <Grid item xs={8}></Grid>
 
@@ -195,7 +238,11 @@ export default function VolunteerAvailability() {
             </Grid>
 
             <Grid item xs={12}>
-              <Button variant="contained" className={classes.buttonColor}>
+              <Button
+                variant="contained"
+                className={classes.buttonColor}
+                onClick={next}
+              >
                 Add Interests
               </Button>
             </Grid>

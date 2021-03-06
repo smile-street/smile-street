@@ -39,7 +39,6 @@ export default function App() {
       </Router> */}
       {/* <VolunteerAvailability /> */}
       <MultiStepMain />
-      <VolunteerAvailability />
     </div>
   );
 }
