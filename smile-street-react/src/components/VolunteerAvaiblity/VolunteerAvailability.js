@@ -32,8 +32,14 @@ import PageHeading from '../PageHeading/PageHeading';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+<<<<<<< HEAD
     '&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
       borderColor: '#53bd98',
+=======
+
+    "&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+      borderColor: "#53bd98",
+>>>>>>> main
     },
     '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
       borderColor: '#449f80',
@@ -96,7 +102,7 @@ export default function VolunteerAvailability() {
     <Container component="main">
       <Paper className={classes.paper}>
         <Container maxWidth="xs">
-          <PageHeading heading="Registration" />
+          <PageHeading heading="Volunteer Availability" />
           <Grid container spacing={3}>
             <Grid item xs={12} sm={12}>
               <TextField
@@ -110,6 +116,7 @@ export default function VolunteerAvailability() {
                 variant="outlined"
                 value={matchData.employers_name}
                 onChange={handleChange}
+                className={classes.root}
               />
             </Grid>
 
@@ -235,7 +242,7 @@ export default function VolunteerAvailability() {
                 label="Start Data"
                 type="date"
                 defaultValue="2017-05-24"
-                className={classes.textField}
+                className={classes.root}
                 name="startDate"
                 value={matchData.startDate}
                 onChange={handleChange}
@@ -254,7 +261,7 @@ export default function VolunteerAvailability() {
                 label="End Date"
                 type="date"
                 defaultValue="2017-05-24"
-                className={classes.textField}
+                className={classes.root}
                 name="endDate"
                 value={matchData.endDate}
                 onChange={handleChange}
