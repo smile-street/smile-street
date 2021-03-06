@@ -72,6 +72,7 @@ export default function GoodCauseDetails() {
               className={classes.root}
               fullWidth
               autoFocus
+              placeholder="e.g. 1164681"
               value={goodCauseNumber}
               onChange={(event) => setGoodCauseNumber(event.target.value)}
             />
