@@ -52,14 +52,15 @@ const GoodCauseOpportunity = () => {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
   const [skills, setSkills] = useState('');
-  // const [dates, setDates] = useState([]);
 
   function addOpportunity() {
     const opportunity = {
       "title": title,
       "description": description,
-      "start date": startDate,
-      "end date": endDate,
+      "date" : {
+        "start": startDate,
+        "end": endDate,
+      },
       "skills": skills
     }
     const newOpportunities =  opportunities.concat(opportunity)
