@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { TextField, Button, Paper, Grid, Container } from "@material-ui/core";
-import CustomizedHook from "./AutoCompleteTag";
+import AutoCompleteTag from "./AutoCompleteTag";
 import MaterialUIDatePickers from "./DatePickerStarting";
 import MaterialUIDatePickersEnding from "./DatePickerEnding";
 
@@ -81,7 +81,7 @@ const GoodCauseOpportunity = () => {
               </Grid>
 
               <Grid item xs={12} sm={12}>
-                <CustomizedHook fullWidth />
+                <AutoCompleteTag fullWidth />
               </Grid>
               <Grid item xs={12} sm={12}>
                 <MaterialUIDatePickers />
