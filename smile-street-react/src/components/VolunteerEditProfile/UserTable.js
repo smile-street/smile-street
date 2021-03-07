@@ -17,21 +17,18 @@ const UserTable = props => (
       {props.users.length > 0 ? (
         props.users.map(user => (
           <tr key={user.id}>
-            
+             <td>First Name:</td>
             <td>{user.firstName}</td>
     
-            <td>{user.lastName}</td>
-            <td>{user.email}</td>
-            <td>{user.contactNumber}</td>
-            <td>{user.password}</td>
-            
+            <td>{user.firstName}</td>
+            z
            
 
            
             <td>
               <button
                 className="button muted-button"
-                onClick={() => props.editRow(user)}
+                onClick={() => props.editRow(user.id)}
               >
                 Edit
               </button>
