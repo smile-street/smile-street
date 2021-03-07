@@ -16,6 +16,7 @@ const {
   },
 } = finalPageModel;
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default [
   Yup.object().shape({
     [firstName.name]: Yup.string().required(`${firstName.requiredErrorMsg}`),
@@ -24,13 +25,8 @@ export default [
     [contactNumber.name]: Yup.string().required(
       `${contactNumber.requiredErrorMsg}`
     ),
-    [password.name]: Yup.string()
-      .required(`${password.requiredErrorMsg}`)
-      .test(
-        'len',
-        `${password.invalidErrorMsg}`,
-        (val) => val && val.length === 5
-      ),
+    [password.name]: Yup.string().required(`${password.requiredErrorMsg}`),
+
     [confirmPassword.name]: Yup.string()
       .nullable()
       .required(`${confirmPassword.requiredErrorMsg}`),
