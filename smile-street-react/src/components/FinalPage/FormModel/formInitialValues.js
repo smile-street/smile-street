@@ -8,6 +8,10 @@ const {
     email,
     password,
     confirmPassword,
+    employerName,
+    matchLocation,
+    noOfDays,
+    availableDates,
   },
 } = finalPageModel;
 
@@ -18,4 +22,8 @@ export default {
   [email.name]: '',
   [password.name]: '',
   [confirmPassword.name]: '',
+  [employerName.name]: '',
+  [matchLocation.name]: '',
+  [noOfDays.name]: '',
+  [availableDates.name]: '',
 };

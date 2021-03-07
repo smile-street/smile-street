@@ -1,5 +1,5 @@
 export default {
-  formId: ' finalForm',
+  formId: ' finalFormModel',
   formField: {
     firstName: {
       name: 'firstName',
@@ -30,6 +30,31 @@ export default {
       name: 'confirmPassword',
       label: 'confirmPassword*',
       requiredErrorMsg: 'confirm password is required',
+    },
+    employerName: {
+      name: 'employerName',
+      label: 'employerName*',
+      requiredErrorMsg: 'employer name is required',
+    },
+    matchLocation: {
+      name: 'matchLocation',
+      label: 'matchLocation',
+      requiredErrorMsg: 'match location is required',
+    },
+    matchLocation: {
+      name: 'matchLocation',
+      label: 'matchLocation',
+      requiredErrorMsg: 'match location is required',
+    },
+    noOfDays: {
+      name: 'noOfDays',
+      label: 'noOfDays',
+      requiredErrorMsg: 'no of days is required',
+    },
+    availableDates: {
+      name: 'availableDates',
+      label: 'availableDates',
+      requiredErrorMsg: 'available dates is required',
     },
   },
 };

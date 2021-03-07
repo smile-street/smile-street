@@ -9,6 +9,10 @@ const {
     password,
     confirmPassword,
     contactNumber,
+    employerName,
+    matchLocation,
+    noOfDays,
+    availableDates,
   },
 } = finalPageModel;
 
@@ -25,12 +29,7 @@ export default [
     [confirmPassword.name]: Yup.string()
       .nullable()
       .required(`${confirmPassword.requiredErrorMsg}`),
-    [password.name]: Yup.string()
-      .nullable()
-      .required(`${password.requiredErrorMsg}`),
-    [contactNumber.name]: Yup.string()
-      .nullable()
-      .required(`${contactNumber.requiredErrorMsg}`),
+
     //     [zipcode.name]: Yup.string()
     //       .required(`${zipcode.requiredErrorMsg}`)
     //       .test(
@@ -64,5 +63,25 @@ export default [
     //     [cvv.name]: Yup.string()
     //       .required(`${cvv.requiredErrorMsg}`)
     //       .test('len', `${cvv.invalidErrorMsg}`, (val) => val && val.length === 3),
+  }),
+  Yup.object().shape({
+    [employerName.name]: Yup.string()
+      .nullable()
+      .required(`${employerName.requiredErrorMsg}`),
+    [employerName.name]: Yup.string()
+      .nullable()
+      .required(`${matchLocation.requiredErrorMsg}`),
+    [matchLocation.name]: Yup.string()
+      .nullable()
+      .required(`${contactNumber.requiredErrorMsg}`),
+    [noOfDays.name]: Yup.string()
+      .nullable()
+      .required(`${noOfDays.requiredErrorMsg}`),
+    [noOfDays.name]: Yup.string()
+      .nullable()
+      .required(`${availableDates.requiredErrorMsg}`),
+    [availableDates.name]: Yup.string()
+      .nullable()
+      .required(`${availableDates.requiredErrorMsg}`),
   }),
 ];

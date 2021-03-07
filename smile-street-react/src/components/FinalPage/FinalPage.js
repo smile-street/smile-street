@@ -8,32 +8,31 @@ import {
   CircularProgress,
 } from '@material-ui/core';
 import {Formik, Form} from 'formik';
-import DisplaySuccess from '../../components/DisplaySucess/DisplaySucess';
-import Registration from '../Registration/Registration';
-
 import validationSchema from './FormModel/validationSchema';
-import checkoutFormModel from './FormModel/finalPageModel';
+import finalPageModel from './FormModel/finalPageModel';
 import formInitialValues from './FormModel/formInitialValues';
-
 import useStyles from './styles';
+import Registration from '../Registration/Registration';
+import VolunteerAvailability from '../VolunteerAvaiblity/VolunteerAvailability';
+import DisplaySuccess from '../DisplaySucess/DisplaySucess';
 
-const steps = ['Registration', 'Payment details', 'Review your order'];
-const {formId, formField} = checkoutFormModel;
+const steps = ['Registration', 'Add Availability', 'Review your order'];
+const {formId, formField} = finalPageModel;
 
 function _renderStepContent(step) {
   switch (step) {
     case 0:
       return <Registration formField={formField} />;
-    // case 1:
-    //   return <PaymentForm formField={formField} />;
-    // case 2:
-    //   return <ReviewOrder />;
+    case 1:
+      return <VolunteerAvailability formField={formField} />;
+    case 2:
+    // return <ReviewOrder />;
     default:
       return <div>Not Found</div>;
   }
 }
 
-export default function FinalPage() {
+export default function CheckoutPage() {
   const classes = useStyles();
   const [activeStep, setActiveStep] = useState(0);
   const currentValidationSchema = validationSchema[activeStep];
