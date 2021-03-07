@@ -13,16 +13,11 @@ const UserTable = props => (
         <td>Contact Number</td>
       </tr>
     
-    
       {props.users.length > 0 ? (
         props.users.map(user => (
           <tr key={user.id}>
-             <td>First Name:</td>
+             <td>FirstName:</td>
             <td>{user.firstName}</td>
-    
-
-           
-
            
             <td>
               <button
@@ -50,14 +45,6 @@ const UserTable = props => (
               </button>
             </td>
           </tr>
-
-
-
-
-
-
-
-
         ))
       ) : (
         <tr>

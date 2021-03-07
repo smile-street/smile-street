@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import UserTable from "./UserTable";
-import AddUserForm from "./AddUserForm";
+import UserTable from "./UserTable1";
+
 import EditUserForm from "./EditUserForm";
 
 
@@ -110,6 +110,8 @@ const VolEditProfile = () => {
     confirmPass: "",
   };
 
+
+
   // 編集中の現在のユーザの状態（編集中ユーザーを知るため）
   const [currentUser, setCurrentUser] = useState(initialFormState);
 
@@ -141,13 +143,13 @@ confirmPass: user.confirmPass });
     <Container component="main">
       <Paper clasName={classes.paper}>
         <Container maxWidth="xs">
-        <PageHeading heading="Registration" />
+        <PageHeading heading="Edit Volunteer Profile" />
         
       
        
           {editing ? (
             <div>
-              <h2>Eidt User</h2>
+             
               <EditUserForm
                 editing={editing}
                 setEditing={setEditing}
@@ -158,15 +160,21 @@ confirmPass: user.confirmPass });
             </div>
           ) : (
             <div>
-              <h2>Add User</h2>
-              <AddUserForm addUser={addUser} />
+              
             </div>
           )}
         
         
-          <h2>View users</h2>
-          <UserTable users={users} deleteUser={deleteUser} editRow={editRow} />
-        
+          
+          
+      
+       
+            <button
+                className="button muted-button"
+                onClick={() => editRow(users[0])}
+              >
+                Edit
+              </button>
         
 
           </Container>
