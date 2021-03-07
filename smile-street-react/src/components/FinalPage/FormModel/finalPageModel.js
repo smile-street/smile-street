@@ -53,5 +53,10 @@ export default {
       label: 'Available Dates',
       requiredErrorMsg: 'available dates is required',
     },
+    selectSkills: {
+      name: 'selectSkills',
+      label: 'Please Pick Your Skills',
+      requiredErrorMsg: 'Selection of skills is required',
+    },
   },
 };

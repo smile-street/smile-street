@@ -15,6 +15,7 @@ import useStyles from './styles';
 import Registration from '../Registration/Registration';
 import VolunteerAvailability from '../VolunteerAvaiblity/VolunteerAvailability';
 import DisplaySuccess from '../DisplaySucess/DisplaySucess';
+import VolunteerInterests from '../VolunteerInterests/VolunteerInterests';
 
 const steps = ['Registration', 'Add Availability', 'Review your order'];
 const {formId, formField} = finalPageModel;
@@ -26,7 +27,7 @@ function _renderStepContent(step) {
     case 1:
       return <VolunteerAvailability formField={formField} />;
     case 2:
-    // return <ReviewOrder />;
+      return <VolunteerInterests formField={formField} />;
     default:
       return <div>Not Found</div>;
   }

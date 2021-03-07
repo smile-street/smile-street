@@ -13,6 +13,7 @@ const {
     matchLocation,
     noOfDays,
     availableDates,
+    selectSkills,
   },
 } = finalPageModel;
 
@@ -84,5 +85,10 @@ export default [
     [availableDates.name]: Yup.string()
       .nullable()
       .required(`${availableDates.requiredErrorMsg}`),
+  }),
+  Yup.object().shape({
+    [selectSkills.name]: Yup.string()
+      .nullable()
+      .required(`${employerName.requiredErrorMsg}`),
   }),
 ];
