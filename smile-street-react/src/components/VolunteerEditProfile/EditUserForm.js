@@ -78,13 +78,15 @@ const EditUserForm = props => {
 
 
 
+
   const classes = useStyles();
 
   return (
     <form 
       onSubmit={event => {
         event.preventDefault();
-        props.updateUser(user.id, user);
+      
+       props.updateUser(user.id, user);
       }}
     >
 
@@ -98,11 +100,21 @@ const EditUserForm = props => {
               style={{ margin: 8 }}
               fullWidth
               name="firstName"
-              value={user.firstName}
+              value = {user.firstName}
               onChange={handleInputChange}
               className={classes.root}
+              defaultValue= {props.users.map(user => (
+                user.firstName
+                ))}
+             
+           
+
+             // {users.length > 0 ? (
+              
+              
             />
 
+       
       
 <TextField
               variant="outlined"
@@ -113,20 +125,95 @@ const EditUserForm = props => {
               fullWidth
               name="lastName"
               //type="text"
-              value={user.lastName}
+               value={user.lastName}
               onChange={handleInputChange}
               className={classes.root}
+
+            defaultValue= {props.users.map(user => (
+              user.lastName
+              ))}
+
             />
 
 
 
-      <label>Username</label>
-      <input
-        type="text"
-        name="username"
-        value={user.username}
-        onChange={handleInputChange}
-      />
+
+<TextField
+              variant="outlined"
+              margin="normal"
+              id="email"
+              label="Email Address"
+              style={{ margin: 8 }}
+              fullWidth
+              name="email"
+             // value={user.email}
+              onChange={handleInputChange}
+              className={classes.root}
+              defaultValue= {props.users.map(user => (
+                user.email
+                ))}
+            />
+
+
+
+<TextField
+              variant="outlined"
+              margin="normal"
+              id="contact number"
+              label="Contact Number"
+              style={{ margin: 8 }}
+              fullWidth
+              name="contactNumber"
+            //  value={user.contactNumber}
+              onChange={handleInputChange}
+              className={classes.root}
+              defaultValue={props.users.map(user => (
+                user.contactNumber
+                ))}
+            />
+
+
+
+
+<TextField
+              variant="outlined"
+              margin="normal"
+              id="password"
+              label="Password"
+              style={{ margin: 8 }}
+              fullWidth
+              name="password"
+              //value={user.password}
+              onChange={handleInputChange}
+              className={classes.root}
+              defaultValue={props.users.map(user => (
+                user.password
+                ))}
+            />
+
+
+
+<TextField
+              variant="outlined"
+              margin="normal"
+              id="confirm password"
+              label="Confrim Password"
+              style={{ margin: 8 }}
+              fullWidth
+              name="confirmPass"
+              //value={user.confirmPass}
+              onChange={handleInputChange}
+              className={classes.root}
+defaultValue={props.users.map(user => (
+  user.confirmPass
+  ))}
+
+            />
+
+
+
+
+    
       <button>Update user</button>
       <button
         onClick={() => props.setEditing(false)}

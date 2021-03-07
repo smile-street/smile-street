@@ -3,18 +3,31 @@ import React from "react";
 const UserTable = props => (
   <table>
     <thead>
-      <tr>
-        <th>Name</th>
-        <th>Username</th>
-        <th>Actions</th>
-      </tr>
+     
     </thead>
     <tbody>
+    <tr>
+       
+        <td>LastName</td>
+        <td>Email</td>
+        <td>Contact Number</td>
+      </tr>
+    
+    
       {props.users.length > 0 ? (
         props.users.map(user => (
           <tr key={user.id}>
+            
             <td>{user.firstName}</td>
+    
             <td>{user.lastName}</td>
+            <td>{user.email}</td>
+            <td>{user.contactNumber}</td>
+            <td>{user.password}</td>
+            
+           
+
+           
             <td>
               <button
                 className="button muted-button"
@@ -22,6 +35,17 @@ const UserTable = props => (
               >
                 Edit
               </button>
+
+
+
+
+
+
+
+
+
+
+
               <button
                 className="button muted-button"
                 onClick={() => props.deleteUser(user.id)}
@@ -30,6 +54,14 @@ const UserTable = props => (
               </button>
             </td>
           </tr>
+
+
+
+
+
+
+
+
         ))
       ) : (
         <tr>

@@ -15,6 +15,7 @@ import {
 } from "@material-ui/core";
 import FormControl from "@material-ui/core/FormControl";
 import PageHeading from "../PageHeading/PageHeading";
+import { differenceInWeeks } from "date-fns";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -78,9 +79,9 @@ const useStyles = makeStyles((theme) => ({
 
 const VolEditProfile = () => {
   const usersData = [
-    { id: 1, firstName: "Viran", lastName: "Gohil" },
-    { id: 2, firstName: "BBB", lastName: "kakikukeko" },
-    { id: 3, firstName: "CCC", lastName: "sasisuseso" }
+    { id: "jodrew_7@hotmail.com", firstName: "Viran", lastName: "Gohil", email:"jodrew_7@hotmail.com", 
+    contactNumber: "07931484239", password: "norstromXX", confirmPass: "norstromXX"  },
+   
   ];
 
   // usersの状態
@@ -99,27 +100,46 @@ const VolEditProfile = () => {
 
   // 編集状態か判断するための状態
   const [editing, setEditing] = useState(false);
-  const initialFormState = { id: null, name: "", username: "" };
+  const initialFormState = { 
+    id: "", 
+    firstName: "", 
+    lastName: "",
+    email: "",
+    contactNumber: "",
+    password: "",
+    confirmPass: "",
+  };
+
   // 編集中の現在のユーザの状態（編集中ユーザーを知るため）
   const [currentUser, setCurrentUser] = useState(initialFormState);
 
   // 編集モードをONにスイッチして現在のユーザー情報をセットする関数
   const editRow = (user) => {
     setEditing(true);
-    setCurrentUser({ id: user.id, name: user.name, username: user.username });
+    setCurrentUser({ 
+      id: user.email, 
+      firstName: user.firstName, 
+      lastName: user.lastName,
+      email:user.email,
+    contactNumber: user.contactNumber,
+  password: user.password,
+confirmPass: user.confirmPass });
   };
 
   // 編集後に更新投稿する関数
   const updateUser = (id, updateUser) => {
     setEditing(false);
-    setUsers(users.map((user) => (user.id === id ? updateUser : user)));
+    
+    setUsers(users.map((user) => (user.email === id ? updateUser : user)));
   };
+
+
 
   const classes = useStyles();
 
   return (
     <Container component="main">
-      <Paper className={classes.paper}>
+      <Paper clasName={classes.paper}>
         <Container maxWidth="xs">
         <PageHeading heading="Registration" />
         
@@ -133,6 +153,7 @@ const VolEditProfile = () => {
                 setEditing={setEditing}
                 currentUser={currentUser}
                 updateUser={updateUser}
+                users={users}
               />
             </div>
           ) : (
