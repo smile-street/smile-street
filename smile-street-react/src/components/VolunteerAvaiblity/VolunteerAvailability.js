@@ -76,8 +76,7 @@ export default function VolunteerAvailability(props) {
           <DatePickerField
             name={availableDates.name}
             label={availableDates.label}
-            format="MM/yy"
-            views={['year', 'month']}
+            format="dd/mm/yy"
             minDate={new Date()}
             maxDate={new Date('2050/12/31')}
             fullWidth

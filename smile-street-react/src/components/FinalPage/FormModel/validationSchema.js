@@ -16,16 +16,21 @@ const {
   },
 } = finalPageModel;
 
-const visaRegEx = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/;
-
 export default [
   Yup.object().shape({
     [firstName.name]: Yup.string().required(`${firstName.requiredErrorMsg}`),
     [lastName.name]: Yup.string().required(`${lastName.requiredErrorMsg}`),
     [email.name]: Yup.string().required(`${email.requiredErrorMsg}`),
+    [contactNumber.name]: Yup.string().required(
+      `${contactNumber.requiredErrorMsg}`
+    ),
     [password.name]: Yup.string()
-      .nullable()
-      .required(`${password.requiredErrorMsg}`),
+      .required(`${password.requiredErrorMsg}`)
+      .test(
+        'len',
+        `${password.invalidErrorMsg}`,
+        (val) => val && val.length === 5
+      ),
     [confirmPassword.name]: Yup.string()
       .nullable()
       .required(`${confirmPassword.requiredErrorMsg}`),
