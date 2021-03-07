@@ -1,198 +1,52 @@
-import ValidateInfo from './ValidateInfo.js';
-import {useState} from 'react';
 import React from 'react';
-import {
-  makeStyles,
-  Paper,
-  Grid,
-  Container,
-  TextField,
-  Button,
-  DialogTitle,
-} from '@material-ui/core';
-import FormControl from '@material-ui/core/FormControl';
-import PageHeading from '../PageHeading/PageHeading';
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
+import {Grid, Typography} from '@material-ui/core';
+import {InputField} from '../FormFields/index';
 
-    '&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
-      borderColor: '#53bd98',
+export default function Registration(props) {
+  const {
+    formField: {
+      firstName,
+      lastName,
+      email,
+      contactNumber,
+      password,
+      confirmPassword,
     },
-    '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
-      borderColor: '#449f80',
-    },
-
-    '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-input': {
-      color: '#449f80',
-    },
-
-    '& .MuiInputLabel-outlined.Mui-focused': {
-      color: '#449f80',
-    },
-    margin: 8,
-  },
-  paper: {
-    marginTop: theme.spacing(0.5),
-    padding: theme.spacing(3),
-    color: theme.palette.text.secondary,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    maxWidth: 'xs',
-  },
-  form: {
-    width: '100%',
-  },
-  button: {
-    backgroundColor: '#53bd98',
-    color: 'white',
-    '&:hover': {
-      background: '#449f80',
-    },
-    paper: {
-      padding: theme.spacing(2),
-      textAlign: 'center',
-      color: theme.palette.text.secondary,
-    },
-  },
-}));
-export default function Registration({setForm, formData, navigation}) {
-  const {firstName, lastName, email, contactNumber, password} = formData;
-  const {next} = navigation;
-  const [registration, newRegistration] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    contactNumber: '',
-    password: '',
-    confirmPass: '',
-  });
-  const [errors, setErrors] = useState({ValidateInfo});
-  const handleChange = (e) => {
-    newRegistration({
-      ...registration,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  //////////////////////////////////////////////////
-
-  const handleClick = (e) => {
-    e.preventDefault();
-    setErrors(ValidateInfo(registration));
-    const newReg = {
-      firstName: registration.firstName,
-      lastName: registration.lastName,
-      email: registration.email,
-      contactNumber: registration.contactNumber,
-      password: registration.password,
-      confirmPass: registration.confirmPass,
-    };
-    //takes the current array and reuilds and updates.
-    const updatedReg = [{...registration}, newReg];
-    newRegistration(updatedReg);
-    console.log(registration);
-  };
-
-  //////////////////////////////////////////////////////////
-  const classes = useStyles();
+  } = props;
   return (
-    <Container component="main">
-      <Paper className={classes.paper}>
-        <Container maxWidth="xs">
-          <PageHeading heading="Registration" />
-          <Grid container spacing={3}>
-            <TextField
-              variant="outlined"
-              margin="normal"
-              id="firstName"
-              label="First Name"
-              style={{margin: 8}}
-              fullWidth
-              name="firstName"
-              value={firstName}
-              onChange={setForm}
-              className={classes.root}
-            />
-            {errors.firstName && <p>{errors.firstName}</p>}
-            <TextField
-              variant="outlined"
-              margin="normal"
-              id="last name"
-              label="Last Name"
-              style={{margin: 8}}
-              fullWidth
-              name="lastName"
-              value={lastName}
-              onChange={setForm}
-              className={classes.root}
-            />
-            {errors.lastName && <p>{errors.lastName}</p>}
-            <TextField
-              variant="outlined"
-              margin="normal"
-              id="email"
-              label="Email Address"
-              style={{margin: 8}}
-              fullWidth
-              name="email"
-              value={email}
-              onChange={setForm}
-              className={classes.root}
-            />
-            {errors.email && <p>{errors.email}</p>}
-            <TextField
-              variant="outlined"
-              margin="normal"
-              id="contact number"
-              label="Contact Number"
-              style={{margin: 8}}
-              fullWidth
-              name="contactNumber"
-              value={contactNumber}
-              onChange={setForm}
-              className={classes.root}
-            />
-            {errors.contactNumber && <p>{errors.contactNumber}</p>}
-            <TextField
-              variant="outlined"
-              margin="normal"
-              id="password"
-              label="Password"
-              style={{margin: 8}}
-              fullWidth
-              name="password"
-              value={password}
-              onChange={setForm}
-              className={classes.root}
-            />
-            {errors.password && <p>{errors.password}</p>}
-            <TextField
-              variant="outlined"
-              margin="normal"
-              id="confirm password"
-              label="Confrim Password"
-              style={{margin: 8}}
-              fullWidth
-              name="confirmPass"
-              value={password}
-              onChange={setForm}
-              className={classes.root}
-            />
-            {errors.confirmPass && <p>{errors.confirmPass}</p>}
-            <Grid item xs={12} sm={12}>
-              <Button
-                onClick={next}
-                variant="contained"
-                className={classes.button}
-              >
-                Submit
-              </Button>
-            </Grid>
-          </Grid>
-        </Container>
-      </Paper>
-    </Container>
+    <React.Fragment>
+      <Typography variant="h6" gutterBottom>
+        Registration
+      </Typography>
+      <Grid container spacing={3}>
+        <Grid item xs={12} sm={6}>
+          <InputField name={firstName.name} label={firstName.label} fullWidth />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <InputField name={lastName.name} label={lastName.label} fullWidth />
+        </Grid>
+        <Grid item xs={12}>
+          <InputField name={email.name} label={email.label} fullWidth />
+        </Grid>
+        <Grid item xs={12}>
+          <InputField
+            name={contactNumber.name}
+            label={contactNumber.label}
+            fullWidth
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <InputField name={password.name} label={password.label} fullWidth />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <InputField
+            name={confirmPassword.name}
+            label={confirmPassword.label}
+            fullWidth
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}></Grid>
+      </Grid>
+    </React.Fragment>
   );
 }

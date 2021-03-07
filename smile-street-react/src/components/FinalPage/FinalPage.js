@@ -1,15 +1,4 @@
 import React, {useState} from 'react';
-import {useForm, useStep} from 'react-hooks-helper';
-import Registration from './Registration/Registration';
-import VolunteerAvailability from './VolunteerAvaiblity/VolunteerAvailability';
-import VolunteerInterests from './VolunteerInterests/VolunteerInterests';
-import VolunteerReview from './VolunteerReview';
-import VolunteerSubmission from './VolunteerSubmission';
-import validationSchema from './FormModel/validationSchema.js';
-import FinalFormModel from './FormModel/FinalFormModel';
-import useStyles from './Layout/styles';
-import FormInitialValue from './FormModel/FormInitialValue';
-
 import {
   Stepper,
   Step,
@@ -19,25 +8,33 @@ import {
   CircularProgress,
 } from '@material-ui/core';
 import {Formik, Form} from 'formik';
+import DisplaySuccess from '../../components/DisplaySucess/DisplaySucess';
+import Registration from '../Registration/Registration';
 
-const steps = ['Registration', 'Availability', 'Interests'];
-const {formId, formField} = FinalFormModel;
+import validationSchema from './FormModel/validationSchema';
+import checkoutFormModel from './FormModel/finalPageModel';
+import formInitialValues from './FormModel/formInitialValues';
+
+import useStyles from './styles';
+
+const steps = ['Registration', 'Payment details', 'Review your order'];
+const {formId, formField} = checkoutFormModel;
 
 function _renderStepContent(step) {
   switch (step) {
     case 0:
       return <Registration formField={formField} />;
-    case 1:
-      return <VolunteerAvailability formField={formField} />;
-    case 2:
-      return <VolunteerReview />;
+    // case 1:
+    //   return <PaymentForm formField={formField} />;
+    // case 2:
+    //   return <ReviewOrder />;
     default:
       return <div>Not Found</div>;
   }
 }
 
-export default function MultiStepMain() {
-  // const classes = useStyles();
+export default function FinalPage() {
+  const classes = useStyles();
   const [activeStep, setActiveStep] = useState(0);
   const currentValidationSchema = validationSchema[activeStep];
   const isLastStep = activeStep === steps.length - 1;
@@ -82,10 +79,10 @@ export default function MultiStepMain() {
       </Stepper>
       <React.Fragment>
         {activeStep === steps.length ? (
-          <VolunteerReview />
+          <DisplaySuccess />
         ) : (
           <Formik
-            initialValues={FormInitialValue}
+            initialValues={formInitialValues}
             validationSchema={currentValidationSchema}
             onSubmit={_handleSubmit}
           >
