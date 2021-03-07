@@ -20,15 +20,14 @@ const UserTable = props => (
              <td>First Name:</td>
             <td>{user.firstName}</td>
     
-            <td>{user.firstName}</td>
-            z
+
            
 
            
             <td>
               <button
                 className="button muted-button"
-                onClick={() => props.editRow(user.id)}
+                onClick={() => props.editRow(user)}
               >
                 Edit
               </button>

@@ -141,13 +141,13 @@ confirmPass: user.confirmPass });
     <Container component="main">
       <Paper clasName={classes.paper}>
         <Container maxWidth="xs">
-        <PageHeading heading="Edit Volunteer Profile" />
+        <PageHeading heading="Registration" />
         
       
        
           {editing ? (
             <div>
-              <h2>Edit Profile</h2>
+              <h2>Eidt User</h2>
               <EditUserForm
                 editing={editing}
                 setEditing={setEditing}
@@ -158,26 +158,16 @@ confirmPass: user.confirmPass });
             </div>
           ) : (
             <div>
-            
+              <h2>Add User</h2>
+              <AddUserForm addUser={addUser} />
             </div>
           )}
         
         
-          
+          <h2>View users</h2>
+          <UserTable users={users} deleteUser={deleteUser} editRow={editRow} />
         
-
-
-
         
-          <button
-                className="button muted-button"
-                onClick={() => editRow(users.map)}
-              >
-                Edit
-              </button>
-
-              
-
 
           </Container>
       </Paper>
