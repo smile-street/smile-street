@@ -62,14 +62,16 @@ const useStyles = makeStyles((theme) => ({
 export default function Registration() {
   const location = useLocation();
   console.log(location.state);
-  const [registration, newRegistration] = useState({
+
+  const initialFormState = {
     firstName: '',
     lastName: '',
     email: '',
     contactNumber: '',
     password: '',
     confirmPass: '',
-  });
+  };
+  const [registration, newRegistration] = useState(initialFormState);
   const [errors, setErrors] = useState({ValidateInfo});
   const handleChange = (e) => {
     newRegistration({
@@ -95,6 +97,7 @@ export default function Registration() {
     const updatedReg = [{...registration}, newReg];
     newRegistration(updatedReg);
     console.log(registration);
+    newRegistration(initialFormState);
   };
 
   //////////////////////////////////////////////////////////
