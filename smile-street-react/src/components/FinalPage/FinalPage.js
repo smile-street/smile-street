@@ -16,11 +16,13 @@ import Registration from '../Registration/Registration';
 import VolunteerAvailability from '../VolunteerAvaiblity/VolunteerAvailability';
 import DisplaySuccess from '../DisplaySucess/DisplaySucess';
 import VolunteerInterests from '../VolunteerInterests/VolunteerInterests';
+import ReviewOrder from '../ReviewDetails';
 
-const steps = ['Registration', 'Add Availability', 'Review your order'];
+const steps = ['Registration', 'Add Availability', 'Add Interests', 'Summury'];
 const {formId, formField} = finalPageModel;
 
 function _renderStepContent(step) {
+  console.log(step);
   switch (step) {
     case 0:
       return <Registration formField={formField} />;
@@ -28,6 +30,8 @@ function _renderStepContent(step) {
       return <VolunteerAvailability formField={formField} />;
     case 2:
       return <VolunteerInterests formField={formField} />;
+    case 3:
+      return <ReviewOrder />;
     default:
       return <div>Not Found</div>;
   }
@@ -52,6 +56,7 @@ export default function CheckoutPage() {
   }
 
   function _handleSubmit(values, actions) {
+    console.log(values);
     if (isLastStep) {
       _submitForm(values, actions);
     } else {
@@ -104,7 +109,7 @@ export default function CheckoutPage() {
                       color="primary"
                       className={classes.button}
                     >
-                      {isLastStep ? 'Place order' : 'Next'}
+                      {isLastStep ? 'Review Details' : 'Next'}
                     </Button>
                     {isSubmitting && (
                       <CircularProgress
