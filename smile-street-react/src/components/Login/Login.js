@@ -95,6 +95,7 @@ export default function Login() {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [user, setUser] = useState('Volunteer');
 
   function checkCredentials(event) {
     console.log(
@@ -103,8 +104,11 @@ export default function Login() {
   }
 
   let history = useHistory();
-  const handleClickRegistration = () => {
-    history.push('/Registration');
+  const handleClickRegistration = (userType) => {
+    history.push({
+      pathname: '/Registration',
+      state: {userType: userType},
+    });
   };
 
   return (
@@ -171,9 +175,11 @@ export default function Login() {
           <Grid item xs={12} sm={12}>
             <Button
               type="submit"
+              id="good-cause"
               variant="contained"
               className={classes.button}
-              onClick={handleClickRegistration}
+              id="good-cause"
+              onClick={() => handleClickRegistration('good-cause')}
             >
               Register as a Good Cause
             </Button>
@@ -182,9 +188,10 @@ export default function Login() {
             <Button
               type="submit"
               variant="contained"
+              id="volunteer"
               className={classes.button}
               style={{margin: 8}}
-              onClick={handleClickRegistration}
+              onClick={() => handleClickRegistration('volunteer')}
             >
               Register as a Volunteer
             </Button>

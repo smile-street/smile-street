@@ -1,6 +1,7 @@
 import ValidateInfo from './ValidateInfo.js';
 import {useState} from 'react';
 import React from 'react';
+import {useLocation} from 'react-router-dom';
 import {
   makeStyles,
   Paper,
@@ -58,7 +59,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 export default function Registration() {
-  //const{errors} = ValidateInfo(validate);
+  const location = useLocation();
+  console.log(location.state);
   const [registration, newRegistration] = useState({
     firstName: '',
     lastName: '',
