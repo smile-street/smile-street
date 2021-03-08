@@ -140,7 +140,7 @@ const GoodCauseOpportunity = () => {
                   className={classes.buttonColor}
                   onClick={handleDone}
                 >
-                  Done
+                  Submit
                 </Button>
 
               </Grid>
