@@ -27,7 +27,6 @@ export default function App() {
       </Router>
       <VolunteerAvailability />
       <VolunteerInterests />
-
       <GoodCauseDetails />
       <GoodCauseMatches />
       <GoodCauseOpportunity />
