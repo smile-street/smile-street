@@ -103,8 +103,8 @@ const GoodCauseOpportunity = () => {
                   className={classes.root}
                 />
 
-              <Grid item xs={12} sm={12}>
-                <AutoCompleteTag fullWidth setSkills={setSkills} />
+              <Grid item xs={12} sm={12} fullWidth>
+                <AutoCompleteTag setSkills={setSkills} />
               </Grid>
               <Grid item xs={12} sm={6}>
                 <DatePicker 

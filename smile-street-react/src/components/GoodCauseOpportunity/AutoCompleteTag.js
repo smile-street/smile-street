@@ -13,8 +13,8 @@ const Label = styled("label")`
 `;
 
 const InputWrapper = styled("div")`
-  width: 60%;
-  border: 1px solid #d9d9d9;
+  width: 100%;
+  border: 1px solid #449f80;
   background-color: #fff;
   border-radius: 4px;
   padding: 1px;
@@ -27,12 +27,11 @@ const InputWrapper = styled("div")`
   justify-content: space-between;
 
   &:hover {
-    border-color: #40a9ff;
+    border-color: #449f80;
   }
 
   &.focused {
-    border-color: #40a9ff;
-    box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+    box-shadow: 0 0 0 1px #449f80;
   }
 
   & input {
@@ -153,6 +152,7 @@ export default function AutoCompleteTag(props) {
     getOptionLabel: (option) => option.title,
   });
   props.setSkills(value)
+
   return (
     <NoSsr>
       <div>
