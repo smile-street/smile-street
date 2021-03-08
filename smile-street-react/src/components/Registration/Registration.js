@@ -13,6 +13,7 @@ import {
 } from '@material-ui/core';
 import FormControl from '@material-ui/core/FormControl';
 import PageHeading from '../PageHeading/PageHeading';
+import PasswordField from 'material-ui-password-field';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -157,7 +158,7 @@ export default function Registration() {
               className={classes.root}
             />
             {errors.contactNumber && <p>{errors.contactNumber}</p>}
-            <TextField
+            <PasswordField
               variant="outlined"
               margin="normal"
               id="password"
@@ -168,9 +169,10 @@ export default function Registration() {
               value={registration.password}
               onChange={handleChange}
               className={classes.root}
+              password
             />
             {errors.password && <p>{errors.password}</p>}
-            <TextField
+            <PasswordField
               variant="outlined"
               margin="normal"
               id="confirm password"
@@ -181,6 +183,7 @@ export default function Registration() {
               value={registration.confirmPass}
               onChange={handleChange}
               className={classes.root}
+              password
             />
             {errors.confirmPass && <p>{errors.confirmPass}</p>}
             <Grid item xs={12} sm={12}>

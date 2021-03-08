@@ -95,7 +95,6 @@ export default function Login() {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [user, setUser] = useState('Volunteer');
 
   function checkCredentials(event) {
     console.log(
@@ -179,7 +178,7 @@ export default function Login() {
               variant="contained"
               className={classes.button}
               id="good-cause"
-              onClick={() => handleClickRegistration('goodcause')}
+              onClick={() => handleClickRegistration('goodcgause')}
             >
               Register as a Good Cause
             </Button>
