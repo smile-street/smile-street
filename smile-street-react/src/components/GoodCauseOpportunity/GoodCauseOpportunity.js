@@ -1,12 +1,9 @@
-import React from "react";
-import CustomizedHook from "./AutoCompleteTag";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Grid";
-import Container from "@material-ui/core/Container";
-import { TextField, Button } from "@material-ui/core";
-import MaterialUIDatePickers from "./DatePickerStarting";
-import MaterialUIDatePickersEnding from "./DatePickerEnding";
+import { TextField, Button, Paper, Grid, Container } from "@material-ui/core";
+import AutoCompleteTag from "./AutoCompleteTag";
+import PageHeading from '../PageHeading/PageHeading';
+import DatePicker from "./DatePicker";
 
 const GoodCauseOpportunity = () => {
   const useStyles = makeStyles((theme) => ({
@@ -37,7 +34,6 @@ const GoodCauseOpportunity = () => {
       backgroundColor: "#53bd98",
       color: "white",
       background: "#449f80",
-
       "&:hover": {
         background: "#449f80",
       },
@@ -49,45 +45,100 @@ const GoodCauseOpportunity = () => {
   }));
 
   const classes = useStyles();
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [opportunities, setOpportunities] = useState([])
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
+  const [skills, setSkills] = useState('');
+
+  function addOpportunity() {
+    const opportunity = {
+      "title": title,
+      "description": description,
+      "date" : {
+        "start": startDate,
+        "end": endDate,
+      },
+      "skills": skills
+    }
+    const newOpportunities =  opportunities.concat(opportunity)
+    setOpportunities(newOpportunities)
+    setTitle('')
+    setDescription('')
+  }
+
+  function handleDone(){
+    if (!opportunities.length) {
+      console.log('you must add at least one opportunity?')
+    }
+    else { console.log(opportunities) }
+  }
 
   return (
-    <Container>
-      <form>
-        <div className={classes.root}>
-          <Paper className={classes.paper}>
-            <Grid container spacing={1}>
-              <Grid item xs={12} sm={12}>
+    <Container component="main" className={classes.root}>
+      <Paper className={classes.paper}>
+        <Container maxWidth="xs">
+          <PageHeading heading="Add Opportunity" />
+            <Grid container spacing={3}>
                 <TextField
-                  id="outlined-multiline-static"
-                  label="Description of opportunity"
-                  multiline
-                  rows={6}
-                  defaultValue="Few words describing an opportunity"
                   variant="outlined"
-                  style={{ width: "60%" }}
+                  id="title"
+                  label="Opportunity title"
+                  name="title"
+                  autoFocus
+                  value={title}
+                  onChange={(event) => setTitle(event.target.value)}
                   className={classes.root}
                 />
-              </Grid>
+                <TextField
+                  id="description"
+                  label="Brief description of the opportunity"
+                  multiline
+                  rows={6}
+                  variant="outlined"
+                  value={description}
+                  onChange={(event) => setDescription(event.target.value)}
+                  className={classes.root}
+                />
 
-              <Grid item xs={12} sm={12}>
-                <CustomizedHook fullWidth />
+              <Grid item xs={12} sm={12} fullWidth>
+                <AutoCompleteTag setSkills={setSkills} />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <DatePicker 
+                  id={"Start Date"}
+                  setDate={setStartDate}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <DatePicker 
+                  id={"End Date"}
+                  setDate={setEndDate}
+                />
               </Grid>
               <Grid item xs={12} sm={12}>
-                <MaterialUIDatePickers />
-              </Grid>
-              <Grid item xs={12} sm={12}>
-                <MaterialUIDatePickersEnding />
-              </Grid>
-
-              <Grid item xs={12} sm={12}>
-                <Button variant="contained" className={classes.buttonColor}>
-                  Add availblity
+                <Button 
+                  variant="contained" 
+                  className={classes.buttonColor}
+                  onClick={addOpportunity}
+                >
+                  Add Opportunity
                 </Button>
               </Grid>
+              <Grid item xs={12} sm={12}>
+                <Button 
+                  variant="contained" 
+                  className={classes.buttonColor}
+                  onClick={handleDone}
+                >
+                  Submit
+                </Button>
+
+              </Grid>
             </Grid>
-          </Paper>
-        </div>
-      </form>
+          </Container>
+        </Paper>
     </Container>
   );
 };
