@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MatchVolunteersCard({name, interest, skill}) {
+export default function MatchVolunteersCard({name, interest, skill, reachOut}) {
   const classes = useStyles();
 
   return (
@@ -69,6 +69,7 @@ export default function MatchVolunteersCard({name, interest, skill}) {
             variant="contained"
             color="primary"
             className={classes.buttonColor}
+            reachOut={reachOut(name)}
           >
             Reach Out
           </Button>

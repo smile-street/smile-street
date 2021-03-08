@@ -20,6 +20,9 @@ const useStyles = makeStyles((theme) => ({
 export default function FullWidthGrid() {
   const classes = useStyles();
   const uniqueOpportunities = [...new Set(GoodCauseMatches.map(match => match.opportunityID))]; // create a Set of opportunity IDs
+  function reachOut(name) {
+    console.log(name)
+  }
 
   return (
     <div className={classes.root}>
@@ -34,6 +37,7 @@ export default function FullWidthGrid() {
             justify="flex-start"
             alignItems="flex-start"
           >
+            {/* Should be displayed as a table of sorts with the action on the end. maybe even a checkbox style list?  */}
             {uniqueOpportunities.map(ID => {
               return (
                 <Grid container>Opportunity: {ID}
@@ -45,6 +49,7 @@ export default function FullWidthGrid() {
                             name={volunteer.name}
                             interest={volunteer.interest}
                             skill={volunteer.skill}
+                            reachOut={reachOut}
                           />
                         </Grid>
                       )
@@ -53,10 +58,6 @@ export default function FullWidthGrid() {
                 </Grid>
               )
             })}
-
-
-
-
           </Grid>
         </Paper>
       </Container>
