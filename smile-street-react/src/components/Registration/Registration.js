@@ -71,10 +71,10 @@ export default function Registration() {
     password: '',
     confirmPass: '',
   };
-  const [registration, newRegistration] = useState(initialFormState);
+  const [registration, setRegistration] = useState(initialFormState);
   const [errors, setErrors] = useState({ValidateInfo});
   const handleChange = (e) => {
-    newRegistration({
+    setRegistration({
       ...registration,
       [e.target.name]: e.target.value,
     });
@@ -95,9 +95,9 @@ export default function Registration() {
     };
     //takes the current array and reuilds and updates.
     const updatedReg = [{...registration}, newReg];
-    newRegistration(updatedReg);
+    setRegistration(updatedReg);
     console.log(registration);
-    newRegistration(initialFormState);
+    setRegistration(initialFormState);
   };
 
   //////////////////////////////////////////////////////////
