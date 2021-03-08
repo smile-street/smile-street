@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import UserTable from "./UserTable1";
+
 
 import EditUserForm from "./EditUserForm";
 
@@ -145,7 +145,12 @@ confirmPass: user.confirmPass });
         <Container maxWidth="xs">
         <PageHeading heading="Edit Volunteer Profile" />
         
-      
+        <Button
+                className="button muted-button"
+                onClick={() => editRow(users[0])}
+              >
+                Edit
+              </Button>
        
           {editing ? (
             <div>
@@ -169,12 +174,7 @@ confirmPass: user.confirmPass });
           
       
        
-            <button
-                className="button muted-button"
-                onClick={() => editRow(users[0])}
-              >
-                Edit
-              </button>
+            
         
 
           </Container>

@@ -7,7 +7,21 @@ import {
     TextField,
     Button,
     DialogTitle,
+    
+  
+  
+
+Link,
+  Divider,
+  Dialog,
+  DialogActions,
+  
+  DialogContent,
+  DialogContentText,
+  Snackbar,
   } from "@material-ui/core";
+
+  import MuiAlert from "@material-ui/lab/Alert";
 
   import FormControl from "@material-ui/core/FormControl";
 import PageHeading from "../PageHeading/PageHeading";
@@ -59,7 +73,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 const EditUserForm = props => {
   const [user, setUser] = useState(props.currentUser);
@@ -76,6 +92,36 @@ const EditUserForm = props => {
     setUser({ ...user, [name]: value });
   };
 
+
+  const [openDialog, setOpenDialog] = useState(false);
+  const [openToast, setOpenToast] = useState(false);
+
+  const handleClickOpen = () => setOpenDialog(true);
+
+  const handleDialogClose = () => setOpenDialog(false);
+
+
+const [openDialog1, setOpenDialog1] = useState(false);
+  const handleClickOpen1 = () => setOpenDialog1(true);
+  const handleDialogClose1 = () => setOpenDialog1(false);
+
+
+  //toast
+  const handleDialogClick = () => {
+    handleDialogClose();
+    setOpenToast(true);
+  };
+
+  const handleDialogClick1 = () => {
+    handleDialogClose();
+    
+  };
+  const handleToastClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpenToast(false);
+  };
 
 
 
@@ -175,54 +221,158 @@ const EditUserForm = props => {
 
 
 
-<TextField
-              variant="outlined"
-              margin="normal"
-              id="password"
-              label="Password"
-              style={{ margin: 8 }}
-              fullWidth
-              name="password"
-              //value={user.password}
-              onChange={handleInputChange}
-              className={classes.root}
-              defaultValue={props.users.map(user => (
-                user.password
-                ))}
-            />
 
 
 
-<TextField
-              variant="outlined"
-              margin="normal"
-              id="confirm password"
-              label="Confrim Password"
-              style={{ margin: 8 }}
-              fullWidth
-              name="confirmPass"
-              //value={user.confirmPass}
-              onChange={handleInputChange}
-              className={classes.root}
-defaultValue={props.users.map(user => (
-  user.confirmPass
-  ))}
-
-            />
+<Grid item xs={12} sm={12} style={{ margin: 8 }}>
+              <Link
+                cursor={"pointer"}
+                onClick={handleClickOpen}
+                variant="body2"
+                style={{ margin: 8 }}
+              >
+                {" "}
+                Change Your Password
+              </Link>
+            </Grid>
 
 
 
 
-    
-      <button>Update user</button>
-      <button
+<Grid item xs={12} sm={12}>
+      <Button
+      className={classes.button}
+      style={{ margin: 8 }}
+      variant="contained"
+      onClick={handleClickOpen1}
+      >Update user</Button>
+        </Grid>
+
+  
+
+        <Grid item xs={12} sm={12}>
+      <Button
+        label = "Enter"
         onClick={() => props.setEditing(false)}
-        className="button muted-button"
+        className={classes.button}
+        style={{ margin: 8 }}
+        variant="contained"
       >
         Cancel
-      </button>
+      </Button>
+      
+      </Grid>
 
 
+
+
+
+
+<Dialog
+        open={openDialog1}
+        onClose={handleDialogClose1}
+        aria-labelledby="form-dialog-title"
+      >
+        <DialogTitle id="form-dialog-title">Details Updated</DialogTitle>
+       
+        <DialogActions>
+          <Button onClick={handleDialogClose1} color="primary">
+            Keep Editing
+          </Button>
+          <Button onClick={handleDialogClick1} color="primary">
+            View Matches
+          </Button>
+        </DialogActions>
+      </Dialog>
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <Dialog
+        open={openDialog}
+        onClose={handleDialogClose}
+        aria-labelledby="form-dialog-title"
+      >
+        <DialogTitle id="form-dialog-title">Change Your Password</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            To reset your password enter your email and a new password.
+          </DialogContentText>
+          <TextField
+            autoFocus
+            margin="dense"
+            id="email"
+            label="Email Address"
+            type="email"
+            fullWidth
+          />
+          <TextField
+            margin="dense"
+            id="newPassword"
+            label="Enter new Password"
+            type="password"
+            fullWidth
+          />
+          <TextField
+            margin="dense"
+            id="confirmPassword"
+            label="Confirm New Password"
+            type="password"
+            fullWidth
+          />
+            
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleDialogClose} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={handleDialogClick} color="primary">
+            Reset Password
+          </Button>
+        </DialogActions>
+      </Dialog>
+      <Snackbar
+        open={openToast}
+        autoHideDuration={6000}
+        onClose={handleToastClose}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+      >
+        <Alert onClose={handleToastClose} severity="warning">
+          Check your email to confirm password reset!
+        </Alert>
+      </Snackbar>
 
       
     </form>
