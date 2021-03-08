@@ -1,7 +1,6 @@
 import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
-import {Paper, Container} from '@material-ui/core';
-import Grid from '@material-ui/core/Grid';
+import { Paper, Container, Divider, Grid } from '@material-ui/core';
 import MatchVolunteersCard from './MatchedVolunteersCard';
 import PageHeading from '../PageHeading/PageHeading';
 import GoodCauseProfileButton from './GoodCauseProfileButton';
@@ -35,25 +34,29 @@ export default function FullWidthGrid() {
             justify="flex-start"
             alignItems="flex-start"
           >
-
-
-            {uniqueOpportunities.forEach(ID => {
-              GoodCauseMatches.filter(match => 
-                match.opportunityID === ID).map(volunteer => {
-                  return (
-                    <Grid item xs={12} sm={4}>
-                      <MatchVolunteersCard
-                        name={volunteer.name}
-                        interest={volunteer.interest}
-                        skill={volunteer.skill}
-                      />
-                    </Grid>
-                  );
-                })
+            {uniqueOpportunities.map(ID => {
+              return (
+                <Grid container>Opportunity: {ID}
+                  {GoodCauseMatches.filter(match => 
+                    match.opportunityID === ID).map(volunteer => {
+                      return (
+                        <Grid item xs={12} sm={4}>
+                          <MatchVolunteersCard
+                            name={volunteer.name}
+                            interest={volunteer.interest}
+                            skill={volunteer.skill}
+                          />
+                        </Grid>
+                      )
+                    })
+                  }
+                </Grid>
+              )
             })}
 
 
-            
+
+
           </Grid>
         </Paper>
       </Container>
