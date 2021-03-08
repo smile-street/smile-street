@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 
-
 import EditUserForm from "./EditUserForm";
-
 
 import {
   makeStyles,
@@ -63,25 +61,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const VolEditProfile = () => {
   const usersData = [
-    { id: "jodrew_7@hotmail.com", firstName: "Viran", lastName: "Gohil", email:"jodrew_7@hotmail.com", 
-    contactNumber: "07931484239", password: "norstromXX", confirmPass: "norstromXX"  },
-   
+    {
+      id: "jodrew_7@hotmail.com",
+      firstName: "Viran",
+      lastName: "Gohil",
+      email: "jodrew_7@hotmail.com",
+      contactNumber: "07931484239",
+      password: "norstromXX",
+      confirmPass: "norstromXX",
+    },
   ];
 
   // usersの状態
@@ -100,9 +90,9 @@ const VolEditProfile = () => {
 
   // 編集状態か判断するための状態
   const [editing, setEditing] = useState(false);
-  const initialFormState = { 
-    id: "", 
-    firstName: "", 
+  const initialFormState = {
+    id: "",
+    firstName: "",
     lastName: "",
     email: "",
     contactNumber: "",
@@ -110,32 +100,15 @@ const VolEditProfile = () => {
     confirmPass: "",
   };
 
-
-
   // 編集中の現在のユーザの状態（編集中ユーザーを知るため）
   const [currentUser, setCurrentUser] = useState(initialFormState);
-
-  // 編集モードをONにスイッチして現在のユーザー情報をセットする関数
-  const editRow = (user) => {
-    setEditing(true);
-    setCurrentUser({ 
-      id: user.email, 
-      firstName: user.firstName, 
-      lastName: user.lastName,
-      email:user.email,
-    contactNumber: user.contactNumber,
-  password: user.password,
-confirmPass: user.confirmPass });
-  };
 
   // 編集後に更新投稿する関数
   const updateUser = (id, updateUser) => {
     setEditing(false);
-    
+
     setUsers(users.map((user) => (user.email === id ? updateUser : user)));
   };
-
-
 
   const classes = useStyles();
 
@@ -143,45 +116,18 @@ confirmPass: user.confirmPass });
     <Container component="main">
       <Paper clasName={classes.paper}>
         <Container maxWidth="xs">
-        <PageHeading heading="Edit Volunteer Profile" />
-        
-        <Button
-                className="button muted-button"
-                onClick={() => editRow(users[0])}
-              >
-                Edit
-              </Button>
-       
-          {editing ? (
-            <div>
-             
-              <EditUserForm
-                editing={editing}
-                setEditing={setEditing}
-                currentUser={currentUser}
-                updateUser={updateUser}
-                users={users}
-              />
-            </div>
-          ) : (
-            <div>
-              
-            </div>
-          )}
-        
-        
-          
-          
-      
-       
-            
-        
+          <PageHeading heading="Edit Volunteer Profile" />
 
-          </Container>
+          <EditUserForm
+            editing={editing}
+            setEditing={setEditing}
+            currentUser={currentUser}
+            updateUser={updateUser}
+            users={users}
+          />
+        </Container>
       </Paper>
     </Container>
-
-
   );
 };
 

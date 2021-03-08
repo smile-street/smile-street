@@ -7,6 +7,7 @@ import {
   Grid,
   InputLabel,
   Paper,
+  Link,
 } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
@@ -45,7 +46,7 @@ export default function Profilebutton() {
             <MenuItem value="">
               <em>Signed in as User</em>
             </MenuItem>
-            <MenuItem value={10}>Edit Profile</MenuItem>
+            <MenuItem value={10}><Link to ={"/V"}>Edit Profile</Link></MenuItem>
             <MenuItem value={10}>Edit Dates</MenuItem>
             <MenuItem value={10}>Location</MenuItem>
             <MenuItem value={10}>Skills</MenuItem>
