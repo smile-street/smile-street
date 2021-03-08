@@ -77,13 +77,11 @@ const GoodCauseOpportunity = () => {
   }
 
   return (
-    <Container>
-      <form>
-        <div className={classes.root}>
-          <Paper className={classes.paper}>
+    <Container component="main" className={classes.root}>
+      <Paper className={classes.paper}>
+        <Container maxWidth="xs">
           <PageHeading heading="Add Opportunity" />
-            <Grid container spacing={1}>
-              <Grid item xs={12} sm={12}>
+            <Grid container spacing={3}>
                 <TextField
                   variant="outlined"
                   id="title"
@@ -92,11 +90,8 @@ const GoodCauseOpportunity = () => {
                   autoFocus
                   value={title}
                   onChange={(event) => setTitle(event.target.value)}
-                  style={{ width: "60%" }}
                   className={classes.root}
                 />
-              </Grid>
-              <Grid item xs={12} sm={12}>
                 <TextField
                   id="description"
                   label="Brief description of the opportunity"
@@ -105,21 +100,19 @@ const GoodCauseOpportunity = () => {
                   variant="outlined"
                   value={description}
                   onChange={(event) => setDescription(event.target.value)}
-                  style={{ width: "60%" }}
                   className={classes.root}
                 />
-              </Grid>
 
               <Grid item xs={12} sm={12}>
                 <AutoCompleteTag fullWidth setSkills={setSkills} />
               </Grid>
-              <Grid item xs={12} sm={12}>
+              <Grid item xs={12} sm={6}>
                 <DatePicker 
                   id={"Start Date"}
                   setDate={setStartDate}
                 />
               </Grid>
-              <Grid item xs={12} sm={12}>
+              <Grid item xs={12} sm={6}>
                 <DatePicker 
                   id={"End Date"}
                   setDate={setEndDate}
@@ -145,9 +138,8 @@ const GoodCauseOpportunity = () => {
 
               </Grid>
             </Grid>
-          </Paper>
-        </div>
-      </form>
+          </Container>
+        </Paper>
     </Container>
   );
 };
