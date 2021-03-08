@@ -1,46 +1,16 @@
 [
   {
+    "opportunityID": 1234,
+    "opportunityTitle": "Opportunity 1",
     "name": "Taslima",
-
     "interest": "Coding",
-    "availability": "02/02/2021"
+    "skill": "teaching"
   },
   {
-    "name": "Ariel",
-    "interest": "Coding",
-    "availability": "02/02/2021"
-  },
-  {
-    "name": "Pushpa",
-    "interest": "Coding",
-    "availability": "02/02/2021"
-  },
-
-  {
-    "name": "Viran",
-    "interest": "Gardening",
-    "availability": "23/03/2021"
-  },
-  {
+    "opportunityID": 5678,
+    "opportunityTitle": "Opportunity 2",
     "name": "Taslima",
-
     "interest": "Coding",
-    "availability": "02/02/2021"
-  },
-  {
-    "name": "Ariel",
-    "interest": "Coding",
-    "availability": "02/02/2021"
-  },
-  {
-    "name": "Pushpa",
-    "interest": "Coding",
-    "availability": "02/02/2021"
-  },
-
-  {
-    "name": "Viran",
-    "interest": "Gardening",
-    "availability": "23/03/2021"
+    "skill": "teaching"
   }
 ]

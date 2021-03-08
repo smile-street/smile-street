@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MatchVolunteersCard({name, interest, availability}) {
+export default function MatchVolunteersCard({name, interest, skill}) {
   const classes = useStyles();
 
   return (
@@ -55,7 +55,7 @@ export default function MatchVolunteersCard({name, interest, availability}) {
                 </ListItem>
                 <Divider />
                 <ListItem>
-                  <ListItemText primary={availability} />
+                  <ListItemText primary={skill} />
                 </ListItem>
               </div>
             </List>

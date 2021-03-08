@@ -20,12 +20,13 @@ const useStyles = makeStyles((theme) => ({
 
 export default function FullWidthGrid() {
   const classes = useStyles();
+  const uniqueOpportunities = [...new Set(GoodCauseMatches.map(match => match.opportunityID))]; // create a Set of opportunity IDs
 
   return (
     <div className={classes.root}>
       <Container component="main">
         <Paper className={classes.paper}>
-          <PageHeading heading="Here is the list of available matches" />
+          <PageHeading heading="These are your matched volunteers" />
           <GoodCauseProfileButton />
           <Grid
             container
@@ -34,17 +35,25 @@ export default function FullWidthGrid() {
             justify="flex-start"
             alignItems="flex-start"
           >
-            {GoodCauseMatches.map((item) => {
-              return (
-                <Grid item xs={12} sm={4}>
-                  <MatchVolunteersCard
-                    name={item.name}
-                    interest={item.interest}
-                    availability={item.availability}
-                  />
-                </Grid>
-              );
+
+
+            {uniqueOpportunities.forEach(ID => {
+              GoodCauseMatches.filter(match => 
+                match.opportunityID === ID).map(volunteer => {
+                  return (
+                    <Grid item xs={12} sm={4}>
+                      <MatchVolunteersCard
+                        name={volunteer.name}
+                        interest={volunteer.interest}
+                        skill={volunteer.skill}
+                      />
+                    </Grid>
+                  );
+                })
             })}
+
+
+            
           </Grid>
         </Paper>
       </Container>
