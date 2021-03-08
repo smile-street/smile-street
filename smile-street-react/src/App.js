@@ -10,7 +10,7 @@ import Login from "./components/Login/Login";
 import VoluenteerMatches from './components/VolunteerMatches/VoluenteerMatches';
 // import GoodCauseOpportunity from "./components/GoodCauseOpportunity/GoodCauseOpportunity";
 import VolunteerAvailability from "./components/VolunteerAvaiblity/VolunteerAvailability";
-import VolunteerEditProfile from "./components/VolunteerEditProfile/VolunteerEditProfile";
+
 import VolEditProfile from "./components/VolunteerEditProfile/VolEditProfile";
 
 import {
@@ -33,7 +33,9 @@ export default function App() {
          
         <Route path="/PasswordRecovery" exact component={Login}/>
         <Route path="/VM" exact component={VoluenteerMatches}/>
-        <Route path="/V" exact component={VolEditProfile} />
+        <Route path="/V" exact component={VolEditProfile}
+       
+         />
       </Router> */
     </div>
 

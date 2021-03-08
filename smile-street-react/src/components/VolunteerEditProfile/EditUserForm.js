@@ -21,6 +21,7 @@ import MuiAlert from "@material-ui/lab/Alert";
 import FormControl from "@material-ui/core/FormControl";
 import PageHeading from "../PageHeading/PageHeading";
 import EditUser from "./EditUserForm";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -101,9 +102,14 @@ const EditUserForm = (props) => {
     setOpenToast(true);
   };
 
+  let history = useHistory();
   const handleDialogClick1 = () => {
-    handleDialogClose();
+    //handleDialogClose();
+    history.push({
+      pathname: "/VM",
+    });
   };
+
   const handleToastClose = (event, reason) => {
     if (reason === "clickaway") {
       return;
@@ -196,7 +202,7 @@ const EditUserForm = (props) => {
           variant="contained"
           onClick={handleClickOpen1}
         >
-          Update user
+          Update
         </Button>
       </Grid>
 
@@ -207,8 +213,9 @@ const EditUserForm = (props) => {
           className={classes.button}
           style={{ margin: 8 }}
           variant="contained"
+          onClick={handleDialogClick1}
         >
-          Cancel
+          View Matches
         </Button>
       </Grid>
 

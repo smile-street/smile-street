@@ -43,10 +43,11 @@ export default function Profilebutton() {
             labelId="demo-simple-select-outlined-label"
             id="demo-simple-select-filled"
           >
+           
             <MenuItem value="">
               <em>Signed in as User</em>
             </MenuItem>
-            <MenuItem value={10}><Link to ={"/V"}>Edit Profile</Link></MenuItem>
+            <MenuItem value={10}>Edit Profile</MenuItem>
             <MenuItem value={10}>Edit Dates</MenuItem>
             <MenuItem value={10}>Location</MenuItem>
             <MenuItem value={10}>Skills</MenuItem>
@@ -59,3 +60,4 @@ export default function Profilebutton() {
     </Grid>
   );
 }
+
