@@ -1,15 +1,13 @@
 import './App.css';
 import Header from './components/Header/Header';
-import GoodCauseDetails from "./components/GoodCauseDetails/GoodCauseDetails";
-import GoodCauseOpportunity from "./components/GoodCauseOpportunity/GoodCauseOpportunity";
-import GoodCauseMatches from "./components/GoodCauseMatches/GoodCauseMatches";
-import Login from "./components/Login/Login";
-import PasswordRecovery from "./components/PasswordRecovery/PasswordRecovery";
-import Registration from "./components/Registration/Registration";
-import VolunteerAvailability from "./components/VolunteerAvaiblity/VolunteerAvailability";
+import GoodCauseDetails from './components/GoodCauseDetails/GoodCauseDetails';
+import GoodCauseOpportunity from './components/GoodCauseOpportunity/GoodCauseOpportunity';
+import GoodCauseMatches from './components/GoodCauseMatches/GoodCauseMatches';
+import Login from './components/Login/Login';
+import PasswordRecovery from './components/PasswordRecovery/PasswordRecovery';
+import Registration from './components/Registration/Registration';
+import VolunteerAvailability from './components/VolunteerAvaiblity/VolunteerAvailability';
 import VolunteerInterests from './components/VolunteerInterests/VolunteerInterests';
-import VolunteerMatches from './components/VolunteerMatches/VolunteerMatches';
-
 
 import {
   BrowserRouter as Router,
@@ -29,11 +27,9 @@ export default function App() {
       </Router>
       <VolunteerAvailability />
       <VolunteerInterests />
-      <VolunteerMatches />
       <GoodCauseDetails />
-      <GoodCauseOpportunity />
       <GoodCauseMatches />
-
+      <GoodCauseOpportunity />
     </div>
   );
 }
