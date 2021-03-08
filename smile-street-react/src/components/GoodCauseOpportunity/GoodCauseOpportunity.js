@@ -34,7 +34,6 @@ const GoodCauseOpportunity = () => {
       backgroundColor: "#53bd98",
       color: "white",
       background: "#449f80",
-
       "&:hover": {
         background: "#449f80",
       },
