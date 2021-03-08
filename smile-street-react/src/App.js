@@ -8,7 +8,6 @@ import PasswordRecovery from './components/PasswordRecovery/PasswordRecovery';
 import Registration from './components/Registration/Registration';
 import VolunteerAvailability from './components/VolunteerAvaiblity/VolunteerAvailability';
 import VolunteerInterests from './components/VolunteerInterests/VolunteerInterests';
-import MultiStepMain from './components/MultiStepMain';
 
 import {
   BrowserRouter as Router,
@@ -20,8 +19,7 @@ import {
 export default function App() {
   return (
     <div className="App">
-      <MultiStepMain />
-      {/* <Router>
+      <Router>
         <Header />
         <Route path="/" exact component={Login} />
         <Route path="/Registration" exact component={Registration} />
@@ -31,8 +29,8 @@ export default function App() {
       <VolunteerInterests />
 
       <GoodCauseDetails />
+      <GoodCauseMatches />
       <GoodCauseOpportunity />
-      <GoodCauseMatches /> */}
     </div>
   );
 }
