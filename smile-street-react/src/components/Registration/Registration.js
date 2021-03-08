@@ -1,7 +1,7 @@
 import ValidateInfo from './ValidateInfo.js';
 import {useState} from 'react';
 import React from 'react';
-import {useLocation} from 'react-router-dom';
+import {useLocation, useHistory} from 'react-router-dom';
 import {
   makeStyles,
   Paper,
@@ -62,7 +62,9 @@ const useStyles = makeStyles((theme) => ({
 export default function Registration() {
   const location = useLocation();
   console.log(location.state);
-
+  const userRole = location.state;
+  console.log(userRole);
+  const history = useHistory();
   const initialFormState = {
     firstName: '',
     lastName: '',
@@ -98,6 +100,12 @@ export default function Registration() {
     setRegistration(updatedReg);
     console.log(registration);
     setRegistration(initialFormState);
+    if (userRole.userType === 'volunteer') {
+      history.push({pathname: '/VolunteerAvailability'});
+    }
+    if (userRole.userType === 'goodcause') {
+      history.push({pathname: '/GoodCauseDetails'});
+    }
   };
 
   //////////////////////////////////////////////////////////
