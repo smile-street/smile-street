@@ -1,7 +1,5 @@
-import ValidateInfo from './ValidateInfo.js';
-import {useState} from 'react';
-import React from 'react';
-import {useLocation} from 'react-router-dom';
+import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import {
   makeStyles,
   Paper,
@@ -9,10 +7,11 @@ import {
   Container,
   TextField,
   Button,
-  DialogTitle,
 } from '@material-ui/core';
-import FormControl from '@material-ui/core/FormControl';
 import PageHeading from '../PageHeading/PageHeading';
+import ValidateInfo from './ValidateInfo.js';
+
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -58,20 +57,22 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
+
 export default function Registration() {
   const location = useLocation();
-  console.log(location.state);
-  const [registration, newRegistration] = useState({
+  const initialFormState = {
+    userType: location.state.userType,
     firstName: '',
     lastName: '',
     email: '',
     contactNumber: '',
     password: '',
     confirmPass: '',
-  });
+  };
+  const [registration, setRegistration] = useState(initialFormState);
   const [errors, setErrors] = useState({ValidateInfo});
   const handleChange = (e) => {
-    newRegistration({
+    setRegistration({
       ...registration,
       [e.target.name]: e.target.value,
     });
@@ -92,8 +93,9 @@ export default function Registration() {
     };
     //takes the current array and reuilds and updates.
     const updatedReg = [{...registration}, newReg];
-    newRegistration(updatedReg);
+    setRegistration(updatedReg);
     console.log(registration);
+    setRegistration(initialFormState);
   };
 
   //////////////////////////////////////////////////////////
@@ -165,6 +167,7 @@ export default function Registration() {
               style={{margin: 8}}
               fullWidth
               name="password"
+              type="password"
               value={registration.password}
               onChange={handleChange}
               className={classes.root}
@@ -178,6 +181,7 @@ export default function Registration() {
               style={{margin: 8}}
               fullWidth
               name="confirmPass"
+              type="password"
               value={registration.confirmPass}
               onChange={handleChange}
               className={classes.root}
