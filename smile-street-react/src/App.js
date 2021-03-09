@@ -32,6 +32,7 @@ export default function App() {
         <Route path="/GoodCauseDetails" component={GoodCauseDetails} />
         <Route path="/VolunteerMatches" component={VolunteerMatches} />
       </Router>
+      <GoodCauseDetails />
     </div>
   );
 }
