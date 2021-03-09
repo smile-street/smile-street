@@ -59,8 +59,14 @@ const MatchCard = ({
   const handleClose = () => {
     setOpen(false);
   };
-
-  console.log(accepted);
+  const deleteItem = () => {
+    handleAgree(id);
+    handleClose();
+  };
+  const acceptItem = () => {
+    handleAccepted(id);
+    handleClose();
+  };
 
   return (
     <Grid item xs={12} sm={4}>
@@ -83,7 +89,7 @@ const MatchCard = ({
               variant="contained"
               color="primary"
               className={classes.buttonColor}
-              onClick={() => handleAccepted(id)}
+              onClick={() => acceptItem()}
             >
               Yes Please
             </Button>
@@ -115,10 +121,7 @@ const MatchCard = ({
           <Button onClick={handleClose} className={classes.buttonColor}>
             Ok, I am not sure
           </Button>
-          <Button
-            onClick={() => handleAgree(id)}
-            className={classes.buttonColor}
-          >
+          <Button onClick={() => deleteItem()} className={classes.buttonColor}>
             Yes,Delete it
           </Button>
         </DialogActions>
