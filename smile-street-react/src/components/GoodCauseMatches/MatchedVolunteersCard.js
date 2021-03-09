@@ -36,7 +36,7 @@ export default function MatchVolunteersCard(props) {
   return (
     <Container>
       <Card className={classes.root}>
-        <CardActionArea onClick={()=>props.reachOut()}>
+        <CardActionArea onClick={()=>props.reachOut(props.name)}>
           <CardContent>
             <Typography variant="h6" component="h3">{props.name}</Typography>
             <List>

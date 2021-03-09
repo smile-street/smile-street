@@ -20,8 +20,8 @@ const useStyles = makeStyles((theme) => ({
 export default function FullWidthGrid() {
   const classes = useStyles();
   const uniqueOpportunities = [...new Set(GoodCauseMatches.map(match => match.opportunityID))]; // create a Set of opportunity IDs
-  function reachOut() {
-    console.log('here')
+  function reachOut(thing) { // to be changed to a dialog giving out information of volunteer
+    console.log(thing)
   }
 
   return (
