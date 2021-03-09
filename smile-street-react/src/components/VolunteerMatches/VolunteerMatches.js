@@ -34,14 +34,13 @@ export default function VolunteerMatches() {
   const classes = useStyles();
 
   const [data, setData] = React.useState(VolunteerMatchesData);
-  const [open, setOpen] = React.useState(true);
+
   console.log(data);
 
   const handleAgree = (id) => {
     console.log('I am invoked ', id);
     const updatedMatchCard = data.filter((card) => card.id !== id);
     setData(updatedMatchCard);
-    setOpen(false);
   };
   const handleAccepted = (id) => {
     let matches = data;
@@ -85,7 +84,6 @@ export default function VolunteerMatches() {
               accepted={item.accepted}
               handleAgree={handleAgree}
               handleAccepted={handleAccepted}
-              open={open}
             />
           ))}
         </Grid>
