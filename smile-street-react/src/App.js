@@ -15,6 +15,7 @@ import {
   Switch,
   useHistory,
 } from 'react-router-dom';
+import VolunteerMatches from './components/VolunteerMatches/VolunteerMatches';
 
 export default function App() {
   return (
@@ -29,6 +30,7 @@ export default function App() {
           component={VolunteerAvailability}
         />
         <Route path="/GoodCauseDetails" component={GoodCauseDetails} />
+        <Route path="/VolunteerMatches" component={VolunteerMatches} />
       </Router>
       <VolunteerAvailability />
       <VolunteerInterests />

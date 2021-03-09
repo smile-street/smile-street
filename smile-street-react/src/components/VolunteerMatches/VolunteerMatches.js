@@ -5,6 +5,7 @@ import Profilebutton from './Profilebutton';
 import {makeStyles} from '@material-ui/core/styles';
 import MatchCard from './MatchCard';
 import VolunteerMatchesData from './VolunteerMatches.json';
+import {useHistory} from 'react-router-dom';
 
 
 
@@ -36,9 +37,8 @@ export default function VolunteerMatches() {
   const classes = useStyles();
 
   const [data, setData] = React.useState(VolunteerMatchesData);
-  console.log(data);
+
   const handleAgree = (id) => {
-    console.log('I am invoked ', id);
     const updatedMatchCard = data.filter((card) => card.id !== id);
     setData(updatedMatchCard);
   };
@@ -49,13 +49,9 @@ export default function VolunteerMatches() {
         match.accepted = match.accepted ? false : true;
       }
     }
-    console.log(matches);
-
     setData(matches);
-    console.log(data);
   };
 
-  console.log(data);
 
   const rejectedMatches = data.filter((match) => match.accepted === false);
   return (
