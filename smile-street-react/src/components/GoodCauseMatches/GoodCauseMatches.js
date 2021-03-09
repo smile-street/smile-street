@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {makeStyles} from '@material-ui/core/styles';
-import { Paper, Container, Divider, Grid } from '@material-ui/core';
-import MatchVolunteersCard from './MatchedVolunteersCard';
+import { Paper, Container, Grid, Button } from '@material-ui/core';
+import { Dialog, 
+        DialogActions, 
+        DialogContent, 
+        DialogContentText, 
+        DialogTitle } from '@material-ui/core';
 import PageHeading from '../PageHeading/PageHeading';
+import MatchVolunteersCard from './MatchedVolunteersCard';
 import GoodCauseProfileButton from './GoodCauseProfileButton';
 import GoodCauseMatches from './GoodCauseMatches.json';
 
@@ -20,9 +25,6 @@ const useStyles = makeStyles((theme) => ({
 export default function FullWidthGrid() {
   const classes = useStyles();
   const uniqueOpportunities = [...new Set(GoodCauseMatches.map(match => match.opportunityID))]; // create a Set of opportunity IDs
-  function reachOut(thing) { // to be changed to a dialog giving out information of volunteer
-    console.log(thing)
-  }
 
   return (
     <div className={classes.root}>
@@ -46,10 +48,7 @@ export default function FullWidthGrid() {
                       return (
                         <Grid item xs={12} sm={4}>
                           <MatchVolunteersCard
-                            name={volunteer.name}
-                            interest={volunteer.interest}
-                            skill={volunteer.skill}
-                            reachOut={reachOut}
+                            volunteer={volunteer}
                           />
                         </Grid>
                       )
@@ -61,6 +60,9 @@ export default function FullWidthGrid() {
           </Grid>
         </Paper>
       </Container>
+      
+      
+      
     </div>
   );
 }
