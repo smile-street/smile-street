@@ -177,8 +177,7 @@ export default function Login() {
               id="good-cause"
               variant="contained"
               className={classes.button}
-              id="good-cause"
-              onClick={() => handleClickRegistration('goodcgause')}
+              onClick={() => handleClickRegistration('goodCause')}
             >
               Register as a Good Cause
             </Button>
