@@ -67,7 +67,6 @@ const MatchCard = ({
     handleAccepted(id);
     handleClose();
   };
-  console.log(accepted);
 
   return (
     <Grid item xs={12} sm={4}>
