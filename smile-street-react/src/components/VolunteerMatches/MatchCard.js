@@ -59,7 +59,10 @@ const MatchCard = ({
   const handleClose = () => {
     setOpen(false);
   };
-
+  const DeleteItem = () => {
+    handleAgree(id);
+    handleClose();
+  };
   console.log(accepted);
 
   return (
@@ -83,7 +86,7 @@ const MatchCard = ({
               variant="contained"
               color="primary"
               className={classes.buttonColor}
-              onClick={() => handleAccepted(id)}
+              onClick={() => DeleteItem(id)}
             >
               Yes Please
             </Button>
@@ -116,7 +119,7 @@ const MatchCard = ({
             Ok, I am not sure
           </Button>
           <Button
-            onClick={() => handleAgree(id)}
+            onClick={() => DeleteItem(id)}
             className={classes.buttonColor}
           >
             Yes,Delete it

@@ -5,6 +5,7 @@ import Profilebutton from './Profilebutton';
 import {makeStyles} from '@material-ui/core/styles';
 import MatchCard from './MatchCard';
 import VolunteerMatchesData from './VolunteerMatches.json';
+import {useHistory} from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,11 +34,14 @@ export default function VolunteerMatches() {
   const classes = useStyles();
 
   const [data, setData] = React.useState(VolunteerMatchesData);
+  const [open, setOpen] = React.useState(true);
   console.log(data);
+
   const handleAgree = (id) => {
     console.log('I am invoked ', id);
     const updatedMatchCard = data.filter((card) => card.id !== id);
     setData(updatedMatchCard);
+    setOpen(false);
   };
   const handleAccepted = (id) => {
     let matches = data;
@@ -81,6 +85,7 @@ export default function VolunteerMatches() {
               accepted={item.accepted}
               handleAgree={handleAgree}
               handleAccepted={handleAccepted}
+              open={open}
             />
           ))}
         </Grid>
