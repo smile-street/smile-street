@@ -27,6 +27,7 @@ import PageHeading from '../PageHeading/PageHeading';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+
     '&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
       borderColor: '#53bd98',
     },
@@ -90,7 +91,7 @@ export default function VolunteerAvailability() {
       startDate: info.startDate,
       endDate: info.endDate,
     };
-    //takes the current array and reuilds and updates.
+
     const updateInfo = [{...info}, newInfo];
     setInfo(updateInfo);
     console.log('Your state after submission is', info);
@@ -198,7 +199,7 @@ export default function VolunteerAvailability() {
               <InputLabel>Please select no. of days available</InputLabel>
 
               <Select
-                label=""
+                label
                 fullWidth
                 id=""
                 style={{margin: 8}}
@@ -207,21 +208,22 @@ export default function VolunteerAvailability() {
                 className={classes.root}
                 name="numberOfDays"
                 onChange={handleChange}
+                value={info.numberOfDays}
               >
                 <MenuItem>
-                  <em>None</em>
+                  <em>No of days available</em>
                 </MenuItem>
 
-                <MenuItem value={1}>1</MenuItem>
-                <MenuItem value={2}>2</MenuItem>
-                <MenuItem value={3}>3</MenuItem>
-                <MenuItem value={4}>4</MenuItem>
-                <MenuItem value={5}>5</MenuItem>
-                <MenuItem value={6}>6</MenuItem>
-                <MenuItem value={7}>7</MenuItem>
-                <MenuItem value={8}>8</MenuItem>
-                <MenuItem value={9}>9</MenuItem>
-                <MenuItem value={10}>10</MenuItem>
+                <MenuItem value={'1'}>1</MenuItem>
+                <MenuItem value={'2'}>2</MenuItem>
+                <MenuItem value={'3'}>3</MenuItem>
+                <MenuItem value={'4'}>4</MenuItem>
+                <MenuItem value={'5'}>5</MenuItem>
+                <MenuItem value={'6'}>6</MenuItem>
+                <MenuItem value={'7'}>7</MenuItem>
+                <MenuItem value={'8'}>8</MenuItem>
+                <MenuItem value={'9'}>9</MenuItem>
+                <MenuItem value={'10'}>10</MenuItem>
               </Select>
 
               <InputLabel>
