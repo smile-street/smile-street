@@ -1,7 +1,6 @@
 import ValidateInfo from './ValidateInfo.js';
-import {useState} from 'react';
-import React from 'react';
-import {useLocation, useHistory} from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
+import React, { useState } from 'react';
 import {
   makeStyles,
   Paper,
@@ -9,11 +8,11 @@ import {
   Container,
   TextField,
   Button,
-  DialogTitle,
 } from '@material-ui/core';
-import FormControl from '@material-ui/core/FormControl';
 import PageHeading from '../PageHeading/PageHeading';
-import PasswordField from 'material-ui-password-field';
+import ValidateInfo from './ValidateInfo.js';
+
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -59,13 +58,14 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
+
 export default function Registration() {
   const location = useLocation();
-  console.log(location.state);
   const userRole = location.state;
   console.log(userRole);
   const history = useHistory();
   const initialFormState = {
+    userType: location.state.userType,
     firstName: '',
     lastName: '',
     email: '',
@@ -169,7 +169,7 @@ export default function Registration() {
               className={classes.root}
             />
             {errors.contactNumber && <p>{errors.contactNumber}</p>}
-            <PasswordField
+            <TextField
               variant="outlined"
               margin="normal"
               id="password"
@@ -177,13 +177,13 @@ export default function Registration() {
               style={{margin: 8}}
               fullWidth
               name="password"
+              type="password"
               value={registration.password}
               onChange={handleChange}
               className={classes.root}
-              password
             />
             {errors.password && <p>{errors.password}</p>}
-            <PasswordField
+            <TextField
               variant="outlined"
               margin="normal"
               id="confirm password"
@@ -191,10 +191,10 @@ export default function Registration() {
               style={{margin: 8}}
               fullWidth
               name="confirmPass"
+              type="password"
               value={registration.confirmPass}
               onChange={handleChange}
               className={classes.root}
-              password
             />
             {errors.confirmPass && <p>{errors.confirmPass}</p>}
             <Grid item xs={12} sm={12}>
