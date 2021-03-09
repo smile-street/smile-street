@@ -1,13 +1,4 @@
 import React from 'react';
-
-import DateFnsUtils from '@date-io/date-fns';
-import {
-  MuiPickersUtilsProvider,
-  KeyboardTimePicker,
-  KeyboardDatePicker,
-} from '@material-ui/pickers';
-import Icon from '@material-ui/core/Icon';
-
 import {useState} from 'react';
 
 import {
@@ -23,7 +14,7 @@ import {
   Select,
 } from '@material-ui/core';
 import PageHeading from '../PageHeading/PageHeading';
-
+import Validation from './Validation';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -72,6 +63,7 @@ export default function VolunteerAvailability() {
     endDate: '',
   };
   const [info, setInfo] = useState(initialFormState);
+  const [errors, setErrors] = useState({Validation});
   console.log(info);
 
   const handleChange = (e) => {
@@ -82,6 +74,7 @@ export default function VolunteerAvailability() {
   };
 
   const handleSubmit = (e) => {
+    setErrors(Validation(info));
     e.preventDefault();
 
     const newInfo = {
@@ -104,11 +97,11 @@ export default function VolunteerAvailability() {
       <Paper className={classes.paper}>
         <Container maxWidth="xs">
           <PageHeading heading="Volunteer Availability" />
+
           <Grid container spacing={3}>
             <Grid item xs={12} sm={12}>
               <TextField
                 margin="normal"
-                id="title"
                 //style={{ margin: 8 }}
                 fullWidth
                 autoFocus
@@ -119,6 +112,7 @@ export default function VolunteerAvailability() {
                 onChange={handleChange}
                 className={classes.root}
               />
+              {errors.employer_name}
             </Grid>
             <Grid item xs={12} sm={12}>
               <InputLabel>We will match you based on your locations</InputLabel>
