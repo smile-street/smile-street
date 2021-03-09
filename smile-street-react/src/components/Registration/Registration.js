@@ -1,4 +1,3 @@
-import ValidateInfo from './ValidateInfo.js';
 import { useLocation, useHistory } from 'react-router-dom';
 import React, { useState } from 'react';
 import {
@@ -60,12 +59,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Registration() {
-  const location = useLocation();
-  const userRole = location.state;
-  console.log(userRole);
+  const userRole = useLocation().state;
   const history = useHistory();
   const initialFormState = {
-    userType: location.state.userType,
+    userType: userRole.userType,
     firstName: '',
     lastName: '',
     email: '',
@@ -103,7 +100,7 @@ export default function Registration() {
     if (userRole.userType === 'volunteer') {
       history.push({pathname: '/VolunteerAvailability'});
     }
-    if (userRole.userType === 'goodcause') {
+    if (userRole.userType === 'goodCause') {
       history.push({pathname: '/GoodCauseDetails'});
     }
   };
@@ -137,7 +134,6 @@ export default function Registration() {
               style={{margin: 8}}
               fullWidth
               name="lastName"
-              //type="text"
               value={registration.lastName}
               onChange={handleChange}
               className={classes.root}
