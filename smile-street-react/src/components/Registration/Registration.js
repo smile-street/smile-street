@@ -1,5 +1,5 @@
-import { useLocation, useHistory } from 'react-router-dom';
-import React, { useState } from 'react';
+import {useLocation, useHistory} from 'react-router-dom';
+import React, {useState} from 'react';
 import {
   makeStyles,
   Paper,
@@ -9,8 +9,7 @@ import {
   Button,
 } from '@material-ui/core';
 import PageHeading from '../PageHeading/PageHeading';
-import ValidateInfo from './ValidateInfo.js';
-
+import ValidateInfo from './ValidateInfo';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -72,6 +71,7 @@ export default function Registration() {
   };
   const [registration, setRegistration] = useState(initialFormState);
   const [errors, setErrors] = useState({ValidateInfo});
+  console.log(errors.ValidateInfo);
   const handleChange = (e) => {
     setRegistration({
       ...registration,
@@ -82,8 +82,9 @@ export default function Registration() {
   //////////////////////////////////////////////////
 
   const handleClick = (e) => {
-    e.preventDefault();
     setErrors(ValidateInfo(registration));
+    e.preventDefault();
+
     const newReg = {
       firstName: registration.firstName,
       lastName: registration.lastName,
