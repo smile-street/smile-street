@@ -1,5 +1,6 @@
+import ValidateInfo from './ValidateInfo.js';
+import { useLocation, useHistory } from 'react-router-dom';
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import {
   makeStyles,
   Paper,
@@ -60,6 +61,9 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Registration() {
   const location = useLocation();
+  const userRole = location.state;
+  console.log(userRole);
+  const history = useHistory();
   const initialFormState = {
     userType: location.state.userType,
     firstName: '',
@@ -96,6 +100,12 @@ export default function Registration() {
     setRegistration(updatedReg);
     console.log(registration);
     setRegistration(initialFormState);
+    if (userRole.userType === 'volunteer') {
+      history.push({pathname: '/VolunteerAvailability'});
+    }
+    if (userRole.userType === 'goodcause') {
+      history.push({pathname: '/GoodCauseDetails'});
+    }
   };
 
   //////////////////////////////////////////////////////////
