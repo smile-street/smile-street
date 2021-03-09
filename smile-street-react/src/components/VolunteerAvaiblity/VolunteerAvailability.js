@@ -7,11 +7,6 @@ import {
   KeyboardDatePicker,
 } from '@material-ui/pickers';
 
-import CustomizedHook from '../GoodCauseOpportunity/AutoCompleteTag';
-
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-
 import {useState} from 'react';
 
 import {
@@ -26,7 +21,6 @@ import {
   MenuItem,
   Select,
 } from '@material-ui/core';
-import FormControl from '@material-ui/core/FormControl';
 import PageHeading from '../PageHeading/PageHeading';
 
 const useStyles = makeStyles((theme) => ({
@@ -68,28 +62,39 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function VolunteerAvailability() {
-  const [matchData, setMatchData] = useState({
+  const initialFormState = {
     employers_name: '',
-    location1: '',
+    location: '',
     numberOfDays: '',
     startDate: '',
     endDate: '',
-  });
+  };
+  const [info, setInfo] = useState(initialFormState);
+  console.log(info);
 
   const handleChange = (e) => {
-    setMatchData({
-      ...matchData,
+    setInfo({
+      ...info,
       [e.target.name]: e.target.value,
     });
-    console.log('hellow');
   };
 
-  const changeCity = (event) => {
-    event.preventDefault();
-    setMatchData.location1(event.target.value);
-  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-  const handleDateChange = (date) => {};
+    const newInfo = {
+      employers_name: info.employers_name,
+      location: info.location,
+      numberOfDays: info.numberOfDays,
+      startDate: info.startDate,
+      endDate: info.endDate,
+    };
+    //takes the current array and reuilds and updates.
+    const updateInfo = [{...info}, newInfo];
+    setInfo(updateInfo);
+    console.log(info);
+    setInfo(initialFormState);
+  };
 
   const classes = useStyles();
   return (
@@ -108,7 +113,7 @@ export default function VolunteerAvailability() {
                 name="employers_name"
                 label="Employers Name"
                 variant="outlined"
-                value={matchData.employers_name}
+                value={info.employers_name}
                 onChange={handleChange}
                 className={classes.root}
               />
@@ -117,8 +122,6 @@ export default function VolunteerAvailability() {
             <InputLabel>We will match you based on your locations</InputLabel>
             <InputLabel>Select your primary match location</InputLabel>
             <Select
-              // value={VolunteerAvaiblity.matchData.location1}
-              // onChange={VolunteerAvaiblity.handleChange}
               label
               fullWidth
               margin="normal"
@@ -128,8 +131,8 @@ export default function VolunteerAvailability() {
               autoFocus
               variant="outlined"
               className={classes.root}
-              name="location1"
-              value={matchData.location1}
+              name="location"
+              value={info.location}
               onChange={handleChange}
             >
               <MenuItem>
@@ -202,7 +205,6 @@ export default function VolunteerAvailability() {
               variant="outlined"
               className={classes.root}
               name="numberOfDays"
-              value={matchData.numberOfDays}
               onChange={handleChange}
             >
               <MenuItem>
@@ -231,6 +233,7 @@ export default function VolunteerAvailability() {
                 margin="normal"
                 fullWidth
                 autoFocus
+                value={info.startDate}
                 // variant="outlined"
                 id="date"
                 label="Start Data"
@@ -238,7 +241,6 @@ export default function VolunteerAvailability() {
                 defaultValue="2017-05-24"
                 className={classes.root}
                 name="startDate"
-                value={matchData.startDate}
                 onChange={handleChange}
                 InputLabelProps={{
                   shrink: true,
@@ -248,6 +250,7 @@ export default function VolunteerAvailability() {
 
             <Grid item xs={8}>
               <TextField
+                value={info.endDate}
                 margin="normal"
                 fullWidth
                 autoFocus
@@ -257,7 +260,7 @@ export default function VolunteerAvailability() {
                 defaultValue="2017-05-24"
                 className={classes.root}
                 name="endDate"
-                value={matchData.endDate}
+                value={info.endDate}
                 onChange={handleChange}
                 InputLabelProps={{
                   shrink: true,
@@ -267,7 +270,6 @@ export default function VolunteerAvailability() {
 
             <Grid item xs={4}>
               <Button
-                //onClick={addDateRange}
                 variant="contained"
                 className={classes.buttonColor}
                 style={{margin: 12}}
@@ -277,7 +279,11 @@ export default function VolunteerAvailability() {
             </Grid>
 
             <Grid item xs={12}>
-              <Button variant="contained" className={classes.buttonColor}>
+              <Button
+                variant="contained"
+                className={classes.buttonColor}
+                onclick={handleSubmit}
+              >
                 Add Interests
               </Button>
             </Grid>
