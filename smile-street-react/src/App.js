@@ -30,14 +30,11 @@ export default function App() {
         />
         <Route path="/GoodCauseDetails" component={GoodCauseDetails} />
       </Router>
-<<<<<<< HEAD
       <VolunteerAvailability />
       <VolunteerInterests />
       <GoodCauseDetails />
       <GoodCauseOpportunity /> */}
       <GoodCauseMatches />
-=======
->>>>>>> main
     </div>
   );
 }
