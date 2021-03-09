@@ -24,12 +24,20 @@ export default function App() {
         <Route path="/" exact component={Login} />
         <Route path="/Registration" exact component={Registration} />
         <Route path="/PasswordRecovery" exact component={PasswordRecovery} />
+        <Route
+          path="/VolunteerAvailability"
+          component={VolunteerAvailability}
+        />
+        <Route path="/GoodCauseDetails" component={GoodCauseDetails} />
       </Router>
+<<<<<<< HEAD
       <VolunteerAvailability />
       <VolunteerInterests />
       <GoodCauseDetails />
       <GoodCauseOpportunity /> */}
       <GoodCauseMatches />
+=======
+>>>>>>> main
     </div>
   );
 }

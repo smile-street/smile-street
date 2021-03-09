@@ -1,6 +1,5 @@
-import ValidateInfo from './ValidateInfo.js';
-import {useState} from 'react';
-import React from 'react';
+import { useLocation, useHistory } from 'react-router-dom';
+import React, { useState } from 'react';
 import {
   makeStyles,
   Paper,
@@ -8,10 +7,11 @@ import {
   Container,
   TextField,
   Button,
-  DialogTitle,
 } from '@material-ui/core';
-import FormControl from '@material-ui/core/FormControl';
 import PageHeading from '../PageHeading/PageHeading';
+import ValidateInfo from './ValidateInfo.js';
+
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -57,19 +57,23 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
+
 export default function Registration() {
-  //const{errors} = ValidateInfo(validate);
-  const [registration, newRegistration] = useState({
+  const userRole = useLocation().state;
+  const history = useHistory();
+  const initialFormState = {
+    userType: userRole.userType,
     firstName: '',
     lastName: '',
     email: '',
     contactNumber: '',
     password: '',
     confirmPass: '',
-  });
+  };
+  const [registration, setRegistration] = useState(initialFormState);
   const [errors, setErrors] = useState({ValidateInfo});
   const handleChange = (e) => {
-    newRegistration({
+    setRegistration({
       ...registration,
       [e.target.name]: e.target.value,
     });
@@ -90,8 +94,15 @@ export default function Registration() {
     };
     //takes the current array and reuilds and updates.
     const updatedReg = [{...registration}, newReg];
-    newRegistration(updatedReg);
+    setRegistration(updatedReg);
     console.log(registration);
+    setRegistration(initialFormState);
+    if (userRole.userType === 'volunteer') {
+      history.push({pathname: '/VolunteerAvailability'});
+    }
+    if (userRole.userType === 'goodCause') {
+      history.push({pathname: '/GoodCauseDetails'});
+    }
   };
 
   //////////////////////////////////////////////////////////
@@ -123,7 +134,6 @@ export default function Registration() {
               style={{margin: 8}}
               fullWidth
               name="lastName"
-              //type="text"
               value={registration.lastName}
               onChange={handleChange}
               className={classes.root}
@@ -163,6 +173,7 @@ export default function Registration() {
               style={{margin: 8}}
               fullWidth
               name="password"
+              type="password"
               value={registration.password}
               onChange={handleChange}
               className={classes.root}
@@ -176,6 +187,7 @@ export default function Registration() {
               style={{margin: 8}}
               fullWidth
               name="confirmPass"
+              type="password"
               value={registration.confirmPass}
               onChange={handleChange}
               className={classes.root}

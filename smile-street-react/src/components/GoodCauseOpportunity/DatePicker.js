@@ -33,7 +33,6 @@ export default function DatePicker(props) {
           KeyboardButtonProps={{
             "aria-label": "change date",
           }}
-          style={{ width: "60%" }}
         />
       </Grid>
     </MuiPickersUtilsProvider>

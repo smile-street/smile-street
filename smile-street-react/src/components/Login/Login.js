@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-
 import {
   makeStyles,
   Button,
@@ -103,8 +102,11 @@ export default function Login() {
   }
 
   let history = useHistory();
-  const handleClickRegistration = () => {
-    history.push('/Registration');
+  const handleClickRegistration = (userType) => {
+    history.push({
+      pathname: '/Registration',
+      state: {userType: userType},
+    });
   };
 
   return (
@@ -171,9 +173,10 @@ export default function Login() {
           <Grid item xs={12} sm={12}>
             <Button
               type="submit"
+              id="good-cause"
               variant="contained"
               className={classes.button}
-              onClick={handleClickRegistration}
+              onClick={() => handleClickRegistration('goodCause')}
             >
               Register as a Good Cause
             </Button>
@@ -182,9 +185,10 @@ export default function Login() {
             <Button
               type="submit"
               variant="contained"
+              id="volunteer"
               className={classes.button}
               style={{margin: 8}}
-              onClick={handleClickRegistration}
+              onClick={() => handleClickRegistration('volunteer')}
             >
               Register as a Volunteer
             </Button>
