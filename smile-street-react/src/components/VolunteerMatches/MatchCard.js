@@ -42,22 +42,27 @@ const MatchCard = ({
   id,
   GoodCause,
   Description,
-  Dates,
   accepted,
-  deleteMatchCard,
   handleAgree,
   handleAccepted,
 }) => {
   const classes = useStyles();
 
   const [open, setOpen] = React.useState(false);
+  const [openYes, setOpenYes] = React.useState(false);
 
   const handleClickOpenNo = () => {
     setOpen(true);
   };
+  const handleClickOpenYes = () => {
+    setOpenYes(true);
+  };
 
   const handleClose = () => {
     setOpen(false);
+  };
+  const handleCloseYes = () => {
+    setOpenYes(false);
   };
   const deleteItem = () => {
     handleAgree(id);
@@ -65,7 +70,7 @@ const MatchCard = ({
   };
   const acceptItem = () => {
     handleAccepted(id);
-    handleClose();
+    handleCloseYes();
   };
 
   return (
@@ -89,7 +94,7 @@ const MatchCard = ({
               variant="contained"
               color="primary"
               className={classes.buttonColor}
-              onClick={() => acceptItem()}
+              onClick={handleClickOpenYes}
             >
               Yes Please
             </Button>
@@ -109,7 +114,7 @@ const MatchCard = ({
 
       <Dialog
         open={open}
-        onClose={handleClose}
+        onClose={handleCloseYes}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
@@ -123,6 +128,22 @@ const MatchCard = ({
           </Button>
           <Button onClick={() => deleteItem()} className={classes.buttonColor}>
             Yes,Delete it
+          </Button>
+        </DialogActions>
+      </Dialog>
+      <Dialog
+        open={openYes}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-accept">
+          {'Thank you for your interest good cause will be in touch?'}
+        </DialogTitle>
+
+        <DialogActions>
+          <Button onClick={() => acceptItem()} className={classes.buttonColor}>
+            Save!
           </Button>
         </DialogActions>
       </Dialog>
