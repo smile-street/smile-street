@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Button,
   Container,
   Card,
   CardActionArea,
-  CardActions,
   CardContent,
   Typography,
   Divider,
@@ -12,68 +11,81 @@ import {
   ListItem,
   ListItemText,
 } from '@material-ui/core';
-import {makeStyles} from '@material-ui/core/styles';
+import { Dialog, 
+  DialogActions, 
+  DialogContent, 
+  DialogContentText, 
+  DialogTitle } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-  },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
+    alignItems: 'center',
   },
   buttonColor: {
     backgroundColor: '#53bd98',
     color: 'white',
     background: '#449f80',
-
     '&:hover': {
       background: '#449f80',
     },
   },
 }));
 
-export default function MatchVolunteersCard({name, interest, availability}) {
+export default function MatchVolunteersCard(props) {
   const classes = useStyles();
+
+  const [openDialog, setOpenDialog] = useState(false);
+  const handleCloseDialog = () => setOpenDialog(false);
+  const reachOut = () => setOpenDialog(true);
+
+
 
   return (
     <Container>
       <Card className={classes.root}>
-        <CardActionArea>
+        <CardActionArea onClick={() => reachOut()}>
           <CardContent>
-            <Typography gutterBottom variant="h5" component="h2"></Typography>
-
-            <List component="nav" aria-label="secondary mailbox folders">
+            <Typography variant="h6" component="h3">{props.volunteer.name}</Typography>
+            <List>
               <div>
                 <ListItem>
-                  <ListItemText primary={name} />
+                  <ListItemText primary={props.volunteer.interest} />
                 </ListItem>
                 <Divider />
                 <ListItem>
-                  <ListItemText primary={interest} />
-                </ListItem>
-                <Divider />
-                <ListItem>
-                  <ListItemText primary={availability} />
+                  <ListItemText primary={props.volunteer.skill} />
                 </ListItem>
               </div>
             </List>
           </CardContent>
         </CardActionArea>
-
-        <CardActions>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.buttonColor}
-          >
-            Reach Out
-          </Button>
-        </CardActions>
       </Card>
+      <Dialog
+        open={openDialog}
+        onClose={handleCloseDialog}
+        aria-labelledby="Contact info title"
+        aria-describedby="Contact info details"
+      >
+        <DialogTitle id="Contact info title">{`Contact information for ${props.volunteer.name}`}</DialogTitle>
+        <DialogContent id="Contact info details" dividers>
+          <Typography gutterBottom>
+            {`Number: ${props.volunteer.phone}`}
+          </Typography>
+          <Typography gutterBottom>
+            {`email: ${props.volunteer.email}`}
+          </Typography>
+          <Typography gutterBottom>
+            {`${props.volunteer.name} is interested in ${props.volunteer.interest}, and is skilled in ${props.volunteer.skill}`}
+          </Typography>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseDialog} className={classes.buttonColor}>
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Container>
   );
 }
