@@ -33,6 +33,7 @@ export default function App() {
         <Route path="/VolunteerMatches" component={VolunteerMatches} />
       </Router> */}
       <VolunteerInterests />
+      <GoodCauseOpportunity />
     </div>
   );
 }
