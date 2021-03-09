@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   makeStyles,
   Paper,
@@ -7,6 +7,7 @@ import {
   TextField,
   Button,
 } from "@material-ui/core";
+import GoodCauseName from './GoodCauseName';
 import PageHeading from "../PageHeading/PageHeading";
 
 const useStyles = makeStyles((theme) => ({
@@ -18,11 +19,9 @@ const useStyles = makeStyles((theme) => ({
     "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
       borderColor: "#449f80",
     },
-
     "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-input": {
       color: "#449f80",
     },
-
     "& .MuiInputLabel-outlined.Mui-focused": {
       color: "#449f80",
     },
@@ -47,13 +46,23 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Registration() {
+
+export default function GoodCauseDetails() {
+  const [goodCauseNumber, setGoodCauseNumber] = useState('')
+  const [goodCauseDescription, setGoodCauseDescription] = useState('')
   const classes = useStyles();
+  
+  const handleClick = () => console.log(
+    `Charity number: ${goodCauseNumber}
+    Good Cause name: my idea is to move the function from GoodCauseName into here and get rid of the component... -A
+    Description: ${goodCauseDescription}
+    `)
+
   return (
     <Container component="main">
       <Paper className={classes.paper}>
         <Container maxWidth="xs">
-          <PageHeading heading="Good Cause Detaiils" />
+          <PageHeading heading="Good Cause Details" />
           <Grid container spacing={3}>
             <TextField
               variant="outlined"
@@ -63,29 +72,27 @@ export default function Registration() {
               className={classes.root}
               fullWidth
               autoFocus
+              placeholder="e.g. 1164681"
+              value={goodCauseNumber}
+              onChange={(event) => setGoodCauseNumber(event.target.value)}
             />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              id="first name"
-              label="Name of good cause"
-              className={classes.root}
-              fullWidth
-            />
+            <GoodCauseName className={classes.root} number={goodCauseNumber}/>
             <TextField
               variant="outlined"
               margin="normal"
               id="last name"
-              label="Few word describing good cause"
+              label="Add a few words describing your good cause"
               className={classes.root}
+              value={goodCauseDescription}
+              onChange={(event) => setGoodCauseDescription(event.target.value)}
               fullWidth
               multiline
               rows="6"
             />
 
             <Grid item xs={12} sm={12}>
-              <Button variant="contained" className={classes.buttonColor}>
-                Add availblity
+              <Button variant="contained" className={classes.buttonColor} onClick={handleClick}>
+                Add Opportunity
               </Button>
             </Grid>
           </Grid>

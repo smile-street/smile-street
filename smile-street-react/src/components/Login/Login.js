@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useState} from 'react';
 
 import {
   makeStyles,
@@ -14,29 +14,29 @@ import {
   DialogContent,
   DialogContentText,
   Snackbar,
-} from "@material-ui/core";
-import MuiAlert from "@material-ui/lab/Alert";
-import PageHeading from "../PageHeading/PageHeading";
-import { useHistory } from "react-router-dom";
-import { Link } from "react-router-dom";
+} from '@material-ui/core';
+import MuiAlert from '@material-ui/lab/Alert';
+import PageHeading from '../PageHeading/PageHeading';
+import {useHistory} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
 
-    "&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-      borderColor: "#53bd98",
+    '&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
+      borderColor: '#53bd98',
     },
-    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-      borderColor: "#449f80",
-    },
-
-    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-input": {
-      color: "#449f80",
+    '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
+      borderColor: '#449f80',
     },
 
-    "& .MuiInputLabel-outlined.Mui-focused": {
-      color: "#449f80",
+    '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-input': {
+      color: '#449f80',
+    },
+
+    '& .MuiInputLabel-outlined.Mui-focused': {
+      color: '#449f80',
     },
     margin: 8,
   },
@@ -44,28 +44,28 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(0.5),
     padding: theme.spacing(3),
     color: theme.palette.text.secondary,
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    maxWidth: "xs",
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    maxWidth: 'xs',
   },
   form: {
-    width: "100%",
+    width: '100%',
   },
   button: {
-    backgroundColor: "#53bd98",
-    color: "white",
-    "&:hover": {
-      background: "#449f80",
+    backgroundColor: '#53bd98',
+    color: 'white',
+    '&:hover': {
+      background: '#449f80',
     },
     paper: {
       padding: theme.spacing(2),
-      textAlign: "center",
+      textAlign: 'center',
       color: theme.palette.text.secondary,
     },
   },
   TextField: {
-    borderColor: "red",
+    borderColor: 'red',
     borderWidth: 4,
   },
 }));
@@ -87,14 +87,15 @@ export default function Login() {
     setOpenToast(true);
   };
   const handleToastClose = (event, reason) => {
-    if (reason === "clickaway") {
+    if (reason === 'clickaway') {
       return;
     }
     setOpenToast(false);
   };
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [user, setUser] = useState('Volunteer');
 
   function checkCredentials(event) {
     console.log(
@@ -103,8 +104,11 @@ export default function Login() {
   }
 
   let history = useHistory();
-  const handleClickRegistration = () => {
-    history.push("/Registration");
+  const handleClickRegistration = (userType) => {
+    history.push({
+      pathname: '/Registration',
+      state: {userType: userType},
+    });
   };
 
   return (
@@ -144,61 +148,38 @@ export default function Login() {
               <Button
                 variant="contained"
                 className={classes.button}
-                style={{ margin: 8 }}
+                style={{margin: 8}}
                 onClick={checkCredentials}
               >
                 Log in
               </Button>
             </Grid>
-            <Grid item xs={12} sm={12} style={{ margin: 8 }}>
+            <Grid item xs={12} sm={12} style={{margin: 8}}>
               <Divider />
             </Grid>
-            <Grid item xs={12} sm={12} style={{ margin: 8 }}>
+            <Grid item xs={12} sm={12} style={{margin: 8}}>
               <Link
-                cursor={"pointer"}
+                cursor={'pointer'}
                 onClick={handleClickOpen}
                 variant="body2"
-                style={{ margin: 8 }}
+                style={{margin: 8}}
               >
-                {" "}
+                {' '}
                 Forget your password click here
               </Link>
             </Grid>
           </form>
-          <Grid item xs={12} sm={12} style={{ margin: 8 }}>
-            <Divider />
-          </Grid>
-
-          <Grid item xs={12} sm={12}>
-            <Button
-              type="submit"
-              variant="contained"
-              className={classes.button}
-              style={{ margin: 8 }}
-            >
-              Log in with Facebook
-            </Button>
-          </Grid>
-          <Grid item xs={12} sm={12}>
-            <Button
-              type="submit"
-              variant="contained"
-              className={classes.button}
-              style={{ margin: 8 }}
-            >
-              Log in with Google
-            </Button>
-          </Grid>
-
-          <Grid item xs={12} sm={12} style={{ margin: 8 }}>
+          <Grid item xs={12} sm={12} style={{margin: 8}}>
             <Divider />
           </Grid>
           <Grid item xs={12} sm={12}>
             <Button
               type="submit"
+              id="good-cause"
               variant="contained"
               className={classes.button}
-              onClick={handleClickRegistration}
+              id="good-cause"
+              onClick={() => handleClickRegistration('goodcause')}
             >
               Register as a Good Cause
             </Button>
@@ -207,9 +188,10 @@ export default function Login() {
             <Button
               type="submit"
               variant="contained"
+              id="volunteer"
               className={classes.button}
-              style={{ margin: 8 }}
-              onClick={handleClickRegistration}
+              style={{margin: 8}}
+              onClick={() => handleClickRegistration('volunteer')}
             >
               Register as a Volunteer
             </Button>
@@ -262,7 +244,7 @@ export default function Login() {
         open={openToast}
         autoHideDuration={6000}
         onClose={handleToastClose}
-        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        anchorOrigin={{vertical: 'top', horizontal: 'center'}}
       >
         <Alert onClose={handleToastClose} severity="warning">
           Check your email to confirm password reset!
