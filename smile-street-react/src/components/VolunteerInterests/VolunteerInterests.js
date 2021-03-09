@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
-import {Paper, Container, Grid, Button} from '@material-ui/core';
+import {Paper, Container, Grid, Button, Divider} from '@material-ui/core';
 import InterestSquares from './InterestSquares';
 import SkillsAutoComplete from './SkillsAutoComplete';
 import PageHeading from '../PageHeading/PageHeading';
@@ -59,6 +59,9 @@ export default function VolunteerInterests() {
             );
           })}
         </Grid>
+        <Grid item xs={12} sm={12} style={{margin: 8}}>
+          <Divider />
+        </Grid>
         <Grid
           container
           spacing={0}
@@ -69,6 +72,9 @@ export default function VolunteerInterests() {
           <Grid item xs={12} sm={6}>
             <SkillsAutoComplete setSkills={setSkills} fullWidth />
           </Grid>
+        </Grid>
+        <Grid item xs={12} sm={12} style={{margin: 8}}>
+          <Divider />
         </Grid>
 
         <Grid item xs={12} sm={12}>
