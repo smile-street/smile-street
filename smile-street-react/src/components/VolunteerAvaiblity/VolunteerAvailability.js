@@ -63,7 +63,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function VolunteerAvailability() {
   const initialFormState = {
-    employers_name: '',
+    employer_name: '',
     location: '',
     numberOfDays: '',
     startDate: '',
@@ -83,7 +83,7 @@ export default function VolunteerAvailability() {
     e.preventDefault();
 
     const newInfo = {
-      employers_name: info.employers_name,
+      employer_name: info.employer_name,
       location: info.location,
       numberOfDays: info.numberOfDays,
       startDate: info.startDate,
@@ -92,7 +92,7 @@ export default function VolunteerAvailability() {
     //takes the current array and reuilds and updates.
     const updateInfo = [{...info}, newInfo];
     setInfo(updateInfo);
-    console.log(info);
+    console.log('Your state after submission is', info);
     setInfo(initialFormState);
   };
 
@@ -110,10 +110,10 @@ export default function VolunteerAvailability() {
                 //style={{ margin: 8 }}
                 fullWidth
                 autoFocus
-                name="employers_name"
+                name="employer_name"
                 label="Employers Name"
                 variant="outlined"
-                value={info.employers_name}
+                value={info.employer_name}
                 onChange={handleChange}
                 className={classes.root}
               />
@@ -250,7 +250,6 @@ export default function VolunteerAvailability() {
 
             <Grid item xs={8}>
               <TextField
-                value={info.endDate}
                 margin="normal"
                 fullWidth
                 autoFocus
@@ -282,7 +281,7 @@ export default function VolunteerAvailability() {
               <Button
                 variant="contained"
                 className={classes.buttonColor}
-                onclick={handleSubmit}
+                onClick={handleSubmit}
               >
                 Add Interests
               </Button>
