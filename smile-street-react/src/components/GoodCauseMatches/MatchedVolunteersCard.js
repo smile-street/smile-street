@@ -17,63 +17,41 @@ import {makeStyles} from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-  },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
+    alignItems: 'center',
   },
   buttonColor: {
     backgroundColor: '#53bd98',
     color: 'white',
     background: '#449f80',
-
     '&:hover': {
       background: '#449f80',
     },
   },
 }));
 
-export default function MatchVolunteersCard({name, interest, skill, reachOut}) {
+export default function MatchVolunteersCard(props) {
   const classes = useStyles();
+  console.log(props)
 
   return (
     <Container>
       <Card className={classes.root}>
-        <CardActionArea>
+        <CardActionArea onClick={()=>props.reachOut()}>
           <CardContent>
-            <Typography gutterBottom variant="h5" component="h2"></Typography>
-
-            <List component="nav" aria-label="secondary mailbox folders">
+            <Typography variant="h6" component="h3">{props.name}</Typography>
+            <List>
               <div>
                 <ListItem>
-                  <ListItemText primary={name} />
+                  <ListItemText primary={props.interest} />
                 </ListItem>
                 <Divider />
                 <ListItem>
-                  <ListItemText primary={interest} />
-                </ListItem>
-                <Divider />
-                <ListItem>
-                  <ListItemText primary={skill} />
+                  <ListItemText primary={props.skill} />
                 </ListItem>
               </div>
             </List>
           </CardContent>
         </CardActionArea>
-
-        <CardActions>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.buttonColor}
-            reachOut={reachOut(name)}
-          >
-            Reach Out
-          </Button>
-        </CardActions>
       </Card>
     </Container>
   );

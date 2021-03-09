@@ -20,8 +20,8 @@ const useStyles = makeStyles((theme) => ({
 export default function FullWidthGrid() {
   const classes = useStyles();
   const uniqueOpportunities = [...new Set(GoodCauseMatches.map(match => match.opportunityID))]; // create a Set of opportunity IDs
-  function reachOut(name) {
-    console.log(name)
+  function reachOut() {
+    console.log('here')
   }
 
   return (
@@ -33,7 +33,7 @@ export default function FullWidthGrid() {
           <Grid
             container
             spacing={2}
-            direction="row"
+            direction="column"
             justify="flex-start"
             alignItems="flex-start"
           >
