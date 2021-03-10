@@ -3,7 +3,6 @@ import { Container, Grid, Paper, Button, Menu, MenuItem } from '@material-ui/cor
 import { makeStyles } from '@material-ui/core/styles';
 import { useHistory } from 'react-router-dom';
 import PageHeading from '../PageHeading/PageHeading';
-import Profilebutton from './Profilebutton';
 import MatchCard from './MatchCard';
 import VolunteerMatchesData from './VolunteerMatches.json';
 
@@ -80,6 +79,7 @@ export default function VolunteerMatches() {
       default: return undefined
     }
   };
+
   return (
     <Container>
       <Paper className={classes.paper}>
