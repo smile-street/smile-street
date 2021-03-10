@@ -7,9 +7,6 @@ import MatchCard from './MatchCard';
 import VolunteerMatchesData from './VolunteerMatches.json';
 import {useHistory} from 'react-router-dom';
 
-
-
-
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -50,8 +47,8 @@ export default function VolunteerMatches() {
       }
     }
     setData(matches);
+    console.log(data);
   };
-
 
   const rejectedMatches = data.filter((match) => match.accepted === false);
   return (
