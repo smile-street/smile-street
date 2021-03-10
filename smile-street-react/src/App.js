@@ -4,10 +4,10 @@ import GoodCauseDetails from './components/GoodCauseDetails/GoodCauseDetails';
 import GoodCauseOpportunity from './components/GoodCauseOpportunity/GoodCauseOpportunity';
 import GoodCauseMatches from './components/GoodCauseMatches/GoodCauseMatches';
 import Login from './components/Login/Login';
-
 import Registration from './components/Registration/Registration';
 import VolunteerAvailability from './components/VolunteerAvaiblity/VolunteerAvailability';
 import VolunteerInterests from './components/VolunteerInterests/VolunteerInterests';
+import VolEditProfile from './components/VolunteerEditProfile/VolEditProfile';
 
 import {
   BrowserRouter as Router,
@@ -34,6 +34,7 @@ export default function App() {
         <Route path="/GoodCauseMatches" component={GoodCauseMatches} />
         <Route path="/VolunteerInterests" component={VolunteerInterests} />
         <Route path="/GoodCauseOpportunity" component={GoodCauseOpportunity} />
+        <Route path="/VolEditProfile" component={VolEditProfile} />
       </Router>
       {/* <VolunteerInterests />
       <GoodCauseOpportunity /> */}

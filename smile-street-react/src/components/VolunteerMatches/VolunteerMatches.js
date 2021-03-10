@@ -32,8 +32,10 @@ const useStyles = makeStyles((theme) => ({
 
 export default function VolunteerMatches() {
   const classes = useStyles();
-
+  const history = useHistory();
   const [data, setData] = useState(VolunteerMatchesData);
+  const [anchorEl, setAnchorEl] = useState(null);
+
 
   const handleAgree = (id) => {
     const updatedMatchCard = data.filter((card) => card.id !== id);
@@ -52,19 +54,36 @@ export default function VolunteerMatches() {
 
   const rejectedMatches = data.filter((match) => match.accepted === false);
 
-  const [anchorEl, setAnchorEl] = useState(null);
 
-  const handleClick = (event) => {
+  const handleMenuClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleClose = () => {
+  const handleClose = (event) => {
     setAnchorEl(null);
+    switch (event.target.innerText) {
+      case "Edit Profile":
+        history.push({pathname: '/VolEditProfile'});
+        break
+      case "Edit Interests":
+        history.push({pathname: '/VolunteerInterests'});
+        break
+      case "Logout":
+        // initiates the logout somehow
+        // history.push({pathname: '/Logout'});
+        console.log("logout!")
+        break
+      case "Delete Account":
+        // open a delete account dialog
+        console.log("dialog?")
+        break  
+      default: return undefined
+    }
   };
   return (
     <Container>
       <Paper className={classes.paper}>
-        <Button aria-controls="edit-menu" aria-haspopup="true" onClick={handleClick} >
+        <Button aria-controls="edit-menu" aria-haspopup="true" onClick={handleMenuClick} >
           Profile
         </Button>
         <Menu
@@ -75,6 +94,7 @@ export default function VolunteerMatches() {
           onClose={handleClose}
         >
           <MenuItem onClick={handleClose}>Edit Profile</MenuItem>
+          <MenuItem onClick={handleClose}>Edit Interests</MenuItem>
           <MenuItem onClick={handleClose}>Logout</MenuItem>
           <MenuItem onClick={handleClose}>Delete Account</MenuItem>
         </Menu>
