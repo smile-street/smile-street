@@ -20,7 +20,7 @@ import VolunteerMatches from './components/VolunteerMatches/VolunteerMatches';
 export default function App() {
   return (
     <div className="App">
-      {/* <Router>
+      <Router>
         <Header />
         <Route path="/" exact component={Login} />
         <Route path="/Registration" exact component={Registration} />
@@ -31,9 +31,10 @@ export default function App() {
         />
         <Route path="/GoodCauseDetails" component={GoodCauseDetails} />
         <Route path="/VolunteerMatches" component={VolunteerMatches} />
-      </Router> */}
-      <VolunteerInterests />
-      <GoodCauseOpportunity />
+        <Route path="/GoodCauseMatches" component={GoodCauseMatches} />
+      </Router>
+      {/* <VolunteerInterests />
+      <GoodCauseOpportunity /> */}
     </div>
   );
 }
