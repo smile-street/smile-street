@@ -85,30 +85,30 @@ const MatchCard = ({
             </Typography>
           </CardContent>
         </CardActionArea>
-        <CardActions>
-          {accepted === false && (
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.buttonColor}
-              onClick={handleClickOpenYes}
-            >
-              Yes Please
-            </Button>
+          {accepted === null && (
+            <CardActions>
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.buttonColor}
+                onClick={handleClickOpenYes}
+              >
+                Yes, Please
+              </Button>
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.buttonColor}
+                onClick={handleClickOpenNo}
+              >
+                No, Thanks
+              </Button>
+            </CardActions>
           )}
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.buttonColor}
-            onClick={handleClickOpenNo}
-          >
-            No Thankyou
-          </Button>
-        </CardActions>
       </Card>
 
       <Dialog

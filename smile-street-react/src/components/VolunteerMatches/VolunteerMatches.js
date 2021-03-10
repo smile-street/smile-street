@@ -85,7 +85,7 @@ export default function VolunteerMatches() {
   return (
     <Container>
       <Paper className={classes.paper}>
-        <Button aria-controls="edit-menu" aria-haspopup="true" onClick={handleMenuClick} >
+        <Button aria-controls="edit-menu" aria-haspopup="true" onClick={handleMenuClick} className={classes.buttonColor}>
           Profile
         </Button>
         <Menu
@@ -126,7 +126,6 @@ export default function VolunteerMatches() {
       {/* Delete account Dialog */}
       <Dialog
         open={open}
-        // onClose={handleDialogClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
