@@ -1,11 +1,11 @@
-import React from 'react';
-import {Container, Grid, Paper} from '@material-ui/core';
+import React, { useState } from 'react';
+import { Container, Grid, Paper, Button, Menu, MenuItem } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import { useHistory } from 'react-router-dom';
 import PageHeading from '../PageHeading/PageHeading';
 import Profilebutton from './Profilebutton';
-import {makeStyles} from '@material-ui/core/styles';
 import MatchCard from './MatchCard';
 import VolunteerMatchesData from './VolunteerMatches.json';
-import {useHistory} from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
 export default function VolunteerMatches() {
   const classes = useStyles();
 
-  const [data, setData] = React.useState(VolunteerMatchesData);
+  const [data, setData] = useState(VolunteerMatchesData);
 
   const handleAgree = (id) => {
     const updatedMatchCard = data.filter((card) => card.id !== id);
@@ -51,13 +51,33 @@ export default function VolunteerMatches() {
   };
 
   const rejectedMatches = data.filter((match) => match.accepted === false);
+
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
   return (
     <Container>
       <Paper className={classes.paper}>
-        <Grid item xs={4}>
-          {' '}
-          <Profilebutton />
-        </Grid>
+        <Button aria-controls="edit-menu" aria-haspopup="true" onClick={handleClick} >
+          Profile
+        </Button>
+        <Menu
+          id="edit-menu"
+          anchorEl={anchorEl}
+          keepMounted
+          open={Boolean(anchorEl)}
+          onClose={handleClose}
+        >
+          <MenuItem onClick={handleClose}>Edit Profile</MenuItem>
+          <MenuItem onClick={handleClose}>Logout</MenuItem>
+          <MenuItem onClick={handleClose}>Delete Account</MenuItem>
+        </Menu>
 
         <PageHeading heading="Here is the list of available volunteer matches" />
 
