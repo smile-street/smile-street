@@ -1,5 +1,6 @@
 import React from 'react';
 import {useState} from 'react';
+import {useLocation, useHistory} from 'react-router-dom';
 
 import {
   makeStyles,
@@ -72,7 +73,7 @@ export default function VolunteerAvailability() {
       [e.target.name]: e.target.value,
     });
   };
-
+  const history = useHistory();
   const handleSubmit = (e) => {
     setErrors(Validation(info));
     e.preventDefault();
@@ -89,6 +90,7 @@ export default function VolunteerAvailability() {
     setInfo(updateInfo);
     console.log('Your state after submission is', info);
     setInfo(initialFormState);
+    history.push({pathname: '/VolunteerInterests'});
   };
 
   const classes = useStyles();
