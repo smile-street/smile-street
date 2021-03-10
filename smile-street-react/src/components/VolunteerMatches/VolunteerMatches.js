@@ -1,5 +1,15 @@
 import React, { useState } from 'react';
-import { Container, Grid, Paper, Button, Menu, MenuItem } from '@material-ui/core';
+import { Container, 
+        Grid, 
+        Paper, 
+        Button, 
+        Menu, 
+        MenuItem,
+        Dialog,
+        DialogActions,
+        DialogTitle,
+        DialogContentText,
+        DialogContent, } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { useHistory } from 'react-router-dom';
 import PageHeading from '../PageHeading/PageHeading';
@@ -34,6 +44,7 @@ export default function VolunteerMatches() {
   const history = useHistory();
   const [data, setData] = useState(VolunteerMatchesData);
   const [anchorEl, setAnchorEl] = useState(null);
+  const [open, setOpen] = useState(false);
 
 
   const handleAgree = (id) => {
@@ -51,33 +62,24 @@ export default function VolunteerMatches() {
     console.log(data);
   };
 
-  const rejectedMatches = data.filter((match) => match.accepted === false);
-
+  // const rejectedMatches = data.filter((match) => match.accepted === false); //not in use right now
 
   const handleMenuClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleClose = (event) => {
+  const handleDeleteOption = () => {
     setAnchorEl(null);
-    switch (event.target.innerText) {
-      case "Edit Profile":
-        history.push({pathname: '/VolEditProfile'});
-        break
-      case "Edit Interests":
-        history.push({pathname: '/VolunteerInterests'});
-        break
-      case "Logout":
-        // initiates the logout somehow
-        // history.push({pathname: '/Logout'});
-        console.log("logout!")
-        break
-      case "Delete Account":
-        // open a delete account dialog
-        console.log("dialog?")
-        break  
-      default: return undefined
-    }
+    setOpen(true);
+  };
+
+  const handleDialogClose = () => {
+    setOpen(false);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+    console.log("logout!")
   };
 
   return (
@@ -91,15 +93,15 @@ export default function VolunteerMatches() {
           anchorEl={anchorEl}
           keepMounted
           open={Boolean(anchorEl)}
-          onClose={handleClose}
+          onClose={handleMenuClose}
         >
-          <MenuItem onClick={handleClose}>Edit Profile</MenuItem>
-          <MenuItem onClick={handleClose}>Edit Interests</MenuItem>
-          <MenuItem onClick={handleClose}>Logout</MenuItem>
-          <MenuItem onClick={handleClose}>Delete Account</MenuItem>
+          <MenuItem onClick={() => {history.push( {pathname: '/VolEditProfile'} )} }>Edit Profile</MenuItem>
+          <MenuItem onClick={() => {history.push( {pathname: '/VolunteerInterests'} )} }>Edit Interests</MenuItem>
+          <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
+          <MenuItem onClick={handleDeleteOption}>Delete Account</MenuItem>
         </Menu>
 
-        <PageHeading heading="Here is the list of available volunteer matches" />
+        <PageHeading heading="Good Cause Opportunities" />
 
         <Grid
           container
@@ -121,6 +123,31 @@ export default function VolunteerMatches() {
           ))}
         </Grid>
       </Paper>
+      {/* Delete account Dialog */}
+      <Dialog
+        open={open}
+        // onClose={handleDialogClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          {'Are you sure you want to Delete your account?'}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+          {'There is no way to restore your account once deleted. If you change your mind you will need to create a new account.'}
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleDialogClose} className={classes.buttonColor}>
+            I changed my mind
+          </Button>
+          <Button onClick={handleDialogClose} color="secondary">
+            Yes, Delete it
+          </Button>
+        </DialogActions>
+      </Dialog>
+      {/*  */}
     </Container>
   );
 }

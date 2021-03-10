@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Button,
   Card,
@@ -13,7 +13,7 @@ import {
   DialogContentText,
   DialogContent,
 } from '@material-ui/core';
-import {makeStyles} from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -47,9 +47,8 @@ const MatchCard = ({
   handleAccepted,
 }) => {
   const classes = useStyles();
-
-  const [open, setOpen] = React.useState(false);
-  const [openYes, setOpenYes] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [openYes, setOpenYes] = useState(false);
 
   const handleClickOpenNo = () => {
     setOpen(true);
@@ -124,10 +123,10 @@ const MatchCard = ({
 
         <DialogActions>
           <Button onClick={handleClose} className={classes.buttonColor}>
-            Ok, I am not sure
+            I changed my mind
           </Button>
           <Button onClick={() => deleteItem()} className={classes.buttonColor}>
-            Yes,Delete it
+            Yes, Delete it
           </Button>
         </DialogActions>
       </Dialog>
@@ -138,12 +137,16 @@ const MatchCard = ({
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-accept">
-          {'Thank you for your interest good cause will be in touch?'}
+          {'Thank you for your interest!'}
         </DialogTitle>
-
+        <DialogContent>
+          <DialogContentText>
+            {'The Good Cause has been notified and they will be in touch soon.'}
+          </DialogContentText>
+        </DialogContent>
         <DialogActions>
           <Button onClick={() => acceptItem()} className={classes.buttonColor}>
-            Save!
+            OK
           </Button>
         </DialogActions>
       </Dialog>
