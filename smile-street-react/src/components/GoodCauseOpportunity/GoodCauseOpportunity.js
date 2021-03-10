@@ -4,6 +4,7 @@ import {TextField, Button, Paper, Grid, Container} from '@material-ui/core';
 import AutoCompleteTag from './AutoCompleteTag';
 import PageHeading from '../PageHeading/PageHeading';
 import DatePicker from './DatePicker';
+import {useLocation, useHistory} from 'react-router-dom';
 
 const GoodCauseOpportunity = () => {
   const useStyles = makeStyles((theme) => ({
@@ -67,10 +68,13 @@ const GoodCauseOpportunity = () => {
     setTitle('');
     setDescription('');
   }
-
+  const history = useHistory();
   function handleDone() {
     if (!opportunities.length) {
       console.log('you must add at least one opportunity?');
+      history.push({
+        pathname: '/GoodCauseMatches',
+      });
     } else {
       console.log(opportunities);
     }
@@ -127,7 +131,7 @@ const GoodCauseOpportunity = () => {
                 className={classes.buttonColor}
                 onClick={handleDone}
               >
-                Submit
+                I want see my matches!
               </Button>
             </Grid>
           </Grid>
