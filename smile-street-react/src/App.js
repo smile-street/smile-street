@@ -31,13 +31,9 @@ export default function App() {
         />
         <Route path="/GoodCauseDetails" component={GoodCauseDetails} />
         <Route path="/VolunteerMatches" component={VolunteerMatches} />
-      </Router>
-      <VolunteerAvailability />
+      </Router> */}
       <VolunteerInterests />
-      <GoodCauseDetails />
-      <GoodCauseOpportunity /> */}
-      {/* <GoodCauseMatches /> */}
-      <VolunteerMatches />
+      <GoodCauseOpportunity />
     </div>
   );
 }
