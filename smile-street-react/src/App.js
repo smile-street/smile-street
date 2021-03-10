@@ -4,7 +4,7 @@ import GoodCauseDetails from './components/GoodCauseDetails/GoodCauseDetails';
 import GoodCauseOpportunity from './components/GoodCauseOpportunity/GoodCauseOpportunity';
 import GoodCauseMatches from './components/GoodCauseMatches/GoodCauseMatches';
 import Login from './components/Login/Login';
-import PasswordRecovery from './components/PasswordRecovery/PasswordRecovery';
+
 import Registration from './components/Registration/Registration';
 import VolunteerAvailability from './components/VolunteerAvaiblity/VolunteerAvailability';
 import VolunteerInterests from './components/VolunteerInterests/VolunteerInterests';
@@ -24,7 +24,7 @@ export default function App() {
         <Header />
         <Route path="/" exact component={Login} />
         <Route path="/Registration" exact component={Registration} />
-        <Route path="/PasswordRecovery" exact component={PasswordRecovery} />
+
         <Route
           path="/VolunteerAvailability"
           component={VolunteerAvailability}
