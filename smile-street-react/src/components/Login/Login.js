@@ -18,6 +18,7 @@ import MuiAlert from '@material-ui/lab/Alert';
 import PageHeading from '../PageHeading/PageHeading';
 import {useHistory} from 'react-router-dom';
 import {Link} from 'react-router-dom';
+import LoginData from './Login.json';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -94,12 +95,7 @@ export default function Login() {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-  function checkCredentials(event) {
-    console.log(
-      `This is your email: ${email}\nThis is your password: ${password}`
-    );
-  }
+  const [userData, setUserData] = useState(LoginData);
 
   let history = useHistory();
   const handleClickRegistration = (userType) => {
@@ -109,6 +105,28 @@ export default function Login() {
     });
   };
 
+  function checkCredentials() {
+    userData.forEach((user) => {
+      if (
+        user.email === email &&
+        user.password === password &&
+        user['user-role'] === 'volunteer'
+      ) {
+        history.push({
+          pathname: '/VolunteerMatches',
+        });
+      }
+      if (
+        user.email === email &&
+        user.password === password &&
+        user['user-role'] === 'good-cause'
+      ) {
+        history.push({
+          pathname: '/GoodCauseMatches',
+        });
+      }
+    });
+  }
   return (
     <Container>
       <Paper className={classes.paper}>

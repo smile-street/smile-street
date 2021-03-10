@@ -1,0 +1,26 @@
+[
+  {
+    "id": "001",
+    "email": "pillemer@gmail.com",
+    "password": "123456",
+    "user-role": "volunteer"
+  },
+  {
+    "id": "002",
+    "email": "taslimapatel26@gmail.com",
+    "password": "123456",
+    "user-role": "volunteer"
+  },
+  {
+    "id": "003",
+    "email": "jodrew_7@hotmail.com",
+    "password": "123456",
+    "user-role": "good-cause"
+  },
+  {
+    "id": "004",
+    "email": "pushpar.blr@gmail.com",
+    "password": "123456",
+    "user-role": "good-cause"
+  }
+]
