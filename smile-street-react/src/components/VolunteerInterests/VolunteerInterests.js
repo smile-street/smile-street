@@ -5,6 +5,7 @@ import InterestSquares from './InterestSquares';
 import SkillsAutoComplete from './SkillsAutoComplete';
 import PageHeading from '../PageHeading/PageHeading';
 import interestData from './interests.json';
+import {useLocation, useHistory} from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,6 +38,12 @@ export default function VolunteerInterests() {
         interest.selected = interest.selected ? false : true;
       }
     }
+  };
+  const history = useHistory();
+  const handleComplete = () => {
+    history.push({
+      pathname: '/VolunteerMatches',
+    });
   };
   const clickedDone = () =>
     console.log(interests.filter((interest) => interest.selected));
@@ -84,6 +91,18 @@ export default function VolunteerInterests() {
             onClick={clickedDone}
           >
             Done
+          </Button>
+        </Grid>
+        <Grid item xs={12} sm={12} style={{margin: 8}}>
+          <Divider />
+        </Grid>
+        <Grid item xs={12} sm={12}>
+          <Button
+            variant="contained"
+            className={classes.buttonColor}
+            onClick={handleComplete}
+          >
+            I want to see my matches!
           </Button>
         </Grid>
       </Paper>
