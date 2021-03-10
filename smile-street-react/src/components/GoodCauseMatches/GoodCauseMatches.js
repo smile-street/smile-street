@@ -56,12 +56,6 @@ export default function FullWidthGrid() {
     setOpen(false);
   };
 
-  const handleMenuClose = () => {
-    setAnchorEl(null);
-    console.log("logout!")
-  };
-
-
   return (
     <div className={classes.root}>
       <Container component="main">
@@ -74,11 +68,11 @@ export default function FullWidthGrid() {
             anchorEl={anchorEl}
             keepMounted
             open={Boolean(anchorEl)}
-            onClose={handleMenuClose}
+            onClose={() => setAnchorEl(null)}
           >
-            <MenuItem onClick={() => {history.push( {pathname: '/VolEditProfile'} )} }>Edit Profile</MenuItem>
-            <MenuItem onClick={() => {history.push( {pathname: '/VolunteerInterests'} )} }>Add Opportunity</MenuItem>
-            <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
+            <MenuItem onClick={() => {history.push( {pathname: '/GoodCauseDetails'} )} }>Edit Profile</MenuItem>
+            <MenuItem onClick={() => {history.push( {pathname: '/GoodCauseOpportunity'} )} }>Add Opportunity</MenuItem>
+            <MenuItem onClick={() => {history.push( {pathname: '/'} )} }>Logout</MenuItem>
             <MenuItem onClick={handleDeleteOption}>Delete Account</MenuItem>
           </Menu>
           <PageHeading heading="These are your matched volunteers" />
@@ -110,8 +104,9 @@ export default function FullWidthGrid() {
           </Grid>
         </Paper>
       </Container>
-            {/* Delete account Dialog */}
-            <Dialog
+
+      {/* Delete account Dialog */}
+      <Dialog
         open={open}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"

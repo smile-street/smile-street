@@ -77,11 +77,6 @@ export default function VolunteerMatches() {
     setOpen(false);
   };
 
-  const handleMenuClose = () => {
-    setAnchorEl(null);
-    console.log("logout!")
-  };
-
   return (
     <Container>
       <Paper className={classes.paper}>
@@ -93,11 +88,11 @@ export default function VolunteerMatches() {
           anchorEl={anchorEl}
           keepMounted
           open={Boolean(anchorEl)}
-          onClose={handleMenuClose}
+          onClose={() => setAnchorEl(null)}
         >
           <MenuItem onClick={() => {history.push( {pathname: '/VolEditProfile'} )} }>Edit Profile</MenuItem>
           <MenuItem onClick={() => {history.push( {pathname: '/VolunteerInterests'} )} }>Edit Interests</MenuItem>
-          <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
+          <MenuItem onClick={() => {history.push( {pathname: '/'} )} }>Logout</MenuItem>
           <MenuItem onClick={handleDeleteOption}>Delete Account</MenuItem>
         </Menu>
 
