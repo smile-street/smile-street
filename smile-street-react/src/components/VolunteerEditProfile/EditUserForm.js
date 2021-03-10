@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
 import {
   makeStyles,
-  Paper,
   Grid,
-  Container,
   TextField,
   Button,
   DialogTitle,
   Link,
-  Divider,
   Dialog,
   DialogActions,
   DialogContent,
@@ -74,7 +71,16 @@ function Alert(props) {
 }
 
 const EditUserForm = (props) => {
+  const classes = useStyles();
+  const history = useHistory();
   const [user, setUser] = useState(props.currentUser);
+  const [passwordDialog, setPasswordDialog] = useState(false);
+  const [openToast, setOpenToast] = useState(false);
+  const [updateDialog, setUpdateDialog] = useState(false);
+  const handleChangePassLink = () => setPasswordDialog(true);
+  const handleDialogClose = () => setPasswordDialog(false);
+  const handleSaveButtonClick = () => setUpdateDialog(true);
+  const handleUpdateDialogClose = () => setUpdateDialog(false);
 
   useEffect(() => {
     setUser(props.currentUser);
@@ -85,29 +91,10 @@ const EditUserForm = (props) => {
     setUser({ ...user, [name]: value });
   };
 
-  const [openDialog, setOpenDialog] = useState(false);
-  const [openToast, setOpenToast] = useState(false);
-
-  const handleClickOpen = () => setOpenDialog(true);
-
-  const handleDialogClose = () => setOpenDialog(false);
-
-  const [openDialog1, setOpenDialog1] = useState(false);
-  const handleClickOpen1 = () => setOpenDialog1(true);
-  const handleDialogClose1 = () => setOpenDialog1(false);
-
   //toast
   const handleDialogClick = () => {
     handleDialogClose();
     setOpenToast(true);
-  };
-
-  let history = useHistory();
-  const handleDialogClick1 = () => {
-    //handleDialogClose();
-    history.push({
-      pathname: "/VM",
-    });
   };
 
   const handleToastClose = (event, reason) => {
@@ -117,7 +104,6 @@ const EditUserForm = (props) => {
     setOpenToast(false);
   };
 
-  const classes = useStyles();
 
   return (
     <form
@@ -137,9 +123,7 @@ const EditUserForm = (props) => {
         name="firstName"
         onChange={handleInputChange}
         className={classes.root}
-        defaultValue={props.users.map((user) => user.firstName)}
-
-        // {users.length > 0 ? (
+        defaultValue={props.users.map((profile) => profile.firstName)}
       />
 
       <TextField
@@ -152,7 +136,7 @@ const EditUserForm = (props) => {
         name="lastName"
         onChange={handleInputChange}
         className={classes.root}
-        defaultValue={props.users.map((user) => user.lastName)}
+        defaultValue={props.users.map((profile) => profile.lastName)}
       />
 
       <TextField
@@ -163,10 +147,9 @@ const EditUserForm = (props) => {
         style={{ margin: 8 }}
         fullWidth
         name="email"
-        // value={user.email}
         onChange={handleInputChange}
         className={classes.root}
-        defaultValue={props.users.map((user) => user.email)}
+        defaultValue={props.users.map((profile) => profile.email)}
       />
 
       <TextField
@@ -177,16 +160,15 @@ const EditUserForm = (props) => {
         style={{ margin: 8 }}
         fullWidth
         name="contactNumber"
-        //  value={user.contactNumber}
         onChange={handleInputChange}
         className={classes.root}
-        defaultValue={props.users.map((user) => user.contactNumber)}
+        defaultValue={props.users.map((profile) => profile.contactNumber)}
       />
 
       <Grid item xs={12} sm={12} style={{ margin: 8 }}>
         <Link
           cursor={"pointer"}
-          onClick={handleClickOpen}
+          onClick={handleChangePassLink}
           variant="body2"
           style={{ margin: 8 }}
         >
@@ -194,50 +176,37 @@ const EditUserForm = (props) => {
           Change Your Password
         </Link>
       </Grid>
-
       <Grid item xs={12} sm={12}>
         <Button
           className={classes.button}
           style={{ margin: 8 }}
           variant="contained"
-          onClick={handleClickOpen1}
+          onClick={handleSaveButtonClick}
         >
-          Update
+          Save
         </Button>
       </Grid>
-
-      <Grid item xs={12} sm={12}>
-        <Button
-          label="Enter"
-          onClick={() => props.setEditing(false)}
-          className={classes.button}
-          style={{ margin: 8 }}
-          variant="contained"
-          onClick={handleDialogClick1}
-        >
-          View Matches
-        </Button>
-      </Grid>
-
+      
+  {/* Update button Dialog */}
       <Dialog
-        open={openDialog1}
-        onClose={handleDialogClose1}
+        open={updateDialog}
+        onClose={handleUpdateDialogClose}
         aria-labelledby="form-dialog-title"
       >
         <DialogTitle id="form-dialog-title">Details Updated</DialogTitle>
-
         <DialogActions>
-          <Button onClick={handleDialogClose1} color="primary">
+          <Button onClick={handleUpdateDialogClose} color="primary">
             Keep Editing
           </Button>
-          <Button onClick={handleDialogClick1} color="primary">
+          <Button onClick={() => {history.push( {pathname: '/VolunteerMatches'} )} } color="primary">
             View Matches
           </Button>
         </DialogActions>
       </Dialog>
 
+  {/* Password reset Dialog */}
       <Dialog
-        open={openDialog}
+        open={passwordDialog}
         onClose={handleDialogClose}
         aria-labelledby="form-dialog-title"
       >

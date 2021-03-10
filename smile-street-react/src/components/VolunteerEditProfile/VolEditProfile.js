@@ -1,7 +1,4 @@
 import React, { useState } from "react";
-
-import EditUserForm from "./EditUserForm";
-
 import {
   makeStyles,
   Paper,
@@ -12,6 +9,7 @@ import {
   DialogTitle,
 } from "@material-ui/core";
 import FormControl from "@material-ui/core/FormControl";
+import EditUserForm from "./EditUserForm";
 import PageHeading from "../PageHeading/PageHeading";
 import { differenceInWeeks } from "date-fns";
 
@@ -74,21 +72,16 @@ const VolEditProfile = () => {
     },
   ];
 
-  // usersの状態
   const [users, setUsers] = useState(usersData);
+  // const addUser = (user) => {
+  //   user.id = users.length + 1;
+  //   setUsers([...users, user]);
+  // };
 
-  // 更新関数を持つ追加メソッド
-  const addUser = (user) => {
-    user.id = users.length + 1;
-    setUsers([...users, user]);
-  };
+  // const deleteUser = (id) => {
+  //   setUsers(users.filter((user) => user.id !== id));
+  // };
 
-  // 更新関数を持つ削除メソッド
-  const deleteUser = (id) => {
-    setUsers(users.filter((user) => user.id !== id));
-  };
-
-  // 編集状態か判断するための状態
   const [editing, setEditing] = useState(false);
   const initialFormState = {
     id: "",
@@ -100,10 +93,8 @@ const VolEditProfile = () => {
     confirmPass: "",
   };
 
-  // 編集中の現在のユーザの状態（編集中ユーザーを知るため）
   const [currentUser, setCurrentUser] = useState(initialFormState);
 
-  // 編集後に更新投稿する関数
   const updateUser = (id, updateUser) => {
     setEditing(false);
 
@@ -114,7 +105,7 @@ const VolEditProfile = () => {
 
   return (
     <Container component="main">
-      <Paper clasName={classes.paper}>
+      <Paper className={classes.paper}>
         <Container maxWidth="xs">
           <PageHeading heading="Edit Volunteer Profile" />
 
