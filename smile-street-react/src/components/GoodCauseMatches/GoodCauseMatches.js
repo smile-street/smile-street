@@ -12,6 +12,7 @@ import { Paper,
         DialogTitle,
         DialogContentText,
         DialogContent, } from '@material-ui/core';
+import MenuIcon from '@material-ui/icons/Menu';
 import PageHeading from '../PageHeading/PageHeading';
 import MatchVolunteersCard from './MatchedVolunteersCard';
 import GoodCauseMatches from './GoodCauseMatches.json';
@@ -61,7 +62,7 @@ export default function FullWidthGrid() {
       <Container component="main">
         <Paper className={classes.paper}>
           <Button aria-controls="edit-menu" aria-haspopup="true" onClick={handleMenuClick} className={classes.buttonColor}>
-            Profile
+            <MenuIcon />
           </Button>
           <Menu
             id="edit-menu"
