@@ -16,6 +16,7 @@ import {
   useHistory,
 } from 'react-router-dom';
 import VolunteerMatches from './components/VolunteerMatches/VolunteerMatches';
+import Footer from './components/Footer/Footer';
 
 export default function App() {
   return (
@@ -35,6 +36,7 @@ export default function App() {
         <Route path="/VolunteerInterests" component={VolunteerInterests} />
         <Route path="/GoodCauseOpportunity" component={GoodCauseOpportunity} />
         <Route path="/VolEditProfile" component={VolEditProfile} />
+        <Footer />
       </Router>
       {/* <VolunteerInterests />
       <GoodCauseOpportunity /> */}
