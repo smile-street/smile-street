@@ -72,10 +72,8 @@ const GoodCauseOpportunity = () => {
   function handleDone() {
     if (!opportunities.length) {
       console.log('you must add at least one opportunity?');
-      history.push({
-        pathname: '/GoodCauseMatches',
-      });
     } else {
+      history.push({ pathname: '/GoodCauseMatches' });
       console.log(opportunities);
     }
   }
