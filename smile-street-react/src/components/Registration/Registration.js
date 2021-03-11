@@ -70,8 +70,7 @@ export default function Registration() {
     confirmPass: '',
   };
   const [registration, setRegistration] = useState(initialFormState);
-  const [errors, setErrors] = useState({ValidateInfo});
-  console.log(errors.ValidateInfo);
+  const [errors, setErrors] = useState({});
   const handleChange = (e) => {
     setRegistration({
       ...registration,
@@ -96,13 +95,14 @@ export default function Registration() {
     //takes the current array and reuilds and updates.
     const updatedReg = [{...registration}, newReg];
     setRegistration(updatedReg);
-    console.log(registration);
-    setRegistration(initialFormState);
-    if (userRole.userType === 'volunteer') {
-      history.push({pathname: '/VolunteerAvailability'});
-    }
-    if (userRole.userType === 'goodCause') {
-      history.push({pathname: '/GoodCauseDetails'});
+    if (true) { //this needs to be changed to validate the form!
+      setRegistration(initialFormState);
+      if (userRole.userType === 'volunteer') {
+        history.push({pathname: '/VolunteerAvailability'});
+      }
+      if (userRole.userType === 'goodCause') {
+        history.push({pathname: '/GoodCauseDetails'});
+      }
     }
   };
 

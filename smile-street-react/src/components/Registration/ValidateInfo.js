@@ -1,9 +1,8 @@
 export default function ValidateInfo(values) {
-  console.log(values);
   let errors = {};
 
-  if (!values.firstName.trim()) {
-    errors.firstName = 'First Name required';
+  if (!values['firstName'].trim()) {
+    errors['firstName'] = 'First Name required';
   }
 
   if (!values.lastName.trim()) {
@@ -33,5 +32,5 @@ export default function ValidateInfo(values) {
   } else if (values.confirmPass !== values.password) {
     errors.confirmPass = 'Passwords do not match';
   }
-  return errors;
+  return errors ? errors : false;
 }
