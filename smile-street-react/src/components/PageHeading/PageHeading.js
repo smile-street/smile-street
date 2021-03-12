@@ -1,11 +1,12 @@
-
 import React from 'react';
-import { Typography } from '@material-ui/core';
+import {Typography, Paper} from '@material-ui/core';
+import useStyle from '../Style/Style';
 
 export default function PageHeading(props) {
-    return (
-    <Typography component="h1" variant="h5" gutterBottom>
-        { props.heading }
+  const classes = useStyle();
+  return (
+    <Typography component="h1" variant="h5" gutterBottom className={classes.h1}>
+      {props.heading}
     </Typography>
-    )
+  );
 }

@@ -10,52 +10,7 @@ import {
 } from '@material-ui/core';
 import PageHeading from '../PageHeading/PageHeading';
 import ValidateInfo from './ValidateInfo';
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-
-    '&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
-      borderColor: '#53bd98',
-    },
-    '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
-      borderColor: '#449f80',
-    },
-
-    '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-input': {
-      color: '#449f80',
-    },
-
-    '& .MuiInputLabel-outlined.Mui-focused': {
-      color: '#449f80',
-    },
-    margin: 8,
-  },
-  paper: {
-    marginTop: theme.spacing(0.5),
-    padding: theme.spacing(3),
-    color: theme.palette.text.secondary,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    maxWidth: 'xs',
-  },
-  form: {
-    width: '100%',
-  },
-  button: {
-    backgroundColor: '#53bd98',
-    color: 'white',
-    '&:hover': {
-      background: '#449f80',
-    },
-    paper: {
-      padding: theme.spacing(2),
-      textAlign: 'center',
-      color: theme.palette.text.secondary,
-    },
-  },
-}));
+import useStyle from '../Style/Style';
 
 export default function Registration() {
   const userRole = useLocation().state;
@@ -95,7 +50,8 @@ export default function Registration() {
     //takes the current array and reuilds and updates.
     const updatedReg = [{...registration}, newReg];
     setRegistration(updatedReg);
-    if (true) { //this needs to be changed to validate the form!
+    if (true) {
+      //this needs to be changed to validate the form!
       setRegistration(initialFormState);
       if (userRole.userType === 'volunteer') {
         history.push({pathname: '/VolunteerAvailability'});
@@ -107,7 +63,7 @@ export default function Registration() {
   };
 
   //////////////////////////////////////////////////////////
-  const classes = useStyles();
+  const classes = useStyle();
   return (
     <Container component="main">
       <Paper className={classes.paper}>
