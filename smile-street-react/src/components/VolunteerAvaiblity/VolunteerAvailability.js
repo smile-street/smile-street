@@ -234,7 +234,7 @@ export default function VolunteerAvailability() {
             <Grid item xs={12}>
               <Button
                 variant="contained"
-                className={classes.buttonColor}
+                className={classes.button}
                 onClick={handleSubmit}
               >
                 Add Interests

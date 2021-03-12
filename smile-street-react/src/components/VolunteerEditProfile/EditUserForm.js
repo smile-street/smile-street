@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect} from 'react';
 import {
   makeStyles,
   Grid,
@@ -11,67 +11,22 @@ import {
   DialogContent,
   DialogContentText,
   Snackbar,
-} from "@material-ui/core";
+} from '@material-ui/core';
 
-import MuiAlert from "@material-ui/lab/Alert";
+import MuiAlert from '@material-ui/lab/Alert';
 
-import FormControl from "@material-ui/core/FormControl";
-import PageHeading from "../PageHeading/PageHeading";
-import EditUser from "./EditUserForm";
-import { useHistory } from "react-router-dom";
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-
-    "&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-      borderColor: "#53bd98",
-    },
-    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-      borderColor: "#449f80",
-    },
-
-    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-input": {
-      color: "#449f80",
-    },
-
-    "& .MuiInputLabel-outlined.Mui-focused": {
-      color: "#449f80",
-    },
-    margin: 8,
-  },
-  paper: {
-    marginTop: theme.spacing(0.5),
-    padding: theme.spacing(3),
-    color: theme.palette.text.secondary,
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    maxWidth: "xs",
-  },
-  form: {
-    width: "100%",
-  },
-  button: {
-    backgroundColor: "#53bd98",
-    color: "white",
-    "&:hover": {
-      background: "#449f80",
-    },
-    paper: {
-      padding: theme.spacing(2),
-      textAlign: "center",
-      color: theme.palette.text.secondary,
-    },
-  },
-}));
+import FormControl from '@material-ui/core/FormControl';
+import PageHeading from '../PageHeading/PageHeading';
+import EditUser from './EditUserForm';
+import {useHistory} from 'react-router-dom';
+import useStyle from '../Style/Style';
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
 const EditUserForm = (props) => {
-  const classes = useStyles();
+  const classes = useStyle();
   const history = useHistory();
   const [user, setUser] = useState(props.currentUser);
   const [passwordDialog, setPasswordDialog] = useState(false);
@@ -87,8 +42,8 @@ const EditUserForm = (props) => {
   }, [props]);
 
   const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setUser({ ...user, [name]: value });
+    const {name, value} = event.target;
+    setUser({...user, [name]: value});
   };
 
   //toast
@@ -98,12 +53,11 @@ const EditUserForm = (props) => {
   };
 
   const handleToastClose = (event, reason) => {
-    if (reason === "clickaway") {
+    if (reason === 'clickaway') {
       return;
     }
     setOpenToast(false);
   };
-
 
   return (
     <form
@@ -118,7 +72,7 @@ const EditUserForm = (props) => {
         margin="normal"
         id="first name"
         label="First Name"
-        style={{ margin: 8 }}
+        style={{margin: 8}}
         fullWidth
         name="firstName"
         onChange={handleInputChange}
@@ -131,7 +85,7 @@ const EditUserForm = (props) => {
         margin="normal"
         id="last name"
         label="Last Name"
-        style={{ margin: 8 }}
+        style={{margin: 8}}
         fullWidth
         name="lastName"
         onChange={handleInputChange}
@@ -144,7 +98,7 @@ const EditUserForm = (props) => {
         margin="normal"
         id="email"
         label="Email Address"
-        style={{ margin: 8 }}
+        style={{margin: 8}}
         fullWidth
         name="email"
         onChange={handleInputChange}
@@ -157,7 +111,7 @@ const EditUserForm = (props) => {
         margin="normal"
         id="contact number"
         label="Contact Number"
-        style={{ margin: 8 }}
+        style={{margin: 8}}
         fullWidth
         name="contactNumber"
         onChange={handleInputChange}
@@ -165,29 +119,29 @@ const EditUserForm = (props) => {
         defaultValue={props.users.map((profile) => profile.contactNumber)}
       />
 
-      <Grid item xs={12} sm={12} style={{ margin: 8 }}>
+      <Grid item xs={12} sm={12} style={{margin: 8}}>
         <Link
-          cursor={"pointer"}
+          cursor={'pointer'}
           onClick={handleChangePassLink}
           variant="body2"
-          style={{ margin: 8 }}
+          style={{margin: 8}}
         >
-          {" "}
+          {' '}
           Change Your Password
         </Link>
       </Grid>
       <Grid item xs={12} sm={12}>
         <Button
           className={classes.button}
-          style={{ margin: 8 }}
+          style={{margin: 8}}
           variant="contained"
           onClick={handleSaveButtonClick}
         >
           Save
         </Button>
       </Grid>
-      
-  {/* Update button Dialog */}
+
+      {/* Update button Dialog */}
       <Dialog
         open={updateDialog}
         onClose={handleUpdateDialogClose}
@@ -198,13 +152,18 @@ const EditUserForm = (props) => {
           <Button onClick={handleUpdateDialogClose} color="primary">
             Keep Editing
           </Button>
-          <Button onClick={() => {history.push( {pathname: '/VolunteerMatches'} )} } color="primary">
+          <Button
+            onClick={() => {
+              history.push({pathname: '/VolunteerMatches'});
+            }}
+            color="primary"
+          >
             View Matches
           </Button>
         </DialogActions>
       </Dialog>
 
-  {/* Password reset Dialog */}
+      {/* Password reset Dialog */}
       <Dialog
         open={passwordDialog}
         onClose={handleDialogClose}
@@ -251,7 +210,7 @@ const EditUserForm = (props) => {
         open={openToast}
         autoHideDuration={6000}
         onClose={handleToastClose}
-        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        anchorOrigin={{vertical: 'top', horizontal: 'center'}}
       >
         <Alert onClose={handleToastClose} severity="warning">
           Check your email to confirm password reset!

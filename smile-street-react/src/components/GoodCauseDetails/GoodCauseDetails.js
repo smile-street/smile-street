@@ -12,42 +12,7 @@ import {
 import ApolloClient, {gql} from 'apollo-boost';
 import {ApolloProvider, useQuery} from '@apollo/react-hooks';
 import PageHeading from '../PageHeading/PageHeading';
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    '&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
-      borderColor: '#53bd98',
-    },
-    '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
-      borderColor: '#449f80',
-    },
-    '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-input': {
-      color: '#449f80',
-    },
-    '& .MuiInputLabel-outlined.Mui-focused': {
-      color: '#449f80',
-    },
-    margin: 8,
-  },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  },
-  form: {
-    width: '100%',
-  },
-  buttonColor: {
-    backgroundColor: '#53bd98',
-    color: 'white',
-    background: '#449f80',
-
-    '&:hover': {
-      background: '#449f80',
-    },
-  },
-}));
+import useStyle from '../Style/Style';
 
 const client = new ApolloClient({
   uri: 'https://charitybase.uk/api/graphql',
@@ -57,7 +22,7 @@ const client = new ApolloClient({
 });
 
 const GetGoodCauseName = (props) => {
-  const classes = useStyles();
+  const classes = useStyle();
   let charityNumber = props.number;
   const COUNT_QUERY = gql`
     query CountCharitiesCHC($id: [ID]) {
@@ -107,7 +72,7 @@ export default function GoodCauseDetails() {
   const [goodCauseDescription, setGoodCauseDescription] = useState('');
   const [GoodCauseName, setGoodCauseName] = useState('');
 
-  const classes = useStyles();
+  const classes = useStyle();
   const history = useHistory();
   const handleClick = () => {
     console.log(
@@ -159,7 +124,7 @@ export default function GoodCauseDetails() {
             <Grid item xs={12} sm={12}>
               <Button
                 variant="contained"
-                className={classes.buttonColor}
+                className={classes.button}
                 onClick={handleClick}
               >
                 Add Opportunities
