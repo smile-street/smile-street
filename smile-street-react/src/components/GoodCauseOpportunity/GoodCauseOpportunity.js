@@ -1,52 +1,22 @@
 import React, {useState} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
-import {TextField, Button, Paper, Grid, Container, Snackbar} from '@material-ui/core';
+import {
+  TextField,
+  Button,
+  Paper,
+  Grid,
+  Container,
+  Snackbar,
+} from '@material-ui/core';
 import MuiAlert from '@material-ui/lab/Alert';
 import AutoCompleteTag from './AutoCompleteTag';
 import PageHeading from '../PageHeading/PageHeading';
 import DatePicker from './DatePicker';
 import {useLocation, useHistory} from 'react-router-dom';
+import useStyle from '../Style/Style';
 
 const GoodCauseOpportunity = () => {
-  const useStyles = makeStyles((theme) => ({
-    root: {
-      flexGrow: 1,
-      '&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
-        borderColor: '#53bd98',
-      },
-      '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
-        borderColor: '#449f80',
-      },
-
-      '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-input': {
-        color: '#449f80',
-      },
-
-      '& .MuiInputLabel-outlined.Mui-focused': {
-        color: '#449f80',
-      },
-      margin: 8,
-    },
-    paper: {
-      padding: theme.spacing(2),
-      textAlign: 'center',
-      color: theme.palette.text.secondary,
-    },
-    buttonColor: {
-      backgroundColor: '#53bd98',
-      color: 'white',
-      background: '#449f80',
-      '&:hover': {
-        background: '#449f80',
-      },
-    },
-    textField: {
-      borderWidth: '1px',
-      borderColor: ' #449f80 !important',
-    },
-  }));
-
-  const classes = useStyles();
+  const classes = useStyle();
   const [openToast, setOpenToast] = useState(false);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -61,7 +31,7 @@ const GoodCauseOpportunity = () => {
     }
     setOpenToast(false);
   };
-  
+
   function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
   }
@@ -86,7 +56,7 @@ const GoodCauseOpportunity = () => {
     if (!opportunities.length) {
       setOpenToast(true);
     } else {
-      history.push({ pathname: '/GoodCauseMatches' });
+      history.push({pathname: '/GoodCauseMatches'});
       console.log(opportunities);
     }
   }
@@ -130,7 +100,7 @@ const GoodCauseOpportunity = () => {
             <Grid item xs={12} sm={12}>
               <Button
                 variant="contained"
-                className={classes.buttonColor}
+                className={classes.button}
                 onClick={addOpportunity}
               >
                 Save Opportunity
@@ -139,7 +109,7 @@ const GoodCauseOpportunity = () => {
             <Grid item xs={12} sm={12}>
               <Button
                 variant="contained"
-                className={classes.buttonColor}
+                className={classes.button}
                 onClick={handleDone}
               >
                 I want see my matches!

@@ -16,44 +16,7 @@ import {
 } from '@material-ui/core';
 import PageHeading from '../PageHeading/PageHeading';
 import Validation from './Validation';
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-
-    '&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
-      borderColor: '#53bd98',
-    },
-    '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
-      borderColor: '#449f80',
-    },
-
-    '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-input': {
-      color: '#449f80',
-    },
-
-    '& .MuiInputLabel-outlined.Mui-focused': {
-      color: '#449f80',
-    },
-    margin: 8,
-  },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  },
-  form: {
-    width: '100%',
-  },
-  buttonColor: {
-    backgroundColor: '#53bd98',
-    color: 'white',
-    background: '#449f80',
-
-    '&:hover': {
-      background: '#449f80',
-    },
-  },
-}));
+import useStyle from '../Style/Style';
 
 export default function VolunteerAvailability() {
   const initialFormState = {
@@ -93,7 +56,7 @@ export default function VolunteerAvailability() {
     history.push({pathname: '/VolunteerInterests'});
   };
 
-  const classes = useStyles();
+  const classes = useStyle();
   return (
     <Container component="main">
       <Paper className={classes.paper}>
@@ -271,7 +234,7 @@ export default function VolunteerAvailability() {
             <Grid item xs={12}>
               <Button
                 variant="contained"
-                className={classes.buttonColor}
+                className={classes.button}
                 onClick={handleSubmit}
               >
                 Add Interests
