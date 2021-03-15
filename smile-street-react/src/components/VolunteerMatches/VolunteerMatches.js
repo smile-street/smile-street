@@ -16,28 +16,6 @@ import PageHeading from '../PageHeading/PageHeading';
 import MatchCard from './MatchCard';
 import VolunteerMatchesData from './VolunteerMatches.json';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  },
-  buttonColor: {
-    backgroundColor: '#53bd98',
-    color: 'white',
-    background: '#449f80',
-
-    '&:hover': {
-      background: '#449f80',
-    },
-  },
-  acceptedItem: {
-    backgroundColor: 'red',
-  },
-}));
 
 export default function VolunteerMatches() {
   const classes = useStyles();
