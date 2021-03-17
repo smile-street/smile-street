@@ -17,13 +17,16 @@ import {
 } from 'react-router-dom';
 import VolunteerMatches from './components/VolunteerMatches/VolunteerMatches';
 import Footer from './components/Footer/Footer';
+import Stepper from './components/Stepper/Stepper';
 
 export default function App() {
   return (
     <div className="App">
       <Router>
         <Header />
+        <Stepper />
         <Route path="/" exact component={Login} />
+
         <Route path="/Registration" exact component={Registration} />
 
         <Route

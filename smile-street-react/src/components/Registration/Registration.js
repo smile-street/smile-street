@@ -1,5 +1,6 @@
 import {useLocation, useHistory} from 'react-router-dom';
 import React, {useState} from 'react';
+import Stepper from '../Stepper/Stepper';
 import {
   makeStyles,
   Paper,
