@@ -47,26 +47,26 @@ const MatchCard = ({
   handleAccepted,
 }) => {
   const classes = useStyles();
-  // const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false);
   const [openYes, setOpenYes] = useState(false);
 
-  // const handleClickOpenNo = () => {
-  //   setOpen(true);
-  // };
+  const handleClickOpenNo = () => {
+    setOpen(true);
+  };
   const handleClickOpenYes = () => {
     setOpenYes(true);
   };
 
-  // const handleClose = () => {
-  //   setOpen(false);
-  // };
+  const handleClose = () => {
+    setOpen(false);
+  };
   const handleCloseYes = () => {
     setOpenYes(false);
   };
-  // const deleteItem = () => {
-  //   handleAgree(id);
-  //   handleClose();
-  // };
+  const deleteItem = () => {
+    handleAgree(id);
+    handleClose();
+  };
   const acceptItem = () => {
     handleAccepted(id);
     handleCloseYes();
@@ -97,7 +97,7 @@ const MatchCard = ({
               >
                 Yes, Please
               </Button>
-              {/* <Button
+              <Button
                 type="submit"
                 fullWidth
                 variant="contained"
@@ -106,12 +106,12 @@ const MatchCard = ({
                 onClick={handleClickOpenNo}
               >
                 No, Thanks
-              </Button> */}
+              </Button>
             </CardActions>
           )}
       </Card>
 
-      {/* <Dialog
+      <Dialog
         open={open}
         onClose={handleCloseYes}
         aria-labelledby="alert-dialog-title"
@@ -129,10 +129,10 @@ const MatchCard = ({
             Yes, Delete it
           </Button>
         </DialogActions>
-      </Dialog> */}
+      </Dialog>
       <Dialog
         open={openYes}
-        onClose={handleCloseYes}
+        onClose={handleClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
@@ -141,7 +141,7 @@ const MatchCard = ({
         </DialogTitle>
         <DialogContent>
           <DialogContentText>
-            {'An Email has been sent to the Good Cause with your contact details!'}
+            {'The Good Cause has been notified and they will be in touch soon.'}
           </DialogContentText>
         </DialogContent>
         <DialogActions>
