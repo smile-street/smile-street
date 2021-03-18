@@ -237,7 +237,7 @@ export default function VolunteerAvailability() {
                 className={classes.button}
                 onClick={handleSubmit}
               >
-                Add Interests
+                Add Skills
               </Button>
             </Grid>
           </Grid>
