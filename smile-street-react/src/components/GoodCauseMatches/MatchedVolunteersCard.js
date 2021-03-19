@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   Button,
   Container,
@@ -11,12 +11,14 @@ import {
   ListItem,
   ListItemText,
 } from '@material-ui/core';
-import { Dialog, 
-  DialogActions, 
-  DialogContent, 
-  DialogContentText, 
-  DialogTitle } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import {
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+} from '@material-ui/core';
+import {makeStyles} from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,29 +35,29 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MatchVolunteersCard(props) {
+export default function MatchVolunteersCard({volunteer}) {
   const classes = useStyles();
 
   const [openDialog, setOpenDialog] = useState(false);
   const handleCloseDialog = () => setOpenDialog(false);
   const reachOut = () => setOpenDialog(true);
 
-
-
   return (
     <Container>
       <Card className={classes.root}>
         <CardActionArea onClick={() => reachOut()}>
           <CardContent>
-            <Typography variant="h6" component="h3">{props.volunteer.name}</Typography>
+            <Typography variant="h6" component="h3">
+              {volunteer.name}
+            </Typography>
             <List>
               <div>
                 <ListItem>
-                  <ListItemText primary={props.volunteer.interest} />
+                  <ListItemText primary={volunteer.interest} />
                 </ListItem>
                 <Divider />
                 <ListItem>
-                  <ListItemText primary={props.volunteer.skill} />
+                  <ListItemText primary={volunteer.skill} />
                 </ListItem>
               </div>
             </List>
@@ -68,16 +70,12 @@ export default function MatchVolunteersCard(props) {
         aria-labelledby="Contact info title"
         aria-describedby="Contact info details"
       >
-        <DialogTitle id="Contact info title">{`Contact information for ${props.volunteer.name}`}</DialogTitle>
+        <DialogTitle id="Contact info title">{`Contact information for ${volunteer.name}`}</DialogTitle>
         <DialogContent id="Contact info details" dividers>
+          <Typography gutterBottom>{`Number: ${volunteer.phone}`}</Typography>
+          <Typography gutterBottom>{`email: ${volunteer.email}`}</Typography>
           <Typography gutterBottom>
-            {`Number: ${props.volunteer.phone}`}
-          </Typography>
-          <Typography gutterBottom>
-            {`email: ${props.volunteer.email}`}
-          </Typography>
-          <Typography gutterBottom>
-            {`${props.volunteer.name} is interested in ${props.volunteer.interest}, and is skilled in ${props.volunteer.skill}`}
+            {`${volunteer.name} is interested in ${volunteer.interest}, and is skilled in ${volunteer.skill}`}
           </Typography>
         </DialogContent>
         <DialogActions>
