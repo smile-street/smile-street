@@ -2,6 +2,8 @@ import {render, screen} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import GoodCauseMatches from './GoodCauseMatches';
 import MatchedVolunteersCard from './MatchedVolunteersCard';
+import React from 'react';
+import {shallow} from 'enzyme';
 
 describe('Heading component', () => {
   afterEach(() => jest.clearAllMocks());
