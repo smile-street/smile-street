@@ -13,10 +13,43 @@ import AutoCompleteTag from './AutoCompleteTag';
 import PageHeading from '../PageHeading/PageHeading';
 import DatePicker from './DatePicker';
 import {useLocation, useHistory} from 'react-router-dom';
-import useStyle from '../Style/Style';
 
-const GoodCauseOpportunity = () => {
-  const classes = useStyle();
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+    '&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
+      borderColor: '#53bd98',
+    },
+    '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
+      borderColor: '#449f80',
+    },
+
+    '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-input': {
+      color: '#449f80',
+    },
+
+    '& .MuiInputLabel-outlined.Mui-focused': {
+      color: '#449f80',
+    },
+    margin: 8,
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  },
+  buttonColor: {
+    backgroundColor: '#53bd98',
+    color: 'white',
+    background: '#449f80',
+    '&:hover': {
+      background: '#449f80',
+    },
+  },
+}));
+
+export default function GoodCauseOpportunity() {
+  const classes = useStyles();
   const [openToast, setOpenToast] = useState(false);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -130,6 +163,4 @@ const GoodCauseOpportunity = () => {
       </Snackbar>
     </Container>
   );
-};
-
-export default GoodCauseOpportunity;
+}

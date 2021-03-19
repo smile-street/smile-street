@@ -19,63 +19,14 @@ import PageHeading from '../PageHeading/PageHeading';
 import {useHistory} from 'react-router-dom';
 import {Link} from 'react-router-dom';
 import LoginData from './Login.json';
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-
-    '&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
-      borderColor: '#53bd98',
-    },
-    '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
-      borderColor: '#449f80',
-    },
-
-    '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-input': {
-      color: '#449f80',
-    },
-
-    '& .MuiInputLabel-outlined.Mui-focused': {
-      color: '#449f80',
-    },
-    margin: 8,
-  },
-  paper: {
-    marginTop: theme.spacing(0.5),
-    padding: theme.spacing(3),
-    color: theme.palette.text.secondary,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    maxWidth: 'xs',
-  },
-  form: {
-    width: '100%',
-  },
-  button: {
-    backgroundColor: '#53bd98',
-    color: 'white',
-    '&:hover': {
-      background: '#449f80',
-    },
-    paper: {
-      padding: theme.spacing(2),
-      textAlign: 'center',
-      color: theme.palette.text.secondary,
-    },
-  },
-  TextField: {
-    borderColor: 'red',
-    borderWidth: 4,
-  },
-}));
+import useStyle from '../Style/Style';
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
 export default function Login() {
-  const classes = useStyles();
+  const classes = useStyle();
   const [openDialog, setOpenDialog] = useState(false);
   const [openToast, setOpenToast] = useState(false);
   //dialog
