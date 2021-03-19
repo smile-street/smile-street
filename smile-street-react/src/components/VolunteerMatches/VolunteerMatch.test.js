@@ -27,3 +27,23 @@ describe('Volunteer Match  component', () => {
     expect(screen.getByText('This is a Good Cause')).toBeInTheDocument();
   });
 });
+
+test(`
+        Given the required props,
+        When the component is rendered,
+        Then the yes, please  button should be present`, () => {
+  const requiredProps = {
+    complete: false,
+    text: 'This is a task',
+    id: '001',
+    deleteTask: () => {},
+  };
+
+  render(<MatchCard {...requiredProps} />);
+
+  expect(
+    screen
+      .getAllByRole('button')
+      .filter((button) => button.textContent === ' Yes, Please').length
+  ).toBe(1);
+});
