@@ -67,7 +67,6 @@ export default function VolunteerAvailability() {
             <Grid item xs={12} sm={12}>
               <TextField
                 margin="normal"
-                //style={{ margin: 8 }}
                 fullWidth
                 autoFocus
                 name="employer_name"
@@ -80,14 +79,12 @@ export default function VolunteerAvailability() {
               {errors.employer_name}
             </Grid>
             <Grid item xs={12} sm={12}>
-              <InputLabel>We will match you based on your locations</InputLabel>
-              <InputLabel>Select your primary match location</InputLabel>
+              <InputLabel>Select your location</InputLabel>
               <Select
                 label
                 fullWidth
                 id=""
                 style={{margin: 8}}
-                fullWidth
                 autoFocus
                 variant="outlined"
                 className={classes.root}
