@@ -3,6 +3,7 @@ import {render, screen} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import MatchCard from './MatchCard';
 import VolunteerMatches from './VolunteerMatches';
+import VolunteerMatchesData from './VolunteerMatches.json';
 
 describe('Volunteer Match  component', () => {
   afterEach(() => jest.clearAllMocks());
@@ -36,8 +37,8 @@ test(`
     id: '001',
     GoodCause: 'This  is a Good Cause',
     Description: 'This is a testing Good Cause',
-    Dates: '26/05/1986',
-    text: 'This is a task',
+    Dates: '26/05/1996',
+    text: 'This is a Good Cause Details',
     handleAgree: () => {},
     handleAccepted: () => {},
   };
@@ -48,5 +49,5 @@ test(`
     screen
       .getAllByRole('button')
       .filter((button) => button.textContent === 'Yes, Please').length
-  ).toBe(5);
+  ).toBe(VolunteerMatchesData.length);
 });
