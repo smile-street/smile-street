@@ -30,8 +30,6 @@ export default function VolunteerAvailability() {
   });
 
   const handleChange = (e) => {
-    console.log(e.target.name)
-    console.log(e.target.value)
     setInfo({...info, [e.target.name]: e.target.value,});
   };
 
@@ -110,16 +108,11 @@ export default function VolunteerAvailability() {
                 onChange={handleChange}
                 value={info.numberOfDays}
               >
-                <MenuItem value={'1'}>1</MenuItem>
-                <MenuItem value={'2'}>2</MenuItem>
-                <MenuItem value={'3'}>3</MenuItem>
-                <MenuItem value={'4'}>4</MenuItem>
-                <MenuItem value={'5'}>5</MenuItem>
-                <MenuItem value={'6'}>6</MenuItem>
-                <MenuItem value={'7'}>7</MenuItem>
-                <MenuItem value={'8'}>8</MenuItem>
-                <MenuItem value={'9'}>9</MenuItem>
-                <MenuItem value={'10'}>10</MenuItem>
+                {[1,2,3,4,5,6,7,8,9,10].map(number => {
+                  return(
+                    <MenuItem value={number}>{number}</MenuItem>
+                  )
+                })}
               </Select>
             </Grid>
             <Grid item xs={12} sm={12}>
