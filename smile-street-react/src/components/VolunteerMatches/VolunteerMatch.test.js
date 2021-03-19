@@ -33,17 +33,20 @@ test(`
         When the component is rendered,
         Then the yes, please  button should be present`, () => {
   const requiredProps = {
-    complete: false,
-    text: 'This is a task',
     id: '001',
-    deleteTask: () => {},
+    GoodCause: 'This  is a Good Cause',
+    Description: 'This is a testing Good Cause',
+    Dates: '26/05/1986',
+    text: 'This is a task',
+    handleAgree: () => {},
+    handleAccepted: () => {},
   };
 
-  render(<MatchCard {...requiredProps} />);
+  render(<VolunteerMatches {...requiredProps} />);
 
   expect(
     screen
       .getAllByRole('button')
-      .filter((button) => button.textContent === ' Yes, Please').length
-  ).toBe(1);
+      .filter((button) => button.textContent === 'Yes, Please').length
+  ).toBe(5);
 });
