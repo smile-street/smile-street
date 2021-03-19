@@ -24,6 +24,6 @@ describe('Volunteer Match  component', () => {
 
     render(<MatchCard {...requiredProps} />);
 
-    expect(screen.getByText('This is a GoodCause')).toBeInTheDocument();
+    expect(screen.getByText('This is a Good Cause')).toBeInTheDocument();
   });
 });
