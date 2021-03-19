@@ -16,7 +16,7 @@ import {
 import MuiAlert from '@material-ui/lab/Alert';
 import AutoCompleteTag from './AutoCompleteTag';
 import PageHeading from '../PageHeading/PageHeading';
-import DatePicker from './DatePicker';
+import DatePicker from '../DatePicker/DatePicker';
 import locations from './locations.json';
 
 const useStyles = makeStyles((theme) => ({
@@ -55,7 +55,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function GoodCauseOpportunity() {
   const classes = useStyles();
-  const [openToast, setOpenToast] = useState(false);
+  const [openFailedToast, setOpenFailedToast] = useState(false);
+  const [openSavedToast, setOpenSavedToast] = useState(false);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [location, setLocation] = useState('');
@@ -68,7 +69,8 @@ export default function GoodCauseOpportunity() {
     if (reason === 'clickaway') {
       return;
     }
-    setOpenToast(false);
+    setOpenFailedToast(false);
+    setOpenSavedToast(false);
   };
 
   function Alert(props) {
@@ -90,11 +92,12 @@ export default function GoodCauseOpportunity() {
     setOpportunities(newOpportunities);
     setTitle('');
     setDescription('');
+    setOpenSavedToast(true);
   }
   const history = useHistory();
   function handleDone() {
     if (!opportunities.length) {
-      setOpenToast(true);
+      setOpenFailedToast(true);
     } else {
       history.push({pathname: '/GoodCauseMatches'});
       console.log(opportunities);
@@ -161,7 +164,7 @@ export default function GoodCauseOpportunity() {
                 className={classes.buttonColor}
                 onClick={addOpportunity}
               >
-                Save Opportunity
+                Save This Opportunity
               </Button>
             </Grid>
             <Grid item xs={12} sm={12}>
@@ -177,13 +180,23 @@ export default function GoodCauseOpportunity() {
         </Container>
       </Paper>
       <Snackbar
-        open={openToast}
+        open={openFailedToast}
         autoHideDuration={6000}
         onClose={handleToastClose}
         anchorOrigin={{vertical: 'top', horizontal: 'center'}}
       >
         <Alert onClose={handleToastClose} severity="warning">
-          You must save at least one Opportunity to see matches!
+          You must save at least one Opportunity to see your matches
+        </Alert>
+      </Snackbar>
+      <Snackbar
+        open={openSavedToast}
+        autoHideDuration={6000}
+        onClose={handleToastClose}
+        anchorOrigin={{vertical: 'top', horizontal: 'center'}}
+      >
+        <Alert onClose={handleToastClose} severity="success">
+          Opportunity saved, add as many as you like!
         </Alert>
       </Snackbar>
     </Container>

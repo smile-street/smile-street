@@ -13,6 +13,7 @@ import {
   FormControl,
 } from '@material-ui/core';
 import PageHeading from '../PageHeading/PageHeading';
+import DatePicker from '../DatePicker/DatePicker';
 import Validation from './Validation';
 import locations from './locations.json';
 import useStyle from '../Style/Style';
@@ -20,6 +21,8 @@ import useStyle from '../Style/Style';
 export default function VolunteerAvailability() {
   const classes = useStyle();
   const history = useHistory();
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
   const [errors, setErrors] = useState({Validation});
   const [info, setInfo] = useState({
       employer_name: '',
@@ -117,47 +120,12 @@ export default function VolunteerAvailability() {
                 })}
               </Select>
             </Grid>
-            <Grid item xs={12} sm={12}>
-              <InputLabel>
-                Select your available dates
-              </InputLabel>
-              <TextField
-                margin="normal"
-                fullWidth
-                autoFocus
-                value={info.startDate}
-                variant="outlined"
-                id="date"
-                label="Start Data"
-                type="date"
-                defaultValue="2017-05-24"
-                className={classes.root}
-                name="startDate"
-                onChange={handleChange}
-                InputLabelProps={{
-                  shrink: true,
-                }}
-              />
+            <Grid item xs={12} sm={6}>
+              <DatePicker id={'Start Date'} setDate={setStartDate} />
             </Grid>
 
-            <Grid item xs={12} sm={12}>
-              <TextField
-                margin="normal"
-                fullWidth
-                autoFocus
-                id="date"
-                label="End Date"
-                variant="outlined"
-                type="date"
-                defaultValue="2017-05-24"
-                className={classes.root}
-                name="endDate"
-                value={info.endDate}
-                onChange={handleChange}
-                InputLabelProps={{
-                  shrink: true,
-                }}
-              />
+            <Grid item xs={12} sm={6}>
+              <DatePicker id={'End Date'} setDate={setEndDate} />
             </Grid>
 
             <Grid item xs={12}>
