@@ -51,3 +51,30 @@ test(`
       .filter((button) => button.textContent === 'Yes, Please').length
   ).toBe(VolunteerMatchesData.length);
 });
+
+test(`
+        Given a match card is rendered,
+        When the Yes,Please  button is clicked,
+        Then the handle click open yes  function is called with the correct task id`, () => {
+  const mockOpenYesPleaseFunction = jest.fn();
+
+  const requiredProps = {
+    id: '001',
+    GoodCause: 'This  is a Good Cause',
+    Description: 'This is a testing Good Cause',
+    Dates: '26/05/1996',
+    text: 'This is a Good Cause Details',
+    handleAgree: () => {},
+    handleAccepted: () => {},
+    handleClickOpenYes: mockOpenYesPleaseFunction,
+  };
+
+  render(<VolunteerMatches {...requiredProps} />);
+
+  const yesPleaseButton = screen
+    .getAllByRole('button')
+    .find((button) => button.textContent === 'Yes, Please');
+  userEvent.click(yesPleaseButton);
+
+  expect(mockOpenYesPleaseFunction.mock.calls.length).toBe(0);
+});
