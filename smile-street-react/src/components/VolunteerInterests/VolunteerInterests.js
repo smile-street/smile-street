@@ -28,7 +28,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function VolunteerInterests() {
   const [skills, setSkills] = useState('');
-  console.log('selected skills by users are ', skills);
 
   const classes = useStyles();
   let interests = interestData;
@@ -41,12 +40,13 @@ export default function VolunteerInterests() {
   };
   const history = useHistory();
   const handleComplete = () => {
+    console.log('Interests:', interests.filter((interest) => interest.selected));
+    console.log('skills: ', skills);
     history.push({
       pathname: '/VolunteerMatches',
     });
   };
-  const clickedDone = () =>
-    console.log(interests.filter((interest) => interest.selected));
+    
   return (
     <Container component="main">
       <Paper className={classes.paper}>
@@ -82,16 +82,6 @@ export default function VolunteerInterests() {
         </Grid>
         <Grid item xs={12} sm={12} style={{margin: 8}}>
           <Divider />
-        </Grid>
-
-        <Grid item xs={12} sm={12}>
-          <Button
-            variant="contained"
-            className={classes.buttonColor}
-            onClick={clickedDone}
-          >
-            Done
-          </Button>
         </Grid>
         <Grid item xs={12} sm={12} style={{margin: 8}}>
           <Divider />
