@@ -1,62 +1,54 @@
 import React from 'react';
 import {useState} from 'react';
 import {useLocation, useHistory} from 'react-router-dom';
-
 import {
-  makeStyles,
   Paper,
   Grid,
   Container,
   TextField,
   Button,
-  DialogTitle,
   InputLabel,
   MenuItem,
   Select,
 } from '@material-ui/core';
 import PageHeading from '../PageHeading/PageHeading';
 import Validation from './Validation';
+import locations from './locations.json';
 import useStyle from '../Style/Style';
 
 export default function VolunteerAvailability() {
-  const initialFormState = {
-    employer_name: '',
-    location: 'Manchester',
-    numberOfDays: '1',
-    startDate: '',
-    endDate: '',
-  };
-  const [info, setInfo] = useState(initialFormState);
+  const classes = useStyle();
+  const history = useHistory();
   const [errors, setErrors] = useState({Validation});
-  console.log(info);
+  const [info, setInfo] = useState({
+      employer_name: '',
+      location: '',
+      numberOfDays: '',
+      startDate: '',
+      endDate: '',
+  });
 
   const handleChange = (e) => {
-    setInfo({
-      ...info,
-      [e.target.name]: e.target.value,
-    });
+    setInfo({...info, [e.target.name]: e.target.value,});
   };
-  const history = useHistory();
+  
   const handleSubmit = (e) => {
     setErrors(Validation(info));
     e.preventDefault();
-
-    const newInfo = {
+    const updateInfo = [{...info}, 
+      {
       employer_name: info.employer_name,
       location: info.location,
       numberOfDays: info.numberOfDays,
       startDate: info.startDate,
       endDate: info.endDate,
-    };
-
-    const updateInfo = [{...info}, newInfo];
+      }
+    ];
     setInfo(updateInfo);
-    console.log('Your state after submission is', info);
-    setInfo(initialFormState);
+    console.log('Your state after submission is', info); 
     history.push({pathname: '/VolunteerInterests'});
   };
 
-  const classes = useStyle();
   return (
     <Container component="main">
       <Paper className={classes.paper}>
