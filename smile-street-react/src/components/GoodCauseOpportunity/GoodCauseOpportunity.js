@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {makeStyles} from '@material-ui/core/styles';
+import {useLocation, useHistory} from 'react-router-dom';
 import {
   TextField,
   Button,
@@ -7,12 +7,17 @@ import {
   Grid,
   Container,
   Snackbar,
+  MenuItem,
+  Select,
+  InputLabel,
+  FormControl,
+  makeStyles,
 } from '@material-ui/core';
 import MuiAlert from '@material-ui/lab/Alert';
 import AutoCompleteTag from './AutoCompleteTag';
 import PageHeading from '../PageHeading/PageHeading';
-import DatePicker from './DatePicker';
-import {useLocation, useHistory} from 'react-router-dom';
+import DatePicker from '../DatePicker/DatePicker';
+import locations from './locations.json';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -50,9 +55,11 @@ const useStyles = makeStyles((theme) => ({
 
 export default function GoodCauseOpportunity() {
   const classes = useStyles();
-  const [openToast, setOpenToast] = useState(false);
+  const [openFailedToast, setOpenFailedToast] = useState(false);
+  const [openSavedToast, setOpenSavedToast] = useState(false);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
+  const [location, setLocation] = useState('');
   const [opportunities, setOpportunities] = useState([]);
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
@@ -62,7 +69,8 @@ export default function GoodCauseOpportunity() {
     if (reason === 'clickaway') {
       return;
     }
-    setOpenToast(false);
+    setOpenFailedToast(false);
+    setOpenSavedToast(false);
   };
 
   function Alert(props) {
@@ -73,6 +81,7 @@ export default function GoodCauseOpportunity() {
     const opportunity = {
       title: title,
       description: description,
+      location: location,
       date: {
         start: startDate,
         end: endDate,
@@ -83,11 +92,12 @@ export default function GoodCauseOpportunity() {
     setOpportunities(newOpportunities);
     setTitle('');
     setDescription('');
+    setOpenSavedToast(true);
   }
   const history = useHistory();
   function handleDone() {
     if (!opportunities.length) {
-      setOpenToast(true);
+      setOpenFailedToast(true);
     } else {
       history.push({pathname: '/GoodCauseMatches'});
       console.log(opportunities);
@@ -120,7 +130,25 @@ export default function GoodCauseOpportunity() {
               onChange={(event) => setDescription(event.target.value)}
               className={classes.root}
             />
-
+            <FormControl variant="outlined" fullWidth>  
+                <InputLabel id="location-label">Select your location</InputLabel>
+                <Select
+                  labelId="location-label"
+                  label="Select your location"
+                  id="location"
+                  name='location'
+                  style={{margin: 8}}
+                  className={classes.root}
+                  value={location}
+                  onChange={(event) => setLocation(event.target.value)}
+                >
+                  {locations.map(city => {
+                    return(
+                      <MenuItem value={city.name}>{city.name}</MenuItem>
+                    )
+                  })}
+                </Select>
+              </FormControl>
             <Grid item xs={12} sm={12} fullWidth>
               <AutoCompleteTag setSkills={setSkills} />
             </Grid>
@@ -133,16 +161,16 @@ export default function GoodCauseOpportunity() {
             <Grid item xs={12} sm={12}>
               <Button
                 variant="contained"
-                className={classes.button}
+                className={classes.buttonColor}
                 onClick={addOpportunity}
               >
-                Save Opportunity
+                Save This Opportunity
               </Button>
             </Grid>
             <Grid item xs={12} sm={12}>
               <Button
                 variant="contained"
-                className={classes.button}
+                className={classes.buttonColor}
                 onClick={handleDone}
               >
                 I want see my matches!
@@ -152,13 +180,23 @@ export default function GoodCauseOpportunity() {
         </Container>
       </Paper>
       <Snackbar
-        open={openToast}
+        open={openFailedToast}
         autoHideDuration={6000}
         onClose={handleToastClose}
         anchorOrigin={{vertical: 'top', horizontal: 'center'}}
       >
         <Alert onClose={handleToastClose} severity="warning">
-          You must save at least one Opportunity to see matches!
+          You must save at least one Opportunity to see your matches
+        </Alert>
+      </Snackbar>
+      <Snackbar
+        open={openSavedToast}
+        autoHideDuration={6000}
+        onClose={handleToastClose}
+        anchorOrigin={{vertical: 'top', horizontal: 'center'}}
+      >
+        <Alert onClose={handleToastClose} severity="success">
+          Opportunity saved, add as many as you like!
         </Alert>
       </Snackbar>
     </Container>
