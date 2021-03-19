@@ -3,12 +3,12 @@ import userEvent from '@testing-library/user-event';
 import GoodCauseMatches from './GoodCauseMatches';
 import MatchedVolunteersCard from './MatchedVolunteersCard';
 
-describe('Task component', () => {
+describe('Heading component', () => {
   afterEach(() => jest.clearAllMocks());
 
   test(`Given the required props,
         When the component is rendered,
-        Then the task text should be present`, () => {
+        Then the heading text should be present`, () => {
     render(<GoodCauseMatches />);
 
     expect(
