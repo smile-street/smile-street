@@ -1,17 +1,19 @@
-import React, { useState } from 'react';
-import { Container, 
-        Grid, 
-        Paper, 
-        Button, 
-        Menu, 
-        MenuItem,
-        Dialog,
-        DialogActions,
-        DialogTitle,
-        DialogContentText,
-        DialogContent, } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import { useHistory } from 'react-router-dom';
+import React, {useState} from 'react';
+import {
+  Container,
+  Grid,
+  Paper,
+  Button,
+  Menu,
+  MenuItem,
+  Dialog,
+  DialogActions,
+  DialogTitle,
+  DialogContentText,
+  DialogContent,
+} from '@material-ui/core';
+import {makeStyles} from '@material-ui/core/styles';
+import {useHistory} from 'react-router-dom';
 import PageHeading from '../PageHeading/PageHeading';
 import MatchCard from './MatchCard';
 import VolunteerMatchesData from './VolunteerMatches.json';
@@ -46,7 +48,6 @@ export default function VolunteerMatches() {
   const [anchorEl, setAnchorEl] = useState(null);
   const [open, setOpen] = useState(false);
 
-
   const handleAgree = (id) => {
     const updatedMatchCard = data.filter((card) => card.id !== id);
     setData(updatedMatchCard);
@@ -80,7 +81,12 @@ export default function VolunteerMatches() {
   return (
     <Container>
       <Paper className={classes.paper}>
-        <Button aria-controls="edit-menu" aria-haspopup="true" onClick={handleMenuClick} className={classes.buttonColor}>
+        <Button
+          aria-controls="edit-menu"
+          aria-haspopup="true"
+          onClick={handleMenuClick}
+          className={classes.buttonColor}
+        >
           Profile
         </Button>
         <Menu
@@ -90,9 +96,27 @@ export default function VolunteerMatches() {
           open={Boolean(anchorEl)}
           onClose={() => setAnchorEl(null)}
         >
-          <MenuItem onClick={() => {history.push( {pathname: '/VolEditProfile'} )} }>Edit Profile</MenuItem>
-          <MenuItem onClick={() => {history.push( {pathname: '/VolunteerInterests'} )} }>Edit Interests</MenuItem>
-          <MenuItem onClick={() => {history.push( {pathname: '/'} )} }>Logout</MenuItem>
+          <MenuItem
+            onClick={() => {
+              history.push({pathname: '/VolEditProfile'});
+            }}
+          >
+            Edit Profile
+          </MenuItem>
+          <MenuItem
+            onClick={() => {
+              history.push({pathname: '/VolunteerInterests'});
+            }}
+          >
+            Edit Interests
+          </MenuItem>
+          <MenuItem
+            onClick={() => {
+              history.push({pathname: '/'});
+            }}
+          >
+            Logout
+          </MenuItem>
           <MenuItem onClick={handleDeleteOption}>Delete Account</MenuItem>
         </Menu>
 
@@ -107,6 +131,7 @@ export default function VolunteerMatches() {
         >
           {data.map((item) => (
             <MatchCard
+              key={item.id}
               id={item.id}
               GoodCause={item.GoodCause}
               Description={item.Description}
@@ -129,7 +154,9 @@ export default function VolunteerMatches() {
         </DialogTitle>
         <DialogContent>
           <DialogContentText>
-          {'There is no way to restore your account once deleted. If you change your mind you will need to create a new account.'}
+            {
+              'There is no way to restore your account once deleted. If you change your mind you will need to create a new account.'
+            }
           </DialogContentText>
         </DialogContent>
         <DialogActions>

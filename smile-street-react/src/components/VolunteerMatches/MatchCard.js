@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   Button,
   Card,
@@ -13,7 +13,7 @@ import {
   DialogContentText,
   DialogContent,
 } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -85,30 +85,30 @@ const MatchCard = ({
             </Typography>
           </CardContent>
         </CardActionArea>
-          {accepted === null && (
-            <CardActions>
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                color="primary"
-                className={classes.buttonColor}
-                onClick={handleClickOpenYes}
-              >
-                Yes, Please
-              </Button>
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                color="primary"
-                className={classes.buttonColor}
-                onClick={handleClickOpenNo}
-              >
-                No, Thanks
-              </Button>
-            </CardActions>
-          )}
+        {accepted === null && (
+          <CardActions>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.buttonColor}
+              onClick={handleClickOpenNo}
+            >
+              Yes, Please
+            </Button>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.buttonColor}
+              onClick={handleClickOpenNo}
+            >
+              No, Thanks
+            </Button>
+          </CardActions>
+        )}
       </Card>
 
       <Dialog

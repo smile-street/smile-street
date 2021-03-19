@@ -51,6 +51,16 @@ const useStyles = makeStyles((theme) => ({
       background: '#449f80',
     },
   },
+  button: {
+    backgroundColor: '#53bd98',
+    color: 'white',
+    '&:hover': {
+      background: '#449f80',
+    },
+  },
+  h1: {
+    color: '#53bd98',
+  },
 }));
 
 export default function GoodCauseOpportunity() {
