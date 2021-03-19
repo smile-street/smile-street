@@ -6,18 +6,13 @@ import MatchedVolunteersCard from './MatchedVolunteersCard';
 describe('Task component', () => {
   afterEach(() => jest.clearAllMocks());
 
-  test(` Given the required props,
+  test(`Given the required props,
         When the component is rendered,
         Then the task text should be present`, () => {
-    const requiredProps = {
-      complete: false,
-      text: 'This is a task',
-      id: '001',
-      deleteTask: () => {},
-    };
+    render(<GoodCauseMatches />);
 
-    render(<Task {...requiredProps} />);
-
-    expect(screen.getByText('This is a task')).toBeInTheDocument();
+    expect(
+      screen.getByText('These are your matched volunteers')
+    ).toBeInTheDocument();
   });
 });
