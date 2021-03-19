@@ -66,6 +66,8 @@ export default function VolunteerAvailability() {
                 label="Employers Name"
                 variant="outlined"
                 value={info.employer_name}
+                // error={info.employer_name === ""}
+                // helperText={info.employer_name === "" ? 'This field is required' : ' '}
                 onChange={handleChange}
                 className={classes.root}
               />
