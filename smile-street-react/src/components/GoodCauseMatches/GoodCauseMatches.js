@@ -93,22 +93,21 @@ export default function FullWidthGrid() {
             alignItems="flex-start"
           >
             {/* Should be displayed as a table of sorts with the action on the end. maybe even a checkbox style list?  */}
-            {uniqueOpportunities.map((ID) => {
-              return (
-                <Grid container>
-                  Opportunity: {ID}
-                  {GoodCauseMatches.filter(
-                    (match) => match.opportunityID === ID
-                  ).map((volunteer) => {
-                    return (
-                      <Grid item xs={12} sm={4}>
-                        <MatchVolunteersCard volunteer={volunteer} />
-                      </Grid>
-                    );
-                  })}
-                </Grid>
-              );
-            })}
+            {uniqueOpportunities.map((ID) => (
+              <Grid container>
+                Opportunity: {ID}
+                key={ID}
+                {GoodCauseMatches.filter(
+                  (match) => match.opportunityID === ID
+                ).map((volunteer) => {
+                  return (
+                    <Grid item xs={12} sm={4}>
+                      <MatchVolunteersCard volunteer={volunteer} key={ID} />
+                    </Grid>
+                  );
+                })}
+              </Grid>
+            ))}
           </Grid>
         </Paper>
       </Container>
