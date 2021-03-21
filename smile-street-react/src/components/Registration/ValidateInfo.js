@@ -1,24 +1,24 @@
 export default function ValidateInfo(values) {
   let errors = {};
 
-  if (!values['firstName'].trim()) {
-    errors['firstName'] = 'First Name required';
+  if (!values['firstname'].trim()) {
+    errors['firstname'] = 'First Name required';
   }
 
-  if (!values.lastName.trim()) {
-    errors.lastName = 'Last Name required';
+  if (!values.lastname.trim()) {
+    errors.lastname = 'Last Name required';
   }
 
-  if (!values.email) {
-    errors.email = 'Email required';
-  } else if (!/\S+@\S+\.\S+/.test(values.email)) {
-    errors.email = 'Email address is invalid';
+  if (!values.username) {
+    errors.username = 'Email required';
+  } else if (!/\S+@\S+\.\S+/.test(values.username)) {
+    errors.username = 'Email address is invalid';
   }
 
-  if (!values.contactNumber) {
-    errors.contactNumber = 'Contact Number required';
-  } else if (!/^[0-9]+$/.test(values.contactNumber)) {
-    errors.contactNumber = 'Numeric Characters Only';
+  if (!values.contactnumber) {
+    errors.contactnumber = 'Contact Number required';
+  } else if (!/^[0-9]+$/.test(values.contactnumber)) {
+    errors.contactnumber = 'Numeric Characters Only';
   }
 
   if (!values.password) {
