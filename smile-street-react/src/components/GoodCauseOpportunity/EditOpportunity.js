@@ -71,18 +71,19 @@ export default function EditOpportunity() {
     const [enddate, setenddate] = useState(opportunity.enddate);
     const [skills, setSkills] = useState(opportunity.skills);
     const history = useHistory();
-    console.log(opportunity.skills)
 
     function UpdateOpportunity() {
-        setOpportunity({
+        const updatedOpportunity = {
+            id: opportunity.id,
             title: title,
             description: description,
             location: location,
             startdate: startdate,
             enddate: enddate,
             skills: skills,
-        });
-        console.log("opportunity will update with the following details ", opportunity) // this will be the updateHandler
+        };
+        setOpportunity(updatedOpportunity);
+        console.log(opportunity) // this will be the updateHandler
         history.push({ pathname: '/ManageOpportunities' })
     }
 

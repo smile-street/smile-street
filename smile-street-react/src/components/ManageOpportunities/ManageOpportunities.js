@@ -41,7 +41,6 @@ export default function ManageOpportunities() {
             <Paper className={classes.paper}>
                 <Container maxWidth="xs">
                     <PageHeading heading="Edit Opportunities" />
-                    {/* // */}
                     <div className={classes.root}>
                         {opportunities.map(opportunity => (
                             <Accordion>
@@ -80,7 +79,6 @@ export default function ManageOpportunities() {
                             </Accordion>
                         ))}
                     </div>
-                    {/* // */}
                     <Grid item xs={12} sm={12}>
                         <Button
                             variant="contained"
