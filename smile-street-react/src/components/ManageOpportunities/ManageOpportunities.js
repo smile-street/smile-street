@@ -28,12 +28,11 @@ export default function ManageOpportunities() {
     const [deleteDialog, setDeleteDialog] = useState(false);
     const [deleteConfirmation, setDeleteConfirmation] = useState(false);
     const opportunities = [
-        {id: "123455",  // these details should be fetched in EditOpportunity with a get handelr passed the oppotunity_id
+        {id: "123455",  // these details should be fetched in EditOpportunity with a get handelr using the oppotunity_id
         title: "Opportunity 1",
         description: "Lorem ipsum dolorm sin amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.",
         location: "Bath",
-        startdate: "Sun Mar 21 2020 16:06:44 GMT+0000 (Greenwich Mean Time)",
-        enddate: "Tue Mar 23 2021 16:06:44 GMT+0000 (Greenwich Mean Time)",
+        opportunitydate: "Sun Mar 21 2021 16:06:44 GMT+0000 (Greenwich Mean Time)",
         skills: [{title: "Communications"}, {title: "Marketing"}]},
         {id: "234567",
         title: "Opportunity 2", 

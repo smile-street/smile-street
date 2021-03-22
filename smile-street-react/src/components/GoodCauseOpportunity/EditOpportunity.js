@@ -68,7 +68,7 @@ export default function EditOpportunity() {
     const [title, setTitle] = useState(opportunity.title);
     const [description, setDescription] = useState(opportunity.description);
     const [location, setLocation] = useState(opportunity.location);
-    const [startdate, setstartdate] = useState(opportunity.startdate);
+    const [opportunitydate, setOpportunitydate] = useState(opportunity.opportunitydate);
     const [enddate, setenddate] = useState(opportunity.enddate);
     const [skills, setSkills] = useState(opportunity.skills);
     const history = useHistory();
@@ -79,8 +79,7 @@ export default function EditOpportunity() {
             title: title,
             description: description,
             location: location,
-            startdate: startdate,
-            enddate: enddate,
+            opportunitydate: opportunitydate,
             skills: skills,
         };
         setOpportunity(updatedOpportunity); // for some reason console.log(opportunity) after this line still doesn't show the updated version
@@ -136,11 +135,8 @@ export default function EditOpportunity() {
                         <Grid item xs={12} sm={12} fullWidth>
                             <AutoCompleteTag setSkills={setSkills} skills={skills}/>
                         </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <DatePicker id={'Start Date'} setDate={setstartdate} date={startdate}/>
-                        </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <DatePicker id={'End Date'} setDate={setenddate} date={enddate}/>
+                        <Grid item xs={12} sm={12} fullWidth>
+                            <DatePicker id={'Opportunity Date'} setDate={setOpportunitydate} date={opportunitydate}/>
                         </Grid>
                         <Grid item xs={12} sm={12}>
                             <Button
