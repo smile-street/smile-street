@@ -22,12 +22,22 @@ export default function EditOpportunity() {
     const classes = useStyle();
     const history = useHistory();
 
+
+
     return (
         <Container component="main">
             <Paper className={classes.paper}>
                 <Container maxWidth="xs">
                     <PageHeading heading="Edit Opportunities" />
-                        <h1>Hello</h1>
+                    <Grid item xs={12} sm={12}>
+                        <Button
+                            variant="contained"
+                            className={classes.button}
+                            onClick={()=> history.push({pathname: '/GoodCauseMatches'})}
+                        >
+                            Back to Matches
+                        </Button>
+                    </Grid>
                 </Container>
             </ Paper>
         </ Container>
