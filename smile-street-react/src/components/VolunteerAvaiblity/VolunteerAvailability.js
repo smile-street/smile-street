@@ -29,70 +29,39 @@ export default function VolunteerAvailability() {
     endDate: '',
   };
   const history = useHistory();
-  // const [availablility, setAvailability] = useState([]);
-  // const [startDate, setStartDate] = useState('');
-  // const [endDate, setEndDate] = useState('');
-  // const [errors, setErrors] = useState({Validation});
+  const userRole = useLocation().state;
+  const [errors, setErrors] = useState({Validation});
   const [info, setInfo] = useState(initialFormState);
 
   const handleChange = (e) => {
     setInfo({...info, [e.target.name]: e.target.value});
   };
 
-  if (true) { //this needs to be changed to validate the form!
-    const values = 
-    setInfo(initialFormState);
-    if (userRole.userType === 'volunteer') {
-      // post request to volunteer table
-      axios.put(`https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/VolunteerAvailability/${volunteer_id}`, 
-        {employer_name: info.employer_name,
-        location: info.location,
-        numberOfDays: info.numberOfDays,
-          startDate: info.startDate,
-        endDate:info.endDate})
-      .then(response => {
-        console.log("This is the new volunteer id:" + response.data);
-      }) 
-      .catch(error => 
-        console.log(error)
-      );
-      history.push({pathname: '/VolunteerAvailability', state: {usedrId: usedrId}});
-      }
-    if (userRole.userType === 'goodCause') {
-      // post request to good_cause table
-      axios.post('https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/sgoodcause', 
-        {firstname: registration.firstname,
-        lastname: registration.lastname,
-        emailaddress: registration.username,
-        contactnumber: registration.contactnumber})
-      .then(response => {
-        console.log("This is the new good cause id:" + response.data);
-      }) 
-      .catch(error => 
-        console.log(error)
-      );
-      history.push({pathname: '/GoodCauseDetails', state: {usedrId: usedrId}});
-    }
-  }
-};
-
-
   const handleSubmit = (e) => {
     setErrors(Validation(info));
     e.preventDefault();
-    const updateInfo = [
-      {...info},
-      {
-        employer_name: info.employer_name,
-        location: info.location,
-        numberOfDays: info.numberOfDays,
-        startDate: info.startDate,
-        endDate: info.endDate,
-      },
-    ];
-    setInfo(updateInfo);
-    console.log('Your state after submission is', info);
-    history.push({pathname: '/VolunteerInterests'});
+    if (userRole.userType === 'volunteer') {
+      axios
+        .put(
+          `https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/VolunteerAvailability/${volunteer_id}`,
+          {
+            employer_name: info.employer_name,
+            location: info.location,
+            numberOfDays: info.numberOfDays,
+            startDate: info.startDate,
+            endDate: info.endDate,
+          }
+        )
+        .then((response) => {
+          console.log('This is the new volunteer id:' + response.data);
+        })
+        .catch((error) => console.log(error));
+      console.log('Your state after submission is', info);
+      history.push({
+        pathname: '/VolunteerInterests',
+        state: {usedrId: volunteer_id},
+      });
+    }
   };
 
   return (
