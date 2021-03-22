@@ -34,8 +34,8 @@ export default function VolunteerAvailability() {
   const volunteer_id = useLocation().state.userId;
   const [errors, setErrors] = useState({Validation});
   const [info, setInfo] = useState(initialFormState);
-  const [startdate, setStartDate] = useState('');
-  const [enddate, setEndDate] = useState('');
+  const [startdate, setStartDate] = useState(new Date());
+  const [enddate, setEndDate] = useState(new Date());
   const handleChange = (e) => {
     setInfo({...info, [e.target.name]: e.target.value});
   };
@@ -51,8 +51,8 @@ export default function VolunteerAvailability() {
           employername: info.employername,
           location: info.location,
           numberofdays: info.numberofdays,
-          startDate: info.startDate,
-          endDate: info.endDate,
+          startdate: info.startDate,
+          enddate: info.endDate,
         }
       )
       .then((response) => {
@@ -135,6 +135,8 @@ export default function VolunteerAvailability() {
                 id={'Start Date'}
                 setDate={setStartDate}
                 value={startdate}
+                selected={startdate}
+                onChange={(date) => setStartDate(startdate)}
               />
             </Grid>
 
@@ -143,6 +145,8 @@ export default function VolunteerAvailability() {
                 id={'End Date'}
                 setDate={setEndDate}
                 value={enddate}
+                selected={enddate}
+                onChange={(date) => setEndDate(enddate)}
               />
             </Grid>
 
