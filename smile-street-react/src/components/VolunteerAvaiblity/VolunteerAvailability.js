@@ -23,7 +23,7 @@ export default function VolunteerAvailability() {
   const classes = useStyle();
   const initialFormState = {
     employername: '',
-    location: '',
+    primarylocation: '',
     numberofdays: '',
     startdate: '',
     enddate: '',
@@ -49,10 +49,10 @@ export default function VolunteerAvailability() {
         `https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/VolunteerAvailability/${volunteer_id}`,
         {
           employername: info.employername,
-          location: info.location,
+          primarylocation: info.primarylocation,
           numberofdays: info.numberofdays,
-          startdate: info.startDate,
-          enddate: info.endDate,
+          startdate: startdate,
+          enddate: enddate,
         }
       )
       .then((response) => {
@@ -97,11 +97,11 @@ export default function VolunteerAvailability() {
                 <Select
                   labelId="location-label"
                   label="Select your location"
-                  id="location"
-                  name="location"
+                  id="primarylocation"
+                  name="primarylocation"
                   style={{margin: 8}}
                   className={classes.root}
-                  value={info.location}
+                  value={info.primarylocation}
                   onChange={handleChange}
                 >
                   {locations.map((location) => {
@@ -132,21 +132,21 @@ export default function VolunteerAvailability() {
             </Grid>
             <Grid item xs={12} sm={6}>
               <DatePicker
-                id={'Start Date'}
+                id="startdate"
                 setDate={setStartDate}
                 value={startdate}
                 selected={startdate}
-                onChange={(date) => setStartDate(startdate)}
+                onChange={(date) => setStartDate(date)}
               />
             </Grid>
 
             <Grid item xs={12} sm={6}>
               <DatePicker
-                id={'End Date'}
+                id="enddate"
                 setDate={setEndDate}
                 value={enddate}
                 selected={enddate}
-                onChange={(date) => setEndDate(enddate)}
+                onChange={(date) => setEndDate(date)}
               />
             </Grid>
 
