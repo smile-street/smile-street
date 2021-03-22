@@ -25,9 +25,9 @@ export default function FullWidthGrid() {
   const history = useHistory();
   const [anchorEl, setAnchorEl] = useState(null);
   const [open, setOpen] = useState(false);
-  const uniqueOpportunities = [
+  const uniqueOpportunities = [ // create a Set of opportunity IDs
     ...new Set(GoodCauseMatches.map((match) => match.opportunityID)),
-  ]; // create a Set of opportunity IDs
+  ]; 
 
   const handleMenuClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -74,6 +74,13 @@ export default function FullWidthGrid() {
               }}
             >
               Edit Opportunities
+            </MenuItem>
+            <MenuItem
+              onClick={() => {
+                history.push({pathname: '/GoodCauseOpportunity'});
+              }}
+            >
+              Add Opportunities
             </MenuItem>
             <MenuItem
               onClick={() => { history.push({pathname: '/'});}}
