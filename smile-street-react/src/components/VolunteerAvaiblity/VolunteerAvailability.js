@@ -17,39 +17,81 @@ import DatePicker from '../DatePicker/DatePicker';
 import Validation from './Validation';
 import locations from './locations.json';
 import useStyle from '../Style/Style';
+import axios from 'axios';
 
 export default function VolunteerAvailability() {
   const classes = useStyle();
+  const initialFormState = {
+    employer_name: '',
+    location: '',
+    numberOfDays: '',
+    startDate: '',
+    endDate: '',
+  };
   const history = useHistory();
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
-  const [errors, setErrors] = useState({Validation});
-  const [info, setInfo] = useState({
-      employer_name: '',
-      location: '',
-      numberOfDays: '',
-      startDate: '',
-      endDate: '',
-  });
+  // const [availablility, setAvailability] = useState([]);
+  // const [startDate, setStartDate] = useState('');
+  // const [endDate, setEndDate] = useState('');
+  // const [errors, setErrors] = useState({Validation});
+  const [info, setInfo] = useState(initialFormState);
 
   const handleChange = (e) => {
-    setInfo({...info, [e.target.name]: e.target.value,});
+    setInfo({...info, [e.target.name]: e.target.value});
   };
+
+  if (true) { //this needs to be changed to validate the form!
+    const values = 
+    setInfo(initialFormState);
+    if (userRole.userType === 'volunteer') {
+      // post request to volunteer table
+      axios.put(`https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/VolunteerAvailability/${volunteer_id}`, 
+        {employer_name: info.employer_name,
+        location: info.location,
+        numberOfDays: info.numberOfDays,
+          startDate: info.startDate,
+        endDate:info.endDate})
+      .then(response => {
+        console.log("This is the new volunteer id:" + response.data);
+      }) 
+      .catch(error => 
+        console.log(error)
+      );
+      history.push({pathname: '/VolunteerAvailability', state: {usedrId: usedrId}});
+      }
+    if (userRole.userType === 'goodCause') {
+      // post request to good_cause table
+      axios.post('https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/sgoodcause', 
+        {firstname: registration.firstname,
+        lastname: registration.lastname,
+        emailaddress: registration.username,
+        contactnumber: registration.contactnumber})
+      .then(response => {
+        console.log("This is the new good cause id:" + response.data);
+      }) 
+      .catch(error => 
+        console.log(error)
+      );
+      history.push({pathname: '/GoodCauseDetails', state: {usedrId: usedrId}});
+    }
+  }
+};
+
 
   const handleSubmit = (e) => {
     setErrors(Validation(info));
     e.preventDefault();
-    const updateInfo = [{...info}, 
+    const updateInfo = [
+      {...info},
       {
-      employer_name: info.employer_name,
-      location: info.location,
-      numberOfDays: info.numberOfDays,
-      startDate: info.startDate,
-      endDate: info.endDate,
-      }
+        employer_name: info.employer_name,
+        location: info.location,
+        numberOfDays: info.numberOfDays,
+        startDate: info.startDate,
+        endDate: info.endDate,
+      },
     ];
     setInfo(updateInfo);
-    console.log('Your state after submission is', info); 
+    console.log('Your state after submission is', info);
     history.push({pathname: '/VolunteerInterests'});
   };
 
@@ -77,31 +119,30 @@ export default function VolunteerAvailability() {
               {errors.employer_name}
             </Grid>
             <Grid item xs={12} sm={12}>
-              <FormControl variant="outlined" fullWidth>  
-                <InputLabel id="location-label">Select your location</InputLabel>
+              <FormControl variant="outlined" fullWidth>
+                <InputLabel id="location-label">
+                  Select your location
+                </InputLabel>
                 <Select
                   labelId="location-label"
                   label="Select your location"
-                  
                   id="location"
-                  name='location'
+                  name="location"
                   style={{margin: 8}}
                   className={classes.root}
                   value={info.location}
                   onChange={handleChange}
                 >
-                  {locations.map(location => {
-                    return(
+                  {locations.map((location) => {
+                    return (
                       <MenuItem value={location.name}>{location.name}</MenuItem>
-                    )
+                    );
                   })}
                 </Select>
               </FormControl>
             </Grid>
             <Grid item xs={12} sm={12}>
-              <InputLabel>
-                How many days are you available?
-              </InputLabel>
+              <InputLabel>How many days are you available?</InputLabel>
               <Select
                 label="Available days"
                 fullWidth
@@ -113,10 +154,8 @@ export default function VolunteerAvailability() {
                 onChange={handleChange}
                 value={info.numberOfDays}
               >
-                {[1,2,3,4,5,6,7,8,9,10].map(number => {
-                  return(
-                    <MenuItem value={number}>{number}</MenuItem>
-                  )
+                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((number) => {
+                  return <MenuItem value={number}>{number}</MenuItem>;
                 })}
               </Select>
             </Grid>
