@@ -76,13 +76,15 @@ export default function FullWidthGrid() {
               Edit Opportunities
             </MenuItem>
             <MenuItem
-              onClick={() => {
-                history.push({pathname: '/'});
-              }}
+              onClick={() => { history.push({pathname: '/'});}}
             >
               Logout
             </MenuItem>
-            <MenuItem onClick={handleDeleteOption}>Delete Account</MenuItem>
+            <MenuItem 
+              onClick={handleDeleteOption}
+            >
+              Delete Account
+            </MenuItem>
           </Menu>
           <PageHeading heading="These are your matched volunteers" />
           <Grid

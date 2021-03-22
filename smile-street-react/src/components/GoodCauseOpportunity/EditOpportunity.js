@@ -16,6 +16,7 @@ import AutoCompleteTag from './AutoCompleteTag';
 import PageHeading from '../PageHeading/PageHeading';
 import DatePicker from '../DatePicker/DatePicker';
 import locations from './locations.json';
+import useStyle from '../Style/Style';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -82,8 +83,8 @@ export default function EditOpportunity() {
             enddate: enddate,
             skills: skills,
         };
-        setOpportunity(updatedOpportunity);
-        console.log(opportunity) // this will be the updateHandler
+        setOpportunity(updatedOpportunity); // for some reason console.log(opportunity) after this line still doesn't show the updated version
+        console.log(updatedOpportunity) // this will be the updateHandler
         history.push({ pathname: '/ManageOpportunities' })
     }
 
