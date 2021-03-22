@@ -70,10 +70,10 @@ export default function FullWidthGrid() {
             </MenuItem>
             <MenuItem
               onClick={() => {
-                history.push({pathname: '/GoodCauseOpportunity'});
+                history.push({pathname: '/EditOpportunity'});
               }}
             >
-              Add Opportunity
+              Edit Opportunities
             </MenuItem>
             <MenuItem
               onClick={() => {

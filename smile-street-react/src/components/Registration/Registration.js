@@ -52,33 +52,31 @@ export default function Registration() {
     const updatedReg = [{...registration}, newReg];
     setRegistration(updatedReg);
 
-    if (true) { //this needs to be changed to validate the form!
-      const values = 
+    if (true) { //this needs to be changed to validate the form! 
       setRegistration(initialFormState);
+      const values = {firstname: registration.firstname,
+                      lastname: registration.lastname,
+                      username: registration.username,
+                      contactnumber: registration.contactnumber}
       if (userRole.userType === 'volunteer') {
         // post request to volunteer table
-        axios.post('https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/Volunteers', 
-          {firstname: registration.firstname,
-          lastname: registration.lastname,
-          username: registration.username,
-          contactnumber: registration.contactnumber})
+        axios.post('https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/Volunteers', values)
         .then(response => {
           console.log("This is the new volunteer id:" + response.data);
+          setUserId(response.data)
         }) 
         .catch(error => 
           console.log(error)
         );
         history.push({pathname: '/VolunteerAvailability', state: {usedrId: usedrId}});
         }
+
       if (userRole.userType === 'goodCause') {
         // post request to good_cause table
-        axios.post('https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/sgoodcause', 
-          {firstname: registration.firstname,
-          lastname: registration.lastname,
-          emailaddress: registration.username,
-          contactnumber: registration.contactnumber})
+        axios.post('https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/sgoodcause', values)
         .then(response => {
           console.log("This is the new good cause id:" + response.data);
+          setUserId(response.data)
         }) 
         .catch(error => 
           console.log(error)

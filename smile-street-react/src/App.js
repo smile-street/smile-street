@@ -8,15 +8,16 @@ import Registration from './components/Registration/Registration';
 import VolunteerAvailability from './components/VolunteerAvaiblity/VolunteerAvailability';
 import VolunteerInterests from './components/VolunteerInterests/VolunteerInterests';
 import VolEditProfile from './components/VolunteerEditProfile/VolEditProfile';
-
+import EditOpportunity from './components/EditOpportunity/EditOpportunity';
+import VolunteerMatches from './components/VolunteerMatches/VolunteerMatches';
+import Footer from './components/Footer/Footer';
 import {
   BrowserRouter as Router,
   Route,
   Switch,
   useHistory,
 } from 'react-router-dom';
-import VolunteerMatches from './components/VolunteerMatches/VolunteerMatches';
-import Footer from './components/Footer/Footer';
+
 
 export default function App() {
   return (
@@ -36,6 +37,7 @@ export default function App() {
         <Route path="/VolunteerInterests" component={VolunteerInterests} />
         <Route path="/GoodCauseOpportunity" component={GoodCauseOpportunity} />
         <Route path="/VolEditProfile" component={VolEditProfile} />
+        <Route path="/EditOpportunity" component={EditOpportunity} />
         <Footer />
       </Router>
       {/* <VolunteerInterests />
