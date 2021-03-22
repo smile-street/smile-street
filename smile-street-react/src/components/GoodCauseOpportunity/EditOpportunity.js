@@ -63,24 +63,26 @@ const useStyles = makeStyles((theme) => ({
 
 export default function EditOpportunity() {
     const classes = useStyles();
-    const [title, setTitle] = useState('');
-    const [description, setDescription] = useState('');
-    const [location, setLocation] = useState('');
-    const [startDate, setStartDate] = useState('');
-    const [endDate, setEndDate] = useState('');
-    const [skills, setSkills] = useState('');
+    const [opportunity, setOpportunity] = useState(useLocation().state);
+    const [title, setTitle] = useState(opportunity.title);
+    const [description, setDescription] = useState(opportunity.description);
+    const [location, setLocation] = useState(opportunity.location);
+    const [startDate, setStartDate] = useState(opportunity.startdate);
+    const [endDate, setEndDate] = useState(opportunity.enddate);
+    const [skills, setSkills] = useState(opportunity.skills);
     const history = useHistory();
+    console.log(opportunity.skills)
 
     function UpdateOpportunity() {
-        const opportunity = {
+        setOpportunity({
             title: title,
             description: description,
             location: location,
             startdate: startDate,
             enddate: endDate,
             skills: skills,
-        };
-        console.log(`opportunity update with the following details ${opportunity}`) // this will be the updateHandler
+        });
+        console.log("opportunity will update with the following details ", opportunity) // this will be the updateHandler
         history.push({ pathname: '/ManageOpportunities' })
     }
 
@@ -130,7 +132,7 @@ export default function EditOpportunity() {
                             </Select>
                         </FormControl>
                         <Grid item xs={12} sm={12} fullWidth>
-                            <AutoCompleteTag setSkills={setSkills} />
+                            <AutoCompleteTag setSkills={setSkills} skills={skills}/>
                         </Grid>
                         <Grid item xs={12} sm={6}>
                             <DatePicker id={'Start Date'} setDate={setStartDate} />

@@ -22,7 +22,11 @@ export default function ManageOpportunities() {
     const history = useHistory();
     const opportunities = [{id: "123455",  
                             title: "Opportunity 1",
-                            description: "Lorem ipsum dolorm sin amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget."},
+                            description: "Lorem ipsum dolorm sin amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.",
+                            location: "Bath",
+                            startdate: "12/13/1234",
+                            enddate: "23/53/3234",
+                            skills: [{title: "Communications"}, {title: "Marketing"}]},
                             {id: "234567",
                             title: "Opportunity 2", 
                             description: "Lorem ipsum dolorm sin amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget."},
@@ -58,7 +62,10 @@ export default function ManageOpportunities() {
                                     <Button 
                                         size="small" 
                                         className={classes.button}
-                                        onClick={()=> history.push({pathname: '/EditOpportunity'})}
+                                        onClick={()=> history.push({
+                                            pathname: '/EditOpportunity', 
+                                            state: opportunity
+                                        })}
                                     >
                                         Edit
                                     </Button>
