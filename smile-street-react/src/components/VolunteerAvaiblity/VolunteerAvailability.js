@@ -22,49 +22,48 @@ import axios from 'axios';
 export default function VolunteerAvailability() {
   const classes = useStyle();
   const initialFormState = {
-    employer_name: '',
+    employername: '',
     location: '',
-    numberOfDays: '',
-    startDate: '',
-    endDate: '',
+    numberofdays: '',
+    startdate: '',
+    enddate: '',
   };
   const history = useHistory();
 
   const userRole = useLocation().state.userRole;
-  const volunteer_id = useLocation().state.usedrId;
+  const volunteer_id = useLocation().state.userId;
   const [errors, setErrors] = useState({Validation});
   const [info, setInfo] = useState(initialFormState);
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
+  const [startdate, setStartDate] = useState('');
+  const [enddate, setEndDate] = useState('');
   const handleChange = (e) => {
     setInfo({...info, [e.target.name]: e.target.value});
   };
+  console.log(volunteer_id);
 
-  const handleSubmit = (e) => {
-    setErrors(Validation(info));
-    e.preventDefault();
-    if (userRole.userType === 'volunteer') {
-      axios
-        .put(
-          `https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/VolunteerAvailability/${volunteer_id}`,
-          {
-            employer_name: info.employer_name,
-            location: info.location,
-            numberOfDays: info.numberOfDays,
-            startDate: info.startDate,
-            endDate: info.endDate,
-          }
-        )
-        .then((response) => {
-          console.log('This is the new volunteer id:' + response.data);
-        })
-        .catch((error) => console.log(error));
-      console.log('Your state after submission is', info);
-      history.push({
-        pathname: '/VolunteerInterests',
-        state: {usedrId: volunteer_id},
-      });
-    }
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const addAvailability = await axios
+      .put(
+        `https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/VolunteerAvailability/${volunteer_id}`,
+        {
+          employername: info.employername,
+          location: info.location,
+          numberofdays: info.numberofdays,
+          startDate: info.startDate,
+          endDate: info.endDate,
+        }
+      )
+      .then((response) => {
+        console.log('This is the new volunteer id:' + response.data);
+        const volunteerId = response.data;
+        history.push({
+          pathname: '/VolunteerAvailability',
+          state: {userId: volunteerId, userRole: userRole},
+        });
+      })
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -79,16 +78,16 @@ export default function VolunteerAvailability() {
                 margin="normal"
                 fullWidth
                 autoFocus
-                name="employer_name"
+                name="employername"
                 label="Employers Name"
                 variant="outlined"
-                value={info.employer_name}
+                value={info.employername}
                 // error={info.employer_name === ""}
                 // helperText={info.employer_name === "" ? 'This field is required' : ' '}
                 onChange={handleChange}
                 className={classes.root}
               />
-              {errors.employer_name}
+              {errors.employername}
             </Grid>
             <Grid item xs={12} sm={12}>
               <FormControl variant="outlined" fullWidth>
@@ -118,13 +117,13 @@ export default function VolunteerAvailability() {
               <Select
                 label="Available days"
                 fullWidth
-                id="numberOfDays"
+                id="numberofdays"
                 style={{margin: 8}}
                 variant="outlined"
                 className={classes.root}
-                name="numberOfDays"
+                name="numberofdays"
                 onChange={handleChange}
-                value={info.numberOfDays}
+                value={info.numberofdays}
               >
                 {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((number) => {
                   return <MenuItem value={number}>{number}</MenuItem>;
@@ -135,7 +134,7 @@ export default function VolunteerAvailability() {
               <DatePicker
                 id={'Start Date'}
                 setDate={setStartDate}
-                value={startDate}
+                value={startdate}
               />
             </Grid>
 
@@ -143,7 +142,7 @@ export default function VolunteerAvailability() {
               <DatePicker
                 id={'End Date'}
                 setDate={setEndDate}
-                value={endDate}
+                value={enddate}
               />
             </Grid>
 

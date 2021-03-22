@@ -69,12 +69,13 @@ export default function Registration() {
           )
           .then((response) => {
             console.log('This is the new volunteer id:' + response.data);
+            const volunteerId = response.data;
+            history.push({
+              pathname: '/VolunteerAvailability',
+              state: {userId: volunteerId, userRole: userRole},
+            });
           })
           .catch((error) => console.log(error));
-        history.push({
-          pathname: '/VolunteerAvailability',
-          state: {usedrId: usedrId, userRole: userRole},
-        });
       }
       if (userRole.userType === 'goodCause') {
         // post request to good_cause table
