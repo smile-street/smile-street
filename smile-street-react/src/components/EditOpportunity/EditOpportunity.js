@@ -6,22 +6,28 @@ import {
     Container,
     Grid,
     Button,
-    Menu,
-    MenuItem,
-    Dialog,
-    DialogActions,
-    DialogTitle,
-    DialogContentText,
-    DialogContent,
+    Accordion,
+    AccordionSummary,
+    Typography,
+    AccordionDetails
 } from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import PageHeading from '../PageHeading/PageHeading';
 import useStyle from '../Style/Style';
 
 export default function EditOpportunity() {
     const classes = useStyle();
     const history = useHistory();
-
+    const opportunities = [{id: "123455", 
+                            title: "Opportunity 1",
+                            description: "Lorem ipsum dolorm sin amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget."},
+                            {id: "234567",
+                            title: "Opportunity 2", 
+                            description: "Lorem ipsum dolorm sin amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget."},
+                            {id: "2345678",
+                            title: "Opportunity 3",
+                            description: "Lorem ipsum dolorm sin amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget."}
+                        ];
 
 
     return (
@@ -29,6 +35,26 @@ export default function EditOpportunity() {
             <Paper className={classes.paper}>
                 <Container maxWidth="xs">
                     <PageHeading heading="Edit Opportunities" />
+                    {/* // */}
+                    <div className={classes.root}>
+                        {opportunities.map(opportunity => (
+                            <Accordion>
+                                <AccordionSummary
+                                expandIcon={<ExpandMoreIcon />}
+                                aria-controls="panel1a-content"
+                                id="panel1a-header"
+                                >
+                                <Typography>{opportunity.title}</Typography>
+                                </AccordionSummary>
+                                <AccordionDetails>
+                                <Typography>
+                                    {opportunity.description}
+                                </Typography>
+                                </AccordionDetails>
+                            </Accordion>
+                        ))}
+                    </div>
+                    {/* // */}
                     <Grid item xs={12} sm={12}>
                         <Button
                             variant="contained"
