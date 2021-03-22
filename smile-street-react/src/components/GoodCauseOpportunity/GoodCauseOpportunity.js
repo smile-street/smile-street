@@ -71,8 +71,8 @@ export default function GoodCauseOpportunity() {
   const [description, setDescription] = useState('');
   const [location, setLocation] = useState('');
   const [opportunities, setOpportunities] = useState([]);
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
+  const [opportunityDate, setOpportunityDate] = useState('');
+
   const [skills, setSkills] = useState('');
 
   const handleToastClose = (event, reason) => {
@@ -92,10 +92,7 @@ export default function GoodCauseOpportunity() {
       title: title,
       description: description,
       location: location,
-      date: {
-        start: startDate,
-        end: endDate,
-      },
+      opportunityDate: opportunityDate,
       skills: skills,
     };
     const newOpportunities = opportunities.concat(opportunity);
@@ -140,34 +137,33 @@ export default function GoodCauseOpportunity() {
               onChange={(event) => setDescription(event.target.value)}
               className={classes.root}
             />
-            <FormControl variant="outlined" fullWidth>  
-                <InputLabel id="location-label">Select your location</InputLabel>
-                <Select
-                  labelId="location-label"
-                  label="Select your location"
-                  id="location"
-                  name='location'
-                  style={{margin: 8}}
-                  className={classes.root}
-                  value={location}
-                  onChange={(event) => setLocation(event.target.value)}
-                >
-                  {locations.map(city => {
-                    return(
-                      <MenuItem value={city.name}>{city.name}</MenuItem>
-                    )
-                  })}
-                </Select>
-              </FormControl>
+            <FormControl variant="outlined" fullWidth>
+              <InputLabel id="location-label">Select your location</InputLabel>
+              <Select
+                labelId="location-label"
+                label="Select your location"
+                id="location"
+                name="location"
+                style={{margin: 8}}
+                className={classes.root}
+                value={location}
+                onChange={(event) => setLocation(event.target.value)}
+              >
+                {locations.map((city) => {
+                  return <MenuItem value={city.name}>{city.name}</MenuItem>;
+                })}
+              </Select>
+            </FormControl>
             <Grid item xs={12} sm={12} fullWidth>
               <AutoCompleteTag setSkills={setSkills} />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <DatePicker id={'Start Date'} setDate={setStartDate} />
+              <DatePicker
+                id={'Opportunity Date'}
+                setDate={setOpportunityDate}
+              />
             </Grid>
-            <Grid item xs={12} sm={6}>
-              <DatePicker id={'End Date'} setDate={setEndDate} />
-            </Grid>
+
             <Grid item xs={12} sm={12}>
               <Button
                 variant="contained"
