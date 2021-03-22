@@ -1,5 +1,5 @@
 import {useLocation, useHistory} from 'react-router-dom';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   makeStyles,
   Paper,
@@ -11,21 +11,22 @@ import {
 import PageHeading from '../PageHeading/PageHeading';
 import ValidateInfo from './ValidateInfo';
 import useStyle from '../Style/Style';
+import axios from 'axios';
 
 export default function Registration() {
+  const [usedrId, setUserId] = useState('');
   const userRole = useLocation().state;
   const history = useHistory();
+  const [errors, setErrors] = useState({});
   const initialFormState = {
-    userType: userRole.userType,
-    firstName: '',
-    lastName: '',
-    email: '',
-    contactNumber: '',
+    firstname: '',
+    lastname: '',
+    username: '',
+    contactnumber: '',
     password: '',
     confirmPass: '',
   };
   const [registration, setRegistration] = useState(initialFormState);
-  const [errors, setErrors] = useState({});
   const handleChange = (e) => {
     setRegistration({
       ...registration,
@@ -40,24 +41,49 @@ export default function Registration() {
     e.preventDefault();
 
     const newReg = {
-      firstName: registration.firstName,
-      lastName: registration.lastName,
-      email: registration.email,
-      contactNumber: registration.contactNumber,
+      firstname: registration.firstname,
+      lastname: registration.lastname,
+      username: registration.username,
+      contactnumber: registration.contactnumber,
       password: registration.password,
       confirmPass: registration.confirmPass,
     };
     //takes the current array and reuilds and updates.
     const updatedReg = [{...registration}, newReg];
     setRegistration(updatedReg);
-    if (true) {
-      //this needs to be changed to validate the form!
+
+    if (true) { //this needs to be changed to validate the form!
+      const values = 
       setRegistration(initialFormState);
       if (userRole.userType === 'volunteer') {
-        history.push({pathname: '/VolunteerAvailability'});
-      }
+        // post request to volunteer table
+        axios.post('https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/Volunteers', 
+          {firstname: registration.firstname,
+          lastname: registration.lastname,
+          username: registration.username,
+          contactnumber: registration.contactnumber})
+        .then(response => {
+          console.log("This is the new volunteer id:" + response.data);
+        }) 
+        .catch(error => 
+          console.log(error)
+        );
+        history.push({pathname: '/VolunteerAvailability', state: {usedrId: usedrId}});
+        }
       if (userRole.userType === 'goodCause') {
-        history.push({pathname: '/GoodCauseDetails'});
+        // post request to good_cause table
+        axios.post('https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/sgoodcause', 
+          {firstname: registration.firstname,
+          lastname: registration.lastname,
+          emailaddress: registration.username,
+          contactnumber: registration.contactnumber})
+        .then(response => {
+          console.log("This is the new good cause id:" + response.data);
+        }) 
+        .catch(error => 
+          console.log(error)
+        );
+        history.push({pathname: '/GoodCauseDetails', state: {usedrId: usedrId}});
       }
     }
   };
@@ -77,12 +103,12 @@ export default function Registration() {
               label="First Name"
               style={{margin: 8}}
               fullWidth
-              name="firstName"
-              value={registration.firstName}
+              name="firstname"
+              value={registration.firstname}
               onChange={handleChange}
               className={classes.root}
             />
-            {errors.firstName && <p>{errors.firstName}</p>}
+            {errors.firstname && <p>{errors.firstname}</p>}
             <TextField
               variant="outlined"
               margin="normal"
@@ -90,12 +116,12 @@ export default function Registration() {
               label="Last Name"
               style={{margin: 8}}
               fullWidth
-              name="lastName"
-              value={registration.lastName}
+              name="lastname"
+              value={registration.lastname}
               onChange={handleChange}
               className={classes.root}
             />
-            {errors.lastName && <p>{errors.lastName}</p>}
+            {errors.lastname && <p>{errors.lastname}</p>}
             <TextField
               variant="outlined"
               margin="normal"
@@ -103,12 +129,12 @@ export default function Registration() {
               label="Email Address"
               style={{margin: 8}}
               fullWidth
-              name="email"
-              value={registration.email}
+              name="username"
+              value={registration.username}
               onChange={handleChange}
               className={classes.root}
             />
-            {errors.email && <p>{errors.email}</p>}
+            {errors.username && <p>{errors.username}</p>}
             <TextField
               variant="outlined"
               margin="normal"
@@ -116,12 +142,12 @@ export default function Registration() {
               label="Contact Number"
               style={{margin: 8}}
               fullWidth
-              name="contactNumber"
-              value={registration.contactNumber}
+              name="contactnumber"
+              value={registration.contactnumber}
               onChange={handleChange}
               className={classes.root}
             />
-            {errors.contactNumber && <p>{errors.contactNumber}</p>}
+            {errors.contactnumber && <p>{errors.contactnumber}</p>}
             <TextField
               variant="outlined"
               margin="normal"
