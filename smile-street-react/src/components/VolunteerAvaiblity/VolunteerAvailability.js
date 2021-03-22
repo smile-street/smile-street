@@ -29,10 +29,13 @@ export default function VolunteerAvailability() {
     endDate: '',
   };
   const history = useHistory();
-  const userRole = useLocation().state;
+
+  const userRole = useLocation().state.userRole;
+  const volunteer_id = useLocation().state.usedrId;
   const [errors, setErrors] = useState({Validation});
   const [info, setInfo] = useState(initialFormState);
-
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
   const handleChange = (e) => {
     setInfo({...info, [e.target.name]: e.target.value});
   };
@@ -129,11 +132,19 @@ export default function VolunteerAvailability() {
               </Select>
             </Grid>
             <Grid item xs={12} sm={6}>
-              <DatePicker id={'Start Date'} setDate={setStartDate} />
+              <DatePicker
+                id={'Start Date'}
+                setDate={setStartDate}
+                value={startDate}
+              />
             </Grid>
 
             <Grid item xs={12} sm={6}>
-              <DatePicker id={'End Date'} setDate={setEndDate} />
+              <DatePicker
+                id={'End Date'}
+                setDate={setEndDate}
+                value={endDate}
+              />
             </Grid>
 
             <Grid item xs={12}>
