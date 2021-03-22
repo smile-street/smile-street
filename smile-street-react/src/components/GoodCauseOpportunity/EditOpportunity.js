@@ -67,8 +67,8 @@ export default function EditOpportunity() {
     const [title, setTitle] = useState(opportunity.title);
     const [description, setDescription] = useState(opportunity.description);
     const [location, setLocation] = useState(opportunity.location);
-    const [startDate, setStartDate] = useState(opportunity.startdate);
-    const [endDate, setEndDate] = useState(opportunity.enddate);
+    const [startdate, setstartdate] = useState(opportunity.startdate);
+    const [enddate, setenddate] = useState(opportunity.enddate);
     const [skills, setSkills] = useState(opportunity.skills);
     const history = useHistory();
     console.log(opportunity.skills)
@@ -78,8 +78,8 @@ export default function EditOpportunity() {
             title: title,
             description: description,
             location: location,
-            startdate: startDate,
-            enddate: endDate,
+            startdate: startdate,
+            enddate: enddate,
             skills: skills,
         });
         console.log("opportunity will update with the following details ", opportunity) // this will be the updateHandler
@@ -135,10 +135,10 @@ export default function EditOpportunity() {
                             <AutoCompleteTag setSkills={setSkills} skills={skills}/>
                         </Grid>
                         <Grid item xs={12} sm={6}>
-                            <DatePicker id={'Start Date'} setDate={setStartDate} />
+                            <DatePicker id={'Start Date'} setDate={setstartdate} date={startdate}/>
                         </Grid>
                         <Grid item xs={12} sm={6}>
-                            <DatePicker id={'End Date'} setDate={setEndDate} />
+                            <DatePicker id={'End Date'} setDate={setenddate} date={enddate}/>
                         </Grid>
                         <Grid item xs={12} sm={12}>
                             <Button

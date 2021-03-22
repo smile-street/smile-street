@@ -20,12 +20,12 @@ import useStyle from '../Style/Style';
 export default function ManageOpportunities() {
     const classes = useStyle();
     const history = useHistory();
-    const opportunities = [{id: "123455",  
+    const opportunities = [{id: "123455",  // these details should be fetched in EditOpportunity with a get handelr passed the oppotunity_id
                             title: "Opportunity 1",
                             description: "Lorem ipsum dolorm sin amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.",
                             location: "Bath",
-                            startdate: "12/13/1234",
-                            enddate: "23/53/3234",
+                            startdate: "Sun Mar 21 2020 16:06:44 GMT+0000 (Greenwich Mean Time)",
+                            enddate: "Tue Mar 23 2021 16:06:44 GMT+0000 (Greenwich Mean Time)",
                             skills: [{title: "Communications"}, {title: "Marketing"}]},
                             {id: "234567",
                             title: "Opportunity 2", 

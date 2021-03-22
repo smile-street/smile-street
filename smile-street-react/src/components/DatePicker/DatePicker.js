@@ -9,7 +9,7 @@ import {
 
 export default function DatePicker(props) {
   const [selectedDate, setSelectedDate] = useState(
-    new Date(Date.now())
+    props.date ? props.date : new Date(Date.now())
   );
 
   const handleDateChange = (date) => {
