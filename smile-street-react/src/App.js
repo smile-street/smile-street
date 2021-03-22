@@ -8,7 +8,7 @@ import Registration from './components/Registration/Registration';
 import VolunteerAvailability from './components/VolunteerAvaiblity/VolunteerAvailability';
 import VolunteerInterests from './components/VolunteerInterests/VolunteerInterests';
 import VolEditProfile from './components/VolunteerEditProfile/VolEditProfile';
-import EditOpportunity from './components/EditOpportunity/EditOpportunity';
+import ManageOpportunities from './components/ManageOpportunities/ManageOpportunities';
 import VolunteerMatches from './components/VolunteerMatches/VolunteerMatches';
 import Footer from './components/Footer/Footer';
 import {
@@ -37,7 +37,7 @@ export default function App() {
         <Route path="/VolunteerInterests" component={VolunteerInterests} />
         <Route path="/GoodCauseOpportunity" component={GoodCauseOpportunity} />
         <Route path="/VolEditProfile" component={VolEditProfile} />
-        <Route path="/EditOpportunity" component={EditOpportunity} />
+        <Route path="/ManageOpportunities" component={ManageOpportunities} />
         <Footer />
       </Router>
       {/* <VolunteerInterests />

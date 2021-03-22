@@ -9,16 +9,18 @@ import {
     Accordion,
     AccordionSummary,
     Typography,
-    AccordionDetails
+    AccordionDetails,
+    AccordionActions,
+    Divider
 } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import PageHeading from '../PageHeading/PageHeading';
 import useStyle from '../Style/Style';
 
-export default function EditOpportunity() {
+export default function ManageOpportunities() {
     const classes = useStyle();
     const history = useHistory();
-    const opportunities = [{id: "123455", 
+    const opportunities = [{id: "123455",  
                             title: "Opportunity 1",
                             description: "Lorem ipsum dolorm sin amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget."},
                             {id: "234567",
@@ -51,6 +53,11 @@ export default function EditOpportunity() {
                                     {opportunity.description}
                                 </Typography>
                                 </AccordionDetails>
+                                <Divider />
+                                <AccordionActions>
+                                    <Button size="small" className={classes.button}>Edit</Button>
+                                    <Button size="small" className={classes.button}>Delete</Button>
+                                </AccordionActions>
                             </Accordion>
                         ))}
                     </div>
