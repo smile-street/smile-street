@@ -55,8 +55,20 @@ export default function ManageOpportunities() {
                                 </AccordionDetails>
                                 <Divider />
                                 <AccordionActions>
-                                    <Button size="small" className={classes.button}>Edit</Button>
-                                    <Button size="small" className={classes.button}>Delete</Button>
+                                    <Button 
+                                        size="small" 
+                                        className={classes.button}
+                                        onClick={()=> history.push({pathname: '/EditOpportunity'})}
+                                    >
+                                        Edit
+                                    </Button>
+                                    <Button 
+                                    size="small" 
+                                    className={classes.button}
+                                    onClick={()=> {}}
+                                    >
+                                        Delete
+                                    </Button>
                                 </AccordionActions>
                             </Accordion>
                         ))}

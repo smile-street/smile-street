@@ -2,6 +2,7 @@ import './App.css';
 import Header from './components/Header/Header';
 import GoodCauseDetails from './components/GoodCauseDetails/GoodCauseDetails';
 import GoodCauseOpportunity from './components/GoodCauseOpportunity/GoodCauseOpportunity';
+import EditOpportunity from './components/GoodCauseOpportunity/EditOpportunity';
 import GoodCauseMatches from './components/GoodCauseMatches/GoodCauseMatches';
 import Login from './components/Login/Login';
 import Registration from './components/Registration/Registration';
@@ -38,6 +39,7 @@ export default function App() {
         <Route path="/GoodCauseOpportunity" component={GoodCauseOpportunity} />
         <Route path="/VolEditProfile" component={VolEditProfile} />
         <Route path="/ManageOpportunities" component={ManageOpportunities} />
+        <Route path="/EditOpportunity" component={EditOpportunity} />
         <Footer />
       </Router>
       {/* <VolunteerInterests />

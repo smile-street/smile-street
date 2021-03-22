@@ -6,14 +6,12 @@ import {
     Paper,
     Grid,
     Container,
-    Snackbar,
     MenuItem,
     Select,
     InputLabel,
     FormControl,
     makeStyles,
 } from '@material-ui/core';
-import MuiAlert from '@material-ui/lab/Alert';
 import AutoCompleteTag from './AutoCompleteTag';
 import PageHeading from '../PageHeading/PageHeading';
 import DatePicker from '../DatePicker/DatePicker';
@@ -65,60 +63,32 @@ const useStyles = makeStyles((theme) => ({
 
 export default function EditOpportunity() {
     const classes = useStyles();
-    const [openFailedToast, setOpenFailedToast] = useState(false);
-    const [openSavedToast, setOpenSavedToast] = useState(false);
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [location, setLocation] = useState('');
-    const [opportunities, setOpportunities] = useState([]);
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
     const [skills, setSkills] = useState('');
+    const history = useHistory();
 
-    const handleToastClose = (event, reason) => {
-        if (reason === 'clickaway') {
-            return;
-        }
-        setOpenFailedToast(false);
-        setOpenSavedToast(false);
-    };
-
-    function Alert(props) {
-        return <MuiAlert elevation={6} variant="filled" {...props} />;
-    }
-
-    function addOpportunity() {
+    function UpdateOpportunity() {
         const opportunity = {
             title: title,
             description: description,
             location: location,
-            date: {
-                start: startDate,
-                end: endDate,
-            },
+            startdate: startDate,
+            enddate: endDate,
             skills: skills,
         };
-        const newOpportunities = opportunities.concat(opportunity);
-        setOpportunities(newOpportunities);
-        setTitle('');
-        setDescription('');
-        setOpenSavedToast(true);
-    }
-    const history = useHistory();
-    function handleDone() {
-        if (!opportunities.length) {
-            setOpenFailedToast(true);
-        } else {
-            history.push({ pathname: '/GoodCauseMatches' });
-            console.log(opportunities);
-        }
+        console.log(`opportunity update with the following details ${opportunity}`) // this will be the updateHandler
+        history.push({ pathname: '/ManageOpportunities' })
     }
 
     return (
         <Container component="main">
             <Paper className={classes.paper}>
                 <Container maxWidth="xs">
-                    <PageHeading heading="Add Opportunity" />
+                    <PageHeading heading="Edit Opportunity" />
                     <Grid container spacing={3}>
                         <TextField
                             variant="outlined"
@@ -172,43 +142,14 @@ export default function EditOpportunity() {
                             <Button
                                 variant="contained"
                                 className={classes.buttonColor}
-                                onClick={addOpportunity}
+                                onClick={UpdateOpportunity}
                             >
-                                Save This Opportunity
-              </Button>
-                        </Grid>
-                        <Grid item xs={12} sm={12}>
-                            <Button
-                                variant="contained"
-                                className={classes.buttonColor}
-                                onClick={handleDone}
-                            >
-                                I want see my matches!
-              </Button>
+                                Save Changes
+                            </Button>
                         </Grid>
                     </Grid>
                 </Container>
             </Paper>
-            <Snackbar
-                open={openFailedToast}
-                autoHideDuration={6000}
-                onClose={handleToastClose}
-                anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-            >
-                <Alert onClose={handleToastClose} severity="warning">
-                    You must save at least one Opportunity to see your matches
-        </Alert>
-            </Snackbar>
-            <Snackbar
-                open={openSavedToast}
-                autoHideDuration={6000}
-                onClose={handleToastClose}
-                anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-            >
-                <Alert onClose={handleToastClose} severity="success">
-                    Opportunity saved, add as many as you like!
-        </Alert>
-            </Snackbar>
         </Container>
     );
 }
