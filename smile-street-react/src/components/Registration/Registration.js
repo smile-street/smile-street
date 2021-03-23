@@ -34,8 +34,6 @@ export default function Registration() {
     });
   };
 
-  //////////////////////////////////////////////////
-
   const handleClick = (e) => {
     setErrors(ValidateInfo(registration));
     e.preventDefault();
@@ -53,10 +51,8 @@ export default function Registration() {
     setRegistration(updatedReg);
 
     if (true) {
-      //this needs to be changed to validate the form!
       const values = setRegistration(initialFormState);
       if (userRole.userType === 'volunteer') {
-        // post request to volunteer table
         axios
           .post(
             'https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/Volunteers',
@@ -78,7 +74,6 @@ export default function Registration() {
           .catch((error) => console.log(error));
       }
       if (userRole.userType === 'goodCause') {
-        // post request to good_cause table
         axios
           .post(
             'https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/sgoodcause',
@@ -101,7 +96,6 @@ export default function Registration() {
     }
   };
 
-  //////////////////////////////////////////////////////////
   const classes = useStyle();
   return (
     <Container component="main">
