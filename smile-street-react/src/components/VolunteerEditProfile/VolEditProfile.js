@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import {
   makeStyles,
   Paper,
@@ -10,12 +11,12 @@ import {
   Menu,
   MenuItem,
 } from "@material-ui/core";
+import MenuIcon from '@material-ui/icons/Menu';
 import FormControl from "@material-ui/core/FormControl";
 import EditUserForm from "./EditUserForm";
 import PageHeading from "../PageHeading/PageHeading";
 import { differenceInWeeks } from "date-fns";
 import useStyle from "../Style/Style";
-import { useHistory } from "react-router-dom";
 
 
 
@@ -91,7 +92,7 @@ const VolEditProfile = () => {
             onClick={handleMenuClick}
             className={classes.button}
           >
-            Profile
+            <MenuIcon />
           </Button>
           <Menu
             id="edit-menu"

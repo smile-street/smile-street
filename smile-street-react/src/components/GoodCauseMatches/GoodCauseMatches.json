@@ -1,74 +1,74 @@
 [
   {
-    "opportunityID": 1234,
-    "opportunityTitle": "Opportunity 1",
+    "id": 1234,
+    "title": "Opportunity 1",
     "name": "Taslima",
     "interest": "Coding",
     "skill": "devops",
-    "phone": "07430398328",
-    "email": "email@example.com"
+    "contactnumber": "07430398328",
+    "username": "username@example.com"
   },
   {
-    "opportunityID": 5678,
-    "opportunityTitle": "Opportunity 2",
+    "id": 5678,
+    "title": "Opportunity 2",
     "name": "Taslima",
     "interest": "Sports",
     "skill": "Frisbee",
-    "phone": "07430398328",
-    "email": "email@example.com"
+    "contactnumber": "07430398328",
+    "username": "username@example.com"
   },
   {
-    "opportunityID": 1234,
-    "opportunityTitle": "Opportunity 1",
+    "id": 1234,
+    "title": "Opportunity 1",
     "name": "Ariel",
     "interest": "Coding",
     "skill": "teaching",
-    "phone": "07430398328",
-    "email": "email@example.com"
+    "contactnumber": "07430398328",
+    "username": "username@example.com"
   },
   {
-    "opportunityID": 9101,
-    "opportunityTitle": "Opportunity 3",
+    "id": 9101,
+    "title": "Opportunity 3",
     "name": "Ariel",
     "interest": "Gardening",
     "skill": "teaching",
-    "phone": "07430398328",
-    "email": "email@example.com"
+    "contactnumber": "07430398328",
+    "username": "username@example.com"
   },
   {
-    "opportunityID": 1234,
-    "opportunityTitle": "Opportunity 1",
+    "id": 1234,
+    "title": "Opportunity 1",
     "name": "Viran",
     "interest": "Coding",
     "skill": "Testing",
-    "phone": "07430398328",
-    "email": "email@example.com"
+    "contactnumber": "07430398328",
+    "username": "username@example.com"
   },
   {
-    "opportunityID": 5678,
-    "opportunityTitle": "Opportunity 2",
+    "id": 5678,
+    "title": "Opportunity 2",
     "name": "Viran",
     "interest": "Sports",
     "skill": "Juggling",
-    "phone": "07430398328",
-    "email": "email@example.com"
+    "contactnumber": "07430398328",
+    "username": "username@example.com"
   },
   {
-    "opportunityID": 1234,
-    "opportunityTitle": "Opportunity 1",
+    "id": 1234,
+    "title": "Opportunity 1",
     "name": "Pushpa",
     "interest": "Coding",
     "skill": "teaching",
-    "phone": "07430398328",
-    "email": "email@example.com"
+    "contactnumber": "07430398328",
+    "username": "username@example.com"
   },
   {
-    "opportunityID": 9101,
-    "opportunityTitle": "Opportunity 3",
+    "id": 9101,
+    "title": "Opportunity 3",
     "name": "Pushpa",
     "interest": "Gardening",
     "skill": "Horse Riding",
-    "phone": "07430398328",
-    "email": "email@example.com"
+    "contactnumber": "07430398328",
+    "username": "username@example.com"
   }
 ]
