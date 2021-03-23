@@ -74,10 +74,12 @@ export default function GoodCauseDetails() {
   const [goodCause_id, seGoodCause_id] = useState((useLocation().state));
   const classes = useStyle();
   const history = useHistory();
+  console.log(useLocation().state)
 
   const handleClick = async (event) => {
     // handle update here
     console.log(goodCause_id)
+
     event.preventDefault();
 
     const addGoodCauseDetails = await axios

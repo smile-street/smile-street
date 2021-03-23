@@ -1,7 +1,6 @@
 import {useLocation, useHistory} from 'react-router-dom';
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {
-  makeStyles,
   Paper,
   Grid,
   Container,
@@ -14,7 +13,7 @@ import useStyle from '../Style/Style';
 import axios from 'axios';
 
 export default function Registration() {
-  let userId;
+  const [userId, setUserId] = useState('');
   const userRole = useLocation().state;
   const history = useHistory();
   const [errors, setErrors] = useState({});
@@ -61,7 +60,7 @@ export default function Registration() {
         // post request to volunteer table
         axios
         .post('https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/Volunteers', values)
-        .then(response => userId = response.data.toString())
+        .then(response => setUserId(response.data))
         .then(history.push({pathname: '/VolunteerAvailability', state: {volunteer_id: userId}})) 
         .catch(error => 
           console.log(error)
@@ -71,7 +70,7 @@ export default function Registration() {
         // post request to good_cause table
         axios
         .post('https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/sgoodcauseregistration', values)
-        .then(response => userId = response.data.toString())
+        .then(response => setUserId(response.data))
         .then(history.push({pathname: '/GoodCauseDetails', state: {goodCause_id: userId}})) 
         .catch(error => 
           console.log(error)
