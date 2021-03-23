@@ -77,7 +77,6 @@ export default function GoodCauseDetails() {
 
   const handleClick = async (event) => {
     // handle update here
-    console.log(goodCause_id)
     event.preventDefault();
 
     const addGoodCauseDetails = await axios
@@ -88,7 +87,7 @@ export default function GoodCauseDetails() {
       }
     )
     .then(history.push({
-        pathname: '/VolunteerAvailability',
+        pathname: '/GoodCauseOpportunity',
         state: {goodCause_id: goodCause_id},
       })
     )

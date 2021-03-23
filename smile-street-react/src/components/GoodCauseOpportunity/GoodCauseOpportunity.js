@@ -14,6 +14,7 @@ import {
   makeStyles,
 } from '@material-ui/core';
 import MuiAlert from '@material-ui/lab/Alert';
+import axios from 'axios';
 import AutoCompleteTag from './AutoCompleteTag';
 import PageHeading from '../PageHeading/PageHeading';
 import DatePicker from '../DatePicker/DatePicker';
@@ -65,15 +66,16 @@ const useStyles = makeStyles((theme) => ({
 
 export default function GoodCauseOpportunity() {
   const classes = useStyles();
+  const history = useHistory();
   const [openFailedToast, setOpenFailedToast] = useState(false);
   const [openSavedToast, setOpenSavedToast] = useState(false);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [location, setLocation] = useState('');
-  const [opportunities, setOpportunities] = useState([]);
   const [opportunityDate, setOpportunityDate] = useState('');
-
   const [skills, setSkills] = useState('');
+  const [opportunityCreated, setOpportunityCreated] = useState(false);
+  const goodCause_id = useLocation().state.goodCause_id;
 
   const handleToastClose = (event, reason) => {
     if (reason === 'clickaway') {
@@ -89,25 +91,28 @@ export default function GoodCauseOpportunity() {
 
   function addOpportunity() {
     const opportunity = {
-      title: title,
-      description: description,
+      opportunityname: title,
+      opportunitydescription: description,
       location: location,
-      opportunityDate: opportunityDate,
+      opportunitydate: opportunityDate,
       skills: skills,
     };
-    const newOpportunities = opportunities.concat(opportunity);
-    setOpportunities(newOpportunities);
+    axios
+      .post(`https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/SaveGoodCauseOpportunity/${goodCause_id}`, opportunity)
+      .then(response => history.push({pathname: '/VolunteerAvailability', state: {goodCause_id: goodCause_id}})) 
+      .catch(error => 
+        console.log(error)
+      );
     setTitle('');
     setDescription('');
     setOpenSavedToast(true);
+    setOpportunityCreated(true);
   }
-  const history = useHistory();
   function handleDone() {
-    if (!opportunities.length) {
+    if (opportunityCreated) {
       setOpenFailedToast(true);
     } else {
       history.push({pathname: '/GoodCauseMatches'});
-      console.log(opportunities);
     }
   }
 
@@ -157,7 +162,7 @@ export default function GoodCauseOpportunity() {
             <Grid item xs={12} sm={12} fullWidth>
               <AutoCompleteTag setSkills={setSkills} />
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12} sm={12}>
               <DatePicker
                 id={'Opportunity Date'}
                 setDate={setOpportunityDate}
