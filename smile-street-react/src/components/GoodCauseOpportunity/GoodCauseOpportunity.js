@@ -19,6 +19,8 @@ import AutoCompleteTag from './AutoCompleteTag';
 import PageHeading from '../PageHeading/PageHeading';
 import DatePicker from '../DatePicker/DatePicker';
 import locations from './locations.json';
+import skillsData from './skillsData.json';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -73,7 +75,7 @@ export default function GoodCauseOpportunity() {
   const [description, setDescription] = useState('');
   const [location, setLocation] = useState('');
   const [opportunityDate, setOpportunityDate] = useState('');
-  const [skills, setSkills] = useState('');
+  const [selectedSkills, setSelectedSkills] = useState('');
   const [opportunityCreated, setOpportunityCreated] = useState(false);
   const goodCause_id = useLocation().state.goodCause_id;
 
@@ -95,19 +97,29 @@ export default function GoodCauseOpportunity() {
       opportunitydescription: description,
       location: location,
       opportunitydate: opportunityDate,
-      skills: skills,
+      selectedSkills: selectedSkills,
     };
-    axios
-      .post(`https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/SaveGoodCauseOpportunity/${goodCause_id}`, opportunity)
-      .then(response => history.push({pathname: '/VolunteerAvailability', state: {goodCause_id: goodCause_id}})) 
-      .catch(error => 
-        console.log(error)
-      );
+
+    // Mark all selected skills as true and the rest as false
+    let skillsBool = skillsData.map(skill => { 
+      let returnObj = {} 
+      returnObj[skill.title] = selectedSkills.includes(skill)
+      return returnObj
+    })
+    console.log(skillsBool)
+    // axios
+    //   .post(`https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/SaveGoodCauseOpportunity/${goodCause_id}`, opportunity)
+    //   .then(response => history.push({pathname: '/VolunteerAvailability', state: {goodCause_id: goodCause_id}})) 
+    //   .catch(error => 
+    //     console.log(error)
+    //   );
+    console.log(opportunity)
     setTitle('');
     setDescription('');
     setOpenSavedToast(true);
     setOpportunityCreated(true);
   }
+
   function handleDone() {
     if (opportunityCreated) {
       setOpenFailedToast(true);
@@ -160,7 +172,7 @@ export default function GoodCauseOpportunity() {
               </Select>
             </FormControl>
             <Grid item xs={12} sm={12} fullWidth>
-              <AutoCompleteTag setSkills={setSkills} />
+              <AutoCompleteTag setSkills={setSelectedSkills} />
             </Grid>
             <Grid item xs={12} sm={12}>
               <DatePicker
@@ -192,7 +204,7 @@ export default function GoodCauseOpportunity() {
       </Paper>
       <Snackbar
         open={openFailedToast}
-        autoHideDuration={6000}
+        autoHideDuration={2000}
         onClose={handleToastClose}
         anchorOrigin={{vertical: 'top', horizontal: 'center'}}
       >
@@ -202,7 +214,7 @@ export default function GoodCauseOpportunity() {
       </Snackbar>
       <Snackbar
         open={openSavedToast}
-        autoHideDuration={6000}
+        autoHideDuration={2000}
         onClose={handleToastClose}
         anchorOrigin={{vertical: 'top', horizontal: 'center'}}
       >
