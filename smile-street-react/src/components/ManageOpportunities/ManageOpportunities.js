@@ -73,8 +73,8 @@ export default function ManageOpportunities() {
                             <Accordion>
                                 <AccordionSummary
                                 expandIcon={<ExpandMoreIcon />}
-                                aria-controls="panel1a-content"
-                                id="panel1a-header"
+                                aria-controls="Opportunity summary"
+                                id="Summary"
                                 >
                                 <Typography>{opportunity.title}</Typography>
                                 </AccordionSummary>

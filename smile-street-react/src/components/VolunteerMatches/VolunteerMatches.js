@@ -1,4 +1,6 @@
 import React, {useState} from 'react';
+import {makeStyles} from '@material-ui/core/styles';
+import {useHistory} from 'react-router-dom';
 import {
   Container,
   Grid,
@@ -12,8 +14,7 @@ import {
   DialogContentText,
   DialogContent,
 } from '@material-ui/core';
-import {makeStyles} from '@material-ui/core/styles';
-import {useHistory} from 'react-router-dom';
+import MenuIcon from '@material-ui/icons/Menu';
 import PageHeading from '../PageHeading/PageHeading';
 import MatchCard from './MatchCard';
 import VolunteerMatchesData from './VolunteerMatches.json';
@@ -87,7 +88,7 @@ export default function VolunteerMatches() {
           onClick={handleMenuClick}
           className={classes.buttonColor}
         >
-          Profile
+          <MenuIcon />
         </Button>
         <Menu
           id="edit-menu"
