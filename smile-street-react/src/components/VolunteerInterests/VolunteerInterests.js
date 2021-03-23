@@ -33,11 +33,11 @@ export default function VolunteerInterests() {
   const [skills, setSkills] = useState('');
 
   Interests.forEach((interest) => {
-    console.log('interest.title', interest.title);
-    console.log('skills.title', skills);
+    // console.log('interest.title', interest.title);
+    // console.log('skills.title', skills);
     if (skills.length > 0) {
       skills.forEach((skill) => {
-        console.log(skill.title);
+        // console.log(skill.title);
         if (interest.title.includes(skills.title)) {
           console.log(interest.title);
         }
