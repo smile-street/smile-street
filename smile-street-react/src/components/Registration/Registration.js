@@ -34,8 +34,6 @@ export default function Registration() {
     });
   };
 
-  //////////////////////////////////////////////////
-
   const handleClick = (e) => {
     setErrors(ValidateInfo(registration));
     e.preventDefault();
@@ -86,7 +84,6 @@ export default function Registration() {
     }
   };
 
-  //////////////////////////////////////////////////////////
   const classes = useStyle();
   return (
     <Container component="main">
