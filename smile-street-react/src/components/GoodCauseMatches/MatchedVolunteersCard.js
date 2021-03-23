@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {
   Button,
   Container,
+  Grid,
   Card,
   CardActionArea,
   CardContent,
@@ -43,15 +44,15 @@ export default function MatchVolunteersCard({volunteer}) {
   const reachOut = () => setOpenDialog(true);
 
   return (
-    <Container>
+    <Grid>
       <Card className={classes.root}>
         <CardActionArea onClick={() => reachOut()}>
           <CardContent>
-            <Typography variant="h6" component="h3">
+            <Typography gutterBottom variant="h5" component="h2">
               {volunteer.name}
             </Typography>
             <List>
-              <div>
+              
                 <ListItem>
                   <ListItemText primary={volunteer.interest} />
                 </ListItem>
@@ -59,7 +60,7 @@ export default function MatchVolunteersCard({volunteer}) {
                 <ListItem>
                   <ListItemText primary={volunteer.skill} />
                 </ListItem>
-              </div>
+              
             </List>
           </CardContent>
         </CardActionArea>
@@ -84,6 +85,6 @@ export default function MatchVolunteersCard({volunteer}) {
           </Button>
         </DialogActions>
       </Dialog>
-    </Container>
+    </Grid>
   );
 }

@@ -43,7 +43,7 @@ export default function FullWidthGrid() {
   };
 
   return (
-    <div className={classes.root}>
+   <div className={classes.root}>
       <Container component="main">
         <Paper className={classes.paper}>
           <Button
@@ -85,32 +85,39 @@ export default function FullWidthGrid() {
             <MenuItem onClick={handleDeleteOption}>Delete Account</MenuItem>
           </Menu>
           <PageHeading heading="These are your matched volunteers" />
+          
+          
+          
+          
           <Grid
             container
             spacing={2}
-            direction="column"
+            //direction="column"
             justify="flex-start"
             alignItems="flex-start"
           >
             {/* Should be displayed as a table of sorts with the action on the end. maybe even a checkbox style list?  */}
             {uniqueOpportunities.map((ID) => (
-              <Grid container>
+              <Grid item xs={12} sm={4}>
                 Opportunity: {ID}
                 key={ID}
                 {GoodCauseMatches.filter(
                   (match) => match.opportunityID === ID
                 ).map((volunteer) => {
                   return (
-                    <Grid item xs={12} sm={4}>
+                    //<Grid item xs={12} sm={4}>
                       <MatchVolunteersCard volunteer={volunteer} key={ID} />
-                    </Grid>
+                    //</Grid>
                   );
                 })}
               </Grid>
             ))}
           </Grid>
         </Paper>
-      </Container>
+     
+
+
+
 
       {/* Delete account Dialog */}
       <Dialog
@@ -138,6 +145,8 @@ export default function FullWidthGrid() {
         </DialogActions>
       </Dialog>
       {/*  */}
+      </Container>
     </div>
+  
   );
 }
