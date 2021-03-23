@@ -17,40 +17,53 @@ import DatePicker from '../DatePicker/DatePicker';
 import Validation from './Validation';
 import locations from './locations.json';
 import useStyle from '../Style/Style';
+import axios from 'axios';
 
 export default function VolunteerAvailability() {
   const classes = useStyle();
-  const history = useHistory();
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
-  const [errors, setErrors] = useState({Validation});
-  const [info, setInfo] = useState({
-      employer_name: '',
-      location: '',
-      numberOfDays: '',
-      startDate: '',
-      endDate: '',
-  });
-
-  const handleChange = (e) => {
-    setInfo({...info, [e.target.name]: e.target.value,});
+  const initialFormState = {
+    employername: '',
+    primarylocation: '',
+    numberofdays: '',
+    startdate: '',
+    enddate: '',
   };
+  const history = useHistory();
 
-  const handleSubmit = (e) => {
-    setErrors(Validation(info));
-    e.preventDefault();
-    const updateInfo = [{...info}, 
-      {
-      employer_name: info.employer_name,
-      location: info.location,
-      numberOfDays: info.numberOfDays,
-      startDate: info.startDate,
-      endDate: info.endDate,
-      }
-    ];
-    setInfo(updateInfo);
-    console.log('Your state after submission is', info); 
-    history.push({pathname: '/VolunteerInterests'});
+  const userRole = useLocation().state.userRole;
+  const volunteer_id = useLocation().state.userId;
+  const [errors, setErrors] = useState({Validation});
+  const [info, setInfo] = useState(initialFormState);
+  const [startdate, setStartDate] = useState(new Date());
+  const [enddate, setEndDate] = useState(new Date());
+  const handleChange = (e) => {
+    setInfo({...info, [e.target.name]: e.target.value});
+  };
+  console.log(volunteer_id);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const addAvailability = await axios
+      .put(
+        `https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/VolunteerAvailability/${volunteer_id}`,
+        {
+          employername: info.employername,
+          primarylocation: info.primarylocation,
+          numberofdays: info.numberofdays,
+          startdate: startdate,
+          enddate: enddate,
+        }
+      )
+      .then((response) => {
+        console.log('This is the new volunteer id:' + response.data);
+        const volunteerId = response.data;
+        history.push({
+          pathname: '/VolunteerAvailability',
+          state: {userId: volunteerId, userRole: userRole},
+        });
+      })
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -65,67 +78,76 @@ export default function VolunteerAvailability() {
                 margin="normal"
                 fullWidth
                 autoFocus
-                name="employer_name"
+                name="employername"
                 label="Employers Name"
                 variant="outlined"
-                value={info.employer_name}
+                value={info.employername}
                 // error={info.employer_name === ""}
                 // helperText={info.employer_name === "" ? 'This field is required' : ' '}
                 onChange={handleChange}
                 className={classes.root}
               />
-              {errors.employer_name}
+              {errors.employername}
             </Grid>
             <Grid item xs={12} sm={12}>
-              <FormControl variant="outlined" fullWidth>  
-                <InputLabel id="location-label">Select your location</InputLabel>
+              <FormControl variant="outlined" fullWidth>
+                <InputLabel id="location-label">
+                  Select your location
+                </InputLabel>
                 <Select
                   labelId="location-label"
                   label="Select your location"
-                  
-                  id="location"
-                  name='location'
+                  id="primarylocation"
+                  name="primarylocation"
                   style={{margin: 8}}
                   className={classes.root}
-                  value={info.location}
+                  value={info.primarylocation}
                   onChange={handleChange}
                 >
-                  {locations.map(location => {
-                    return(
+                  {locations.map((location) => {
+                    return (
                       <MenuItem value={location.name}>{location.name}</MenuItem>
-                    )
+                    );
                   })}
                 </Select>
               </FormControl>
             </Grid>
             <Grid item xs={12} sm={12}>
-              <InputLabel>
-                How many days are you available?
-              </InputLabel>
+              <InputLabel>How many days are you available?</InputLabel>
               <Select
                 label="Available days"
                 fullWidth
-                id="numberOfDays"
+                id="numberofdays"
                 style={{margin: 8}}
                 variant="outlined"
                 className={classes.root}
-                name="numberOfDays"
+                name="numberofdays"
                 onChange={handleChange}
-                value={info.numberOfDays}
+                value={info.numberofdays}
               >
-                {[1,2,3,4,5,6,7,8,9,10].map(number => {
-                  return(
-                    <MenuItem value={number}>{number}</MenuItem>
-                  )
+                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((number) => {
+                  return <MenuItem value={number}>{number}</MenuItem>;
                 })}
               </Select>
             </Grid>
             <Grid item xs={12} sm={6}>
-              <DatePicker id={'Start Date'} setDate={setStartDate} />
+              <DatePicker
+                id="startdate"
+                setDate={setStartDate}
+                value={startdate}
+                selected={startdate}
+                onChange={(date) => setStartDate(date)}
+              />
             </Grid>
 
             <Grid item xs={12} sm={6}>
-              <DatePicker id={'End Date'} setDate={setEndDate} />
+              <DatePicker
+                id="enddate"
+                setDate={setEndDate}
+                value={enddate}
+                selected={enddate}
+                onChange={(date) => setEndDate(date)}
+              />
             </Grid>
 
             <Grid item xs={12}>
