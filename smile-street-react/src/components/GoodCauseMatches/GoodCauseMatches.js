@@ -110,6 +110,7 @@ export default function FullWidthGrid() {
 									expandIcon={<ExpandMoreIcon />}
 									aria-controls="panel1a-content"
 									id="panel1a-header"
+									key={ID}
 								>
 									<Typography className={classes.heading}>Opportunity {ID}</Typography> {/*should be opportunity title*/}
 								</AccordionSummary>
@@ -121,7 +122,10 @@ export default function FullWidthGrid() {
 											return (
 												<div>
 														<ListItem button width={"100%"}>
-															<ListItemText primary={volunteer.name} secondary="this is secondary text" key={volunteer.username}/>
+															<ListItemText 
+																primary={volunteer.name} 
+																secondary={`Phone number: ${volunteer.contactnumber} Email: ${volunteer.username}`}
+																key={volunteer.username}/>
 														</ListItem>
 													<Divider />
 													
