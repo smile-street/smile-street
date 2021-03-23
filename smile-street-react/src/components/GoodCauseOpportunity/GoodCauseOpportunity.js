@@ -75,6 +75,8 @@ export default function GoodCauseOpportunity() {
 
   const [skills, setSkills] = useState('');
 
+  console.log('skills', skills);
+
   const handleToastClose = (event, reason) => {
     if (reason === 'clickaway') {
       return;

@@ -46,7 +46,7 @@ export default function Registration() {
       password: registration.password,
       confirmPass: registration.confirmPass,
     };
-    //takes the current array and reuilds and updates.
+
     const updatedReg = [{...registration}, newReg];
     setRegistration(updatedReg);
 

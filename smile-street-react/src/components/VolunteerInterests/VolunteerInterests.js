@@ -6,6 +6,7 @@ import SkillsAutoComplete from './SkillsAutoComplete';
 import PageHeading from '../PageHeading/PageHeading';
 import interestData from './interests.json';
 import {useLocation, useHistory} from 'react-router-dom';
+import Interests from './skillsData.json';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,10 +27,23 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+console.log('Interests from', Interests);
+
 export default function VolunteerInterests() {
   const [skills, setSkills] = useState('');
-  console.log('skills', skills);
 
+  Interests.forEach((interest) => {
+    console.log('interest.title', interest.title);
+    console.log('skills.title', skills);
+    if (skills.length > 0) {
+      skills.forEach((skill) => {
+        console.log(skill.title);
+        if (interest.title.includes(skills.title)) {
+          console.log(interest.title);
+        }
+      });
+    }
+  });
   const classes = useStyles();
   let interests = interestData;
   const selectInterest = (id) => {
