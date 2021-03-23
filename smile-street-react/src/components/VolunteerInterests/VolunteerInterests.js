@@ -28,6 +28,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function VolunteerInterests() {
   const [skills, setSkills] = useState('');
+  console.log('skills', skills);
 
   const classes = useStyles();
   let interests = interestData;
@@ -40,13 +41,16 @@ export default function VolunteerInterests() {
   };
   const history = useHistory();
   const handleComplete = () => {
-    console.log('Interests:', interests.filter((interest) => interest.selected));
+    console.log(
+      'Interests:',
+      interests.filter((interest) => interest.selected)
+    );
     console.log('skills: ', skills);
     history.push({
       pathname: '/VolunteerMatches',
     });
   };
-    
+
   return (
     <Container component="main">
       <Paper className={classes.paper}>
