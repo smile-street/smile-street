@@ -13,7 +13,7 @@ import useStyle from '../Style/Style';
 import axios from 'axios';
 
 export default function Registration() {
-  const [userId, setUserId] = useState('');
+  let userId;
   const userRole = useLocation().state;
   const history = useHistory();
   const [errors, setErrors] = useState({});
@@ -55,13 +55,12 @@ export default function Registration() {
                       lastname: registration.lastname,
                       username: registration.username,
                       contactnumber: registration.contactnumber}
-
       if (userRole.userType === 'volunteer') {
         // post request to volunteer table
         axios
         .post('https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/Volunteers', values)
-        .then(response => setUserId(response.data))
-        .then(history.push({pathname: '/VolunteerAvailability', state: {volunteer_id: userId}})) 
+        .then(response => userId = response.data)
+        .then(response => history.push({pathname: '/VolunteerAvailability', state: {userId: userId}})) 
         .catch(error => 
           console.log(error)
         );
@@ -70,8 +69,8 @@ export default function Registration() {
         // post request to good_cause table
         axios
         .post('https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/sgoodcauseregistration', values)
-        .then(response => setUserId(response.data))
-        .then(history.push({pathname: '/GoodCauseDetails', state: {goodCause_id: userId}})) 
+        .then(response => userId = response.data)
+        .then(response => history.push({pathname: '/GoodCauseDetails', state: {userId: userId}}))
         .catch(error => 
           console.log(error)
         );
