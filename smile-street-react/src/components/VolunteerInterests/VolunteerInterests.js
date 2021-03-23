@@ -38,7 +38,7 @@ export default function VolunteerInterests() {
     if (skills.length > 0) {
       skills.forEach((skill) => {
         // console.log(skill.title);
-        if (interest.title.includes(skills.title)) {
+        if (interest.title.includes(skill.title)) {
           console.log(interest.title);
         }
       });
