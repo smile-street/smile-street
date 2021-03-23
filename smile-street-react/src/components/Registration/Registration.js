@@ -61,8 +61,8 @@ export default function Registration() {
         // post request to volunteer table
         axios
         .post('https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/Volunteers', values)
-        .then(response => userId = response.data)
-        .then(history.push({pathname: '/VolunteerAvailability', state: {userId: userId}})) 
+        .then(response => userId = response.data.toString())
+        .then(history.push({pathname: '/VolunteerAvailability', state: {volunteer_id: userId}})) 
         .catch(error => 
           console.log(error)
         );
@@ -71,8 +71,8 @@ export default function Registration() {
         // post request to good_cause table
         axios
         .post('https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/sgoodcauseregistration', values)
-        .then(response => userId = response.data)
-        .then(history.push({pathname: '/GoodCauseDetails', state: {userId: userId}})) 
+        .then(response => userId = response.data.toString())
+        .then(history.push({pathname: '/GoodCauseDetails', state: {goodCause_id: userId}})) 
         .catch(error => 
           console.log(error)
         );

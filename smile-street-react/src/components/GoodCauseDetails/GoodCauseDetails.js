@@ -71,7 +71,7 @@ export default function GoodCauseDetails() {
   const [goodCauseNumber, setGoodCauseNumber] = useState('');
   const [goodCauseDescription, setGoodCauseDescription] = useState('');
   const [GoodCauseName, setGoodCauseName] = useState('');
-  const goodCause_id = useLocation().state;
+  const [goodCause_id, seGoodCause_id] = useState((useLocation().state));
   const classes = useStyle();
   const history = useHistory();
 
