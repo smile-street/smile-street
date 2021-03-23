@@ -56,27 +56,26 @@ export default function Registration() {
                       lastname: registration.lastname,
                       username: registration.username,
                       contactnumber: registration.contactnumber}
+
       if (userRole.userType === 'volunteer') {
         // post request to volunteer table
         axios
         .post('https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/Volunteers', values)
         .then(response => userId = response.data)
-        .then(response => history.push({pathname: '/VolunteerAvailability', state: {userId: userId}})) 
+        .then(history.push({pathname: '/VolunteerAvailability', state: {userId: userId}})) 
         .catch(error => 
           console.log(error)
         );
       }
       if (userRole.userType === 'goodCause') {
         // post request to good_cause table
-        axios.post('https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/sgoodcause', values)
-        .then(response => {
-          console.log("This is the new good cause id:" + response.data);
-          // setUserId(response.data)
-        }) 
+        axios
+        .post('https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/sgoodcauseregistration', values)
+        .then(response => userId = response.data)
+        .then(history.push({pathname: '/GoodCauseDetails', state: {userId: userId}})) 
         .catch(error => 
           console.log(error)
         );
-        history.push({pathname: '/GoodCauseDetails', state: {userId: userId}});
       }
     }
   };
