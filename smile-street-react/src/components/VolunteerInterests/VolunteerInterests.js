@@ -57,7 +57,7 @@ export default function VolunteerInterests() {
     event.preventDefault();
     await axios
       .put(
-        `https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/VolunteerAvailability/${volunteer_id}`,
+        `https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/SaveVolunteerIntrests/${volunteer_id}`,
         {
           Web_Design: skillsForApi.Web_Design,
           seo: skillsForApi.seo,
