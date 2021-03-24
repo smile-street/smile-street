@@ -29,7 +29,7 @@ export default function VolunteerAvailability() {
     enddate: '',
   };
   const history = useHistory();
-  const volunteer_id = useLocation().state;
+  const volunteer_id = useLocation().state.userId;
   const [errors, setErrors] = useState({Validation});
   const [info, setInfo] = useState(initialFormState);
   const [startdate, setStartDate] = useState(new Date());
