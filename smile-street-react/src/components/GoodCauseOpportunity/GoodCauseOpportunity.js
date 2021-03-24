@@ -95,7 +95,7 @@ export default function GoodCauseOpportunity() {
     let opportunity = {
       opportunityname: title,
       opportunitydescription: description,
-      // location: location, //not currently in Database
+      location: location,
       opportunitydate: opportunityDate,
     };
 
@@ -105,11 +105,10 @@ export default function GoodCauseOpportunity() {
       returnObj[(skill.dbColumnTitle)] = selectedSkills.includes(skill)
       Object.assign(opportunity, returnObj);
     })
-    console.log(opportunity)
+
     axios
       .post(`https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/SaveGoodCauseOpportunity/${goodCause_id}`, opportunity)
       .then(response => {
-        console.log(response);
         setOpenSavedToast(true);
         setOpportunityCreated(true);
         setTitle('');
@@ -121,7 +120,7 @@ export default function GoodCauseOpportunity() {
   }
 
   function handleDone() {
-    if (opportunityCreated) {
+    if (!opportunityCreated) {
       setOpenFailedToast(true);
     } else {
       history.push({pathname: '/GoodCauseMatches', state: {goodCause_id: goodCause_id}});
@@ -180,7 +179,6 @@ export default function GoodCauseOpportunity() {
                 setDate={setOpportunityDate}
               />
             </Grid>
-
             <Grid item xs={12} sm={12}>
               <Button
                 variant="contained"
@@ -219,7 +217,7 @@ export default function GoodCauseOpportunity() {
         anchorOrigin={{vertical: 'top', horizontal: 'center'}}
       >
         <Alert onClose={handleToastClose} severity="success">
-          Opportunity saved, add as many as you like!
+          Opportunity successfully saved, add as many as you like!
         </Alert>
       </Snackbar>
     </Container>
