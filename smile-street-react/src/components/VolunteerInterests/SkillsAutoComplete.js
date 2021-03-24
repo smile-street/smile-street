@@ -4,7 +4,7 @@ import NoSsr from '@material-ui/core/NoSsr';
 import CheckIcon from '@material-ui/icons/Check';
 import CloseIcon from '@material-ui/icons/Close';
 import styled from 'styled-components';
-import top100Films from './skillsData.json';
+import Interests from './skillsData.json';
 
 const Label = styled('label')`
   padding: 0 0 4px;
@@ -148,7 +148,7 @@ export default function SkillsAutoComplete(props) {
   } = useAutocomplete({
     id: 'AutoCompleteTag',
     multiple: true,
-    options: top100Films,
+    options: Interests,
     getOptionLabel: (option) => option.title,
   });
   props.setSkills(value);

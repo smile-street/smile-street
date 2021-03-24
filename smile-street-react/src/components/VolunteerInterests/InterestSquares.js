@@ -25,10 +25,6 @@ const useStyles = makeStyles((theme) => ({
       background: '#449f80',
     },
   },
-  // media: {
-  //   // backgroundColor: "#449f80",
-  //   backgroundColor: props => props.selected ? "#449f80" : null,
-  // },
 }));
 
 const InterestSquares = (props) => {

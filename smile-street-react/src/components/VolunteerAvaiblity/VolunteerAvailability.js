@@ -56,8 +56,9 @@ export default function VolunteerAvailability() {
         console.log('This is the new volunteer id:' + response.data);
         const volunteerId = response.data;
         history.push({
-          pathname: '/VolunteerAvailability',
-          state: {userId: volunteerId},
+
+          pathname: '/VolunteerInterests',
+          state: {userId: volunteerId, userRole: userRole},
         });
       })
       .catch((error) => console.log(error));
@@ -79,8 +80,6 @@ export default function VolunteerAvailability() {
                 label="Employers Name"
                 variant="outlined"
                 value={info.employername}
-                // error={info.employer_name === ""}
-                // helperText={info.employer_name === "" ? 'This field is required' : ' '}
                 onChange={handleChange}
                 className={classes.root}
               />
