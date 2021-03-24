@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/styles';
+import { useHistory, useLocation } from 'react-router-dom';
 import {
 	Paper,
 	Container,
@@ -24,7 +23,6 @@ import {
 import MenuIcon from '@material-ui/icons/Menu';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import PageHeading from '../PageHeading/PageHeading';
-import MatchVolunteersCard from './MatchedVolunteersCard';
 import GoodCauseMatches from './GoodCauseMatches.json';
 import useStyle from '../Style/Style';
 
@@ -33,6 +31,7 @@ export default function FullWidthGrid() {
 	const history = useHistory();
 	const [anchorEl, setAnchorEl] = useState(null);
 	const [deleteDialog, setDeleteDialog] = useState(false);
+	const goodCause_id = useLocation().state.goodCause_id;
 	const uniqueOpportunities = [ // create a Set of opportunity IDs
 		...new Set(GoodCauseMatches.map((match) => match.id)),
 	];
@@ -71,21 +70,21 @@ export default function FullWidthGrid() {
 					>
 						<MenuItem
 							onClick={() => {
-								history.push({ pathname: '/GoodCauseDetails' });
+								history.push({ pathname: '/GoodCauseDetails', state: {goodCause_id: goodCause_id} });
 							}}
 						>
 							Edit Profile
 				</MenuItem>
 						<MenuItem
 							onClick={() => {
-								history.push({ pathname: '/ManageOpportunities' });
+								history.push({ pathname: '/ManageOpportunities', state: {goodCause_id: goodCause_id} });
 							}}
 						>
 							Edit Opportunities
 				</MenuItem>
 						<MenuItem
 							onClick={() => {
-								history.push({ pathname: '/GoodCauseOpportunity' });
+								history.push({ pathname: '/GoodCauseOpportunity', state: {goodCause_id: goodCause_id} });
 							}}
 						>
 							Add Opportunities
@@ -97,6 +96,7 @@ export default function FullWidthGrid() {
 				</MenuItem>
 						<MenuItem
 							onClick={handleDeleteOption}
+							// delete GoodCause and all its opportunities handler needed
 						>
 							Delete Account
 				</MenuItem>

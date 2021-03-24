@@ -1,7 +1,6 @@
 import {useLocation, useHistory} from 'react-router-dom';
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {
-  makeStyles,
   Paper,
   Grid,
   Container,
@@ -14,7 +13,7 @@ import useStyle from '../Style/Style';
 import axios from 'axios';
 
 export default function Registration() {
-  const [usedrId, setUserId] = useState('');
+  let userId;
   const userRole = useLocation().state;
   const history = useHistory();
   const [errors, setErrors] = useState({});
@@ -46,7 +45,7 @@ export default function Registration() {
       password: registration.password,
       confirmPass: registration.confirmPass,
     };
-    //takes the current array and reuilds and updates.
+    //takes the current array and rebuilds and updates.
     const updatedReg = [{...registration}, newReg];
     setRegistration(updatedReg);
 
@@ -58,28 +57,23 @@ export default function Registration() {
                       contactnumber: registration.contactnumber}
       if (userRole.userType === 'volunteer') {
         // post request to volunteer table
-        axios.post('https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/Volunteers', values)
-        .then(response => {
-          console.log("This is the new volunteer id:" + response.data);
-          setUserId(response.data)
-        }) 
+        axios
+        .post('https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/Volunteers', values)
+        .then(response => userId = response.data)
+        .then(response => history.push({pathname: '/VolunteerAvailability', state: {userId: userId}})) 
         .catch(error => 
           console.log(error)
         );
-        history.push({pathname: '/VolunteerAvailability', state: {usedrId: usedrId}});
-        }
-
+      }
       if (userRole.userType === 'goodCause') {
         // post request to good_cause table
-        axios.post('https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/sgoodcause', values)
-        .then(response => {
-          console.log("This is the new good cause id:" + response.data);
-          setUserId(response.data)
-        }) 
+        axios
+        .post('https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/sgoodcauseregistration', values)
+        .then(response => userId = response.data)
+        .then(response => history.push({pathname: '/GoodCauseDetails', state: {userId: userId}}))
         .catch(error => 
           console.log(error)
         );
-        history.push({pathname: '/GoodCauseDetails', state: {usedrId: usedrId}});
       }
     }
   };

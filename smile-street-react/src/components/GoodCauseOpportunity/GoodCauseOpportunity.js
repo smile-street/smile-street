@@ -14,10 +14,13 @@ import {
   makeStyles,
 } from '@material-ui/core';
 import MuiAlert from '@material-ui/lab/Alert';
+import axios from 'axios';
 import AutoCompleteTag from './AutoCompleteTag';
 import PageHeading from '../PageHeading/PageHeading';
 import DatePicker from '../DatePicker/DatePicker';
 import locations from './locations.json';
+import skillsData from './skillsData.json';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -65,15 +68,16 @@ const useStyles = makeStyles((theme) => ({
 
 export default function GoodCauseOpportunity() {
   const classes = useStyles();
+  const history = useHistory();
   const [openFailedToast, setOpenFailedToast] = useState(false);
   const [openSavedToast, setOpenSavedToast] = useState(false);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [location, setLocation] = useState('');
-  const [opportunities, setOpportunities] = useState([]);
   const [opportunityDate, setOpportunityDate] = useState('');
-
-  const [skills, setSkills] = useState('');
+  const [selectedSkills, setSelectedSkills] = useState('');
+  const [opportunityCreated, setOpportunityCreated] = useState(false);
+  const goodCause_id = useLocation().state.goodCause_id;
 
   const handleToastClose = (event, reason) => {
     if (reason === 'clickaway') {
@@ -88,26 +92,39 @@ export default function GoodCauseOpportunity() {
   }
 
   function addOpportunity() {
-    const opportunity = {
-      title: title,
-      description: description,
+    let opportunity = {
+      opportunityname: title,
+      opportunitydescription: description,
       location: location,
-      opportunityDate: opportunityDate,
-      skills: skills,
+      opportunitydate: opportunityDate,
     };
-    const newOpportunities = opportunities.concat(opportunity);
-    setOpportunities(newOpportunities);
-    setTitle('');
-    setDescription('');
-    setOpenSavedToast(true);
+
+    // Mark all selected skills as true, the rest as false, and add them to the opportunity object
+    skillsData.forEach(skill => { 
+      let returnObj = {} 
+      returnObj[(skill.dbColumnTitle)] = selectedSkills.includes(skill)
+      Object.assign(opportunity, returnObj);
+    })
+    console.log(opportunity)
+
+    axios
+      .post(`https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/SaveGoodCauseOpportunity/${goodCause_id}`, opportunity)
+      .then(response => {
+        setOpenSavedToast(true);
+        setOpportunityCreated(true);
+        setTitle('');
+        setDescription('');
+      }) 
+      .catch(error => 
+        console.log(error)
+      );
   }
-  const history = useHistory();
+
   function handleDone() {
-    if (!opportunities.length) {
+    if (!opportunityCreated) {
       setOpenFailedToast(true);
     } else {
-      history.push({pathname: '/GoodCauseMatches'});
-      console.log(opportunities);
+      history.push({pathname: '/GoodCauseMatches', state: {goodCause_id: goodCause_id}});
     }
   }
 
@@ -154,16 +171,15 @@ export default function GoodCauseOpportunity() {
                 })}
               </Select>
             </FormControl>
-            <Grid item xs={12} sm={12} fullWidth>
-              <AutoCompleteTag setSkills={setSkills} />
+            <Grid item xs={12} sm={12}>
+              <AutoCompleteTag setSkills={setSelectedSkills} />
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12} sm={12}>
               <DatePicker
                 id={'Opportunity Date'}
                 setDate={setOpportunityDate}
               />
             </Grid>
-
             <Grid item xs={12} sm={12}>
               <Button
                 variant="contained"
@@ -187,7 +203,7 @@ export default function GoodCauseOpportunity() {
       </Paper>
       <Snackbar
         open={openFailedToast}
-        autoHideDuration={6000}
+        autoHideDuration={2000}
         onClose={handleToastClose}
         anchorOrigin={{vertical: 'top', horizontal: 'center'}}
       >
@@ -197,12 +213,12 @@ export default function GoodCauseOpportunity() {
       </Snackbar>
       <Snackbar
         open={openSavedToast}
-        autoHideDuration={6000}
+        autoHideDuration={2000}
         onClose={handleToastClose}
         anchorOrigin={{vertical: 'top', horizontal: 'center'}}
       >
         <Alert onClose={handleToastClose} severity="success">
-          Opportunity saved, add as many as you like!
+          Opportunity successfully saved, add as many as you like!
         </Alert>
       </Snackbar>
     </Container>
