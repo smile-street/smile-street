@@ -58,7 +58,23 @@ export default function VolunteerInterests() {
     await axios
       .put(
         `https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/VolunteerAvailability/${volunteer_id}`,
-        {}
+        {
+          Web_Design: skillsForApi.Web_Design,
+          seo: skillsForApi.seo,
+          Graphic_Design: skillsForApi.graphic_Design,
+          Teaching: skillsForApi.teaching,
+          Public_Health: skillsForApi.public_Health,
+          Empowerment: skillsForApi.empowerment,
+          Sports: skillsForApi.sports,
+          Construction: skillsForApi.construction,
+          Cooking: skillsForApi.cooking,
+          Accessibility: skillsForApi.accessibility,
+          Mental_Health: skillsForApi.mental_Health,
+          Event_Planing: skillsForApi.event_planing,
+          Gardening: skillsForApi.Gardening,
+          Music: skillsForApi.Music,
+          Dance: skillsForApi.Dance,
+        }
       )
       .then((response) => {
         console.log('This is the new volunteer id:' + response.data);
