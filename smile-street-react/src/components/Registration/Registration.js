@@ -6,6 +6,8 @@ import {
   Container,
   TextField,
   Button,
+  Backdrop,
+  CircularProgress
 } from '@material-ui/core';
 import PageHeading from '../PageHeading/PageHeading';
 import ValidateInfo from './ValidateInfo';
@@ -17,6 +19,8 @@ export default function Registration() {
   const userRole = useLocation().state;
   const history = useHistory();
   const [errors, setErrors] = useState({});
+  const [open, setOpen] = useState(false);
+  
   const initialFormState = {
     firstname: '',
     lastname: '',
@@ -26,6 +30,7 @@ export default function Registration() {
     confirmPass: '',
   };
   const [registration, setRegistration] = useState(initialFormState);
+
   const handleChange = (e) => {
     setRegistration({
       ...registration,
@@ -50,6 +55,7 @@ export default function Registration() {
     setRegistration(updatedReg);
 
     if (true) { //this needs to be changed to validate the form! 
+      setOpen(true);
       setRegistration(initialFormState);
       const values = {firstname: registration.firstname,
                       lastname: registration.lastname,
@@ -61,8 +67,9 @@ export default function Registration() {
         .post('https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/Volunteers', values)
         .then(response => userId = response.data)
         .then(response => history.push({pathname: '/VolunteerAvailability', state: {userId: userId}})) 
-        .catch(error => 
-          console.log(error)
+        .catch(error => {
+          setOpen(false)
+          console.log(error)}
         );
       }
       if (userRole.userType === 'goodCause') {
@@ -177,6 +184,9 @@ export default function Registration() {
           </Grid>
         </Container>
       </Paper>
+      <Backdrop className={classes.backdrop} open={open}>
+        <CircularProgress color="inherit" />
+      </Backdrop>
     </Container>
   );
 }

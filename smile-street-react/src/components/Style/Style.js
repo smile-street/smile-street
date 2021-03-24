@@ -55,4 +55,8 @@ export default makeStyles(() => ({
   h1: {
     color: '#53bd98',
   },
+  backdrop: {
+    zIndex: theme.zIndex.drawer + 1,
+    color: '#fff',
+  },
 }));
