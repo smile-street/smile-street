@@ -92,39 +92,39 @@ export default function GoodCauseOpportunity() {
   }
 
   function addOpportunity() {
-    const opportunity = {
+    let opportunity = {
       opportunityname: title,
       opportunitydescription: description,
-      location: location,
+      // location: location, //not currently in Database
       opportunitydate: opportunityDate,
-      selectedSkills: selectedSkills,
     };
 
-    // Mark all selected skills as true and the rest as false
-    let skillsBool = skillsData.map(skill => { 
+    // Mark all selected skills as true, the rest as false, and add them to the opportunity object
+    skillsData.forEach(skill => { 
       let returnObj = {} 
-      returnObj[skill.title] = selectedSkills.includes(skill)
-      return returnObj
+      returnObj[(skill.dbColumnTitle)] = selectedSkills.includes(skill)
+      Object.assign(opportunity, returnObj);
     })
-    console.log(skillsBool)
-    // axios
-    //   .post(`https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/SaveGoodCauseOpportunity/${goodCause_id}`, opportunity)
-    //   .then(response => history.push({pathname: '/VolunteerAvailability', state: {goodCause_id: goodCause_id}})) 
-    //   .catch(error => 
-    //     console.log(error)
-    //   );
     console.log(opportunity)
-    setTitle('');
-    setDescription('');
-    setOpenSavedToast(true);
-    setOpportunityCreated(true);
+    axios
+      .post(`https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/SaveGoodCauseOpportunity/${goodCause_id}`, opportunity)
+      .then(response => {
+        console.log(response);
+        setOpenSavedToast(true);
+        setOpportunityCreated(true);
+        setTitle('');
+        setDescription('');
+      }) 
+      .catch(error => 
+        console.log(error)
+      );
   }
 
   function handleDone() {
     if (opportunityCreated) {
       setOpenFailedToast(true);
     } else {
-      history.push({pathname: '/GoodCauseMatches'});
+      history.push({pathname: '/GoodCauseMatches', state: {goodCause_id: goodCause_id}});
     }
   }
 
@@ -171,7 +171,7 @@ export default function GoodCauseOpportunity() {
                 })}
               </Select>
             </FormControl>
-            <Grid item xs={12} sm={12} fullWidth>
+            <Grid item xs={12} sm={12}>
               <AutoCompleteTag setSkills={setSelectedSkills} />
             </Grid>
             <Grid item xs={12} sm={12}>
