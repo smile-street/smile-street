@@ -21,7 +21,6 @@ import DatePicker from '../DatePicker/DatePicker';
 import locations from './locations.json';
 import skillsData from './skillsData.json';
 
-
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -79,8 +78,6 @@ export default function GoodCauseOpportunity() {
   const [opportunityCreated, setOpportunityCreated] = useState(false);
   const goodCause_id = useLocation().state.goodCause_id;
 
-  console.log('skills', skills);
-
   const handleToastClose = (event, reason) => {
     if (reason === 'clickaway') {
       return;
@@ -102,31 +99,35 @@ export default function GoodCauseOpportunity() {
     };
 
     // Mark all selected skills as true, the rest as false, and add them to the opportunity object
-    skillsData.forEach(skill => { 
-      let returnObj = {} 
-      returnObj[(skill.dbColumnTitle)] = selectedSkills.includes(skill)
+    skillsData.forEach((skill) => {
+      let returnObj = {};
+      returnObj[skill.dbColumnTitle] = selectedSkills.includes(skill);
       Object.assign(opportunity, returnObj);
-    })
-    console.log(opportunity)
+    });
+    console.log(opportunity);
 
     axios
-      .post(`https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/SaveGoodCauseOpportunity/${goodCause_id}`, opportunity)
-      .then(response => {
+      .post(
+        `https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/SaveGoodCauseOpportunity/${goodCause_id}`,
+        opportunity
+      )
+      .then((response) => {
         setOpenSavedToast(true);
         setOpportunityCreated(true);
         setTitle('');
         setDescription('');
-      }) 
-      .catch(error => 
-        console.log(error)
-      );
+      })
+      .catch((error) => console.log(error));
   }
 
   function handleDone() {
     if (!opportunityCreated) {
       setOpenFailedToast(true);
     } else {
-      history.push({pathname: '/GoodCauseMatches', state: {goodCause_id: goodCause_id}});
+      history.push({
+        pathname: '/GoodCauseMatches',
+        state: {goodCause_id: goodCause_id},
+      });
     }
   }
 

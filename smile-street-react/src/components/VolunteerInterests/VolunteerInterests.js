@@ -46,10 +46,11 @@ export default function VolunteerInterests() {
     }
   };
 
-  let skillsForApi = Interests.map((skill) => {
+  let skillsForApi = {};
+  Interests.forEach((skill) => {
     let returnObj = {};
     returnObj[skill.dbColumnTitle] = skills.includes(skill);
-    return returnObj;
+    Object.assign(skillsForApi, returnObj);
   });
   console.log(skillsForApi);
 

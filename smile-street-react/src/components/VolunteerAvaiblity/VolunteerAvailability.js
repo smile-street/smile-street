@@ -56,9 +56,8 @@ export default function VolunteerAvailability() {
         console.log('This is the new volunteer id:' + response.data);
         const volunteerId = response.data;
         history.push({
-
           pathname: '/VolunteerInterests',
-          state: {userId: volunteerId, userRole: userRole},
+          state: {userId: volunteerId},
         });
       })
       .catch((error) => console.log(error));
