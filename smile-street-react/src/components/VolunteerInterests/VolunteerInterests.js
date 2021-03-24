@@ -46,18 +46,19 @@ export default function VolunteerInterests() {
     }
   };
 
+  let skillsForApi = Interests.map((object) => {
+    let returnObj = {};
+    returnObj[object.title] = skills.includes(object);
+    return returnObj;
+  });
+  console.log(skillsForApi);
+
   const handleComplete = async (event) => {
     event.preventDefault();
     await axios
       .put(
         `https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/VolunteerAvailability/${volunteer_id}`,
-        {
-          employername: info.employername,
-          primarylocation: info.primarylocation,
-          numberofdays: info.numberofdays,
-          startdate: startdate,
-          enddate: enddate,
-        }
+        {}
       )
       .then((response) => {
         console.log('This is the new volunteer id:' + response.data);
