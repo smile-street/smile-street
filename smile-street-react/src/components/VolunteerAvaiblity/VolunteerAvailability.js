@@ -29,9 +29,7 @@ export default function VolunteerAvailability() {
     enddate: '',
   };
   const history = useHistory();
-
-  const userRole = useLocation().state.userRole;
-  const volunteer_id = useLocation().state.userId;
+  const volunteer_id = useLocation().state;
   const [errors, setErrors] = useState({Validation});
   const [info, setInfo] = useState(initialFormState);
   const [startdate, setStartDate] = useState(new Date());
@@ -39,9 +37,8 @@ export default function VolunteerAvailability() {
   const handleChange = (e) => {
     setInfo({...info, [e.target.name]: e.target.value});
   };
-  console.log(volunteer_id);
-
   const handleSubmit = async (event) => {
+    console.log(volunteer_id);
     event.preventDefault();
 
     const addAvailability = await axios
@@ -59,6 +56,7 @@ export default function VolunteerAvailability() {
         console.log('This is the new volunteer id:' + response.data);
         const volunteerId = response.data;
         history.push({
+
           pathname: '/VolunteerInterests',
           state: {userId: volunteerId, userRole: userRole},
         });

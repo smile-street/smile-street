@@ -1,5 +1,4 @@
 import {useLocation, useHistory} from 'react-router-dom';
-
 import React, {useState} from 'react';
 import {
   makeStyles,
@@ -11,6 +10,7 @@ import {
 } from '@material-ui/core';
 import ApolloClient, {gql} from 'apollo-boost';
 import {ApolloProvider, useQuery} from '@apollo/react-hooks';
+import axios from 'axios';
 import PageHeading from '../PageHeading/PageHeading';
 import useStyle from '../Style/Style';
 
@@ -71,18 +71,27 @@ export default function GoodCauseDetails() {
   const [goodCauseNumber, setGoodCauseNumber] = useState('');
   const [goodCauseDescription, setGoodCauseDescription] = useState('');
   const [GoodCauseName, setGoodCauseName] = useState('');
-
+  const goodCause_id = useLocation().state.userId;
   const classes = useStyle();
   const history = useHistory();
-  const handleClick = () => {
-    console.log(
-      `Charity number: ${goodCauseNumber}
-    Good Cause name: ${GoodCauseName}
-    Description: ${goodCauseDescription}
-    `
-    );
 
-    history.push({pathname: '/GoodCauseOpportunity'});
+  const handleClick = async (event) => {
+    // handle update here
+    event.preventDefault();
+
+    const addGoodCauseDetails = await axios
+    .put(`https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/GoodCauseDetails/${goodCause_id}`,
+      {
+        good_cause_name: GoodCauseName,
+        descriptionofgoodcause: goodCauseDescription,
+      }
+    )
+    .then(history.push({
+        pathname: '/GoodCauseOpportunity',
+        state: {goodCause_id: goodCause_id},
+      })
+    )
+    .catch((error) => console.log(error));
   };
 
   return (

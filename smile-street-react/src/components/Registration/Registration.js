@@ -1,7 +1,6 @@
 import {useLocation, useHistory} from 'react-router-dom';
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {
-  makeStyles,
   Paper,
   Grid,
   Container,
@@ -14,7 +13,7 @@ import useStyle from '../Style/Style';
 import axios from 'axios';
 
 export default function Registration() {
-  const [usedrId, setUserId] = useState('');
+  let userId;
   const userRole = useLocation().state;
   const history = useHistory();
   const [errors, setErrors] = useState({});
@@ -50,48 +49,31 @@ export default function Registration() {
     const updatedReg = [{...registration}, newReg];
     setRegistration(updatedReg);
 
-    if (true) {
-      const values = setRegistration(initialFormState);
+    if (true) { //this needs to be changed to validate the form! 
+      setRegistration(initialFormState);
+      const values = {firstname: registration.firstname,
+                      lastname: registration.lastname,
+                      username: registration.username,
+                      contactnumber: registration.contactnumber}
       if (userRole.userType === 'volunteer') {
+        // post request to volunteer table
         axios
-          .post(
-            'https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/Volunteers',
-            {
-              firstname: registration.firstname,
-              lastname: registration.lastname,
-              username: registration.username,
-              contactnumber: registration.contactnumber,
-            }
-          )
-          .then((response) => {
-            console.log('This is the new volunteer id:' + response.data);
-            const volunteerId = response.data;
-            history.push({
-              pathname: '/VolunteerAvailability',
-              state: {userId: volunteerId, userRole: userRole},
-            });
-          })
-          .catch((error) => console.log(error));
+        .post('https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/Volunteers', values)
+        .then(response => userId = response.data)
+        .then(response => history.push({pathname: '/VolunteerAvailability', state: {userId: userId}})) 
+        .catch(error => 
+          console.log(error)
+        );
       }
       if (userRole.userType === 'goodCause') {
+        // post request to good_cause table
         axios
-          .post(
-            'https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/sgoodcause',
-            {
-              firstname: registration.firstname,
-              lastname: registration.lastname,
-              emailaddress: registration.username,
-              contactnumber: registration.contactnumber,
-            }
-          )
-          .then((response) => {
-            console.log('This is the new good cause id:' + response.data);
-          })
-          .catch((error) => console.log(error));
-        history.push({
-          pathname: '/GoodCauseDetails',
-          state: {usedrId: usedrId},
-        });
+        .post('https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/sgoodcauseregistration', values)
+        .then(response => userId = response.data)
+        .then(response => history.push({pathname: '/GoodCauseDetails', state: {userId: userId}}))
+        .catch(error => 
+          console.log(error)
+        );
       }
     }
   };
