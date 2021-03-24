@@ -18,7 +18,8 @@ import {
 	List,
 	ListItem,
 	ListItemText,
-	Divider
+	Divider,
+	Fab
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -53,14 +54,14 @@ export default function FullWidthGrid() {
 		<Container component="main">
 			<Paper className={classes.paper}>
 				<Container maxWidth="xs">
-					<Button
-						aria-controls="edit-menu"
-						aria-haspopup="true"
+					<Fab 
+						size="small" 
+						aria-label="add" 
+						className={classes.button}
 						onClick={handleMenuClick}
-						className={classes.buttonColor}
 					>
 						<MenuIcon />
-					</Button>
+					</Fab>
 					<Menu
 						id="edit-menu"
 						anchorEl={anchorEl}

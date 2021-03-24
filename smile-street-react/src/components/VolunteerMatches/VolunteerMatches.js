@@ -13,6 +13,7 @@ import {
   DialogTitle,
   DialogContentText,
   DialogContent,
+  Fab
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import PageHeading from '../PageHeading/PageHeading';
@@ -82,14 +83,16 @@ export default function VolunteerMatches() {
   return (
     <Container>
       <Paper className={classes.paper}>
-        <Button
+        <Fab 
+          size="small" 
+          aria-label="add" 
           aria-controls="edit-menu"
           aria-haspopup="true"
-          onClick={handleMenuClick}
           className={classes.buttonColor}
+          onClick={handleMenuClick}
         >
           <MenuIcon />
-        </Button>
+        </Fab>
         <Menu
           id="edit-menu"
           anchorEl={anchorEl}

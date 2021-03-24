@@ -3,12 +3,14 @@
     "id": "001",
     "email": "volunteer@email.com",
     "password": "123456",
-    "user-role": "volunteer"
+    "user-role": "volunteer",
+    "user_id": "694a785d-d963-4230-8593-226eb3b18a60"
   },
   {
     "id": "002",
     "email": "goodcause@email.com",
     "password": "123456",
-    "user-role": "good-cause"
+    "user-role": "good-cause",
+    "user_id": "17839b6d-2857-4832-87f8-5add36851586" 
   }
 ]

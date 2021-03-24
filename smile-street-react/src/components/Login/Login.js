@@ -49,6 +49,7 @@ export default function Login() {
   const [userData, setUserData] = useState(LoginData);
 
   let history = useHistory();
+
   const handleClickRegistration = (userType) => {
     history.push({
       pathname: '/Registration',
@@ -57,6 +58,7 @@ export default function Login() {
   };
 
   function checkCredentials() {
+    // need a get handler here to get the volunteer/goodcause_id from the databse.
     userData.forEach((user) => {
       if (
         user.email === email &&
@@ -65,6 +67,7 @@ export default function Login() {
       ) {
         history.push({
           pathname: '/VolunteerMatches',
+          state: {userId: user.user_id}, // currently hard coded into the json
         });
       }
       if (
@@ -74,6 +77,7 @@ export default function Login() {
       ) {
         history.push({
           pathname: '/GoodCauseMatches',
+          state: {goodCause_id: user.user_id}, // currently hard coded into the json
         });
       }
     });
