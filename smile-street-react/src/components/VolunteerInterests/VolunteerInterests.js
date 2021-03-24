@@ -7,6 +7,7 @@ import PageHeading from '../PageHeading/PageHeading';
 import interestData from './interests.json';
 import {useLocation, useHistory} from 'react-router-dom';
 import Interests from './skillsData.json';
+import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,24 +31,11 @@ const useStyles = makeStyles((theme) => ({
 console.log('Interests from', Interests);
 
 export default function VolunteerInterests() {
+  const history = useHistory();
+  const userRole = useLocation().state.userRole;
+  const volunteer_id = useLocation().state.userId;
   const [skills, setSkills] = useState('');
 
-  Interests.forEach((interest) => {
-    // console.log('interest.title', interest.title);
-    // console.log('skills.title', skills);
-    if (skills.length > 0) {
-      skills.forEach((skill) => {
-        // console.log(skill.title);
-        const newArrayForApi = [];
-        if (interest.title.includes(skill.title)) {
-          console.log(interest.title);
-
-          newArrayForApi.push(interest.title);
-        }
-        console.log(newArrayForApi);
-      });
-    }
-  });
   const classes = useStyles();
   let interests = interestData;
   const selectInterest = (id) => {
@@ -57,18 +45,30 @@ export default function VolunteerInterests() {
       }
     }
   };
-  const history = useHistory();
-  const handleComplete = () => {
-    console.log(
-      'Interests:',
-      interests.filter((interest) => interest.selected)
-    );
-    console.log('skills: ', skills);
-    history.push({
-      pathname: '/VolunteerMatches',
-    });
-  };
 
+  const handleComplete = async (event) => {
+    event.preventDefault();
+    await axios
+      .put(
+        `https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/VolunteerAvailability/${volunteer_id}`,
+        {
+          employername: info.employername,
+          primarylocation: info.primarylocation,
+          numberofdays: info.numberofdays,
+          startdate: startdate,
+          enddate: enddate,
+        }
+      )
+      .then((response) => {
+        console.log('This is the new volunteer id:' + response.data);
+        const volunteerId = response.data;
+        history.push({
+          pathname: '/VolunteerMatches',
+          state: {userId: volunteerId, userRole: userRole},
+        });
+      })
+      .catch((error) => console.log(error));
+  };
   return (
     <Container component="main">
       <Paper className={classes.paper}>
