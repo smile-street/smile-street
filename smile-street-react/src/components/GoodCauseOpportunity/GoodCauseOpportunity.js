@@ -105,6 +105,7 @@ export default function GoodCauseOpportunity() {
       returnObj[(skill.dbColumnTitle)] = selectedSkills.includes(skill)
       Object.assign(opportunity, returnObj);
     })
+    console.log(opportunity)
 
     axios
       .post(`https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/SaveGoodCauseOpportunity/${goodCause_id}`, opportunity)

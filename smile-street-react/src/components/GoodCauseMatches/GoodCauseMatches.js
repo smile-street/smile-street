@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/styles';
 import {
 	Paper,
 	Container,
@@ -24,7 +23,6 @@ import {
 import MenuIcon from '@material-ui/icons/Menu';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import PageHeading from '../PageHeading/PageHeading';
-import MatchVolunteersCard from './MatchedVolunteersCard';
 import GoodCauseMatches from './GoodCauseMatches.json';
 import useStyle from '../Style/Style';
 
