@@ -7,7 +7,7 @@ import {
   TextField,
   Button,
   Backdrop,
-  CircularProgress
+  CircularProgress,
 } from '@material-ui/core';
 import PageHeading from '../PageHeading/PageHeading';
 import ValidateInfo from './ValidateInfo';
@@ -20,7 +20,7 @@ export default function Registration() {
   const history = useHistory();
   const [errors, setErrors] = useState({});
   const [open, setOpen] = useState(false);
-  
+
   const initialFormState = {
     firstname: '',
     lastname: '',
@@ -54,33 +54,47 @@ export default function Registration() {
     const updatedReg = [{...registration}, newReg];
     setRegistration(updatedReg);
 
-    if (true) { //this needs to be changed to validate the form! 
+    if (true) {
+      //this needs to be changed to validate the form!
       setOpen(true);
       setRegistration(initialFormState);
-      const values = {firstname: registration.firstname,
-                      lastname: registration.lastname,
-                      username: registration.username,
-                      contactnumber: registration.contactnumber}
+      const values = {
+        firstname: registration.firstname,
+        lastname: registration.lastname,
+        username: registration.username,
+        contactnumber: registration.contactnumber,
+      };
       if (userRole.userType === 'volunteer') {
         // post request to volunteer table
         axios
-        .post('https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/Volunteers', values)
-        .then(response => userId = response.data)
-        .then(response => history.push({pathname: '/VolunteerAvailability', state: {userId: userId}})) 
-        .catch(error => {
-          setOpen(false)
-          console.log(error)}
-        );
+          .post(
+            'https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/Volunteers',
+            values
+          )
+          .then((response) => (userId = response.data))
+          .then((response) =>
+            history.push({pathname: '/VolunteerAvailability'})
+          )
+          .catch((error) => {
+            setOpen(false);
+            console.log(error);
+          });
       }
       if (userRole.userType === 'goodCause') {
         // post request to good_cause table
         axios
-        .post('https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/sgoodcauseregistration', values)
-        .then(response => userId = response.data)
-        .then(response => history.push({pathname: '/GoodCauseDetails', state: {userId: userId}}))
-        .catch(error => 
-          console.log(error)
-        );
+          .post(
+            'https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/sgoodcauseregistration',
+            values
+          )
+          .then((response) => (userId = response.data))
+          .then((response) =>
+            history.push({
+              pathname: '/GoodCauseDetails',
+              state: {userId: userId},
+            })
+          )
+          .catch((error) => console.log(error));
       }
     }
   };

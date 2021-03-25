@@ -1,6 +1,6 @@
 import React from 'react';
 import {useState} from 'react';
-import {useLocation, useHistory} from 'react-router-dom';
+import {useLocation, useHistory, useParams} from 'react-router-dom';
 import {
   Paper,
   Grid,
@@ -29,7 +29,8 @@ export default function VolunteerAvailability() {
     enddate: '',
   };
   const history = useHistory();
-  const volunteer_id = useLocation().state.userId;
+  const {volunteer_id} = useParams();
+  //const volunteer_id = useLocation().state.userId;
   const [errors, setErrors] = useState({Validation});
   const [info, setInfo] = useState(initialFormState);
   const [startdate, setStartDate] = useState(new Date());
