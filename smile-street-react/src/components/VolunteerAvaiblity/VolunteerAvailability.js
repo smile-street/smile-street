@@ -86,7 +86,7 @@ export default function VolunteerAvailability() {
             </Grid>
             <Grid item xs={12} sm={12}>
               <FormControl variant="outlined" fullWidth>
-                <InputLabel id="location-label">
+                <InputLabel id="location-label"  className={classes.root}>
                   Select your location
                 </InputLabel>
                 <Select
