@@ -93,7 +93,7 @@ const MatchCard = ({
               variant="contained"
               color="primary"
               className={classes.buttonColor}
-              onClick={handleClickOpenNo}
+              onClick={handleClickOpenYes}
             >
               Yes, Please
             </Button>
