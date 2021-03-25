@@ -24,7 +24,6 @@ const InputWrapper = styled("div")`
   align-self: center;
   align-content: center;
   display: inline-flex;
-  justify-content: space-between;
 
   &:hover {
     border-color: #449f80;
