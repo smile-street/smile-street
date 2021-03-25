@@ -55,7 +55,6 @@ export default function VolunteerInterests() {
     returnObj[skill.dbColumnTitle] = skills.includes(skill);
     Object.assign(skillsForApi, returnObj);
   });
-  console.log(skillsForApi);
 
   const handleComplete = async (event) => {
     event.preventDefault();
