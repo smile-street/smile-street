@@ -26,6 +26,9 @@ const useStyles = makeStyles((theme) => ({
       background: '#449f80',
     },
   },
+  interestGrid: {
+    justifyContent: 'center',
+  },
 }));
 
 console.log('Interests from', Interests);
@@ -75,10 +78,10 @@ export default function VolunteerInterests() {
     <Container component="main">
       <Paper className={classes.paper}>
         <PageHeading heading="Select your interests" />
-        <Grid container spacing={3}>
+        <Grid container spacing={3} className={classes.interestGrid}>
           {interests.map((interest) => {
             return (
-              <Grid item xs={6} sm={3}>
+              <Grid item lg={2}>
                 <InterestSquares
                   id={interest.key}
                   title={interest.skill}
@@ -100,12 +103,9 @@ export default function VolunteerInterests() {
           alignItems="center"
           justify="center"
         >
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={12} sm={12}>
             <SkillsAutoComplete setSkills={setSkills} fullWidth />
           </Grid>
-        </Grid>
-        <Grid item xs={12} sm={12} style={{margin: 8}}>
-          <Divider />
         </Grid>
         <Grid item xs={12} sm={12} style={{margin: 8}}>
           <Divider />
