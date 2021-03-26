@@ -114,7 +114,7 @@ export default function Registration() {
               error={registration.firstname === ''}
               helperText={
                 registration.firstname === ''
-                  ? 'First name can no be empty!'
+                  ? 'First name can not be empty!'
                   : ' '
               }
             />

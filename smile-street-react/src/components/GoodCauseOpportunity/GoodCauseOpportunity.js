@@ -146,6 +146,8 @@ export default function GoodCauseOpportunity() {
               value={title}
               onChange={(event) => setTitle(event.target.value)}
               className={classes.root}
+              error={title === ''}
+              helperText={title === '' ? 'Title can not  be empty!' : ' '}
             />
             <TextField
               id="description"
@@ -156,9 +158,15 @@ export default function GoodCauseOpportunity() {
               value={description}
               onChange={(event) => setDescription(event.target.value)}
               className={classes.root}
+              error={description === ''}
+              helperText={
+                description === '' ? 'Description can not  be empty!' : ' '
+              }
             />
             <FormControl variant="outlined" fullWidth>
-              <InputLabel id="location-label" className={classes.root}>Select your location</InputLabel>
+              <InputLabel id="location-label" className={classes.root}>
+                Select your location
+              </InputLabel>
               <Select
                 labelId="location-label"
                 label="Select your location"
