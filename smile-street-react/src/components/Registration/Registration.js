@@ -112,7 +112,11 @@ export default function Registration() {
               onChange={handleChange}
               className={classes.root}
               error={registration.firstname === ''}
-              helperText={registration.firstname === '' ? 'Empty field!' : ' '}
+              helperText={
+                registration.firstname === ''
+                  ? 'First name can no be empty!'
+                  : ' '
+              }
             />
 
             <TextField
@@ -127,7 +131,11 @@ export default function Registration() {
               onChange={handleChange}
               className={classes.root}
               error={registration.lastname === ''}
-              helperText={registration.lastname === '' ? 'Empty field!' : ' '}
+              helperText={
+                registration.lastname === ''
+                  ? 'Last name can not be empty!'
+                  : ' '
+              }
             />
             <TextField
               variant="outlined"
@@ -141,7 +149,11 @@ export default function Registration() {
               onChange={handleChange}
               className={classes.root}
               error={registration.username === ''}
-              helperText={registration.username === '' ? 'Empty field!' : ' '}
+              helperText={
+                registration.username === ''
+                  ? 'Username can not be empty!'
+                  : ' '
+              }
             />
 
             <TextField
@@ -157,7 +169,9 @@ export default function Registration() {
               className={classes.root}
               error={registration.contactnumber === ''}
               helperText={
-                registration.contactnumber === '' ? 'Empty field!' : ' '
+                registration.contactnumber === ''
+                  ? 'Contact number can not be empty!'
+                  : ' '
               }
             />
 
@@ -174,7 +188,11 @@ export default function Registration() {
               onChange={handleChange}
               className={classes.root}
               error={registration.password === ''}
-              helperText={registration.password === '' ? 'Empty field!' : ' '}
+              helperText={
+                registration.password === ''
+                  ? 'Password can not be empty!'
+                  : ' '
+              }
             />
 
             <TextField
@@ -190,7 +208,11 @@ export default function Registration() {
               onChange={handleChange}
               className={classes.root}
               error={registration.password === ''}
-              helperText={registration.password === '' ? 'Empty field!' : ' '}
+              helperText={
+                registration.password === ''
+                  ? 'Confirm password can not be empty !'
+                  : ' '
+              }
             />
 
             <Grid item xs={12} sm={12}>
