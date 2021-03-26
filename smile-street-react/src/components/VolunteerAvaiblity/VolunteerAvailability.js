@@ -53,11 +53,9 @@ export default function VolunteerAvailability() {
         }
       )
       .then((response) => {
-        console.log('This is the new volunteer id:' + response.data);
-        const volunteerId = response.data;
         history.push({
           pathname: '/VolunteerInterests',
-          state: {userId: volunteerId},
+          state: {userId: volunteer_id},
         });
       })
       .catch((error) => console.log(error));
@@ -71,6 +69,7 @@ export default function VolunteerAvailability() {
 
           <Grid container spacing={3}>
             <Grid item xs={12} sm={12}>
+
               <TextField
                 margin="normal"
                 fullWidth
@@ -88,6 +87,7 @@ export default function VolunteerAvailability() {
             <Grid item xs={12} sm={12}>
               <FormControl variant="outlined" fullWidth>
                 <InputLabel id="location-label" className={classes.root}>
+
                   Select your location
                 </InputLabel>
                 <Select
@@ -109,22 +109,25 @@ export default function VolunteerAvailability() {
               </FormControl>
             </Grid>
             <Grid item xs={12} sm={12}>
-              <InputLabel>How many days are you available?</InputLabel>
-              <Select
-                label="Available days"
-                fullWidth
-                id="numberofdays"
-                style={{margin: 8}}
-                variant="outlined"
-                className={classes.root}
-                name="numberofdays"
-                onChange={handleChange}
-                value={info.numberofdays}
-              >
-                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((number) => {
-                  return <MenuItem value={number}>{number}</MenuItem>;
-                })}
-              </Select>
+              <FormControl variant="outlined" fullWidth className={classes.root}>
+                <InputLabel className={classes.root}>
+                  Available days
+                </InputLabel>
+                <Select
+                  label="Available days"
+                  id="numberofdays"
+                  style={{margin: 8}}
+                  variant="outlined"
+                  className={classes.root}
+                  name="numberofdays"
+                  onChange={handleChange}
+                  value={info.numberofdays}
+                >
+                  {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((number) => {
+                    return <MenuItem value={number}>{number}</MenuItem>;
+                  })}
+                </Select>
+              </FormControl>
             </Grid>
             <Grid item xs={12} sm={6}>
               <DatePicker

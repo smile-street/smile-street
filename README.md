@@ -30,14 +30,20 @@ Below are screenshots to show just that.
 
 ### Laptop Screen
 
-![Laptop]https://raw.githubusercontent.com/smile-street/smile-street-front-end/main/images Screenshot%202021-03-25%20at%2012.57.37.png
-![Laptop]https://raw.githubusercontent.com/smile-street/smile-street-front-end/main/images/Screenshot%202021-03-25%20at%2012.57.37.png
+
+![Laptop]https://raw.githubusercontent.com/smile-street/smile-street-front-end/825d503b510e204789763b5dee06944c454f76f3/images/Screenshot%202021-03-25%20at%2012.57.37.png
+![Laptop]https://raw.githubusercontent.com/smile-street/smile-street-front-end/825d503b510e204789763b5dee06944c454f76f3/images/Screenshot%202021-03-25%20at%2012.58.27.png
 
 ### Mobile Screen
 <p align ="center">
 https://github.com/smile-street/smile-street-front-end/blob/main/images/Screenshot%202021-03-25%20at%2012.59.07.png
 </p>
 <p align="center">
+
+  https://github.com/smile-street/smile-street-front-end/blob/main/images/Screenshot%202021-03-25%20at%2012.59.07.png
+</p>
+<p align ="center">
+
   https://github.com/smile-street/smile-street-front-end/blob/main/images/Screenshot%202021-03-25%20at%2012.58.47.png
 </p>
 

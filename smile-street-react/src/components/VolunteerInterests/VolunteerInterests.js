@@ -6,7 +6,7 @@ import SkillsAutoComplete from './SkillsAutoComplete';
 import PageHeading from '../PageHeading/PageHeading';
 import interestData from './interests.json';
 import {useLocation, useHistory} from 'react-router-dom';
-import Interests from './skillsData.json';
+import skillsData from './skillsData.json';
 import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
@@ -26,9 +26,10 @@ const useStyles = makeStyles((theme) => ({
       background: '#449f80',
     },
   },
+  interestGrid: {
+    justifyContent: 'center',
+  },
 }));
-
-console.log('Interests from', Interests);
 
 export default function VolunteerInterests() {
   const history = useHistory();
@@ -36,24 +37,25 @@ export default function VolunteerInterests() {
   const userRole = useLocation().state.userRole;
   const volunteer_id = useLocation().state.userId;
   const [skills, setSkills] = useState('');
-
+  const [userInterests, setInterests] = useState(interestData)
   const classes = useStyles();
-  let interests = interestData;
+
   const selectInterest = (id) => {
-    for (let interest of interests) {
+    let updatedInterests = userInterests.map(interest => {
       if (interest.key === id) {
         interest.selected = interest.selected ? false : true;
       }
-    }
+      return interest
+    })
+    setInterests(updatedInterests)
   };
 
   let skillsForApi = {};
-  Interests.forEach((skill) => {
+  skillsData.forEach((skill) => {
     let returnObj = {};
     returnObj[skill.dbColumnTitle] = skills.includes(skill);
     Object.assign(skillsForApi, returnObj);
   });
-  console.log(skillsForApi);
 
   const handleComplete = async (event) => {
     event.preventDefault();
@@ -76,10 +78,10 @@ export default function VolunteerInterests() {
     <Container component="main">
       <Paper className={classes.paper}>
         <PageHeading heading="Select your interests" />
-        <Grid container spacing={3}>
-          {interests.map((interest) => {
+        <Grid container spacing={3} className={classes.interestGrid}>
+          {userInterests.map((interest) => {
             return (
-              <Grid item xs={6} sm={3}>
+              <Grid item lg={2}>
                 <InterestSquares
                   id={interest.key}
                   title={interest.skill}
@@ -101,12 +103,9 @@ export default function VolunteerInterests() {
           alignItems="center"
           justify="center"
         >
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={12} sm={12}>
             <SkillsAutoComplete setSkills={setSkills} fullWidth />
           </Grid>
-        </Grid>
-        <Grid item xs={12} sm={12} style={{margin: 8}}>
-          <Divider />
         </Grid>
         <Grid item xs={12} sm={12} style={{margin: 8}}>
           <Divider />

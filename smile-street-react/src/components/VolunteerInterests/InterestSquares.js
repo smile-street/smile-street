@@ -25,6 +25,10 @@ const useStyles = makeStyles((theme) => ({
       background: '#449f80',
     },
   },
+  interest: {
+    height: '240px',
+    width: '180px',
+  },
 }));
 
 const InterestSquares = (props) => {
@@ -34,7 +38,7 @@ const InterestSquares = (props) => {
       <Grid item>
         <Card className={classes.root}>
           <CardActionArea
-            className={classes.root}
+            className={classes.interest}
             onClick={() => props.selectInterest(props.id)}
           >
             <CardMedia

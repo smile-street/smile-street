@@ -113,7 +113,7 @@ export default function EditOpportunity() {
                             onChange={(event) => setDescription(event.target.value)}
                             className={classes.root}
                         />
-                        <FormControl variant="outlined" fullWidth>
+                        <FormControl variant="outlined" fullWidth className={classes.root}>
                             <InputLabel id="location-label" className={classes.root}>Select your location</InputLabel>
                             <Select
                                 labelId="location-label"

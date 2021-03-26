@@ -167,6 +167,9 @@ export default function GoodCauseOpportunity() {
               <InputLabel id="location-label" className={classes.root}>
                 Select your location
               </InputLabel>
+
+            <FormControl variant="outlined" fullWidth className={classes.root}>
+              <InputLabel id="location-label" className={classes.root}>Select your location</InputLabel>
               <Select
                 labelId="location-label"
                 label="Select your location"
