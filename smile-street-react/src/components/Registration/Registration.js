@@ -111,7 +111,7 @@ export default function Registration() {
               value={registration.firstname}
               onChange={handleChange}
               className={classes.root}
-              error={registration.firstname === ''}
+              error={registration.firstname.length === 0 ? false : true}
               helperText={
                 registration.firstname === ''
                   ? 'First name can not be empty!'
@@ -130,7 +130,7 @@ export default function Registration() {
               value={registration.lastname}
               onChange={handleChange}
               className={classes.root}
-              error={registration.lastname === ''}
+              error={registration.firstname.length === 0 ? false : true}
               helperText={
                 registration.lastname === ''
                   ? 'Last name can not be empty!'
@@ -148,7 +148,7 @@ export default function Registration() {
               value={registration.username}
               onChange={handleChange}
               className={classes.root}
-              error={registration.username === ''}
+              error={registration.firstname.length === 0 ? false : true}
               helperText={
                 registration.username === ''
                   ? 'Username can not be empty!'
@@ -167,7 +167,7 @@ export default function Registration() {
               value={registration.contactnumber}
               onChange={handleChange}
               className={classes.root}
-              error={registration.contactnumber === ''}
+              error={registration.firstname.length === 0 ? false : true}
               helperText={
                 registration.contactnumber === ''
                   ? 'Contact number can not be empty!'
@@ -187,7 +187,7 @@ export default function Registration() {
               value={registration.password}
               onChange={handleChange}
               className={classes.root}
-              error={registration.password === ''}
+              error={registration.firstname.length === 0 ? false : true}
               helperText={
                 registration.password === ''
                   ? 'Password can not be empty!'
@@ -207,7 +207,7 @@ export default function Registration() {
               value={registration.confirmPass}
               onChange={handleChange}
               className={classes.root}
-              error={registration.password === ''}
+              error={registration.firstname.length === 0 ? false : true}
               helperText={
                 registration.password === ''
                   ? 'Confirm password can not be empty !'
