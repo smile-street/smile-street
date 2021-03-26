@@ -32,6 +32,7 @@ console.log('Interests from', Interests);
 
 export default function VolunteerInterests() {
   const history = useHistory();
+
   const userRole = useLocation().state.userRole;
   const volunteer_id = useLocation().state.userId;
   const [skills, setSkills] = useState('');

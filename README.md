@@ -30,13 +30,17 @@ Below are screenshots to show just that.
 
 ### Laptop Screen
 
-![Laptop]
+![Laptop]https://raw.githubusercontent.com/smile-street/smile-street-front-end/main/images Screenshot%202021-03-25%20at%2012.57.37.png
+![Laptop]https://raw.githubusercontent.com/smile-street/smile-street-front-end/main/images/Screenshot%202021-03-25%20at%2012.57.37.png
 
 ### Mobile Screen
-
-<p align="center">
-  
+<p align ="center">
+https://github.com/smile-street/smile-street-front-end/blob/main/images/Screenshot%202021-03-25%20at%2012.59.07.png
 </p>
+<p align="center">
+  https://github.com/smile-street/smile-street-front-end/blob/main/images/Screenshot%202021-03-25%20at%2012.58.47.png
+</p>
+
 
 
 ## Running the application locally
