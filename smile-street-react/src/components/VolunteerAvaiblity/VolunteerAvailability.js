@@ -81,12 +81,13 @@ export default function VolunteerAvailability() {
                 value={info.employername}
                 onChange={handleChange}
                 className={classes.root}
+                error={info.employername === ''}
+                helperText={info.employername === '' ? 'Empty field!' : ' '}
               />
-              {errors.employername}
             </Grid>
             <Grid item xs={12} sm={12}>
               <FormControl variant="outlined" fullWidth>
-                <InputLabel id="location-label"  className={classes.root}>
+                <InputLabel id="location-label" className={classes.root}>
                   Select your location
                 </InputLabel>
                 <Select
