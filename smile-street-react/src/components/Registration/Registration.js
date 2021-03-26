@@ -10,7 +10,6 @@ import {
   CircularProgress,
 } from '@material-ui/core';
 import PageHeading from '../PageHeading/PageHeading';
-import ValidateInfo from './ValidateInfo';
 import useStyle from '../Style/Style';
 import axios from 'axios';
 
@@ -31,6 +30,31 @@ export default function Registration() {
   };
   const [registration, setRegistration] = useState(initialFormState);
 
+  const validate = () => {
+    let temp = {...errors};
+    if ('firstname' in registration)
+      temp.firstname = registration.firstname ? '' : 'This field is required.';
+    if ('lastname' in registration)
+      temp.lastname = registration.lastname ? '' : 'This field is required.';
+    if ('username' in registration)
+      temp.username = /$^|.+@.+..+/.test(registration.username)
+        ? ''
+        : 'Email is not valid.';
+    if ('contactnumber' in registration)
+      temp.contactnumberr =
+        registration.contactnumber.length > 6
+          ? ''
+          : 'Minimum 6 numbers required.';
+    if ('password' in registration)
+      temp.password =
+        registration.password.length != 0 ? '' : 'This field is required.';
+    setErrors({
+      ...temp,
+    });
+
+    if (registration) return Object.values(temp).every((x) => x == '');
+  };
+
   const handleChange = (e) => {
     setRegistration({
       ...registration,
@@ -39,23 +63,21 @@ export default function Registration() {
   };
 
   const handleClick = (e) => {
-    setErrors(ValidateInfo(registration));
-    e.preventDefault();
+    if (validate()) {
+      e.preventDefault();
 
-    const newReg = {
-      firstname: registration.firstname,
-      lastname: registration.lastname,
-      username: registration.username,
-      contactnumber: registration.contactnumber,
-      password: registration.password,
-      confirmPass: registration.confirmPass,
-    };
+      const newReg = {
+        firstname: registration.firstname,
+        lastname: registration.lastname,
+        username: registration.username,
+        contactnumber: registration.contactnumber,
+        password: registration.password,
+        confirmPass: registration.confirmPass,
+      };
 
-    const updatedReg = [{...registration}, newReg];
-    setRegistration(updatedReg);
+      const updatedReg = [{...registration}, newReg];
+      setRegistration(updatedReg);
 
-    if (true) {
-      //this needs to be changed to validate the form!
       setOpen(true);
       setRegistration(initialFormState);
       const values = {
@@ -118,8 +140,10 @@ export default function Registration() {
               value={registration.firstname}
               onChange={handleChange}
               className={classes.root}
+              error
+              helperText={errors.firstname}
             />
-            {errors.firstname && <p>{errors.firstname}</p>}
+
             <TextField
               variant="outlined"
               margin="normal"
@@ -131,8 +155,9 @@ export default function Registration() {
               value={registration.lastname}
               onChange={handleChange}
               className={classes.root}
+              helperText={errors.lastname}
+              error
             />
-            {errors.lastname && <p>{errors.lastname}</p>}
             <TextField
               variant="outlined"
               margin="normal"
@@ -144,21 +169,25 @@ export default function Registration() {
               value={registration.username}
               onChange={handleChange}
               className={classes.root}
+              helperText={errors.username}
+              error
             />
-            {errors.username && <p>{errors.username}</p>}
+
             <TextField
+              name="contactnumber"
               variant="outlined"
               margin="normal"
               id="contact number"
               label="Contact Number"
               style={{margin: 8}}
               fullWidth
-              name="contactnumber"
               value={registration.contactnumber}
               onChange={handleChange}
               className={classes.root}
+              helperText={errors.contactnumber}
+              error
             />
-            {errors.contactnumber && <p>{errors.contactnumber}</p>}
+
             <TextField
               variant="outlined"
               margin="normal"
@@ -171,8 +200,10 @@ export default function Registration() {
               value={registration.password}
               onChange={handleChange}
               className={classes.root}
+              helperText={errors.password}
+              error
             />
-            {errors.password && <p>{errors.password}</p>}
+
             <TextField
               variant="outlined"
               margin="normal"
@@ -186,7 +217,7 @@ export default function Registration() {
               onChange={handleChange}
               className={classes.root}
             />
-            {errors.confirmPass && <p>{errors.confirmPass}</p>}
+
             <Grid item xs={12} sm={12}>
               <Button
                 onClick={handleClick}
