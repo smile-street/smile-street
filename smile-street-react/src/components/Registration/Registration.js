@@ -30,31 +30,6 @@ export default function Registration() {
   };
   const [registration, setRegistration] = useState(initialFormState);
 
-  const validate = () => {
-    let temp = {...errors};
-    if ('firstname' in registration)
-      temp.firstname = registration.firstname ? '' : 'This field is required.';
-    if ('lastname' in registration)
-      temp.lastname = registration.lastname ? '' : 'This field is required.';
-    if ('username' in registration)
-      temp.username = /$^|.+@.+..+/.test(registration.username)
-        ? ''
-        : 'Email is not valid.';
-    if ('contactnumber' in registration)
-      temp.contactnumberr =
-        registration.contactnumber.length > 6
-          ? ''
-          : 'Minimum 6 numbers required.';
-    if ('password' in registration)
-      temp.password =
-        registration.password.length != 0 ? '' : 'This field is required.';
-    setErrors({
-      ...temp,
-    });
-
-    if (registration) return Object.values(temp).every((x) => x == '');
-  };
-
   const handleChange = (e) => {
     setRegistration({
       ...registration,
@@ -63,62 +38,58 @@ export default function Registration() {
   };
 
   const handleClick = (e) => {
-    if (validate()) {
-      e.preventDefault();
+    const newReg = {
+      firstname: registration.firstname,
+      lastname: registration.lastname,
+      username: registration.username,
+      contactnumber: registration.contactnumber,
+      password: registration.password,
+      confirmPass: registration.confirmPass,
+    };
 
-      const newReg = {
-        firstname: registration.firstname,
-        lastname: registration.lastname,
-        username: registration.username,
-        contactnumber: registration.contactnumber,
-        password: registration.password,
-        confirmPass: registration.confirmPass,
-      };
+    const updatedReg = [{...registration}, newReg];
+    setRegistration(updatedReg);
 
-      const updatedReg = [{...registration}, newReg];
-      setRegistration(updatedReg);
-
-      setOpen(true);
-      setRegistration(initialFormState);
-      const values = {
-        firstname: registration.firstname,
-        lastname: registration.lastname,
-        username: registration.username,
-        contactnumber: registration.contactnumber,
-      };
-      if (userRole.userType === 'volunteer') {
-        axios
-          .post(
-            'https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/Volunteers',
-            values
-          )
-          .then((response) => (userId = response.data))
-          .then((response) =>
-            history.push({
-              pathname: '/VolunteerAvailability',
-              state: {userId: userId},
-            })
-          )
-          .catch((error) => {
-            setOpen(false);
-            console.log(error);
-          });
-      }
-      if (userRole.userType === 'goodCause') {
-        axios
-          .post(
-            'https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/sgoodcauseregistration',
-            values
-          )
-          .then((response) => (userId = response.data))
-          .then((response) =>
-            history.push({
-              pathname: '/GoodCauseDetails',
-              state: {userId: userId},
-            })
-          )
-          .catch((error) => console.log(error));
-      }
+    setOpen(true);
+    setRegistration(initialFormState);
+    const values = {
+      firstname: registration.firstname,
+      lastname: registration.lastname,
+      username: registration.username,
+      contactnumber: registration.contactnumber,
+    };
+    if (userRole.userType === 'volunteer') {
+      axios
+        .post(
+          'https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/Volunteers',
+          values
+        )
+        .then((response) => (userId = response.data))
+        .then((response) =>
+          history.push({
+            pathname: '/VolunteerAvailability',
+            state: {userId: userId},
+          })
+        )
+        .catch((error) => {
+          setOpen(false);
+          console.log(error);
+        });
+    }
+    if (userRole.userType === 'goodCause') {
+      axios
+        .post(
+          'https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/sgoodcauseregistration',
+          values
+        )
+        .then((response) => (userId = response.data))
+        .then((response) =>
+          history.push({
+            pathname: '/GoodCauseDetails',
+            state: {userId: userId},
+          })
+        )
+        .catch((error) => console.log(error));
     }
   };
 
@@ -140,8 +111,8 @@ export default function Registration() {
               value={registration.firstname}
               onChange={handleChange}
               className={classes.root}
-              error
-              helperText={errors.firstname}
+              error={registration.firstname === ''}
+              helperText={registration.firstname === '' ? 'Empty field!' : ' '}
             />
 
             <TextField
@@ -155,8 +126,8 @@ export default function Registration() {
               value={registration.lastname}
               onChange={handleChange}
               className={classes.root}
-              helperText={errors.lastname}
-              error
+              error={registration.lastname === ''}
+              helperText={registration.lastname === '' ? 'Empty field!' : ' '}
             />
             <TextField
               variant="outlined"
@@ -169,8 +140,8 @@ export default function Registration() {
               value={registration.username}
               onChange={handleChange}
               className={classes.root}
-              helperText={errors.username}
-              error
+              error={registration.username === ''}
+              helperText={registration.username === '' ? 'Empty field!' : ' '}
             />
 
             <TextField
@@ -184,8 +155,10 @@ export default function Registration() {
               value={registration.contactnumber}
               onChange={handleChange}
               className={classes.root}
-              helperText={errors.contactnumber}
-              error
+              error={registration.contactnumber === ''}
+              helperText={
+                registration.contactnumber === '' ? 'Empty field!' : ' '
+              }
             />
 
             <TextField
@@ -200,8 +173,8 @@ export default function Registration() {
               value={registration.password}
               onChange={handleChange}
               className={classes.root}
-              helperText={errors.password}
-              error
+              error={registration.password === ''}
+              helperText={registration.password === '' ? 'Empty field!' : ' '}
             />
 
             <TextField
@@ -216,6 +189,8 @@ export default function Registration() {
               value={registration.confirmPass}
               onChange={handleChange}
               className={classes.root}
+              error={registration.password === ''}
+              helperText={registration.password === '' ? 'Empty field!' : ' '}
             />
 
             <Grid item xs={12} sm={12}>
