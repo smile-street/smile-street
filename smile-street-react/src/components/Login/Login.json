@@ -2,6 +2,7 @@
   {
     "id": "001",
     "email": "volunteer@email.com",
+    "firstname": "Roger",
     "password": "123456",
     "user-role": "volunteer",
     "user_id": "3f0bd98f-3b95-4e16-9f4f-819d0723541e"

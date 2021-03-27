@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
-import {useHistory} from 'react-router-dom';
+import {useHistory, useLocation} from 'react-router-dom';
 import {
   Container,
   Grid,
@@ -18,6 +18,7 @@ import {
 import MenuIcon from '@material-ui/icons/Menu';
 import PageHeading from '../PageHeading/PageHeading';
 import MatchCard from './MatchCard';
+import axios from 'axios';
 import VolunteerMatchesData from './VolunteerMatches.json';
 
 const useStyles = makeStyles((theme) => ({
@@ -46,9 +47,23 @@ const useStyles = makeStyles((theme) => ({
 export default function VolunteerMatches() {
   const classes = useStyles();
   const history = useHistory();
-  const [data, setData] = useState(VolunteerMatchesData);
   const [anchorEl, setAnchorEl] = useState(null);
   const [open, setOpen] = useState(false);
+  const volunteer_id = useLocation().state.userId;
+
+
+  console.log(volunteer_id)
+  //get request for volunteerMatchesData from database
+  useEffect(() => {
+    axios
+    .get(`https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/GetVolunteerMatches/${volunteer_id}`)
+    .then(response => console.log(response))
+    .catch(error => console.log(error))
+  }, [])
+  // adjust the data to fit our requirement
+
+
+  const [data, setData] = useState(VolunteerMatchesData);
 
   const handleAgree = (id) => {
     const updatedMatchCard = data.filter((card) => card.id !== id);
