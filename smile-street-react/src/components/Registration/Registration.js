@@ -111,12 +111,13 @@ export default function Registration() {
               value={registration.firstname}
               onChange={handleChange}
               className={classes.root}
-              error={registration.firstname.length === 0 ? false : true}
+              error={registration.firstname === ' '}
               helperText={
                 registration.firstname === ''
                   ? 'First name can not be empty!'
                   : ' '
               }
+              focused
             />
 
             <TextField
@@ -130,7 +131,8 @@ export default function Registration() {
               value={registration.lastname}
               onChange={handleChange}
               className={classes.root}
-              error={registration.firstname.length === 0 ? false : true}
+              focused
+              error={registration.lastname === ''}
               helperText={
                 registration.lastname === ''
                   ? 'Last name can not be empty!'
@@ -141,6 +143,7 @@ export default function Registration() {
               variant="outlined"
               margin="normal"
               id="email"
+              focused
               label="Email Address"
               style={{margin: 8}}
               fullWidth
@@ -148,7 +151,7 @@ export default function Registration() {
               value={registration.username}
               onChange={handleChange}
               className={classes.root}
-              error={registration.firstname.length === 0 ? false : true}
+              error={registration.username === ''}
               helperText={
                 registration.username === ''
                   ? 'Username can not be empty!'
@@ -160,6 +163,7 @@ export default function Registration() {
               name="contactnumber"
               variant="outlined"
               margin="normal"
+              focused
               id="contact number"
               label="Contact Number"
               style={{margin: 8}}
@@ -167,7 +171,7 @@ export default function Registration() {
               value={registration.contactnumber}
               onChange={handleChange}
               className={classes.root}
-              error={registration.firstname.length === 0 ? false : true}
+              error={registration.contactnumber === ''}
               helperText={
                 registration.contactnumber === ''
                   ? 'Contact number can not be empty!'
@@ -178,6 +182,7 @@ export default function Registration() {
             <TextField
               variant="outlined"
               margin="normal"
+              focused
               id="password"
               label="Password"
               style={{margin: 8}}
@@ -187,7 +192,7 @@ export default function Registration() {
               value={registration.password}
               onChange={handleChange}
               className={classes.root}
-              error={registration.firstname.length === 0 ? false : true}
+              error={registration.password === ''}
               helperText={
                 registration.password === ''
                   ? 'Password can not be empty!'
@@ -198,6 +203,7 @@ export default function Registration() {
             <TextField
               variant="outlined"
               margin="normal"
+              focused
               id="confirm password"
               label="Confrim Password"
               style={{margin: 8}}
@@ -207,7 +213,7 @@ export default function Registration() {
               value={registration.confirmPass}
               onChange={handleChange}
               className={classes.root}
-              error={registration.firstname.length === 0 ? false : true}
+              error={registration.confirmPass === ''}
               helperText={
                 registration.password === ''
                   ? 'Confirm password can not be empty !'
