@@ -162,7 +162,7 @@ export default function Registration() {
               variant="outlined"
               margin="normal"
               id="confirm password"
-              label="Confrim Password"
+              label="Confirm Password"
               style={{margin: 8}}
               fullWidth
               name="confirmPass"
