@@ -15,8 +15,6 @@ import Footer from './components/Footer/Footer';
 import {
   BrowserRouter as Router,
   Route,
-  Switch,
-  useHistory,
 } from 'react-router-dom';
 
 
@@ -27,23 +25,17 @@ export default function App() {
         <Header />
         <Route path="/" exact component={Login} />
         <Route path="/Registration" exact component={Registration} />
-
-        <Route
-          path="/VolunteerAvailability"
-          component={VolunteerAvailability}
-        />
-        <Route path="/GoodCauseDetails" component={GoodCauseDetails} />
-        <Route path="/VolunteerMatches" component={VolunteerMatches} />
-        <Route path="/GoodCauseMatches" component={GoodCauseMatches} />
+        <Route path="/VolunteerAvailability" component={VolunteerAvailability} />
         <Route path="/VolunteerInterests" component={VolunteerInterests} />
-        <Route path="/GoodCauseOpportunity" component={GoodCauseOpportunity} />
+        <Route path="/VolunteerMatches" component={VolunteerMatches} />
         <Route path="/VolEditProfile" component={VolEditProfile} />
+        <Route path="/GoodCauseDetails" component={GoodCauseDetails} />
+        <Route path="/GoodCauseMatches" component={GoodCauseMatches} />
+        <Route path="/GoodCauseOpportunity" component={GoodCauseOpportunity} />
         <Route path="/ManageOpportunities" component={ManageOpportunities} />
         <Route path="/EditOpportunity" component={EditOpportunity} />
         <Footer />
       </Router>
-      {/* <VolunteerInterests />
-      <GoodCauseOpportunity /> */}
     </div>
   );
 }

@@ -1,6 +1,5 @@
 import {
   createMuiTheme,
-  responsiveFontSizes,
   makeStyles,
 } from '@material-ui/core/styles';
 import {cyan} from '@material-ui/core/colors';
@@ -58,5 +57,9 @@ export default makeStyles(() => ({
   backdrop: {
     zIndex: theme.zIndex.drawer + 1,
     color: '#fff',
+  },
+  header: {
+    marginBottom: "2em",
+    marginTop: "1em",
   },
 }));

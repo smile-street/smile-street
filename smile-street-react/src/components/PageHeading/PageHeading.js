@@ -5,11 +5,10 @@ import useStyle from '../Style/Style';
 export default function PageHeading(props) {
   const classes = useStyle();
   return (
-    <Container className={classes.root}>
+    <Container className={classes.header}>
       <Typography
         component="h1"
         variant="h5"
-        gutterBottom
         className={classes.h1}
       >
         {props.heading}
