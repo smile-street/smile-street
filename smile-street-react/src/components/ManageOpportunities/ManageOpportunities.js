@@ -29,16 +29,16 @@ export default function ManageOpportunities() {
     const [deleteConfirmation, setDeleteConfirmation] = useState(false);
     const opportunities = [
         {id: "123455",  // these details should be fetched in EditOpportunity with a get handelr using the oppotunity_id
-        title: "Opportunity 1",
-        description: "Lorem ipsum dolorm sin amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.",
-        location: "Bath",
-        opportunitydate: "Sun Mar 21 2021 16:06:44 GMT+0000 (Greenwich Mean Time)",
+        title: "Food Drive",
+        description: "A day of gathering donations from the local markets in support of something positive",
+        location: "Manchester",
+        opportunitydate: "Sunday, April 22, 2021",
         skills: [{title: "Communications"}, {title: "Marketing"}]},
         {id: "234567",
-        title: "Opportunity 2", 
+        title: "Wooly Hat Knit-a-thon", 
         description: "Lorem ipsum dolorm sin amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget."},
         {id: "2345678",
-        title: "Opportunity 3",
+        title: "Three Legged Race day",
         description: "Lorem ipsum dolorm sin amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget."}
     ];
 
@@ -84,6 +84,7 @@ export default function ManageOpportunities() {
                                 </Typography>
                                 </AccordionDetails>
                                 <Divider />
+                                <Typography gutterBottom color="textSecondary">{opportunity.opportunitydate}</Typography>
                                 <AccordionActions>
                                     <Button 
                                         size="small" 

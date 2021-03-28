@@ -106,14 +106,14 @@ export default function FullWidthGrid() {
 					{/*  */}
 					<div className={classes.root}>
 						{uniqueOpportunities.map(ID => (
-							<Accordion>
+							<Accordion defaultExpanded>
 								<AccordionSummary
 									expandIcon={<ExpandMoreIcon />}
 									aria-controls="panel1a-content"
 									id="panel1a-header"
 									key={ID}
 								>
-									<Typography className={classes.heading}>Opportunity {ID}</Typography> {/*should be opportunity title*/}
+									<Typography className={classes.heading}>{ID}</Typography>
 								</AccordionSummary>
 								<AccordionDetails className={classes.root}>
 									<List component="nav" aria-label="Volunteers matched with opportunity">
