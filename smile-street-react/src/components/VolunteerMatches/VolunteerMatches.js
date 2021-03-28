@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
-import {useHistory} from 'react-router-dom';
+import {useHistory, useLocation} from 'react-router-dom';
 import {
   Container,
   Grid,
@@ -18,6 +18,7 @@ import {
 import MenuIcon from '@material-ui/icons/Menu';
 import PageHeading from '../PageHeading/PageHeading';
 import MatchCard from './MatchCard';
+import axios from 'axios';
 import VolunteerMatchesData from './VolunteerMatches.json';
 
 const useStyles = makeStyles((theme) => ({
@@ -46,23 +47,43 @@ const useStyles = makeStyles((theme) => ({
 export default function VolunteerMatches() {
   const classes = useStyles();
   const history = useHistory();
-  const [data, setData] = useState(VolunteerMatchesData);
   const [anchorEl, setAnchorEl] = useState(null);
   const [open, setOpen] = useState(false);
+  const [data, setData] = useState([]);
+  const volunteer_id = useLocation().state.userId;
+
+  //get request for volunteerMatchesData from database
+  useEffect(() => {
+    axios
+    .get(`https://2itobgmiv3.execute-api.eu-west-2.amazonaws.com/dev/GetVolunteerMatches/${volunteer_id}`)
+    .then(response => {
+      setData(response.data)
+      console.log(response.data)
+    })
+    .catch(error => console.log(error))
+  }, [])
+  // adjust the data to fit our requirement
+
 
   const handleAgree = (id) => {
-    const updatedMatchCard = data.filter((card) => card.id !== id);
-    setData(updatedMatchCard);
+    console.log(id)
+    // This is where we have the post handler updating the matches table
+    // const updatedMatchCard = data.filter((card) => card.good_cause_opportunity_id !== id);
+    // setData(updatedMatchCard);
   };
+
   const handleAccepted = (id) => {
-    let matches = data;
-    for (let match of matches) {
-      if (match.id === id) {
-        match.accepted = match.accepted ? false : true;
-      }
-    }
-    setData(matches);
-    console.log(data);
+    console.log(id)
+      // This is where we have the post handler updating the matches table
+
+    // let matches = data;
+    // for (let match of matches) {
+    //   if (match.good_cause_opportunity_id === id) {
+    //     match.accepted = match.accepted ? false : true;
+    //   }
+    // }
+    // setData(matches);
+
   };
 
   // const rejectedMatches = data.filter((match) => match.accepted === false); //not in use right now
@@ -135,11 +156,11 @@ export default function VolunteerMatches() {
         >
           {data.map((item) => (
             <MatchCard
-              key={item.id}
-              id={item.id}
-              GoodCause={item.GoodCause}
-              Description={item.Description}
-              Dates={item.Dates}
+              key={item.good_cause_opportunity_id}
+              id={item.good_cause_opportunity_id}
+              opportunityname={item.opportunityname}
+              description={item.opportunitydescription}
+              date={item.opportunitydate}
               accepted={item.accepted}
               handleAgree={handleAgree}
               handleAccepted={handleAccepted}

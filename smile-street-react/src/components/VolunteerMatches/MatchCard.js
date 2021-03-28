@@ -40,8 +40,9 @@ const useStyles = makeStyles((theme) => ({
 
 const MatchCard = ({
   id,
-  GoodCause,
-  Description,
+  opportunityname,
+  description,
+  date,
   accepted,
   handleAgree,
   handleAccepted,
@@ -49,6 +50,7 @@ const MatchCard = ({
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [openYes, setOpenYes] = useState(false);
+  const opportunityDate = new Date(date);
 
   const handleClickOpenNo = () => {
     setOpen(true);
@@ -77,15 +79,17 @@ const MatchCard = ({
       <Card className={classes.root}>
         <CardActionArea>
           <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
-              {GoodCause}
+            <Typography variant="h5" component="h2">
+              {opportunityname}
+            </Typography>
+            <Typography gutterBottom color="textSecondary">
+              {opportunityDate.toLocaleDateString("en-GB")}
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
-              {Description}
+              {description}
             </Typography>
           </CardContent>
         </CardActionArea>
-        {accepted === null && (
           <CardActions>
             <Button
               type="submit"
@@ -108,7 +112,6 @@ const MatchCard = ({
               No, Thanks
             </Button>
           </CardActions>
-        )}
       </Card>
 
       <Dialog
