@@ -19,6 +19,10 @@ export default makeStyles(() => ({
     '&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
       borderColor: '#53bd98',
     },
+    '& .Mui-error': {
+      color: '#53bd98',
+    },
+
     '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
       borderColor: '#449f80',
     },
@@ -30,6 +34,7 @@ export default makeStyles(() => ({
     '& .MuiInputLabel-outlined.Mui-focused': {
       color: '#449f80',
     },
+
     margin: 8,
   },
   paper: {

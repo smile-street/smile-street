@@ -146,6 +146,8 @@ export default function GoodCauseOpportunity() {
               value={title}
               onChange={(event) => setTitle(event.target.value)}
               className={classes.root}
+              error={title === ''}
+              helperText={title === '' ? 'Title can not  be empty!' : ' '}
             />
             <TextField
               id="description"
@@ -156,51 +158,67 @@ export default function GoodCauseOpportunity() {
               value={description}
               onChange={(event) => setDescription(event.target.value)}
               className={classes.root}
+              error={description === ''}
+              helperText={
+                description === '' ? 'Description can not  be empty!' : ' '
+              }
             />
-            <FormControl variant="outlined" fullWidth className={classes.root}>
-              <InputLabel id="location-label" className={classes.root}>Select your location</InputLabel>
-              <Select
-                labelId="location-label"
-                label="Select your location"
-                id="location"
-                name="location"
-                style={{margin: 8}}
+            <FormControl variant="outlined" fullWidth>
+              <InputLabel id="location-label" className={classes.root}>
+                Select your location
+              </InputLabel>
+
+              <FormControl
+                variant="outlined"
+                fullWidth
                 className={classes.root}
-                value={location}
-                onChange={(event) => setLocation(event.target.value)}
               >
-                {locations.map((city) => {
-                  return <MenuItem value={city.name}>{city.name}</MenuItem>;
-                })}
-              </Select>
+                <InputLabel id="location-label" className={classes.root}>
+                  Select your location
+                </InputLabel>
+                <Select
+                  labelId="location-label"
+                  label="Select your location"
+                  id="location"
+                  name="location"
+                  style={{margin: 8}}
+                  className={classes.root}
+                  value={location}
+                  onChange={(event) => setLocation(event.target.value)}
+                >
+                  {locations.map((city) => {
+                    return <MenuItem value={city.name}>{city.name}</MenuItem>;
+                  })}
+                </Select>
+              </FormControl>
+              <Grid item xs={12} sm={12}>
+                <AutoCompleteTag setSkills={setSelectedSkills} />
+              </Grid>
+              <Grid item xs={12} sm={12}>
+                <DatePicker
+                  id={'Opportunity Date'}
+                  setDate={setOpportunityDate}
+                />
+              </Grid>
+              <Grid item xs={12} sm={12}>
+                <Button
+                  variant="contained"
+                  className={classes.buttonColor}
+                  onClick={addOpportunity}
+                >
+                  Save This Opportunity
+                </Button>
+              </Grid>
+              <Grid item xs={12} sm={12}>
+                <Button
+                  variant="contained"
+                  className={classes.buttonColor}
+                  onClick={handleDone}
+                >
+                  I want see my matches!
+                </Button>
+              </Grid>
             </FormControl>
-            <Grid item xs={12} sm={12}>
-              <AutoCompleteTag setSkills={setSelectedSkills} />
-            </Grid>
-            <Grid item xs={12} sm={12}>
-              <DatePicker
-                id={'Opportunity Date'}
-                setDate={setOpportunityDate}
-              />
-            </Grid>
-            <Grid item xs={12} sm={12}>
-              <Button
-                variant="contained"
-                className={classes.buttonColor}
-                onClick={addOpportunity}
-              >
-                Save This Opportunity
-              </Button>
-            </Grid>
-            <Grid item xs={12} sm={12}>
-              <Button
-                variant="contained"
-                className={classes.buttonColor}
-                onClick={handleDone}
-              >
-                I want see my matches!
-              </Button>
-            </Grid>
           </Grid>
         </Container>
       </Paper>

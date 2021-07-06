@@ -69,23 +69,25 @@ export default function VolunteerAvailability() {
 
           <Grid container spacing={3}>
             <Grid item xs={12} sm={12}>
-              <FormControl variant="outlined" fullWidth className={classes.root}>
-                <TextField
-                  margin="normal"
-                  autoFocus
-                  name="employername"
-                  label="Employers Name"
-                  variant="outlined"
-                  value={info.employername}
-                  onChange={handleChange}
-                  className={classes.root}
-                />
-                {errors.employername}
-              </FormControl>
+
+              <TextField
+                margin="normal"
+                fullWidth
+                autoFocus
+                name="employername"
+                label="Employers Name"
+                variant="outlined"
+                value={info.employername}
+                onChange={handleChange}
+                className={classes.root}
+                error={info.employername === ''}
+                helperText={info.employername === '' ? 'Empty field!' : ' '}
+              />
             </Grid>
             <Grid item xs={12} sm={12}>
-              <FormControl variant="outlined" fullWidth className={classes.root}>
-                <InputLabel id="location-label"  className={classes.root}>
+              <FormControl variant="outlined" fullWidth>
+                <InputLabel id="location-label" className={classes.root}>
+
                   Select your location
                 </InputLabel>
                 <Select
